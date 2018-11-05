@@ -16,4 +16,13 @@ public class WordService {
         return this.loader.prefix(word);
     }
 
+    public static void main(String[] args) throws Exception {
+        WordService service = new WordService();
+        System.out.println(service.search("mat"));
+        Thread.sleep(1000);
+        System.out.println(service.search("mat"));
+        System.out.println(service.search("got"));
+        System.out.println(service.search("hip"));
+        System.out.println(service.search("asdaegff"));
+    }
 }

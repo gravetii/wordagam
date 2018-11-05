@@ -143,9 +143,6 @@ public class Game {
     @Override
     public String toString() {
         return "Game{" +
-                "service=" + service +
-                ", grid=" + Arrays.toString(grid) +
-                ", wordPoints=" + wordPoints +
                 ", totalPoints=" + totalPoints +
                 ", allWords=" + allWords +
                 ", quality=" + quality +

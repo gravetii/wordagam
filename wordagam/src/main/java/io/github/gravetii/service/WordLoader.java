@@ -1,6 +1,5 @@
 package io.github.gravetii.service;
 
-import io.github.gravetii.scheduler.TaskScheduler;
 import io.github.gravetii.util.Trie;
 
 import java.io.BufferedReader;
@@ -20,21 +19,35 @@ public class WordLoader {
     private Trie trie;
 
     public static WordLoader get() {
-        if (INSTANCE == null) {
-            synchronized (WordLoader.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new WordLoader();
-                    logger.info("Created instance of WordLoader.");
+        try{
+            if (INSTANCE == null) {
+                synchronized (WordLoader.class) {
+                    if (INSTANCE == null) {
+                        INSTANCE = new WordLoader();
+                        logger.info("Created instance of WordLoader.");
+                    }
                 }
             }
-        }
 
-        return INSTANCE;
+            return INSTANCE;
+        }
+        catch (IOException ie) {
+            System.out.println("Error while loading words in WordLoader thread");
+            throw new RuntimeException(ie);
+        }
     }
 
-    private WordLoader() {
+    private WordLoader() throws IOException {
         this.trie = new Trie();
-        TaskScheduler.get().submit(new WordLoaderTask());
+        InputStream istream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
+        BufferedReader reader = new BufferedReader(new InputStreamReader(istream));
+        String word;
+        while ((word = reader.readLine()) != null) {
+            word = word.trim();
+            trie.insert(word);
+        }
+
+        logger.info("Completed loading all words into the trie.");
     }
 
     public boolean search(String word) {
@@ -45,22 +58,4 @@ public class WordLoader {
         return trie.prefix(word);
     }
 
-    private class WordLoaderTask implements Runnable {
-
-        @Override
-        public void run() {
-            try {
-                InputStream istream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
-                BufferedReader reader = new BufferedReader(new InputStreamReader(istream));
-                String word;
-                while ((word = reader.readLine()) != null) {
-                    word = word.trim();
-                    trie.insert(word);
-                }
-            }
-            catch (IOException e) {
-                System.exit(1);
-            }
-        }
-    }
 }

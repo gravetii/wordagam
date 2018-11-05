@@ -2,7 +2,6 @@ package io.github.gravetii;
 
 import io.github.gravetii.game.Game;
 import io.github.gravetii.scheduler.TaskScheduler;
-import io.github.gravetii.service.GameService;
 import io.github.gravetii.service.WordService;
 import io.github.gravetii.util.GridUnit;
 import javafx.application.Application;
@@ -25,7 +24,6 @@ public class App extends Application {
     @Override
     public void init() {
         new WordService();
-        new GameService();
         Runtime.getRuntime().addShutdownHook(new Thread(() -> TaskScheduler.get().close()));
     }
 
@@ -40,7 +38,7 @@ public class App extends Application {
         Image img = getStartingImage();
         imgView.setImage(img);
         BorderPane pane = (BorderPane) root.getChildren().get(1);
-        pane.setCenter(imgView);
+        pane.getChildren().add(imgView);
         imgView.fitWidthProperty().bind(pane.widthProperty());
         imgView.fitHeightProperty().bind(pane.heightProperty());
         Scene scene = new Scene(root, 540, 420);
@@ -61,16 +59,19 @@ public class App extends Application {
 
     private void displayGame(FXMLLoader loader, Game game) {
         GridUnit[][] grid = game.getGrid();
-        AnchorPane pane = loader.getRoot();
-        GridPane gridPane = (GridPane) pane.getChildren().get(1);
+        AnchorPane root = loader.getRoot();
+        GridPane gridPane = (GridPane) root.getChildren().get(1);
+        int c = 0;
         for (int i=0;i<4;++i) {
             for (int j=0;j<4;++j) {
-                GridUnit unit = grid[i][j];
+                GridUnit unit = grid[j][i];
+                BorderPane pane = (BorderPane) gridPane.getChildren().get(c++);
                 String path = "images/" + unit.getLetter() + ".png";
-                System.out.println(path);
                 Image img = new Image(App.class.getResourceAsStream(path));
                 ImageView imgView = new ImageView(img);
-                gridPane.add(imgView, j, i);
+                imgView.fitWidthProperty().bind(pane.widthProperty());
+                imgView.fitHeightProperty().bind(pane.heightProperty());
+                pane.getChildren().add(imgView);
             }
         }
     }
@@ -81,9 +82,7 @@ public class App extends Application {
         loader.setController(controller);
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 540, 420);
-
         displayGame(loader, game);
-
         stage.setScene(scene);
         stage.setTitle("New game");
         stage.sizeToScene();
