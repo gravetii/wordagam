@@ -1,8 +1,10 @@
 package io.github.gravetii;
 
 import io.github.gravetii.game.Game;
+import io.github.gravetii.scheduler.TaskScheduler;
 import io.github.gravetii.service.GameService;
 import io.github.gravetii.service.WordService;
+import io.github.gravetii.util.GridUnit;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -10,6 +12,7 @@ import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -23,6 +26,7 @@ public class App extends Application {
     public void init() {
         new WordService();
         new GameService();
+        Runtime.getRuntime().addShutdownHook(new Thread(() -> TaskScheduler.get().close()));
     }
 
     private Image getStartingImage() {
@@ -34,7 +38,6 @@ public class App extends Application {
         AnchorPane root = loader.load();
         ImageView imgView = new ImageView();
         Image img = getStartingImage();
-        imgView.setImage(img);
         imgView.setImage(img);
         BorderPane pane = (BorderPane) root.getChildren().get(1);
         pane.setCenter(imgView);
@@ -56,12 +59,31 @@ public class App extends Application {
         start(loader);
     }
 
+    private void displayGame(FXMLLoader loader, Game game) {
+        GridUnit[][] grid = game.getGrid();
+        AnchorPane pane = loader.getRoot();
+        GridPane gridPane = (GridPane) pane.getChildren().get(1);
+        for (int i=0;i<4;++i) {
+            for (int j=0;j<4;++j) {
+                GridUnit unit = grid[i][j];
+                String path = "images/" + unit.getLetter() + ".png";
+                System.out.println(path);
+                Image img = new Image(App.class.getResourceAsStream(path));
+                ImageView imgView = new ImageView(img);
+                gridPane.add(imgView, j, i);
+            }
+        }
+    }
+
     void showGame(Game game) throws Exception {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("game.fxml"));
         Controller controller = new Controller(this);
         loader.setController(controller);
         AnchorPane root = loader.load();
         Scene scene = new Scene(root, 540, 420);
+
+        displayGame(loader, game);
+
         stage.setScene(scene);
         stage.setTitle("New game");
         stage.sizeToScene();
@@ -71,4 +93,5 @@ public class App extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }

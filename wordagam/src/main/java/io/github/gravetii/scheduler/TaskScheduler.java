@@ -35,7 +35,7 @@ public class TaskScheduler {
     public void close() {
         try {
             this.executor.shutdown();
-            this.executor.awaitTermination(5, TimeUnit.SECONDS);
+            this.executor.awaitTermination(2, TimeUnit.SECONDS);
         }
         catch (Exception e) {
             // log exception

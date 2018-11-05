@@ -4,7 +4,6 @@ import io.github.gravetii.game.Game;
 import io.github.gravetii.service.GameService;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
 
 public class Controller {
 
@@ -26,7 +25,7 @@ public class Controller {
             this.app.showGame(game);
         }
         catch (Exception e) {
-            System.out.println("Exception issue...");
+            e.printStackTrace();
         }
     }
 
