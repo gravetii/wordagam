@@ -29,7 +29,7 @@ public class Game {
         this.wordPoints.put("", 0);
         this.totalPoints = 0;
         this.allWords = new HashSet<>();
-        this.createGrid();
+        this.create();
         this.crawl();
         this.quality = assignQuality();
     }
@@ -42,7 +42,7 @@ public class Game {
         return this.totalPoints;
     }
 
-    private void createGrid() {
+    private void create() {
         for (int i=0;i<4;++i) {
             for (int j=0;j<4;++j) {
                 GridUnit unit = assignRandomGridUnit();
