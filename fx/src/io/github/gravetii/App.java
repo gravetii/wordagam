@@ -1,5 +1,6 @@
 package io.github.gravetii;
 
+import io.github.gravetii.game.Game;
 import io.github.gravetii.service.GameService;
 import io.github.gravetii.service.WordService;
 import javafx.application.Application;
@@ -53,6 +54,18 @@ public class App extends Application {
         Controller controller = new Controller(this);
         loader.setController(controller);
         start(loader);
+    }
+
+    void showGame(Game game) throws Exception {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("game.fxml"));
+        Controller controller = new Controller(this);
+        loader.setController(controller);
+        AnchorPane root = loader.load();
+        Scene scene = new Scene(root, 540, 420);
+        stage.setScene(scene);
+        stage.setTitle("New game");
+        stage.sizeToScene();
+        stage.show();
     }
 
     public static void main(String[] args) {

@@ -42,6 +42,10 @@ public class Game {
         return this.totalPoints;
     }
 
+    public GridUnit[][] getGrid() {
+        return grid;
+    }
+
     private void create() {
         for (int i=0;i<4;++i) {
             for (int j=0;j<4;++j) {

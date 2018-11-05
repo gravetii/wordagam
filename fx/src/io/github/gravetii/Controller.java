@@ -17,17 +17,17 @@ public class Controller {
         this.service = new GameService();
     }
 
-
-    @FXML
-    private MenuItem play;
-
     @FXML
     void playGame(ActionEvent event) {
-        System.out.println("New game created");
-        Game game = this.service.get();
-        System.out.println(game);
+        try {
+            System.out.println("New game created");
+            Game game = this.service.get();
+            System.out.println(game);
+            this.app.showGame(game);
+        }
+        catch (Exception e) {
+            System.out.println("Exception issue...");
+        }
     }
-
-
 
 }
