@@ -136,4 +136,15 @@ public class Game {
         return Alphabet.ALL.get(idx);
     }
 
+    @Override
+    public String toString() {
+        return "Game{" +
+                "service=" + service +
+                ", grid=" + Arrays.toString(grid) +
+                ", wordPoints=" + wordPoints +
+                ", totalPoints=" + totalPoints +
+                ", allWords=" + allWords +
+                ", quality=" + quality +
+                '}';
+    }
 }

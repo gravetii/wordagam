@@ -35,12 +35,7 @@ public class GameFactory {
 
     private Game create() {
         Game game = new Game();
-        if (game.getQuality() != Quality.LOW) {
-            return game;
-        }
-        else {
-            return create();
-        }
+        return game;
     }
 
     private void bootstrap() {

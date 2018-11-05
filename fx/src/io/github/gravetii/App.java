@@ -1,5 +1,7 @@
 package io.github.gravetii;
 
+import io.github.gravetii.service.GameService;
+import io.github.gravetii.service.WordService;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
@@ -16,6 +18,12 @@ public class App extends Application {
 
     private Stage stage;
 
+    @Override
+    public void init() {
+        new WordService();
+        new GameService();
+    }
+
     private Image getStartingImage() {
         int r = 1 + new Random().nextInt(2);
         return new Image(App.class.getResourceAsStream("skins/" + r + ".jpg"));
@@ -31,7 +39,7 @@ public class App extends Application {
         pane.setCenter(imgView);
         imgView.fitWidthProperty().bind(pane.widthProperty());
         imgView.fitHeightProperty().bind(pane.heightProperty());
-        Scene scene = new Scene(pane, 540, 420);
+        Scene scene = new Scene(root, 540, 420);
         stage.setScene(scene);
         stage.setTitle("WORDAGAM!");
         stage.sizeToScene();
