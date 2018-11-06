@@ -29,7 +29,6 @@ public class Trie {
         node.setWord();
     }
 
-
     private boolean search(String word, boolean prefix) {
         char[] arr = word.toCharArray();
 
@@ -60,7 +59,6 @@ public class Trie {
     public boolean search(String word) {
         return search(word, false);
     }
-
 
     /**
      * Find if the given word is a prefix of some other word in the trie.

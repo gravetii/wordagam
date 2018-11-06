@@ -47,10 +47,12 @@ public class Game {
     }
 
     private void create() {
+        List<GridUnit> alphaUnits = Alphabet.getAll();
+        Random random = new Random();
         for (int i=0;i<4;++i) {
             for (int j=0;j<4;++j) {
-                GridUnit unit = assignRandomGridUnit();
-                grid[i][j] = unit;
+                int ridx = random.nextInt(alphaUnits.size());
+                grid[i][j] = alphaUnits.get(ridx);
             }
         }
     }
@@ -134,16 +136,10 @@ public class Game {
         return neighbors;
     }
 
-    private GridUnit assignRandomGridUnit() {
-        int bound = Alphabet.ALL.size();
-        int idx = new Random().nextInt(bound);
-        return Alphabet.ALL.get(idx);
-    }
-
     @Override
     public String toString() {
         return "Game{" +
-                ", totalPoints=" + totalPoints +
+                "totalPoints=" + totalPoints +
                 ", allWords=" + allWords +
                 ", quality=" + quality +
                 '}';

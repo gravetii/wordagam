@@ -8,6 +8,10 @@ public class WordService {
         this.loader = WordLoader.get();
     }
 
+    public static void init() {
+        new WordService();
+    }
+
     public boolean search(String word) {
         return this.loader.search(word);
     }

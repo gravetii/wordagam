@@ -7,6 +7,10 @@ public class GameService {
 
     private GameFactory factory;
 
+    public static void init() {
+        new GameService();
+    }
+
     public GameService() {
         this.factory = GameFactory.get();
     }

@@ -41,15 +41,16 @@ public enum Alphabet {
         this.points = points;
     }
 
-    public static final List<GridUnit> ALL = new ArrayList<>(Constants.ALPHABET_COUNT);
-
-    static {
-        for (Alphabet alphabet : Alphabet.values()) {
+    public static List<GridUnit> getAll() {
+        List<GridUnit> all = new ArrayList<>();
+        for (Alphabet alphabet: Alphabet.values()) {
             GridUnit a = new GridUnit(alphabet);
-            for (int c=0; c<alphabet.weight; ++c) {
-                ALL.add(a);
+            for (int c=0;c<alphabet.weight;++c) {
+                all.add(a);
             }
         }
+
+        return all;
     }
 
     public String get() {
