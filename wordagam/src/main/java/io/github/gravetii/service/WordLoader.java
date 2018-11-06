@@ -19,7 +19,7 @@ public class WordLoader {
     private Trie trie;
 
     public static WordLoader get() {
-        try{
+        try {
             if (INSTANCE == null) {
                 synchronized (WordLoader.class) {
                     if (INSTANCE == null) {
@@ -31,23 +31,32 @@ public class WordLoader {
 
             return INSTANCE;
         }
-        catch (IOException ie) {
+        catch (IOException e) {
             System.out.println("Error while loading words in WordLoader thread");
-            throw new RuntimeException(ie);
+            throw new RuntimeException(e);
         }
     }
 
     private WordLoader() throws IOException {
-        this.trie = new Trie();
-        InputStream istream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
-        BufferedReader reader = new BufferedReader(new InputStreamReader(istream));
-        String word;
-        while ((word = reader.readLine()) != null) {
-            word = word.trim();
-            trie.insert(word);
-        }
+        BufferedReader reader = null;
 
-        logger.info("Completed loading all words into the trie.");
+        try {
+            this.trie = new Trie();
+            InputStream istream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
+            reader = new BufferedReader(new InputStreamReader(istream));
+            String word;
+            while ((word = reader.readLine()) != null) {
+                word = word.trim();
+                trie.insert(word);
+            }
+
+            logger.info("Completed loading all words into the trie.");
+        }
+        finally {
+            if (reader != null) {
+                reader.close();
+            }
+        }
     }
 
     public boolean search(String word) {

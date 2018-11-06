@@ -3,23 +3,22 @@ package io.github.gravetii;
 import io.github.gravetii.game.Game;
 import io.github.gravetii.service.GameService;
 import javafx.event.ActionEvent;
-import javafx.event.EventType;
 import javafx.fxml.FXML;
 
-import java.awt.*;
 import java.util.logging.Logger;
 
-public class Controller {
+class Controller {
 
     private static final Logger logger = Logger.getLogger(Controller.class.getCanonicalName());
 
-    private App app;
+    private final App app;
 
-    private GameService service;
+    private final GameService service;
 
     Controller(App app) {
         this.app = app;
         this.service = new GameService();
+        Runtime.getRuntime().addShutdownHook(new Thread(this::close));
     }
 
     @FXML
@@ -33,6 +32,10 @@ public class Controller {
         catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    private void close() {
+        this.service.close();
     }
 
 }

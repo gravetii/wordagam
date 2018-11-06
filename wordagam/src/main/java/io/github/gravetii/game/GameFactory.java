@@ -2,7 +2,10 @@ package io.github.gravetii.game;
 
 import io.github.gravetii.scheduler.TaskScheduler;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
 public class GameFactory {
@@ -14,6 +17,8 @@ public class GameFactory {
     private static final int MAX_GAMES_IN_QUEUE = 5;
 
     private LinkedBlockingDeque<Game> queue;
+
+    private ExecutorService executor;
 
     public static GameFactory get() {
         if (INSTANCE == null) {
@@ -30,6 +35,7 @@ public class GameFactory {
 
     private GameFactory() {
         this.queue = new LinkedBlockingDeque<>(MAX_GAMES_IN_QUEUE);
+        this.executor = Executors.newFixedThreadPool(1);
         this.bootstrap();
     }
 
@@ -39,7 +45,7 @@ public class GameFactory {
     }
 
     private void bootstrap() {
-        TaskScheduler.get().submit(new GameLoaderTask(MAX_GAMES_IN_QUEUE));
+        this.executor.submit(new GameLoaderTask(MAX_GAMES_IN_QUEUE));
     }
 
     public synchronized Game fetch() {
@@ -48,14 +54,24 @@ public class GameFactory {
             game = this.create();
         }
 
-        this.backfill();
+        this.backFill();
         return game;
     }
 
-    private void backfill() {
+    private void backFill() {
         int n = MAX_GAMES_IN_QUEUE - queue.size();
         if (n > 0) {
             TaskScheduler.get().submit(new GameLoaderTask(n));
+        }
+    }
+
+    public void close() {
+        try {
+            this.executor.shutdown();
+            this.executor.awaitTermination(5, TimeUnit.SECONDS);
+        }
+        catch (Exception e) {
+            logger.info("Error while shutting down GameFactory executor: " + e);
         }
     }
 

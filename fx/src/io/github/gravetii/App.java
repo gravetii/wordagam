@@ -1,7 +1,6 @@
 package io.github.gravetii;
 
 import io.github.gravetii.game.Game;
-import io.github.gravetii.scheduler.TaskScheduler;
 import io.github.gravetii.service.GameService;
 import io.github.gravetii.service.WordService;
 import io.github.gravetii.util.GridUnit;
@@ -24,9 +23,7 @@ public class App extends Application {
 
     @Override
     public void init() {
-        // Initialise the word and game services when the app starts up.
-        WordService.init(); GameService.init();
-        Runtime.getRuntime().addShutdownHook(new Thread(() -> TaskScheduler.get().close()));
+        WordService.init();
     }
 
     private Image getStartingImage() {
