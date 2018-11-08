@@ -1,7 +1,6 @@
 package io.github.gravetii;
 
 import io.github.gravetii.game.Game;
-import io.github.gravetii.service.GameService;
 import io.github.gravetii.service.WordService;
 import io.github.gravetii.util.GridUnit;
 import javafx.application.Application;
@@ -15,7 +14,11 @@ import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Random;
+import java.util.stream.Stream;
 
 public class App extends Application {
 
@@ -26,8 +29,11 @@ public class App extends Application {
         WordService.init();
     }
 
-    private Image getStartingImage() {
-        int r = 1 + new Random().nextInt(2);
+    private Image getStartingImage() throws IOException {
+        String fPath = App.class.getResource("skins").getFile();
+        Stream<Path> files = Files.list((Paths.get(fPath)));
+        int count = Math.toIntExact(files.count());
+        int r = 1 + new Random().nextInt(count);
         return new Image(App.class.getResourceAsStream("skins/" + r + ".jpg"));
     }
 
