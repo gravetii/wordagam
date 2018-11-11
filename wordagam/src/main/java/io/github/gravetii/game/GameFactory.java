@@ -55,12 +55,15 @@ public class GameFactory {
     public void close() {
         try {
             this.executor.shutdown();
-            this.executor.awaitTermination(5, TimeUnit.SECONDS);
-            this.executor.shutdownNow();
+            boolean terminated = this.executor.awaitTermination(2, TimeUnit.SECONDS);
+            if (!terminated) {
+                this.executor.shutdownNow();
+            }
+
             this.queue.clear();
         }
         catch (Exception e) {
-            logger.info("Error while shutting down GameFactory executor: " + e);
+            logger.info("Error while closing GameFactory: " + e);
         }
     }
 
