@@ -1,7 +1,4 @@
-package io.github.gravetii.service;
-
-import io.github.gravetii.game.Game;
-import io.github.gravetii.game.Quality;
+package io.github.gravetii.game;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -15,29 +12,15 @@ public class GameFactory {
 
     private static final int MAX_GAMES_IN_QUEUE = 5;
 
-    private static volatile GameFactory INSTANCE;
+    private Dictionary dictionary;
 
     private LinkedBlockingDeque<Game> queue;
 
-    private Dictionary dictionary;
-
     private ExecutorService executor;
 
-    public static GameFactory get() {
-        if (INSTANCE == null) {
-            synchronized (GameFactory.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new GameFactory();
-                }
-            }
-        }
-
-        return INSTANCE;
-    }
-
-    private GameFactory() {
-        this.queue = new LinkedBlockingDeque<>(MAX_GAMES_IN_QUEUE);
+    public GameFactory() {
         this.dictionary = new Dictionary();
+        this.queue = new LinkedBlockingDeque<>(MAX_GAMES_IN_QUEUE);
         this.executor = Executors.newFixedThreadPool(1);
         this.bootstrap();
     }
@@ -69,7 +52,7 @@ public class GameFactory {
         }
     }
 
-    private void shutdown() {
+    public void close() {
         try {
             this.executor.shutdown();
             this.executor.awaitTermination(5, TimeUnit.SECONDS);
@@ -100,12 +83,6 @@ public class GameFactory {
                     queue.offerLast(game);
                 }
             }
-        }
-    }
-
-    public static void close() {
-        if (INSTANCE != null) {
-            INSTANCE.shutdown();
         }
     }
 

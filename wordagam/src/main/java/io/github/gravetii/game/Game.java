@@ -1,6 +1,5 @@
 package io.github.gravetii.game;
 
-import io.github.gravetii.service.Dictionary;
 import io.github.gravetii.util.Alphabet;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;

@@ -1,5 +1,6 @@
-package io.github.gravetii;
+package io.github.gravetii.scene;
 
+import io.github.gravetii.Controller;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.Pane;
@@ -7,8 +8,8 @@ import javafx.stage.Stage;
 
 public class StartScene extends FxScene {
 
-    public StartScene(Stage stage) {
-        super(stage);
+    public StartScene(Stage stage, Controller controller) {
+        super(stage, controller);
     }
 
     @Override

@@ -1,4 +1,4 @@
-package io.github.gravetii.service;
+package io.github.gravetii.game;
 
 import io.github.gravetii.util.Trie;
 

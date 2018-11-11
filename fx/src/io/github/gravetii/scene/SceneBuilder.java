@@ -1,5 +1,7 @@
-package io.github.gravetii;
+package io.github.gravetii.scene;
 
+import io.github.gravetii.App;
+import io.github.gravetii.Controller;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -9,7 +11,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -25,18 +26,15 @@ class SceneBuilder {
 
     private AnchorPane root;
 
-    private Stage stage;
-
     private Controller controller;
 
-    SceneBuilder(Stage stage) {
+    SceneBuilder(Controller controller) {
         this.root = new AnchorPane();
-        this.stage = stage;
-        this.controller = new Controller(this.stage);
+        this.controller = controller;
     }
 
     MenuBar loadMenuBar() throws Exception {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("menuBar.fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/menuBar.fxml"));
         loader.setController(controller);
         MenuBar menuBar = loader.load();
         menuBar.prefWidthProperty().bind(this.root.widthProperty());
@@ -45,7 +43,7 @@ class SceneBuilder {
     }
 
     Pane loadStartPane() throws Exception {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("start.fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/start.fxml"));
         loader.setController(controller);
         Pane pane = loader.load();
         AnchorPane.setTopAnchor(pane, 29.0);
@@ -60,7 +58,7 @@ class SceneBuilder {
     }
 
     GridPane loadGridPane() throws Exception {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("grid.fxml"));
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/grid.fxml"));
         loader.setController(controller);
         GridPane gridPane = loader.load();
         AnchorPane.setTopAnchor(gridPane, 29.0);

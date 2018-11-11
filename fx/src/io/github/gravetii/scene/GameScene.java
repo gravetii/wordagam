@@ -1,5 +1,7 @@
-package io.github.gravetii;
+package io.github.gravetii.scene;
 
+import io.github.gravetii.App;
+import io.github.gravetii.Controller;
 import io.github.gravetii.game.Game;
 import io.github.gravetii.util.GridUnit;
 import javafx.scene.Scene;
@@ -14,8 +16,8 @@ public class GameScene extends FxScene {
 
     private Game game;
 
-    public GameScene(Stage stage, Game game) {
-        super(stage);
+    public GameScene(Stage stage, Controller controller, Game game) {
+        super(stage, controller);
         this.game = game;
     }
 

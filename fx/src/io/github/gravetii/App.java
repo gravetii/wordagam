@@ -1,6 +1,5 @@
 package io.github.gravetii;
 
-import io.github.gravetii.service.GameFactory;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -10,26 +9,19 @@ public class App extends Application {
 
     private static final Logger logger = Logger.getLogger(App.class.getCanonicalName());
 
-    private Stage stage;
-
-    @Override
-    public void init() {
-        GameFactory.get();
-    }
+    private Controller controller;
 
     @Override
     public void start(Stage stage) throws Exception {
         logger.info("Starting application...");
-        this.stage = stage;
-        FxScene scene = new StartScene(this.stage);
-        scene.show("WORDAGAM");
+        this.controller = new Controller(stage);
+        this.controller.start();
     }
 
     @Override
     public void stop() {
         logger.info("Stopping application...");
-        GameFactory.close();
-        this.stage.close();
+        this.controller.close();
     }
 
     public static void main(String[] args) {
