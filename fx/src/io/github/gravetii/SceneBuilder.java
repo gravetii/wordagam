@@ -27,14 +27,17 @@ class SceneBuilder {
 
     private Stage stage;
 
+    private Controller controller;
+
     SceneBuilder(Stage stage) {
         this.root = new AnchorPane();
         this.stage = stage;
+        this.controller = new Controller(this.stage);
     }
 
     MenuBar loadMenuBar() throws Exception {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("menuBar.fxml"));
-        loader.setController(new MenuBarController(this.stage));
+        loader.setController(controller);
         MenuBar menuBar = loader.load();
         menuBar.prefWidthProperty().bind(this.root.widthProperty());
         logger.info("Loaded menu bar: " + menuBar);
@@ -43,7 +46,7 @@ class SceneBuilder {
 
     Pane loadStartPane() throws Exception {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("start.fxml"));
-        loader.setController(new StartController());
+        loader.setController(controller);
         Pane pane = loader.load();
         AnchorPane.setTopAnchor(pane, 29.0);
         AnchorPane.setBottomAnchor(pane, 0.0);
@@ -58,7 +61,7 @@ class SceneBuilder {
 
     GridPane loadGridPane() throws Exception {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("grid.fxml"));
-        loader.setController(new GridPaneController());
+        loader.setController(controller);
         GridPane gridPane = loader.load();
         AnchorPane.setTopAnchor(gridPane, 29.0);
         AnchorPane.setBottomAnchor(gridPane, 0.0);

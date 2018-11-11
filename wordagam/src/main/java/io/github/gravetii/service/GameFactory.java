@@ -2,7 +2,6 @@ package io.github.gravetii.service;
 
 import io.github.gravetii.game.Game;
 import io.github.gravetii.game.Quality;
-import io.github.gravetii.scheduler.TaskScheduler;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -66,7 +65,7 @@ public class GameFactory {
     private void backFill() {
         int n = MAX_GAMES_IN_QUEUE - queue.size();
         if (n > 0) {
-            TaskScheduler.get().submit(new GameLoaderTask(n));
+            this.executor.submit(new GameLoaderTask(n));
         }
     }
 
@@ -75,6 +74,7 @@ public class GameFactory {
             this.executor.shutdown();
             this.executor.awaitTermination(5, TimeUnit.SECONDS);
             this.executor.shutdownNow();
+            this.queue.clear();
         }
         catch (Exception e) {
             logger.info("Error while shutting down GameFactory executor: " + e);

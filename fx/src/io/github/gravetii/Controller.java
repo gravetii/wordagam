@@ -6,11 +6,15 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-public class MenuBarController {
+import java.util.logging.Logger;
+
+public class Controller {
+
+    private static final Logger logger = Logger.getLogger(Controller.class.getCanonicalName());
 
     private Stage stage;
 
-    public MenuBarController(Stage stage) {
+    Controller(Stage stage) {
         this.stage = stage;
     }
 
@@ -18,7 +22,7 @@ public class MenuBarController {
     public void newGame(ActionEvent event) {
         try {
             Game game = GameFactory.get().fetch();
-            GameScene scene = new GameScene(this.stage, game);
+            FxScene scene = new GameScene(this.stage, game);
             scene.show("New game");
         }
         catch (Exception e) {

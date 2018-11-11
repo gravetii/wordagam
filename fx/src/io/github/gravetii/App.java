@@ -10,6 +10,8 @@ public class App extends Application {
 
     private static final Logger logger = Logger.getLogger(App.class.getCanonicalName());
 
+    private Stage stage;
+
     @Override
     public void init() {
         GameFactory.get();
@@ -18,7 +20,8 @@ public class App extends Application {
     @Override
     public void start(Stage stage) throws Exception {
         logger.info("Starting application...");
-        StartScene scene = new StartScene(stage);
+        this.stage = stage;
+        FxScene scene = new StartScene(this.stage);
         scene.show("WORDAGAM");
     }
 
@@ -26,6 +29,7 @@ public class App extends Application {
     public void stop() {
         logger.info("Stopping application...");
         GameFactory.close();
+        this.stage.close();
     }
 
     public static void main(String[] args) {
