@@ -1,6 +1,6 @@
 package io.github.gravetii.game;
 
-import io.github.gravetii.service.WordService;
+import io.github.gravetii.service.Dictionary;
 import io.github.gravetii.util.Alphabet;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
@@ -13,7 +13,7 @@ import static io.github.gravetii.util.Constants.WORDS_COUNT_LOW;
 
 public class Game {
 
-    private WordService service;
+    private Dictionary dictionary;
 
     private GridUnit[][] grid;
 
@@ -22,9 +22,9 @@ public class Game {
     private Set<String> allWords;
     private Quality quality;
 
-    public Game() {
+    public Game(Dictionary dictionary) {
+        this.dictionary = dictionary;
         this.grid = new GridUnit[4][4];
-        this.service = new WordService();
         this.wordPoints = new HashMap<>();
         this.wordPoints.put("", 0);
         this.totalPoints = 0;
@@ -59,7 +59,7 @@ public class Game {
 
     private boolean isValidWord(String word) {
         return word.length() >= Constants.MIN_WORD_LENGTH &&
-                service.search(word) && !allWords.contains(word);
+                this.dictionary.search(word) && !allWords.contains(word);
     }
 
     private void crawl(GridPoint point, String prefix, boolean[][] visited) {
@@ -68,7 +68,7 @@ public class Game {
         visited[x][y] = true;
 
         String word = prefix + unit.getLetter();
-        if (!service.prefix(word)) {
+        if (!this.dictionary.prefix(word)) {
             return;
         }
 

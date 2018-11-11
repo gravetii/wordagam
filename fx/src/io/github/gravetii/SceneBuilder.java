@@ -19,7 +19,7 @@ import java.util.Random;
 import java.util.logging.Logger;
 import java.util.stream.Stream;
 
-public class SceneBuilder {
+class SceneBuilder {
 
     private static final Logger logger = Logger.getLogger(SceneBuilder.class.getCanonicalName());
 

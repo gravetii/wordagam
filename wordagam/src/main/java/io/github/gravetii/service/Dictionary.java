@@ -8,15 +8,15 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.logging.Logger;
 
-public class WordService {
+public class Dictionary {
 
-  private static final Logger logger = Logger.getLogger(WordService.class.getCanonicalName());
+  private static final Logger logger = Logger.getLogger(Dictionary.class.getCanonicalName());
 
   private static final String WORDS_FILE = "words.txt";
 
   private Trie trie;
 
-  public WordService() {
+  Dictionary() {
     BufferedReader reader = null;
 
     try {

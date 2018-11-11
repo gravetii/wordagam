@@ -10,24 +10,41 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
 import java.util.logging.Logger;
 
-public class GameService {
+public class GameFactory {
 
-    private static final Logger logger = Logger.getLogger(GameService.class.getCanonicalName());
+    private static final Logger logger = Logger.getLogger(GameFactory.class.getCanonicalName());
 
     private static final int MAX_GAMES_IN_QUEUE = 5;
 
+    private static volatile GameFactory INSTANCE;
+
     private LinkedBlockingDeque<Game> queue;
+
+    private Dictionary dictionary;
 
     private ExecutorService executor;
 
-    public GameService() {
+    public static GameFactory get() {
+        if (INSTANCE == null) {
+            synchronized (GameFactory.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new GameFactory();
+                }
+            }
+        }
+
+        return INSTANCE;
+    }
+
+    private GameFactory() {
         this.queue = new LinkedBlockingDeque<>(MAX_GAMES_IN_QUEUE);
+        this.dictionary = new Dictionary();
         this.executor = Executors.newFixedThreadPool(1);
         this.bootstrap();
     }
 
     private Game create() {
-        Game game = new Game();
+        Game game = new Game(this.dictionary);
         return game;
     }
 
@@ -53,7 +70,7 @@ public class GameService {
         }
     }
 
-    public void close() {
+    private void shutdown() {
         try {
             this.executor.shutdown();
             this.executor.awaitTermination(5, TimeUnit.SECONDS);
@@ -83,6 +100,12 @@ public class GameService {
                     queue.offerLast(game);
                 }
             }
+        }
+    }
+
+    public static void close() {
+        if (INSTANCE != null) {
+            INSTANCE.shutdown();
         }
     }
 

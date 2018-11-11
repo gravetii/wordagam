@@ -10,25 +10,22 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-public class GameScene {
-
-    private SceneBuilder builder;
-
-    private Stage stage;
+public class GameScene extends FxScene {
 
     private Game game;
 
     public GameScene(Stage stage, Game game) {
-        this.stage = stage;
+        super(stage);
         this.game = game;
-        this.builder = new SceneBuilder(stage);
     }
 
-    public void showGraph() throws Exception {
+    @Override
+    public Scene build() throws Exception {
         MenuBar menuBar = this.builder.loadMenuBar();
         this.builder.addNode(menuBar);
         GridPane gridPane = this.builder.loadGridPane();
         GridUnit[][] grid = this.game.getGrid();
+
         int c = 0;
         for (int i=0;i<4;++i) {
             for (int j=0;j<4;++j) {
@@ -41,11 +38,8 @@ public class GameScene {
             }
         }
 
-        System.out.println("Loaded new game");
         this.builder.addNode(gridPane);
-        Scene scene = this.builder.build();
-        this.stage.setScene(scene);
-        this.stage.setTitle("New game");
-        this.stage.show();
+        return this.builder.build();
     }
+
 }
