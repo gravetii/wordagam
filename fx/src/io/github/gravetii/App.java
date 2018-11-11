@@ -29,6 +29,7 @@ public class App extends Application {
 
     @Override
     public void init() {
+        AppContext.create();
     }
 
     private static Image getStartingImage() throws IOException {
@@ -96,6 +97,12 @@ public class App extends Application {
         Scene scene = new Scene(root, 540, 460);
         stage.setScene(scene);
         stage.show();
+    }
+
+    @Override
+    public void stop() {
+        logger.info("Stopping application...");
+        AppContext.close();
     }
 
     public static void main(String[] args) {

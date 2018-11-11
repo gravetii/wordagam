@@ -22,7 +22,7 @@ public class Game {
     private Set<String> allWords;
     private Quality quality;
 
-    Game() {
+    public Game() {
         this.grid = new GridUnit[4][4];
         this.service = new WordService();
         this.wordPoints = new HashMap<>();
