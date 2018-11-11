@@ -1,9 +1,8 @@
 package io.github.gravetii;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.MenuItem;
-
-import java.awt.event.ActionEvent;
 
 public class MenuBarController {
 
