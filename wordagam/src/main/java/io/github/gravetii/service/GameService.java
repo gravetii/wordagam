@@ -42,6 +42,7 @@ public class GameService {
         }
 
         this.backFill();
+        logger.info("Fetched new game: " + game);
         return game;
     }
 

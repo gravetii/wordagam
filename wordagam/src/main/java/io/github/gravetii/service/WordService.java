@@ -10,58 +10,45 @@ import java.util.logging.Logger;
 
 public class WordService {
 
-    private static final Logger logger = Logger.getLogger(WordService.class.getCanonicalName());
+  private static final Logger logger = Logger.getLogger(WordService.class.getCanonicalName());
 
-    private static final String WORDS_FILE = "words.txt";
+  private static final String WORDS_FILE = "words.txt";
 
-    private Trie trie;
+  private Trie trie;
 
-    public WordService() {
-        BufferedReader reader = null;
+  public WordService() {
+    BufferedReader reader = null;
 
-        try {
-            this.trie = new Trie();
-            InputStream istream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
-            reader = new BufferedReader(new InputStreamReader(istream));
-            String word;
-            while ((word = reader.readLine()) != null) {
-                word = word.trim();
-                trie.insert(word);
-            }
+    try {
+      this.trie = new Trie();
+      InputStream istream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
+      reader = new BufferedReader(new InputStreamReader(istream));
+      String word;
+      while ((word = reader.readLine()) != null) {
+        word = word.trim();
+        trie.insert(word);
+      }
 
-            logger.info("Completed loading all words into the trie.");
+      logger.info("Completed loading all words into the trie.");
+    } catch (IOException e) {
+      logger.info("Error: Could not load all words into the trie.");
+      throw new RuntimeException(e);
+    } finally {
+      try {
+        if (reader != null) {
+          reader.close();
         }
-        catch (IOException e) {
-            logger.info("Error: Could not load all words into the trie.");
-            throw new RuntimeException(e);
-        }
-        finally {
-            try {
-                if (reader != null) {
-                    reader.close();
-                }
-            }
-            catch (IOException e) {
-                logger.info("Error: Could not successfully close reader.");
-            }
-        }
+      } catch (IOException e) {
+        logger.info("Error: Could not successfully close reader.");
+      }
     }
+  }
 
-    public boolean search(String word) {
-        return this.trie.search(word);
-    }
+  public boolean search(String word) {
+    return this.trie.search(word);
+  }
 
-    public boolean prefix(String word) {
-        return this.trie.prefix(word);
-    }
-
-    public static void main(String[] args) throws Exception {
-        WordService service = new WordService();
-        System.out.println(service.search("mat"));
-        Thread.sleep(1000);
-        System.out.println(service.search("mat"));
-        System.out.println(service.search("got"));
-        System.out.println(service.search("hip"));
-        System.out.println(service.search("asdaegff"));
-    }
+  public boolean prefix(String word) {
+    return this.trie.prefix(word);
+  }
 }
