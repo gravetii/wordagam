@@ -1,4 +1,6 @@
-package io.github.gravetii.util;
+package io.github.gravetii.dictionary;
+
+import io.github.gravetii.util.Constants;
 
 public class TrieNode {
 
@@ -22,7 +24,7 @@ public class TrieNode {
         return word;
     }
 
-    public void setWord() {
+    void setWord() {
         this.word = true;
     }
 

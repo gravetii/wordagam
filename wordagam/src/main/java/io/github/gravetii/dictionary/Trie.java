@@ -1,10 +1,10 @@
-package io.github.gravetii.util;
+package io.github.gravetii.dictionary;
 
 public class Trie {
 
     private TrieNode root;
 
-    public Trie() {
+    Trie() {
         this.root = new TrieNode();
     }
 

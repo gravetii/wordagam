@@ -1,5 +1,6 @@
 package io.github.gravetii.game;
 
+import io.github.gravetii.dictionary.Dictionary;
 import io.github.gravetii.util.Alphabet;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
@@ -12,7 +13,7 @@ import static io.github.gravetii.util.Constants.WORDS_COUNT_LOW;
 
 public class Game {
 
-    private Dictionary dictionary;
+    private io.github.gravetii.dictionary.Dictionary dictionary;
 
     private GridUnit[][] grid;
 

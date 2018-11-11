@@ -1,6 +1,4 @@
-package io.github.gravetii.game;
-
-import io.github.gravetii.util.Trie;
+package io.github.gravetii.dictionary;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -16,7 +14,7 @@ public class Dictionary {
 
   private Trie trie;
 
-  Dictionary() {
+  public Dictionary() {
     BufferedReader reader = null;
 
     try {

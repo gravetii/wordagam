@@ -1,5 +1,7 @@
 package io.github.gravetii.game;
 
+import io.github.gravetii.dictionary.Dictionary;
+
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
