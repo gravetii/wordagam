@@ -1,16 +1,14 @@
 package io.github.gravetii;
 
-import io.github.gravetii.game.Game;
-import io.github.gravetii.service.WordService;
-import io.github.gravetii.util.GridUnit;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
+import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -18,18 +16,22 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.Random;
+import java.util.logging.Logger;
 import java.util.stream.Stream;
 
 public class App extends Application {
+
+    private static final Logger logger = Logger.getLogger(App.class.getCanonicalName());
+
+    private static AnchorPane root = new AnchorPane();
 
     private Stage stage;
 
     @Override
     public void init() {
-        WordService.init();
     }
 
-    private Image getStartingImage() throws IOException {
+    private static Image getStartingImage() throws IOException {
         String fPath = App.class.getResource("skins").getFile();
         Stream<Path> files = Files.list((Paths.get(fPath)));
         int count = Math.toIntExact(files.count());
@@ -37,60 +39,62 @@ public class App extends Application {
         return new Image(App.class.getResourceAsStream("skins/" + r + ".jpg"));
     }
 
-    private void start(FXMLLoader loader) throws IOException {
-        AnchorPane root = loader.load();
-        ImageView imgView = new ImageView();
-        Image img = getStartingImage();
-        imgView.setImage(img);
-        BorderPane pane = (BorderPane) root.getChildren().get(1);
-        pane.getChildren().add(imgView);
-        imgView.fitWidthProperty().bind(pane.widthProperty());
+    private MenuBar loadMenuBar() throws Exception {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("menuBar.fxml"));
+        loader.setController(new MenuBarController(this));
+        MenuBar menuBar = loader.load();
+        menuBar.prefWidthProperty().bind(root.widthProperty());
+        System.out.println("Loaded menu bar: " + menuBar);
+        return menuBar;
+    }
+
+    private Pane loadStartPane() throws Exception {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("start.fxml"));
+        loader.setController(new StartController(this));
+        Pane pane = loader.load();
+        AnchorPane.setTopAnchor(pane, 29.0);
+        AnchorPane.setBottomAnchor(pane, 0.0);
+        pane.prefHeightProperty().bind(root.heightProperty());
+        pane.prefWidthProperty().bind(root.widthProperty());
+        ImageView imgView = (ImageView) pane.getChildren().get(0);
+        imgView.setImage(App.getStartingImage());
         imgView.fitHeightProperty().bind(pane.heightProperty());
-        Scene scene = new Scene(root, 540, 420);
-        stage.setScene(scene);
-        stage.setTitle("WORDAGAM!");
-        stage.sizeToScene();
-        stage.show();
+        imgView.fitWidthProperty().bind(pane.widthProperty());
+        return pane;
+    }
+
+    private GridPane loadGridPane() throws Exception {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("grid.fxml"));
+        loader.setController(new GridPaneController(this));
+        GridPane gridPane = loader.load();
+        AnchorPane.setTopAnchor(gridPane, 29.0);
+        AnchorPane.setBottomAnchor(gridPane, 0.0);
+        gridPane.prefHeightProperty().bind(root.heightProperty());
+        gridPane.prefWidthProperty().bind(root.widthProperty());
+
+        for (int i=0;i<gridPane.getChildren().size();++i) {
+            Pane pane = (Pane) gridPane.getChildren().get(i);
+            ImageView imgView = (ImageView) pane.getChildren().get(0);
+            imgView.setImage(new Image(App.class.getResourceAsStream("images/c.png")));
+            imgView.fitHeightProperty().bind(pane.heightProperty());
+            imgView.fitWidthProperty().bind(pane.widthProperty());
+        }
+
+        System.out.println("Loaded grid pane: " + gridPane);
+        return gridPane;
     }
 
     @Override
     public void start(Stage stage) throws Exception {
+        logger.info("Starting application...");
         this.stage = stage;
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("main.fxml"));
-        Controller controller = new Controller(this);
-        loader.setController(controller);
-        start(loader);
-    }
-
-    private void displayGame(FXMLLoader loader, Game game) {
-        GridUnit[][] grid = game.getGrid();
-        AnchorPane root = loader.getRoot();
-        GridPane gridPane = (GridPane) root.getChildren().get(1);
-        int c = 0;
-        for (int i=0;i<4;++i) {
-            for (int j=0;j<4;++j) {
-                GridUnit unit = grid[j][i];
-                BorderPane pane = (BorderPane) gridPane.getChildren().get(c++);
-                String path = "images/" + unit.getLetter() + ".png";
-                Image img = new Image(App.class.getResourceAsStream(path));
-                ImageView imgView = new ImageView(img);
-                imgView.fitWidthProperty().bind(pane.widthProperty());
-                imgView.fitHeightProperty().bind(pane.heightProperty());
-                pane.getChildren().add(imgView);
-            }
-        }
-    }
-
-    void showGame(Game game) throws Exception {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("game.fxml"));
-        Controller controller = new Controller(this);
-        loader.setController(controller);
-        AnchorPane root = loader.load();
-        Scene scene = new Scene(root, 540, 420);
-        displayGame(loader, game);
+        MenuBar menuBar = this.loadMenuBar();
+        root.getChildren().add(menuBar);
+        Pane pane = this.loadStartPane();
+        root.getChildren().add(pane);
+        stage.setTitle("WORDAGAM");
+        Scene scene = new Scene(root, 540, 460);
         stage.setScene(scene);
-        stage.setTitle("New game");
-        stage.sizeToScene();
         stage.show();
     }
 
