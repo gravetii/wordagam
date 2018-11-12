@@ -1,0 +1,350 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="../../../main_report/html/assets/img/codemr-icon-black-1.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>CodeMR Code Quality Analysis Dashboard</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="../../../main_report/html/assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="../../../main_report/html/assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="../../../main_report/html/assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="../../../main_report/html/assets/css/demo.css" rel="stylesheet" />
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="../../../main_report/html/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>-->
+    <!--link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'-->
+    <link href='../../../main_report/html/fonts/robotofonts.css'  rel='stylesheet' type='text/css'>
+    <!--<link href="../../../main_report/html/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />-->
+    <link href="https://cdn.bootcss.com/pixeden-stroke-7-icon/1.2.3/dist/pe-icon-7-stroke.min.css" rel="stylesheet" />
+
+    <script src="../../../main_report/html/js/eq.js"></script>
+    <script src="../modeldata/overview_metric_data.js"></script>
+    <link href="../../../main_report/html/css/legend.css" rel="stylesheet" />
+
+    <script src="../../../workingsets.js" type="text/javascript"></script>
+    <style>
+    /*  to avoid double scrollbar EQ54*/
+    html {overflow-y:hidden}
+    </style>
+</head>
+<body>
+
+
+
+
+
+<div class="wrapper">
+    <div class="sidebar" data-color="red" data-image="../../../main_report/html/assets/img/sidebar-5.jpg">
+
+        <!--
+            Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+            Tip 2: you can also add an image using data-image tag
+
+        -->
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="https://www.codemr.co.uk" class="simple-text">
+                    <img src="../../../main_report/html/assets/img/codemr-white-32.png">
+                    CodeMR
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="dashboard.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="table.html">
+                        <i class="pe-7s-note2"></i>
+                        <p>Detailed Metric List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="metricdescriptions.html">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Metric Explanations</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="graphs.html">
+                        <i class="pe-7s-science"></i>
+                        <p>CodeMR Graphs</p>
+                    </a>
+                </li>
+                <!--eQ
+                                <li>
+                                    <a href="notifications.html">
+                                        <i class="pe-7s-bell"></i>
+                                        <p>Notifications</p>
+                                    </a>
+                                </li>
+                -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Working sets
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" id = "eq_wsdropdown_XX">
+
+                                <script>
+                                   if(typeof EQ_workingSetList !== 'undefined'){
+										var htmltext='<li><a href="../../../main_report/index.html">Main</a></li>';
+										//EQ_workingSetList
+										//EQ_workingSetList = ['a', 'b'];
+										var arrayLength = EQ_workingSetList.length;
+										for (var i = 0; i < arrayLength; i++) {
+
+											var workingSetname = EQ_workingSetList[i];
+											htmltext = htmltext
+												   + '<li><a href="../../../html_report_'
+												   + workingSetname
+										           + '/index.html">'
+												   + workingSetname
+												   + '</a></li>';
+										}
+										var div = document.getElementById('eq_wsdropdown_XX');
+										div.innerHTML = htmltext;
+									}
+
+							</script>
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title" id="Project_Title"> <b>Analysis of CodeMR Project</b></h4>
+                                <p class="category">General Information</p>
+
+                                <h5 class="text-info" id="Project_LOC"><b>LOC: -1</b></h5>
+                                <h5 class="text-success" id="Project_NOE"><b>#of classes : -1</b> </h5>
+                                <h5 class="text-success" id="Project_NOPa"><b># of packages: -1</b></h5>
+                                <h5 class="text-warning" id="Project_NOEP"><b># of external packages: -1</b></h5>
+                                <h5 class="text-warning" id="Project_NoEE"><b># of external classes: -1</b></h5>
+                                <h5 class="text-danger"  id="Project_nofProblematic"><b># of problematic classes: -1</b></h5>
+                                <h5 class="text-danger"  id="Project_nofHighlyProblematic"><b># of problematic classes: -1</b></h5>
+
+                                <script>
+									document.getElementById('Project_Title').innerHTML  = "Analysis of "  + CodeMR_ProjectMetrics["Project Name"];
+									document.getElementById('Project_LOC').innerHTML  = "<b>Total lines of code: " + CodeMR_ProjectMetrics["Class Lines of Code"] + "</b>";
+	                            	document.getElementById('Project_NOE').innerHTML  = "<b>Number of classes: " + CodeMR_ProjectMetrics["Number of Entities"] + "</b>";
+	                            	document.getElementById('Project_NOPa').innerHTML = "<b>Number of packages: " + CodeMR_ProjectMetrics["Number of Packages"] + "</b>";
+	                            	document.getElementById('Project_NOEP').innerHTML = "<b>Number of external packages: " + CodeMR_ProjectMetrics["Number of External Packages"] + "</b>";
+									document.getElementById('Project_NoEE').innerHTML = "<b>Number of external classes: " + CodeMR_ProjectMetrics["Number of External Entities"] + "</b>";
+									document.getElementById('Project_nofProblematic').innerHTML   = "<a title='Classes with high coupling, high complexity or low cohesion' class='text-danger' href='table.html'><b>Number of problematic classes: " + CodeMR_ProjectMetrics["Number of Problematic Classes"] + "</b></a>";
+									document.getElementById('Project_nofHighlyProblematic').innerHTML   = "<a title='Classes with high coupling, high complexity and low cohesion' class='text-danger' href='table.html'><b>Number of highly problematic classes: " + CodeMR_ProjectMetrics["Number of Highly Problematic Classes"] + "</b></a>";
+                                    EQ_INIT_CONTACT_FORM();
+								</script>
+
+
+                            </div>
+                            <div class="content">
+                                <iframe  height="300" src="../donut.html?param1=C3" seamless="seamless" frameborder="0" scrolling="no"></iframe>
+                                <!--
+                                                                <div id="chartPreferences" class="ct-chart ct-perfect-fourth"></div>
+                                -->
+                                <div class="footer">
+                                    <div class="legend">
+
+                                        <p><i class="fa fa-circle legend-very-high"></i> Very High
+                                        <p><i class="fa fa-circle legend-high"></i> High
+                                        <p><i class="fa fa-circle legend-medium-high"></i> Medium-high
+                                        <p><i class="fa fa-circle legend-low-medium"></i> Low-medium
+                                        <p><i class="fa fa-circle legend-low"></i> Low
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Distribution of Quality Attributes</h4>
+
+
+                                <p class="category">Complexity, Coupling, Cohesion, and Size</p>
+                            </div>
+                            <div class="content"><iframe width="100%" height="700" src="../donutchartssimple.html?param1=Complexity" seamless="seamless" frameborder="0" scrolling="no"></iframe></div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Metric Values in Sunburst Chart</h4>
+                            <p class="category">Select metric for class, package and the project</p>
+                            <p class="category">Click to zoom into the packages</p>
+                        </div>
+                        <div class="content">
+                            <iframe width="100%" height="850" src="../sunburst.html?param1=Complexity" seamless="seamless" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Metric Values by Packages</h4>
+                            <p class="category">Select class metric to visualize</p>
+                        </div>
+                        <div class="content">
+                            <iframe width="100%" height="850" src="../circlepack.html?param1=Complexity" seamless="seamless" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Metric Values in Treemap Chart</h4>
+                            <p class="category">Select class metric to visualize</p>
+                        </div>
+                        <div class="content">
+                            <iframe width="100%" height="700" src="../treemap.html?param1=Complexity" seamless="seamless" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Package Dependencies</h4>
+                            <p class="category">Hover on the wheel to see the details</p>
+                        </div>
+                        <div class="content">
+                            <iframe width="100%" height="1000" src="../dependency.html?param1=Complexity" seamless="seamless" frameborder="0" scrolling="no"></iframe>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="https://www.codemr.co.uk">
+                                <img width = "32" height="32"  src="../../../main_report/html/assets/img/codemr-icon-black-1.png">
+                            </a>
+                        </li>
+                        <li style="margin-left:0px">
+                            <a href="https://www.codemr.co.uk">
+                                &copy; 2017-2018 CodeMR<br>Better Code, Better Quality!
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="pull-right">
+                    <ul>
+                        <li>
+                            <a href="mailto:info@codemr.co.uk">
+                                Feedback
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/_CodeMR">
+                                Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://blog.codemr.co.uk">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+</div>
+</body>
+
+<!--   Core JS Files   -->
+<script src="../../../main_report/html/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="../../../main_report/html/assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="../../../main_report/html/assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script src="../../../main_report/html/assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="../../../main_report/html/assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<!--script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script-->
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="../../../main_report/html/assets/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<!--script src="../../../main_report/html/assets/js/demo.js"></script-->
+
+
+</html>

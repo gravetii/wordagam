@@ -1,0 +1,24 @@
+{
+  "name": "codemr",
+  "css_prefix_text": "icon-",
+  "css_use_suffix": false,
+  "hinting": true,
+  "units_per_em": 1000,
+  "ascent": 850,
+  "glyphs": [
+    {
+      "uid": "7175a384acf697077e3c28d325a3cff3",
+      "css": "star-6-point",
+      "code": 8727,
+      "src": "custom_icons",
+      "selected": true,
+      "svg": {
+        "path": "M434 7.7L532.5 329.5 860.4 253.8 631 500 860.4 746.2 532.5 670.5 434 992.3 335.6 670.5 7.7 746.2 237.1 500 7.7 253.8 335.6 329.5 434 7.7Z",
+        "width": 868
+      },
+      "search": [
+        "star-6-point"
+      ]
+    }
+  ]
+}

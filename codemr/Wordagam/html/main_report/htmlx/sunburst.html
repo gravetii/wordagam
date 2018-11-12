@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html >
+  <head>
+
+    <meta charset="UTF-8">
+    <title>EQ Zoomable Sunburst with LOC and size metrics</title>
+    <link rel="stylesheet" href="../../main_report/html/css/style.css">
+    <link href='../../main_report/html/css/helptip.css' rel='stylesheet' type='text/css'>
+	<script src="../../main_report/html/js/metric_definitions.js"></script>
+
+<style id="mainStyleSheet">
+.body {
+  display: block;
+  margin: auto;
+  margin-top: 40px;
+  width: 70%;
+  float: left;
+}
+label {
+    display:block;
+}
+
+.sunburst-tooltip {
+    pointer-events: none;
+}
+
+
+</style>
+
+  </head>
+
+  <body>
+  
+    <div id="body" class="text-center">
+	      <div id="sunburst-tooltip" class="sunburst-tooltip" style="position: absolute; opacity: 0;" >
+	 		 <p><span id="name"></span></p>
+              <p><strong id="parent"></strong></p>
+              <p><span id="metricvalue"></span></p>
+              <div id="class-metric-chart" class="class-metric-chart metric-chart-hidden"></div>
+              <div id="package-metric-chart" class="package-metric-chart metric-chart-hidden"> </div>
+          </div>
+    </div>
+	
+	<table style="width:100%">
+	<tr>
+		<td colspan="1">
+			<div style="float:left;margin-right:10px;display: inline-block;">
+			<label><b>Class Metric</b></label>
+			<select id="ClassMSel" name="ClassMSel" 	onchange="EQ_updateSelectedMetric('ClassMSel',paintCallBack)"></select>
+			<a class="help-tip" id="metrictooltip"></a>
+			</div>
+			<div style="float:left;margin-right:10px;display: inline-block;">			
+			<label><b>Package Metric</b></label>
+			<select id="PackageMSel" name="PackageMSel" onchange="EQ_updateSelectedMetric('PackageMSel',paintCallBack)"></select>
+			<a class="help-tip" id="package_metrictooltip"></a>
+			</div>
+			<div style="float:left;margin-right:10px;display: inline-block">
+			<label><b>Project Metric</b></label>
+			<select id="ProjectMSel" name="ProjectMSel" onchange="EQ_updateSelectedMetric('ProjectMSel',paintCallBack)"></select>
+			<a class="help-tip" id="project_metrictooltip"></a>	
+			</div>
+			<div style="float:left;margin-right:10px;display: inline-block">
+			</div>
+		</td>
+	</tr>
+
+    <tr>
+        <td align="left">
+            <label style="display: inline-block">click to zoom, for detailed metrics, press ctrl or &#x2318 while hovering </label>
+        </td>
+    </tr>
+
+	<tr>
+        <td align="left">
+            <div id="sunburst-chart-body"></div>
+        </td>
+    </tr>
+    
+	</table>
+	 
+            <link href='../../main_report/html/css/barchartstyle.css' rel='stylesheet' type='text/css'>
+     		<script src="../../main_report/html/js/d3.min.js"></script>  
+	 		<script src="../../main_report/html/js/d3.tip.v0.6.3.js"></script>
+     		<script src="../../main_report/html/js/eq.js"></script>
+     		<script src="modeldata/defaultclassmetrics.js"></script>
+     		<script src="../../main_report/html/js/metricchart.js"></script>
+     		<script src="modeldata/sunburst_data.js"></script>
+     		<script src="../../main_report/html/js/sunburst.js"></script>  
+     		
+<script>
+
+function paintCallBack() {
+	codemr.sunburst.paintCallBack ();
+}
+
+
+codemr.sunburst();
+
+window.onload = function() {
+	EQ_addComboItems("ClassMSel", "PackageMSel", "ProjectMSel");
+};
+
+</script>
+
+  </body>
+</html>

@@ -1,0 +1,459 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="../../../main_report/html/assets/img/codemr-icon-black-1.png">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>CodeMR Code Quality Analysis Dashboard</title>
+
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+
+
+    <!-- Bootstrap core CSS     -->
+    <link href="../../../main_report/html/assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="../../../main_report/html/assets/css/animate.min.css" rel="stylesheet" />
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="../../../main_report/html/assets/css/light-bootstrap-dashboard.css" rel="stylesheet" />
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="../../../main_report/html/assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <!--<link href="../../../main_report/html/fonts/font-awesome-4.7.0/css/font-awesome.min.css" rel='stylesheet' type='text/css'>-->
+    <!--link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'-->
+    <link href='../../../main_report/html/fonts/robotofonts.css' rel='stylesheet' type='text/css'>
+
+    <!--<link href="../../../main_report/html/assets/css/pe-icon-7-stroke.css" rel="stylesheet" />-->
+    <link href="https://cdn.bootcss.com/pixeden-stroke-7-icon/1.2.3/dist/pe-icon-7-stroke.min.css" rel="stylesheet" />
+
+    <script src="../modeldata/table_data.js"></script>
+
+    <script src="../../../workingsets.js" type="text/javascript"></script>
+
+    <link href="../../../main_report/html/css/legend.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-color="red" data-image="../../../main_report/html/assets/img/sidebar-5.jpg">
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="https://www.codemr.co.uk" class="simple-text">
+                    <img src="../../../main_report/html/assets/img/codemr-white-32.png">
+                    CodeMR
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li>
+                    <a href="dashboard.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Dashboard</p>
+                    </a>
+                </li>
+                <li class="active">
+                    <a href="table.html">
+                        <i class="pe-7s-note2"></i>
+                        <p>Detailed Metric List</p>
+                    </a>
+                </li>
+                <li>
+                    <a href="metricdescriptions.html">
+                        <i class="pe-7s-news-paper"></i>
+                        <p>Metric Explanations</p>
+                    </a>
+                </li>
+
+                <li>
+                    <a href="graphs.html">
+                        <i class="pe-7s-science"></i>
+                        <p>CodeMR Graphs</p>
+                    </a>
+                </li>
+                <!--eQ
+                            <li>
+                                <a href="notifications.html">
+                                    <i class="pe-7s-bell"></i>
+                                    <p>Notifications</p>
+                                </a>
+                            </li>
+            -->
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation-example-2">
+                        <span class="sr-only">Toggle navigation</span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                        <span class="icon-bar"></span>
+                    </button>
+                    <a class="navbar-brand" href="#">Metric Tables</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-left">
+                        <li>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                <i class="fa fa-dashboard"></i>
+                            </a>
+                        </li>
+                        <!--eQ
+                                            <li class="dropdown">
+                                                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                                        <i class="fa fa-globe"></i>
+                                                        <b class="caret"></b>
+                                                        <span class="notification">5</span>
+                                                  </a>
+                                                  <ul class="dropdown-menu">
+                                                    <li><a href="#">Notification 1</a></li>
+                                                    <li><a href="#">Notification 2</a></li>
+                                                    <li><a href="#">Notification 3</a></li>
+                                                    <li><a href="#">Notification 4</a></li>
+                                                    <li><a href="#">Another notification</a></li>
+                                                  </ul>
+                                            </li>
+                    -->
+                        <li>
+                            <a href="">
+                                <i class="fa fa-search"></i>
+                            </a>
+                        </li>
+                    </ul>
+
+                    <ul class="nav navbar-nav navbar-right">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                                Working sets
+                                <b class="caret"></b>
+                            </a>
+                            <ul class="dropdown-menu" id="eq_wsdropdown_XX">
+
+                                <script>
+                                        var htmltext = '<li><a href="../../../main_report/index.html">Main</a></li>';
+                                        //EQ_workingSetList
+                                        //EQ_workingSetList = ['a', 'b'];
+                                        var arrayLength = EQ_workingSetList.length;
+                                        for (var i = 0; i < arrayLength; i++) {
+
+                                            var workingSetname = EQ_workingSetList[i];
+                                            htmltext = htmltext
+                                                + '<li><a href="../../../html_report_'
+                                                + workingSetname
+                                                + '/index.html">'
+                                                + workingSetname
+                                                + '</a></li>';
+                                        }
+                                        var div = document.getElementById('eq_wsdropdown_XX');
+                                        div.innerHTML = htmltext;
+
+                                    </script>
+                            </ul>
+                        </li>
+                        <!--eQ
+                                            <li>
+                                                <a href="#">
+                                                    Log out
+                                                </a>
+                                            </li>
+                    -->
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+
+                <div class="card">
+                    <div class="header">
+                        <h4 class="title">Detailed metric tables</h4>
+                        <!--
+                          <p class="category">Handcrafted by our friend <a target="_blank" href="https://github.com/mouse0270">Robert McIntosh</a>. Please checkout the <a href="http://bootstrap-notify.remabledesigns.com/" target="_blank">full documentation.</a></p>
+                    -->
+                    </div>
+                    <div class="content">
+                        <div class="row">
+                            <div class="col-md-4">
+                                <!--
+                               <h5>Notifications Style</h5>
+                            -->
+                                <div class="alert alert-danger backgroundlegend-very-high">
+                                        <span>
+                                            <b>
+                                                <a href="#table1" style="color:white;" id="ntable1_title"></a>
+                                            </b>
+                                        </span>
+                                    <script>
+                                            var x = document.getElementById("ntable1_title");
+                                            x.innerHTML = EQ_Table1_Title;
+                                        </script>
+                                </div>
+                                <div class="alert alert-danger backgroundlegend-high">
+                                        <span>
+                                            <b>
+                                                <a href="#table2" style="color:white;" id="ntable2_title"></a>
+                                            </b>
+                                        </span>
+                                    <script>
+                                            var x = document.getElementById("ntable2_title");
+                                            x.innerHTML = EQ_Table2_Title;
+                                        </script>
+                                </div>
+                                <div class="alert alert-warning  backgroundlegend-medium-high">
+                                        <span>
+                                            <b>
+                                                <a href="#table3" style="color:white;" id="ntable3_title"></a>
+                                            </b>
+                                        </span>
+                                    <script>
+                                            var x = document.getElementById("ntable3_title");
+                                            x.innerHTML = EQ_Table3_Title;
+                                        </script>
+                                </div>
+                                <div class="alert alert-warning backgroundlegend-low-medium">
+                                        <span>
+                                            <b>
+                                                <a href="#table4" style="color:white;" id="ntable4_title"></a>
+                                            </b>
+                                        </span>
+                                    <script>
+                                            var x = document.getElementById("ntable4_title");
+                                            x.innerHTML = EQ_Table4_Title;
+                                        </script>
+                                </div>
+                                <div class="alert alert-success backgroundlegend-low">
+                                        <span>
+                                            <b>
+                                                <a href="#table5" style="color:white;" id="ntable5_title"></a>
+                                            </b>
+                                        </span>
+                                    <script>
+                                            var x = document.getElementById("ntable5_title");
+                                            x.innerHTML = EQ_Table5_Title;
+                                        </script>
+                                </div>
+                            </div>
+                            <div class="col-md-1">
+                            </div>
+                            <div class="col-md-4">
+                                <iframe height="320" width="320" src="../Xdonut.html?param1=C3" seamless="seamless" frameborder="0" scrolling="no"></iframe>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="row">
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <a name="table1"></a>
+                                <h4 class="title" id="table1_title">
+                                    <script>
+                                            var x = document.getElementById('table1_title');
+                                            x.innerHTML = EQ_Table1_Title;
+                                        </script>
+                                </h4>
+                                <!--p class="category">Here is a subtitle for this table</p-->
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped" id="table1">
+                                    <script>
+                                            var x = document.getElementById('table1');
+                                            x.innerHTML = EQ_Table1;
+                                        </script>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <a name="table2"></a>
+                                <h4 class="title" id="table2_title">
+                                    <script>
+                                            var x = document.getElementById('table2_title');
+                                            x.innerHTML = EQ_Table2_Title;
+                                        </script>
+                                </h4>
+                                <!--p class="category">Here is a subtitle for this table</p-->
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped" id="table2">
+                                    <script>
+                                            var x = document.getElementById('table2');
+                                            x.innerHTML = EQ_Table2;
+                                        </script>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <a name="table3"></a>
+                                <h4 class="title" id="table3_title">
+                                    <script>
+                                            var x = document.getElementById('table3_title');
+                                            x.innerHTML = EQ_Table3_Title;
+                                        </script>
+                                </h4>
+                                <!--p class="category">Here is a subtitle for this table</p-->
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped" id="table3">
+                                    <script>
+                                            var x = document.getElementById('table3');
+                                            x.innerHTML = EQ_Table3;
+                                        </script>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <a name="table4"></a>
+                                <h4 class="title" id="table4_title">
+                                    <script>
+                                            var x = document.getElementById('table4_title');
+                                            x.innerHTML = EQ_Table4_Title;
+                                        </script>
+                                </h4>
+                                <!--p class="category">Here is a subtitle for this table</p-->
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped" id="table4">
+                                    <script>
+                                            var x = document.getElementById('table4');
+                                            x.innerHTML = EQ_Table4;
+                                        </script>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="header">
+                                <a name="table5"></a>
+                                <h4 class="title" id="table5_title">
+                                    <script>
+                                            var x = document.getElementById('table5_title');
+                                            x.innerHTML = EQ_Table5_Title;
+                                        </script>
+                                </h4>
+                                <!--p class="category">Here is a subtitle for this table</p-->
+                            </div>
+                            <div class="content table-responsive table-full-width">
+                                <table class="table table-hover table-striped" id="table5">
+                                    <script>
+                                            var x = document.getElementById('table5');
+                                            x.innerHTML = EQ_Table5;
+                                        </script>
+
+                                </table>
+
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+                </div>
+            </div>
+        </div>
+
+        <footer class="footer">
+            <div class="container-fluid">
+                <nav class="pull-left">
+                    <ul>
+                        <li>
+                            <a href="https://www.codemr.co.uk">
+                                <img width="32" height="32" src="../../../main_report/html/assets/img/codemr-icon-black-1.png">
+                            </a>
+                        </li>
+                        <li style="margin-left:0px">
+                            <a href="https://www.codemr.co.uk">
+                                &copy; 2017-2018 CodeMR<br>Better Code, Better Quality!
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+                <nav class="pull-right">
+                    <ul>
+                        <li>
+                            <a href="mailto:info@codemr.co.uk">
+                                Feedback
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://twitter.com/_CodeMR">
+                                Twitter
+                            </a>
+                        </li>
+                        <li>
+                            <a href="https://blog.codemr.co.uk">
+                                Blog
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+            </div>
+        </footer>
+
+    </div>
+</div>
+
+
+</body>
+
+<!--   Core JS Files   -->
+<script src="../../../main_report/html/assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+<script src="../../../main_report/html/assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+<!--  Checkbox, Radio & Switch Plugins -->
+<script src="../../../main_report/html/assets/js/bootstrap-checkbox-radio-switch.js"></script>
+
+<!--  Charts Plugin -->
+<script src="../../../main_report/html/assets/js/chartist.min.js"></script>
+
+<!--  Notifications Plugin    -->
+<script src="../../../main_report/html/assets/js/bootstrap-notify.js"></script>
+
+<!--  Google Maps Plugin    -->
+<!--script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?sensor=false"></script-->
+
+<!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+<script src="../../../main_report/html/assets/js/light-bootstrap-dashboard.js"></script>
+
+<!-- Light Bootstrap Table DEMO methods, don't include it in your project! -->
+<!--script src="../../../main_report/html/assets/js/demo.js"></script-->
+
+
+</html>
