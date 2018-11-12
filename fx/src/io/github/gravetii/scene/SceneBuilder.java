@@ -2,6 +2,7 @@ package io.github.gravetii.scene;
 
 import io.github.gravetii.App;
 import io.github.gravetii.Controller;
+import io.github.gravetii.util.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;
@@ -9,8 +10,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
+import javafx.stage.Stage;
 
-import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
@@ -24,10 +25,12 @@ class SceneBuilder {
 
     private AnchorPane root;
 
+    private Stage stage;
     private Controller controller;
 
-    SceneBuilder(Controller controller) {
+    SceneBuilder(Stage stage, Controller controller) {
         this.root = new AnchorPane();
+        this.stage = stage;
         this.controller = controller;
     }
 
@@ -77,7 +80,10 @@ class SceneBuilder {
     }
 
     Scene build() {
-        return new Scene(this.root, 540, 460);
+        Scene currentScene = this.stage.getScene();
+        double width = currentScene == null ? Constants.DEFAULT_SCENE_WIDTH : currentScene.getWidth();
+        double height = currentScene == null ? Constants.DEFAULT_SCENE_HEIGHT : currentScene.getHeight();
+        return new Scene(this.root, width, height);
     }
 
     private static Image getRandomImage(String dir) throws Exception {

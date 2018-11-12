@@ -12,7 +12,7 @@ public abstract class FxScene {
 
     FxScene(Stage stage, Controller controller) {
         this.stage = stage;
-        this.builder = new SceneBuilder(controller);
+        this.builder = new SceneBuilder(stage, controller);
     }
 
     protected abstract Scene build() throws Exception;
