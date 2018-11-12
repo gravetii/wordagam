@@ -22,7 +22,7 @@
     <children>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <children>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" />
+                <ImageView fx:id="imgView" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
             </children></Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
             <children>

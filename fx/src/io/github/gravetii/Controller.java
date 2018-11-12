@@ -7,6 +7,7 @@ import io.github.gravetii.scene.GameScene;
 import io.github.gravetii.scene.StartScene;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.util.logging.Logger;
@@ -45,6 +46,12 @@ public class Controller {
     @FXML
     public void close(ActionEvent event) {
         this.close();
+    }
+
+    @FXML
+    public void onClick(MouseEvent event) {
+        System.out.println(event.getSource());
+        System.out.println("Mouse click");
     }
 
     void close() {
