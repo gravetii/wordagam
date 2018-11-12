@@ -1,3 +1,3 @@
-# wordagam
+# Wordagam
 
 Just Another Word Game.
