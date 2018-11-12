@@ -8,9 +8,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.AnchorPane;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -51,7 +49,7 @@ class SceneBuilder {
         pane.prefHeightProperty().bind(root.heightProperty());
         pane.prefWidthProperty().bind(root.widthProperty());
         ImageView imgView = (ImageView) pane.getChildren().get(0);
-        imgView.setImage(SceneBuilder.getStartingImage());
+        imgView.setImage(SceneBuilder.getRandomImage("skins"));
         imgView.fitHeightProperty().bind(pane.heightProperty());
         imgView.fitWidthProperty().bind(pane.widthProperty());
         return pane;
@@ -65,6 +63,11 @@ class SceneBuilder {
         AnchorPane.setBottomAnchor(gridPane, 0.0);
         gridPane.prefHeightProperty().bind(this.root.heightProperty());
         gridPane.prefWidthProperty().bind(this.root.widthProperty());
+        Image img = getRandomImage("background");
+        BackgroundSize size = new BackgroundSize(100, 100, true, true, true, true);
+        BackgroundImage background = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT,
+                BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, size);
+        gridPane.setBackground(new Background(background));
         logger.info("Loaded grid pane: " + gridPane);
         return gridPane;
     }
@@ -77,12 +80,12 @@ class SceneBuilder {
         return new Scene(this.root, 540, 460);
     }
 
-    private static Image getStartingImage() throws IOException {
-        String fPath = App.class.getResource("skins").getFile();
-        Stream<Path> files = Files.list((Paths.get(fPath)));
+    private static Image getRandomImage(String dir) throws Exception {
+        String fPath = App.class.getResource(dir).getFile();
+        Stream<Path> files = Files.list(Paths.get(fPath));
         int count = Math.toIntExact(files.count());
         int r = 1 + new Random().nextInt(count);
-        return new Image(App.class.getResourceAsStream("skins/" + r + ".jpg"));
+        return new Image(App.class.getResourceAsStream(dir + "/" + r + ".jpg"), 0, 0, false, false);
     }
 
 }
