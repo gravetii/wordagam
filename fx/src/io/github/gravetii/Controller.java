@@ -42,6 +42,11 @@ public class Controller {
         }
     }
 
+    @FXML
+    public void close(ActionEvent event) {
+        this.close();
+    }
+
     void close() {
         this.factory.close();
         this.stage.close();
