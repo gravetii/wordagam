@@ -1,10 +1,7 @@
 package io.github.gravetii.game;
 
 import io.github.gravetii.dictionary.Dictionary;
-import io.github.gravetii.util.Alphabet;
-import io.github.gravetii.util.GridPoint;
-import io.github.gravetii.util.GridUnit;
-import io.github.gravetii.util.Constants;
+import io.github.gravetii.util.*;
 
 import java.util.*;
 
@@ -79,7 +76,7 @@ public class Game {
             this.totalPoints += wordPoints.get(word);
         }
 
-        for (GridPoint n: getNeighbors(point)) {
+        for (GridPoint n: Util.getNeighbors(point)) {
             if (!visited[n.x][n.y]) {
                 boolean [][] v = visited.clone();
                 this.crawl(n, word, v);
@@ -119,21 +116,6 @@ public class Game {
 
     public Quality getQuality() {
         return quality;
-    }
-
-    private List<GridPoint> getNeighbors(GridPoint point) {
-        int x = point.x; int y = point.y;
-        int dx[] = {-1, -1, -1, 0, 0, 1, 1, 1};
-        int dy[] = {-1, 0, 1, -1, 1, -1, 0, 1};
-        List<GridPoint> neighbors = new ArrayList<>(8);
-        for (int i=0;i<dx.length;++i) {
-            GridPoint n = new GridPoint(x + dx[i], y + dy[i]);
-            if (n.isValid()) {
-                neighbors.add(n);
-            }
-        }
-
-        return neighbors;
     }
 
     @Override
