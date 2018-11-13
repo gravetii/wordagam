@@ -1,7 +1,10 @@
 package io.github.gravetii.scene;
 
 import io.github.gravetii.App;
-import io.github.gravetii.Controller;
+import io.github.gravetii.controller.GameController;
+import io.github.gravetii.controller.MenuBarController;
+import io.github.gravetii.controller.StartController;
+import io.github.gravetii.game.Game;
 import io.github.gravetii.util.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -26,17 +29,15 @@ class SceneBuilder {
     private AnchorPane root;
 
     private Stage stage;
-    private Controller controller;
 
-    SceneBuilder(Stage stage, Controller controller) {
+    SceneBuilder(Stage stage) {
         this.root = new AnchorPane();
         this.stage = stage;
-        this.controller = controller;
     }
 
     MenuBar loadMenuBar() throws Exception {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/menuBar.fxml"));
-        loader.setController(controller);
+        loader.setController(new MenuBarController(this.stage));
         MenuBar menuBar = loader.load();
         menuBar.prefWidthProperty().bind(this.root.widthProperty());
         logger.info("Loaded menu bar: " + menuBar);
@@ -45,7 +46,7 @@ class SceneBuilder {
 
     Pane loadStartPane() throws Exception {
         FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/start.fxml"));
-        loader.setController(controller);
+        loader.setController(new StartController(this.stage));
         Pane pane = loader.load();
         AnchorPane.setTopAnchor(pane, 29.0);
         AnchorPane.setBottomAnchor(pane, 0.0);
@@ -58,9 +59,9 @@ class SceneBuilder {
         return pane;
     }
 
-    GridPane loadGridPane() throws Exception {
-        FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/grid.fxml"));
-        loader.setController(controller);
+    GridPane loadGamePane(Game game) throws Exception {
+        FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/game.fxml"));
+        loader.setController(new GameController(this.stage, game));
         GridPane gridPane = loader.load();
         AnchorPane.setTopAnchor(gridPane, 29.0);
         AnchorPane.setBottomAnchor(gridPane, 0.0);
@@ -71,6 +72,18 @@ class SceneBuilder {
         BackgroundImage background = new BackgroundImage(img, BackgroundRepeat.NO_REPEAT,
                 BackgroundRepeat.NO_REPEAT, BackgroundPosition.DEFAULT, size);
         gridPane.setBackground(new Background(background));
+
+        for (int i=0,c=0;i<4;++i) {
+            for (int j=0;j<4;++j) {
+                String letter = game.getGrid()[i][j].getLetter();
+                Pane pane = (Pane) gridPane.getChildren().get(c++);
+                ImageView imgView = (ImageView) pane.getChildren().get(0);
+                imgView.setImage(new Image(App.class.getResourceAsStream("images/" + letter + ".png")));
+                imgView.fitHeightProperty().bind(pane.heightProperty());
+                imgView.fitWidthProperty().bind(pane.widthProperty());
+            }
+        }
+
         logger.info("Loaded grid pane: " + gridPane);
         return gridPane;
     }

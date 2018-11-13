@@ -1,6 +1,5 @@
 package io.github.gravetii.scene;
 
-import io.github.gravetii.Controller;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
@@ -10,9 +9,9 @@ public abstract class FxScene {
 
     private Stage stage;
 
-    FxScene(Stage stage, Controller controller) {
+    FxScene(Stage stage) {
         this.stage = stage;
-        this.builder = new SceneBuilder(stage, controller);
+        this.builder = new SceneBuilder(stage);
     }
 
     protected abstract Scene build() throws Exception;

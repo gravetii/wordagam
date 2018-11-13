@@ -1,5 +1,8 @@
 package io.github.gravetii;
 
+import io.github.gravetii.game.GameService;
+import io.github.gravetii.scene.FxScene;
+import io.github.gravetii.scene.StartScene;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -9,19 +12,21 @@ public class App extends Application {
 
     private static final Logger logger = Logger.getLogger(App.class.getCanonicalName());
 
-    private Controller controller;
+    private Stage stage;
 
     @Override
     public void start(Stage stage) throws Exception {
         logger.info("Starting application...");
-        this.controller = new Controller(stage);
-        this.controller.start();
+        this.stage = stage;
+        FxScene scene = new StartScene(stage);
+        scene.show("WORDAGAM!");
     }
 
     @Override
     public void stop() {
         logger.info("Stopping application...");
-        this.controller.close();
+        GameService.close();
+        this.stage.close();
     }
 
     public static void main(String[] args) {

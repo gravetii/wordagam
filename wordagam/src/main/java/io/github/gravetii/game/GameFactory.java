@@ -20,7 +20,22 @@ public class GameFactory {
 
     private ExecutorService executor;
 
-    public GameFactory() {
+    private static volatile GameFactory INSTANCE;
+
+    public static GameFactory get() {
+        if (INSTANCE == null) {
+            synchronized (GameFactory.class) {
+                if (INSTANCE == null) {
+                    INSTANCE = new GameFactory();
+                    logger.info("Created instance of GameFactory");
+                }
+            }
+        }
+
+        return INSTANCE;
+    }
+
+    private GameFactory() {
         this.dictionary = new Dictionary();
         this.queue = new LinkedBlockingDeque<>(MAX_GAMES_IN_QUEUE);
         this.executor = Executors.newFixedThreadPool(1);
@@ -54,7 +69,13 @@ public class GameFactory {
         }
     }
 
-    public void close() {
+    public static void close() {
+        if (INSTANCE != null) {
+            INSTANCE.shutdown();
+        }
+    }
+
+    public void shutdown() {
         try {
             this.executor.shutdown();
             boolean terminated = this.executor.awaitTermination(2, TimeUnit.SECONDS);
