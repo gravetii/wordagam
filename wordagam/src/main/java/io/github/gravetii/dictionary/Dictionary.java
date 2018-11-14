@@ -1,52 +1,51 @@
+
 package io.github.gravetii.dictionary;
+
+import io.github.gravetii.util.AppLogger;
 
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.util.logging.Logger;
 
 public class Dictionary {
 
-  private static final Logger logger = Logger.getLogger(Dictionary.class.getCanonicalName());
+    private static final String WORDS_FILE = "words.txt";
 
-  private static final String WORDS_FILE = "words.txt";
+    private Trie trie;
 
-  private Trie trie;
+    public Dictionary() {
+        BufferedReader reader = null;
+        try {
+            this.trie = new Trie();
+            InputStream istream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
+            reader = new BufferedReader(new InputStreamReader(istream));
+            String word;
+            while ((word = reader.readLine()) != null) {
+                word = word.trim();
+                trie.insert(word);
+            }
 
-  public Dictionary() {
-    BufferedReader reader = null;
-
-    try {
-      this.trie = new Trie();
-      InputStream istream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
-      reader = new BufferedReader(new InputStreamReader(istream));
-      String word;
-      while ((word = reader.readLine()) != null) {
-        word = word.trim();
-        trie.insert(word);
-      }
-
-      logger.info("Completed loading all words into the trie.");
-    } catch (IOException e) {
-      logger.info("Error: Could not load all words into the trie.");
-      throw new RuntimeException(e);
-    } finally {
-      try {
-        if (reader != null) {
-          reader.close();
+            AppLogger.info(getClass().getCanonicalName(), "Completed loading all words into the trie.");
+        } catch (IOException e) {
+            AppLogger.info(getClass().getCanonicalName(), "Could not load all words into the trie.");
+            throw new RuntimeException(e);
+        } finally {
+            try {
+                if (reader != null) {
+                    reader.close();
+                }
+            } catch (IOException e) {
+                AppLogger.severe(getClass().getCanonicalName(), "Could not successfully close reader.");
+            }
         }
-      } catch (IOException e) {
-        logger.info("Error: Could not successfully close reader.");
-      }
     }
-  }
 
-  public boolean search(String word) {
-    return this.trie.search(word);
-  }
+    public boolean search(String word) {
+        return this.trie.search(word);
+    }
 
-  public boolean prefix(String word) {
-    return this.trie.prefix(word);
-  }
+    public boolean prefix(String word) {
+        return this.trie.prefix(word);
+    }
 }

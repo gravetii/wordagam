@@ -1,25 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-
-<MenuBar xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.*?>
+<MenuBar xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea">
     <menus>
         <Menu mnemonicParsing="false" text="File">
             <items>
-                <MenuItem fx:id="newGame" mnemonicParsing="false" onAction="#newGame" text="New Game" />
-            <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exit" text="Exit" />
+                <MenuItem fx:id="newGame" mnemonicParsing="false" onAction="#newGame" text="New Game"/>
+                <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exit" text="Exit"/>
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
             <items>
-                <MenuItem mnemonicParsing="false" text="Delete" />
+                <MenuItem mnemonicParsing="false" text="Delete"/>
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">
             <items>
-                <MenuItem mnemonicParsing="false" text="About" />
+                <MenuItem mnemonicParsing="false" text="About"/>
             </items>
         </Menu>
     </menus>

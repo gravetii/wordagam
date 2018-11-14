@@ -12,32 +12,29 @@ import java.util.logging.Logger;
 
 public class MenuBarController implements FxController {
 
-    private static final Logger logger = Logger.getLogger(MenuBarController.class.getCanonicalName());
+  private Stage stage;
 
-    private Stage stage;
+  private GameService service;
 
-    private GameService service;
+  public MenuBarController(Stage stage) {
+    this.stage = stage;
+    this.service = new GameService();
+  }
 
-    public MenuBarController(Stage stage) {
-        this.stage = stage;
-        this.service = new GameService();
+  @FXML
+  public void newGame(ActionEvent event) {
+    try {
+      Game game = service.fetch();
+      FxScene scene = new GameScene(this.stage, game);
+      scene.show("New game");
+    } catch (Exception e) {
+      throw new RuntimeException(e);
     }
+  }
 
-    @FXML
-    public void newGame(ActionEvent event) {
-        try {
-            Game game = service.fetch();
-            FxScene scene = new GameScene(this.stage, game);
-            scene.show("New game");
-        }
-        catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    @FXML
-    public void exit(ActionEvent event) {
-        GameService.close();
-        this.stage.close();
-    }
+  @FXML
+  public void exit(ActionEvent event) {
+    GameService.close();
+    this.stage.close();
+  }
 }

@@ -10,21 +10,19 @@ import java.util.logging.Logger;
 
 public class GameController implements FxController {
 
-    private static final Logger logger = Logger.getLogger(GameController.class.getCanonicalName());
+  private Stage stage;
 
-    private Stage stage;
+  private Game game;
 
-    private Game game;
+  public GameController(Stage stage, Game game) {
+    this.stage = stage;
+    this.game = game;
+  }
 
-    public GameController(Stage stage, Game game) {
-        this.stage = stage;
-        this.game = game;
-    }
-
-    @FXML
-    public void onClick(MouseEvent event) {
-        System.out.println("Mouse click");
-        ImageView imgView = (ImageView) event.getSource();
-        System.out.println(imgView);
-    }
+  @FXML
+  public void onClick(MouseEvent event) {
+    System.out.println("Mouse click");
+    ImageView imgView = (ImageView) event.getSource();
+    System.out.println(imgView);
+  }
 }

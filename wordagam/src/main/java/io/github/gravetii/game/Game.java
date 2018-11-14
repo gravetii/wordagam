@@ -10,120 +10,123 @@ import static io.github.gravetii.util.Constants.WORDS_COUNT_LOW;
 
 public class Game {
 
-    private io.github.gravetii.dictionary.Dictionary dictionary;
+  private io.github.gravetii.dictionary.Dictionary dictionary;
 
-    private GridUnit[][] grid;
+  private GridUnit[][] grid;
 
-    private Map<String, Integer> wordPoints;
-    private int totalPoints;
-    private Set<String> allWords;
-    private Quality quality;
+  private Map<String, Integer> wordPoints;
+  private int totalPoints;
+  private Set<String> allWords;
+  private Quality quality;
 
-    public Game(Dictionary dictionary) {
-        this.dictionary = dictionary;
-        this.grid = new GridUnit[4][4];
-        this.wordPoints = new HashMap<>();
-        this.wordPoints.put("", 0);
-        this.totalPoints = 0;
-        this.allWords = new HashSet<>();
-        this.create();
-        this.crawl();
-        this.quality = assignQuality();
+  public Game(Dictionary dictionary) {
+    this.dictionary = dictionary;
+    this.grid = new GridUnit[4][4];
+    this.wordPoints = new HashMap<>();
+    this.wordPoints.put("", 0);
+    this.totalPoints = 0;
+    this.allWords = new HashSet<>();
+    this.create();
+    this.crawl();
+    this.quality = assignQuality();
+  }
+
+  public Set<String> getAllWords() {
+    return this.allWords;
+  }
+
+  public int getTotalPoints() {
+    return this.totalPoints;
+  }
+
+  public GridUnit[][] getGrid() {
+    return grid;
+  }
+
+  private void create() {
+    List<GridUnit> alphaUnits = Alphabet.getAll();
+    Random random = new Random();
+    for (int i = 0; i < 4; ++i) {
+      for (int j = 0; j < 4; ++j) {
+        int ridx = random.nextInt(alphaUnits.size());
+        grid[i][j] = alphaUnits.get(ridx);
+      }
+    }
+  }
+
+  private boolean isValidWord(String word) {
+    return word.length() >= Constants.MIN_WORD_LENGTH
+        && this.dictionary.search(word)
+        && !allWords.contains(word);
+  }
+
+  private void crawl(GridPoint point, String prefix, boolean[][] visited) {
+    int x = point.x;
+    int y = point.y;
+    GridUnit unit = grid[x][y];
+    visited[x][y] = true;
+
+    String word = prefix + unit.getLetter();
+    if (!this.dictionary.prefix(word)) {
+      return;
     }
 
-    public Set<String> getAllWords() {
-        return this.allWords;
+    int points = this.wordPoints.get(prefix) + unit.getPoints();
+    this.wordPoints.put(word, points);
+    if (isValidWord(word)) {
+      this.allWords.add(word);
+      this.totalPoints += wordPoints.get(word);
     }
 
-    public int getTotalPoints() {
-        return this.totalPoints;
+    for (GridPoint n : Util.getNeighbors(point)) {
+      if (!visited[n.x][n.y]) {
+        boolean[][] v = visited.clone();
+        this.crawl(n, word, v);
+      }
     }
+  }
 
-    public GridUnit[][] getGrid() {
-        return grid;
-    }
-
-    private void create() {
-        List<GridUnit> alphaUnits = Alphabet.getAll();
-        Random random = new Random();
-        for (int i=0;i<4;++i) {
-            for (int j=0;j<4;++j) {
-                int ridx = random.nextInt(alphaUnits.size());
-                grid[i][j] = alphaUnits.get(ridx);
-            }
-        }
-    }
-
-    private boolean isValidWord(String word) {
-        return word.length() >= Constants.MIN_WORD_LENGTH &&
-                this.dictionary.search(word) && !allWords.contains(word);
-    }
-
-    private void crawl(GridPoint point, String prefix, boolean[][] visited) {
-        int x = point.x; int y = point.y;
-        GridUnit unit = grid[x][y];
-        visited[x][y] = true;
-
-        String word = prefix + unit.getLetter();
-        if (!this.dictionary.prefix(word)) {
-            return;
-        }
-
-        int points = this.wordPoints.get(prefix) + unit.getPoints();
-        this.wordPoints.put(word, points);
-        if (isValidWord(word)) {
-            this.allWords.add(word);
-            this.totalPoints += wordPoints.get(word);
-        }
-
-        for (GridPoint n: Util.getNeighbors(point)) {
-            if (!visited[n.x][n.y]) {
-                boolean [][] v = visited.clone();
-                this.crawl(n, word, v);
-            }
-        }
-    }
-
-    private void crawl() {
-        for (int i=0;i<4;++i) {
-            for (int j=0;j<4;++j) {
-                boolean visited[][] = new boolean[4][4];
-                for (boolean[] row: visited) {
-                    Arrays.fill(row, false);
-                }
-
-                this.crawl(new GridPoint(i, j), "", visited);
-            }
-        }
-    }
-
-    private Quality assignQuality() {
-        int sz = allWords.size();
-        Quality q;
-
-        if (sz >= WORDS_COUNT_HIGH) {
-            q = Quality.HIGH;
-        }
-        else if (sz <= WORDS_COUNT_LOW) {
-            q = Quality.LOW;
-        }
-        else {
-            q = Quality.MEDIUM;
+  private void crawl() {
+    for (int i = 0; i < 4; ++i) {
+      for (int j = 0; j < 4; ++j) {
+        boolean visited[][] = new boolean[4][4];
+        for (boolean[] row : visited) {
+          Arrays.fill(row, false);
         }
 
-        return q;
+        this.crawl(new GridPoint(i, j), "", visited);
+      }
+    }
+  }
+
+  private Quality assignQuality() {
+    int sz = allWords.size();
+    Quality q;
+
+    if (sz >= WORDS_COUNT_HIGH) {
+      q = Quality.HIGH;
+    } else if (sz <= WORDS_COUNT_LOW) {
+      q = Quality.LOW;
+    } else {
+      q = Quality.MEDIUM;
     }
 
-    public Quality getQuality() {
-        return quality;
-    }
+    return q;
+  }
 
-    @Override
-    public String toString() {
-        return "Game{" +
-                "totalPoints=" + totalPoints +
-                ", allWords=" + allWords +
-                ", quality=" + quality +
-                '}';
-    }
+  public Quality getQuality() {
+    return quality;
+  }
+
+  @Override
+  public String toString() {
+    return "Game{"
+        + "totalPoints="
+        + totalPoints
+        + ", allWords="
+        + allWords
+        + ", quality="
+        + quality
+        + '}';
+  }
 }

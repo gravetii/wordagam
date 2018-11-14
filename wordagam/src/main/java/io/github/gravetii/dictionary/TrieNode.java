@@ -4,28 +4,27 @@ import io.github.gravetii.util.Constants;
 
 public class TrieNode {
 
-    private TrieNode[] children;
-    private boolean word;
+  private TrieNode[] children;
+  private boolean word;
 
-    TrieNode() {
-        this.children = new TrieNode[Constants.ALPHABET_COUNT];
-        this.word = false;
-    }
+  TrieNode() {
+    this.children = new TrieNode[Constants.ALPHABET_COUNT];
+    this.word = false;
+  }
 
-    public TrieNode[] getChildren() {
-        return children;
-    }
+  public TrieNode[] getChildren() {
+    return children;
+  }
 
-    public void setChildren(TrieNode[] children) {
-        this.children = children;
-    }
+  public void setChildren(TrieNode[] children) {
+    this.children = children;
+  }
 
-    public boolean isWord() {
-        return word;
-    }
+  public boolean isWord() {
+    return word;
+  }
 
-    void setWord() {
-        this.word = true;
-    }
-
+  void setWord() {
+    this.word = true;
+  }
 }
