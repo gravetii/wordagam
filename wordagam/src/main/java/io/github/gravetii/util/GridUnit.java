@@ -3,9 +3,11 @@ package io.github.gravetii.util;
 public class GridUnit {
 
   private Alphabet alphabet;
+  private GridPoint gridPoint;
 
-  public GridUnit(Alphabet alphabet) {
+  public GridUnit(Alphabet alphabet, GridPoint gridPoint) {
     this.alphabet = alphabet;
+    this.gridPoint = gridPoint;
   }
 
   public Alphabet getAlphabet() {
@@ -22,5 +24,9 @@ public class GridUnit {
 
   public int getWeight() {
     return alphabet.getWeight();
+  }
+
+  public GridPoint getGridPoint() {
+    return gridPoint;
   }
 }

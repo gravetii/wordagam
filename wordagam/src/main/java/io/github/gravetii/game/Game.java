@@ -44,12 +44,12 @@ public class Game {
   }
 
   private void create() {
-    List<GridUnit> alphaUnits = Alphabet.getAll();
+    List<Alphabet> weightedAlphabets = Alphabet.getWeightedAlphabetsAsList();
     Random random = new Random();
     for (int i = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {
-        int ridx = random.nextInt(alphaUnits.size());
-        grid[i][j] = alphaUnits.get(ridx);
+        int idx = random.nextInt(weightedAlphabets.size());
+        grid[i][j] = new GridUnit(weightedAlphabets.get(idx), new GridPoint(i, j));
       }
     }
   }

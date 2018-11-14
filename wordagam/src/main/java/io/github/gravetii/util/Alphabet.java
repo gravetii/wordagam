@@ -39,19 +39,18 @@ public enum Alphabet {
     this.points = points;
   }
 
-  public static List<GridUnit> getAll() {
-    List<GridUnit> all = new ArrayList<>();
-    for (Alphabet alphabet : Alphabet.values()) {
-      GridUnit a = new GridUnit(alphabet);
-      for (int c = 0; c < alphabet.weight; ++c) {
-        all.add(a);
+    public static List<Alphabet> getWeightedAlphabetsAsList() {
+      List<Alphabet> result = new ArrayList<>();
+      for (Alphabet alphabet: values()) {
+        for (int c=0;c<alphabet.weight;++c) {
+          result.add(alphabet);
+        }
       }
+
+      return result;
     }
 
-    return all;
-  }
-
-  public String get() {
+    public String get() {
     return this.toString().toLowerCase();
   }
 

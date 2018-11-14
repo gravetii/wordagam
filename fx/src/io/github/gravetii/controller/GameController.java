@@ -1,12 +1,13 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
+import io.github.gravetii.util.GridPoint;
+import io.github.gravetii.util.GridUnit;
+import io.github.gravetii.util.Util;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-
-import java.util.logging.Logger;
 
 public class GameController implements FxController {
 
@@ -21,8 +22,9 @@ public class GameController implements FxController {
 
   @FXML
   public void onClick(MouseEvent event) {
-    System.out.println("Mouse click");
     ImageView imgView = (ImageView) event.getSource();
+    GridPoint point = Util.getGridPointFromImageViewLabel(imgView.getId());
+    GridUnit unit = this.game.getGrid()[point.x][point.y];
     System.out.println(imgView);
   }
 }

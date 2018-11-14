@@ -8,8 +8,6 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.stage.Stage;
 
-import java.util.logging.Logger;
-
 public class MenuBarController implements FxController {
 
   private Stage stage;

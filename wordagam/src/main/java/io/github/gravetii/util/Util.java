@@ -25,4 +25,5 @@ public class Util {
     String[] tokens = label.split("\\$")[1].split("_");
     return new GridPoint(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]));
   }
+
 }
