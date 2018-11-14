@@ -1,5 +1,8 @@
 package io.github.gravetii.util;
 
+import java.util.LinkedHashSet;
+import java.util.Objects;
+
 public class GridUnit {
 
   private Alphabet alphabet;
@@ -26,7 +29,27 @@ public class GridUnit {
     return alphabet.getWeight();
   }
 
-  public GridPoint getGridPoint() {
+  private GridPoint getGridPoint() {
     return gridPoint;
   }
+
+  public boolean isNeighbor(GridUnit unit) {
+    return this.getGridPoint().isNeighbor(unit.getGridPoint());
+  }
+
+  @Override
+  public boolean equals(Object object) {
+    if (object instanceof GridUnit) {
+      GridUnit unit = (GridUnit) object;
+      return this.alphabet == unit.alphabet && this.gridPoint.equals(unit.gridPoint);
+    }
+
+    return false;
+  }
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(alphabet, gridPoint);
+  }
+
 }

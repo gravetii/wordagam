@@ -43,6 +43,10 @@ public class Game {
     return grid;
   }
 
+  public GridUnit getGridUnit(GridPoint point) {
+    return grid[point.x][point.y];
+  }
+
   private void create() {
     List<Alphabet> weightedAlphabets = Alphabet.getWeightedAlphabetsAsList();
     Random random = new Random();
@@ -78,7 +82,7 @@ public class Game {
       this.totalPoints += wordPoints.get(word);
     }
 
-    for (GridPoint n : Util.getNeighbors(point)) {
+    for (GridPoint n : point.getNeighbors()) {
       if (!visited[n.x][n.y]) {
         boolean[][] v = visited.clone();
         this.crawl(n, word, v);
