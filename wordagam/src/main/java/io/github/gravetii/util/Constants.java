@@ -10,7 +10,7 @@ public class Constants {
 
   public static final int MIN_WORD_LENGTH = 3;
 
-  public static final double DEFAULT_SCENE_WIDTH = 540;
+  public static final double DEFAULT_SCENE_WIDTH = 800;
 
-  public static final double DEFAULT_SCENE_HEIGHT = 460;
+  public static final double DEFAULT_SCENE_HEIGHT = 520;
 }

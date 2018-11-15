@@ -4,6 +4,7 @@ import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.StartScene;
 import io.github.gravetii.util.AppLogger;
+import io.github.gravetii.util.Constants;
 import javafx.application.Application;
 import javafx.stage.Stage;
 
@@ -19,8 +20,14 @@ public class App extends Application {
   public void start(Stage stage) throws Exception {
     AppLogger.info(getClass().getCanonicalName(), "Starting application...");
     this.stage = stage;
+    this.setDimensions();
     FxScene scene = new StartScene(stage);
     scene.show("WORDAGAM!");
+  }
+
+  private void setDimensions() {
+      this.stage.setMinWidth(Constants.DEFAULT_SCENE_WIDTH);
+      this.stage.setMinHeight(Constants.DEFAULT_SCENE_HEIGHT);
   }
 
   @Override

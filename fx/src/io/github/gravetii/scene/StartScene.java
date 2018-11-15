@@ -14,7 +14,7 @@ public class StartScene extends FxScene {
   @Override
   protected Scene build() throws Exception {
     MenuBar menuBar = this.builder.loadMenuBar();
-    this.builder.addNode(menuBar);
+    this.builder.root.setTop(menuBar);
     Pane pane = this.builder.loadStartPane();
     this.builder.addNode(pane);
     return this.builder.build();
