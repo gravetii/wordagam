@@ -13,4 +13,8 @@ public class Constants {
   public static final double DEFAULT_SCENE_WIDTH = 800;
 
   public static final double DEFAULT_SCENE_HEIGHT = 520;
+
+  public static final double MAX_SCENE_WIDTH = 1200;
+
+  public static final double MAX_SCENE_HEIGHT = 780;
 }
