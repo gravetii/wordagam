@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -22,82 +23,130 @@
     <children>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <children>
-                <ImageView fx:id="imgView$0_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$0_0" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
             <children>
-                <ImageView fx:id="imgView$0_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$0_1" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
             <children>
-                <ImageView fx:id="imgView$0_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$0_2" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="0">
             <children>
-                <ImageView fx:id="imgView$0_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$0_3" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <children>
-                <ImageView fx:id="imgView$1_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$1_0" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>
-                <ImageView fx:id="imgView$1_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$1_1" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
             <children>
-                <ImageView fx:id="imgView$1_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$1_2" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
             <children>
-                <ImageView fx:id="imgView$1_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$1_3" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
             <children>
-                <ImageView fx:id="imgView$2_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$2_0" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <children>
-                <ImageView fx:id="imgView$2_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$2_1" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <children>
-                <ImageView fx:id="imgView$2_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$2_2" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
             <children>
-                <ImageView fx:id="imgView$2_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$2_3" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
             <children>
-                <ImageView fx:id="imgView$3_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$3_0" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
             <children>
-                <ImageView fx:id="imgView$3_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$3_1" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
             <children>
-                <ImageView fx:id="imgView$3_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$3_2" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
             <children>
-                <ImageView fx:id="imgView$3_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$3_3" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true">
+               <effect>
+                  <DropShadow color="#838281" height="27.0" radius="13.0" width="27.0" />
+               </effect></ImageView>
 
             </children>
         </Pane>
