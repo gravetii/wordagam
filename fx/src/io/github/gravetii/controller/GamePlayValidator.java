@@ -17,13 +17,7 @@ public class GamePlayValidator {
         this.builder = new StringBuilder();
     }
 
-    private void checkWord() {
-        if (game.getAllWords().contains(this.builder.toString())) {
-            System.out.println(this.builder.toString());
-        }
-    }
-
-    private void invalidate() {
+    public void invalidate() {
         this.seq.clear();
         this.builder = new StringBuilder();
     }
@@ -35,13 +29,11 @@ public class GamePlayValidator {
 
     private boolean validateSubsequentClick(GridUnit unit) {
         if (this.seq.contains(unit) || !unit.isNeighbor(this.seq.getLast())) {
-            this.checkWord();
             this.invalidate();
             return false;
         }
         else {
             this.append(unit);
-            System.out.println(this.builder.toString());
             return true;
         }
     }
@@ -54,6 +46,11 @@ public class GamePlayValidator {
         else {
             return this.validateSubsequentClick(unit);
         }
+    }
+
+    public String validateWord() {
+        String word = this.builder.toString();
+        return this.game.exists(word) ? word : null;
     }
 
 }

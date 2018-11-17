@@ -1,6 +1,5 @@
 package io.github.gravetii.controller;
 
-import io.github.gravetii.game.Game;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.GameScene;

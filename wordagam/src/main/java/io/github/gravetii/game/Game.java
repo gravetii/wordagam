@@ -31,12 +31,16 @@ public class Game {
     this.quality = assignQuality();
   }
 
-  public Set<String> getAllWords() {
-    return this.allWords;
+  public boolean exists(String word) {
+    return this.allWords.contains(word);
   }
 
   public int getTotalPoints() {
     return this.totalPoints;
+  }
+
+  public int getWordPoints(String word) {
+    return this.wordPoints.get(word);
   }
 
   public GridUnit[][] getGrid() {

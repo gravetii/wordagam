@@ -20,7 +20,7 @@ import java.nio.file.Paths;
 import java.util.Random;
 import java.util.stream.Stream;
 
-class SceneBuilder {
+public class SceneBuilder {
 
   private Stage stage;
 
@@ -39,24 +39,20 @@ class SceneBuilder {
     return new Image(App.class.getResourceAsStream(dir + "/" + r + ".jpg"), 0, 0, false, false);
   }
 
-  private Node loadFxSceneComponent(String fxml, FxController controller) throws Exception {
+  private Node loadFxComponent(String fxml, FxController controller) throws Exception {
     FXMLLoader loader = new FXMLLoader(App.class.getResource(fxml));
     loader.setController(controller);
     return loader.load();
   }
 
   public MenuBar loadMenuBar() throws Exception {
-    MenuBar menuBar = (MenuBar) loadFxSceneComponent("fxml/menuBar.fxml", new MenuBarController(this.stage));
+    MenuBar menuBar = (MenuBar) loadFxComponent("fxml/menuBar.fxml", new MenuBarController(this.stage));
     menuBar.prefWidthProperty().bind(this.root.widthProperty());
     return menuBar;
   }
 
-  public SplitPane loadSplitPane() throws Exception {
-    return (SplitPane) loadFxSceneComponent("fxml/grid.fxml", new GridController(this.stage));
-  }
-
   public Pane loadStartPane() throws Exception {
-    Pane pane = (Pane) loadFxSceneComponent("fxml/start.fxml", new StartController(this.stage));
+    Pane pane = (Pane) loadFxComponent("fxml/start.fxml", new StartController(this.stage));
     pane.prefHeightProperty().bind(root.heightProperty());
     pane.prefWidthProperty().bind(root.widthProperty());
     ImageView imgView = (ImageView) pane.getChildren().get(0);
@@ -66,8 +62,12 @@ class SceneBuilder {
     return pane;
   }
 
-  public GridPane loadGamePane(Game game) throws Exception {
-    GridPane gridPane = (GridPane) loadFxSceneComponent("fxml/game.fxml", new GameController(this.stage, game));
+  private SplitPane loadSplitPane(FxController controller) throws Exception {
+    return (SplitPane) loadFxComponent("fxml/grid.fxml", controller);
+  }
+
+  private GridPane loadGamePane(Game game, FxController controller) throws Exception {
+    GridPane gridPane = (GridPane) loadFxComponent("fxml/game.fxml", controller);
     Image img = getRandomImage("background");
     BackgroundSize size = new BackgroundSize(100, 100, true, true, true, true);
     BackgroundImage background =
@@ -87,6 +87,14 @@ class SceneBuilder {
     }
 
     return gridPane;
+  }
+
+  public GameComponent loadGameComponent(Game game) throws Exception {
+    GameController gameController = new GameController(this.stage, game);
+    GridController gridController = new GridController(gameController);
+    GridPane gridPane = this.loadGamePane(game, gameController);
+    SplitPane splitPane = this.loadSplitPane(gridController);
+    return new GameComponent(gridPane, splitPane);
   }
 
   public Scene build() {

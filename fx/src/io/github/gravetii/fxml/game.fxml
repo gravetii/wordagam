@@ -22,82 +22,82 @@
     <children>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="0">
             <children>
-                <ImageView fx:id="imgView$0_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$0_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="0">
             <children>
-                <ImageView fx:id="imgView$0_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$0_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="0">
             <children>
-                <ImageView fx:id="imgView$0_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$0_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="0">
             <children>
-                <ImageView fx:id="imgView$0_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$0_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="1">
             <children>
-                <ImageView fx:id="imgView$1_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$1_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
             <children>
-                <ImageView fx:id="imgView$1_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$1_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1">
             <children>
-                <ImageView fx:id="imgView$1_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$1_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1">
             <children>
-                <ImageView fx:id="imgView$1_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$1_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="2">
             <children>
-                <ImageView fx:id="imgView$2_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$2_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="2">
             <children>
-                <ImageView fx:id="imgView$2_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$2_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="2">
             <children>
-                <ImageView fx:id="imgView$2_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$2_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="2">
             <children>
-                <ImageView fx:id="imgView$2_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$2_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.rowIndex="3">
             <children>
-                <ImageView fx:id="imgView$3_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$3_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="3">
             <children>
-                <ImageView fx:id="imgView$3_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$3_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="3">
             <children>
-                <ImageView fx:id="imgView$3_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$3_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
             </children>
         </Pane>
         <Pane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="3">
             <children>
-                <ImageView fx:id="imgView$3_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onClick" pickOnBounds="true" />
+                <ImageView fx:id="imgView$3_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" />
 
             </children>
         </Pane>
