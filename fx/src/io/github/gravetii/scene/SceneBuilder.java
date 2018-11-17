@@ -17,7 +17,7 @@ import javafx.stage.Stage;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
 public class SceneBuilder {
@@ -35,7 +35,7 @@ public class SceneBuilder {
     String fPath = App.class.getResource(dir).getFile();
     Stream<Path> files = Files.list(Paths.get(fPath));
     int count = Math.toIntExact(files.count());
-    int r = 1 + new Random().nextInt(count);
+    int r = 1 + ThreadLocalRandom.current().nextInt(count);
     return new Image(App.class.getResourceAsStream(dir + "/" + r + ".jpg"), 0, 0, false, false);
   }
 

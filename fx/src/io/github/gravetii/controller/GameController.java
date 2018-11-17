@@ -47,7 +47,7 @@ public class GameController implements FxController {
   public WordPoint validateWordOnBtnClick() {
     String word = this.validator.validateWord();
     this.validator.invalidate();
-    if (word == null) {
+    if (word == null || this.wordsAndPoints.containsKey(word)) {
       return null;
     }
 

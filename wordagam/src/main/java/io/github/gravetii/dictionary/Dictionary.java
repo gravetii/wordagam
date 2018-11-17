@@ -48,4 +48,11 @@ public class Dictionary {
     public boolean prefix(String word) {
         return this.trie.prefix(word);
     }
+
+    public static void main(String[] args) {
+        Dictionary dictionary = new Dictionary();
+        System.out.println(dictionary.search("mask"));
+        System.out.println(dictionary.search("silhouette"));
+        System.out.println(dictionary.prefix("silhou"));
+    }
 }

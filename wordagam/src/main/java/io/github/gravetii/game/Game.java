@@ -4,6 +4,7 @@ import io.github.gravetii.dictionary.Dictionary;
 import io.github.gravetii.util.*;
 
 import java.util.*;
+import java.util.concurrent.ThreadLocalRandom;
 
 import static io.github.gravetii.util.Constants.WORDS_COUNT_HIGH;
 import static io.github.gravetii.util.Constants.WORDS_COUNT_LOW;
@@ -53,10 +54,9 @@ public class Game {
 
   private void create() {
     List<Alphabet> weightedAlphabets = Alphabet.getWeightedAlphabetsAsList();
-    Random random = new Random();
     for (int i = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {
-        int idx = random.nextInt(weightedAlphabets.size());
+        int idx = ThreadLocalRandom.current().nextInt(weightedAlphabets.size());
         grid[i][j] = new GridUnit(weightedAlphabets.get(idx), new GridPoint(i, j));
       }
     }
