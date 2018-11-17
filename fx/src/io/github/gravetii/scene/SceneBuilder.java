@@ -1,12 +1,8 @@
 package io.github.gravetii.scene;
 
 import io.github.gravetii.App;
-import io.github.gravetii.controller.GameController;
-import io.github.gravetii.controller.GridController;
-import io.github.gravetii.controller.MenuBarController;
-import io.github.gravetii.controller.StartController;
+import io.github.gravetii.controller.*;
 import io.github.gravetii.game.Game;
-import io.github.gravetii.util.AppLogger;
 import io.github.gravetii.util.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -26,13 +22,13 @@ import java.util.stream.Stream;
 
 class SceneBuilder {
 
-  public BorderPane root;
-
   private Stage stage;
 
-  SceneBuilder(Stage stage) {
-    this.root = new BorderPane();
+  private BorderPane root;
+
+  SceneBuilder(Stage stage, BorderPane root) {
     this.stage = stage;
+    this.root = root;
   }
 
   private static Image getRandomImage(String dir) throws Exception {
@@ -43,27 +39,24 @@ class SceneBuilder {
     return new Image(App.class.getResourceAsStream(dir + "/" + r + ".jpg"), 0, 0, false, false);
   }
 
-  MenuBar loadMenuBar() throws Exception {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/menuBar.fxml"));
-    loader.setController(new MenuBarController(this.stage));
-    MenuBar menuBar = loader.load();
+  private Node loadFxSceneComponent(String fxml, FxController controller) throws Exception {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource(fxml));
+    loader.setController(controller);
+    return loader.load();
+  }
+
+  public MenuBar loadMenuBar() throws Exception {
+    MenuBar menuBar = (MenuBar) loadFxSceneComponent("fxml/menuBar.fxml", new MenuBarController(this.stage));
     menuBar.prefWidthProperty().bind(this.root.widthProperty());
-    AppLogger.info(getClass().getCanonicalName(), "Loaded menu bar: " + menuBar);
     return menuBar;
   }
 
-  SplitPane loadSplitPane() throws Exception {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/grid.fxml"));
-    loader.setController(new GridController(this.stage));
-    SplitPane splitPane = loader.load();
-    AppLogger.info(getClass().getCanonicalName(), "Loaded split pane: " + splitPane);
-    return splitPane;
+  public SplitPane loadSplitPane() throws Exception {
+    return (SplitPane) loadFxSceneComponent("fxml/grid.fxml", new GridController(this.stage));
   }
 
-  Pane loadStartPane() throws Exception {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/start.fxml"));
-    loader.setController(new StartController(this.stage));
-    Pane pane = loader.load();
+  public Pane loadStartPane() throws Exception {
+    Pane pane = (Pane) loadFxSceneComponent("fxml/start.fxml", new StartController(this.stage));
     pane.prefHeightProperty().bind(root.heightProperty());
     pane.prefWidthProperty().bind(root.widthProperty());
     ImageView imgView = (ImageView) pane.getChildren().get(0);
@@ -73,15 +66,13 @@ class SceneBuilder {
     return pane;
   }
 
-  GridPane loadGamePane(Game game) throws Exception {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/game.fxml"));
-    loader.setController(new GameController(this.stage, game));
-    GridPane gridPane = loader.load();
+  public GridPane loadGamePane(Game game) throws Exception {
+    GridPane gridPane = (GridPane) loadFxSceneComponent("fxml/game.fxml", new GameController(this.stage, game));
     Image img = getRandomImage("background");
     BackgroundSize size = new BackgroundSize(100, 100, true, true, true, true);
     BackgroundImage background =
-        new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-            BackgroundPosition.DEFAULT, size);
+            new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
+                    BackgroundPosition.DEFAULT, size);
     gridPane.setBackground(new Background(background));
 
     for (int i = 0, c = 0; i < 4; ++i) {
@@ -95,15 +86,10 @@ class SceneBuilder {
       }
     }
 
-    AppLogger.info(getClass().getCanonicalName(), "Loaded grid pane: " + gridPane);
     return gridPane;
   }
 
-  void addNode(Node node) {
-    this.root.setCenter(node);
-  }
-
-  Scene build() {
+  public Scene build() {
     Scene currentScene = this.stage.getScene();
     double width = currentScene == null ? Constants.DEFAULT_SCENE_WIDTH : currentScene.getWidth();
     double height = currentScene == null ? Constants.DEFAULT_SCENE_HEIGHT : currentScene.getHeight();
