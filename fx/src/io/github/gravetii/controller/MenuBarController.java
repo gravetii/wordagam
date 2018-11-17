@@ -12,18 +12,14 @@ public class MenuBarController implements FxController {
 
   private Stage stage;
 
-  private GameService service;
-
   public MenuBarController(Stage stage) {
     this.stage = stage;
-    this.service = new GameService();
   }
 
   @FXML
   public void newGame(ActionEvent event) {
     try {
-      Game game = service.fetch();
-      FxScene scene = new GameScene(this.stage, game);
+      FxScene scene = new GameScene(this.stage);
       scene.show("New game");
     } catch (Exception e) {
       throw new RuntimeException(e);

@@ -1,6 +1,7 @@
 package io.github.gravetii.scene;
 
 import io.github.gravetii.game.Game;
+import io.github.gravetii.game.GameService;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.SplitPane;
@@ -11,9 +12,9 @@ public class GameScene extends FxScene {
 
   private Game game;
 
-  public GameScene(Stage stage, Game game) {
+  public GameScene(Stage stage) {
     super(stage);
-    this.game = game;
+    this.game = new GameService().fetch();
   }
 
   @Override
