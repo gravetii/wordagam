@@ -80,6 +80,7 @@ public class SceneBuilder {
         String letter = game.getGrid()[i][j].getLetter();
         Pane pane = (Pane) gridPane.getChildren().get(c++);
         ImageView imgView = (ImageView) pane.getChildren().get(0);
+        Image image = new Image(App.class.getResourceAsStream("images/" + letter + ".png"));
         imgView.setImage(new Image(App.class.getResourceAsStream("images/" + letter + ".png")));
         imgView.fitHeightProperty().bind(pane.heightProperty());
         imgView.fitWidthProperty().bind(pane.widthProperty());

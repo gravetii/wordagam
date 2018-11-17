@@ -5,6 +5,6 @@
 
 <Pane xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" />
+        <ImageView cache="true" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" smooth="false" />
     </children>
 </Pane>
