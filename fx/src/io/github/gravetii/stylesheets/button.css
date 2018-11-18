@@ -1,0 +1,17 @@
+.custom-button {
+    -fx-font-family: "Futura";
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #4EB5F1;
+    -fx-text-alignment: center;
+}
+
+.custom-button:hover {
+    -fx-background-color: #4095C6;
+    -fx-cursor: hand;
+}
+
+.custom-button:pressed {
+    -fx-background-color: #3487BA;
+}
