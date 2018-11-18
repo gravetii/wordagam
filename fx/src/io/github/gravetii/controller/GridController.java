@@ -35,8 +35,9 @@ public class GridController implements FxController {
     public void onGoBtnClick(ActionEvent event) {
         Pair<String, Integer> wordAndPoints = this.ref.validateWordOnBtnClick();
         if (wordAndPoints != null) {
-            WordPoint wordPoint = new WordPoint(wordAndPoints.getKey().toUpperCase(), wordAndPoints.getValue());
-            this.tblDisplay.getItems().add(wordPoint);
+            String word = wordAndPoints.getKey().toUpperCase();
+            int points = wordAndPoints.getValue();
+            this.tblDisplay.getItems().add(new WordPoint(word, points));
         }
     }
 

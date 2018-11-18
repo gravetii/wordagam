@@ -1,11 +1,9 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
-import io.github.gravetii.pojo.WordPoint;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
 import javafx.fxml.FXML;
-import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
@@ -21,15 +19,14 @@ public class GameController implements FxController {
 
   private Map<String, Integer> wordsAndPoints;
   private GamePlayValidator validator;
-
-  @FXML
-  private ListView<String> lstView;
+  private GamePlayStyler styler;
 
   public GameController(Stage stage, Game game) {
     this.stage = stage;
     this.game = game;
     this.wordsAndPoints = new HashMap<>();
     this.validator = new GamePlayValidator(game);
+    this.styler = new GamePlayStyler();
   }
 
   private static GridPoint getGridPointFromImageViewLabel(String label) {
@@ -40,14 +37,19 @@ public class GameController implements FxController {
   @FXML
   public void onImgViewClick(MouseEvent event) {
     ImageView imgView = (ImageView) event.getSource();
+    this.styler.apply(imgView);
     GridPoint point = getGridPointFromImageViewLabel(imgView.getId());
     GridUnit unit = game.getGridUnit(point);
-    this.validator.validateClick(unit);
+    if (!this.validator.validateClick(unit)) {
+      this.styler.reset();
+    }
   }
 
   public Pair<String, Integer> validateWordOnBtnClick() {
     String word = this.validator.validateWord();
     this.validator.invalidate();
+    this.styler.reset();
+
     if (word == null || this.wordsAndPoints.containsKey(word)) {
       return null;
     }

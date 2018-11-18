@@ -3,7 +3,6 @@ package io.github.gravetii.scene;
 import io.github.gravetii.App;
 import io.github.gravetii.controller.*;
 import io.github.gravetii.game.Game;
-import io.github.gravetii.util.Constants;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Scene;

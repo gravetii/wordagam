@@ -9,7 +9,7 @@
 
 .custom-button:hover {
     -fx-background-color: #4095C6;
-    -fx-cursor: hand;
+    -fx-cursor: HAND;
 }
 
 .custom-button:pressed {
@@ -18,4 +18,8 @@
 
 .table-view .column-header .label {
     -fx-text-fill: #0074D9;
+}
+
+.custom-img-view:hover {
+    -fx-cursor: HAND;
 }
