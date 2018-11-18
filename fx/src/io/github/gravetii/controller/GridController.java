@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.util.Pair;
 
 public class GridController implements FxController {
 
@@ -26,14 +27,15 @@ public class GridController implements FxController {
 
     @FXML
     public void initialize() {
-        this.wordTblCol.setCellValueFactory(new PropertyValueFactory<WordPoint, String>("word"));
-        this.pointsTblCol.setCellValueFactory(new PropertyValueFactory<WordPoint, Integer>("points"));
+        this.wordTblCol.setCellValueFactory(new PropertyValueFactory<>("word"));
+        this.pointsTblCol.setCellValueFactory(new PropertyValueFactory<>("points"));
     }
 
     @FXML
     public void onGoBtnClick(ActionEvent event) {
-        WordPoint wordPoint = this.ref.validateWordOnBtnClick();
-        if (wordPoint != null) {
+        Pair<String, Integer> wordAndPoints = this.ref.validateWordOnBtnClick();
+        if (wordAndPoints != null) {
+            WordPoint wordPoint = new WordPoint(wordAndPoints.getKey().toUpperCase(), wordAndPoints.getValue());
             this.tblDisplay.getItems().add(wordPoint);
         }
     }

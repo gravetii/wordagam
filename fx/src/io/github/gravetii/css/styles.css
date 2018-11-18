@@ -3,7 +3,7 @@
     -fx-font-weight: bold;
     -fx-font-size: 15px;
     -fx-text-fill: #FFFFFF;
-    -fx-background-color: #4EB5F1;
+    -fx-background-color: #7FDBFF;
     -fx-text-alignment: center;
 }
 
@@ -14,4 +14,8 @@
 
 .custom-button:pressed {
     -fx-background-color: #3487BA;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: #0074D9;
 }

@@ -9,6 +9,7 @@ import javafx.scene.control.ListView;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -44,7 +45,7 @@ public class GameController implements FxController {
     this.validator.validateClick(unit);
   }
 
-  public WordPoint validateWordOnBtnClick() {
+  public Pair<String, Integer> validateWordOnBtnClick() {
     String word = this.validator.validateWord();
     this.validator.invalidate();
     if (word == null || this.wordsAndPoints.containsKey(word)) {
@@ -53,7 +54,7 @@ public class GameController implements FxController {
 
     int points = this.game.getWordPoints(word);
     this.wordsAndPoints.put(word, points);
-    return new WordPoint(word, points);
+    return new Pair<>(word, points);
   }
 
 }
