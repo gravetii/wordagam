@@ -30,6 +30,8 @@ public class App extends Application {
       this.stage.setMinHeight(Constants.DEFAULT_SCENE_HEIGHT);
       this.stage.setMaxWidth(Constants.MAX_SCENE_WIDTH);
       this.stage.setMaxHeight(Constants.MAX_SCENE_HEIGHT);
+      this.stage.setWidth(Constants.DEFAULT_SCENE_WIDTH);
+      this.stage.setHeight(Constants.DEFAULT_SCENE_HEIGHT);
   }
 
   @Override

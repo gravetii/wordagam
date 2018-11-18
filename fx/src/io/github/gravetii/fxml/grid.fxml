@@ -12,7 +12,7 @@
   <items>
     <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="300.0">
          <children>
-            <Button fx:id="goBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" layoutX="86.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onGoBtnClick" prefHeight="49.0" prefWidth="126.0" styleClass="custom-button" stylesheets="@../stylesheets/button.css" text="GO" textAlignment="JUSTIFY" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="15.0" />
+            <Button fx:id="goBtn" alignment="CENTER" blendMode="MULTIPLY" contentDisplay="CENTER" layoutX="86.0" layoutY="15.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#onGoBtnClick" prefHeight="49.0" prefWidth="126.0" styleClass="custom-button" stylesheets="@../css/styles.css" text="GO" textAlignment="JUSTIFY" AnchorPane.bottomAnchor="15.0" AnchorPane.leftAnchor="86.0" AnchorPane.rightAnchor="86.0" AnchorPane.topAnchor="15.0" />
          </children></AnchorPane>
     <AnchorPane prefHeight="200.0" prefWidth="300.0">
          <children>

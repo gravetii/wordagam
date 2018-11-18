@@ -99,9 +99,6 @@ public class SceneBuilder {
   }
 
   public Scene build() {
-    Scene currentScene = this.stage.getScene();
-    double width = currentScene == null ? Constants.DEFAULT_SCENE_WIDTH : currentScene.getWidth();
-    double height = currentScene == null ? Constants.DEFAULT_SCENE_HEIGHT : currentScene.getHeight();
-    return new Scene(this.root, width, height);
+    return new Scene(this.root);
   }
 }
