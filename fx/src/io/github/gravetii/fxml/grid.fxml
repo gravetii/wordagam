@@ -20,7 +20,7 @@
                 <placeholder><Label /></placeholder>
               <columns>
                 <TableColumn fx:id="wordTblCol" editable="false" prefWidth="134.0" resizable="false" sortable="false" text="Word" />
-                <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="137.0" resizable="false" sortable="false" text="Points" />
+                <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="137.0" resizable="false" text="Points" />
               </columns>
             </TableView>
          </children></AnchorPane>
