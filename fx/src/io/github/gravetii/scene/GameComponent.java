@@ -5,20 +5,20 @@ import javafx.scene.layout.GridPane;
 
 public class GameComponent {
 
-    private GridPane gridPane;
+  private GridPane gridPane;
 
-    private SplitPane splitPane;
+  private SplitPane splitPane;
 
-    public GameComponent(GridPane gridPane, SplitPane splitPane) {
-        this.gridPane = gridPane;
-        this.splitPane = splitPane;
-    }
+  public GameComponent(GridPane gridPane, SplitPane splitPane) {
+    this.gridPane = gridPane;
+    this.splitPane = splitPane;
+  }
 
-    public GridPane getGridPane() {
-        return gridPane;
-    }
+  public GridPane getGridPane() {
+    return gridPane;
+  }
 
-    public SplitPane getSplitPane() {
-        return splitPane;
-    }
+  public SplitPane getSplitPane() {
+    return splitPane;
+  }
 }

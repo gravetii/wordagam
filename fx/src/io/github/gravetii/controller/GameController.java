@@ -54,5 +54,4 @@ public class GameController implements FxController {
     this.wordsAndPoints.put(word, points);
     return new Pair<>(word, points);
   }
-
 }

@@ -10,35 +10,31 @@ import javafx.util.Pair;
 
 public class GridController implements FxController {
 
-    private GameController ref;
+  private GameController ref;
 
-    @FXML
-    private TableView<WordPoint> tblDisplay;
+  @FXML private TableView<WordPoint> tblDisplay;
 
-    @FXML
-    private TableColumn<WordPoint, String> wordTblCol;
+  @FXML private TableColumn<WordPoint, String> wordTblCol;
 
-    @FXML
-    private TableColumn<WordPoint, Integer> pointsTblCol;
+  @FXML private TableColumn<WordPoint, Integer> pointsTblCol;
 
-    public GridController(GameController ref) {
-        this.ref = ref;
+  public GridController(GameController ref) {
+    this.ref = ref;
+  }
+
+  @FXML
+  public void initialize() {
+    this.wordTblCol.setCellValueFactory(new PropertyValueFactory<>("word"));
+    this.pointsTblCol.setCellValueFactory(new PropertyValueFactory<>("points"));
+  }
+
+  @FXML
+  public void onGoBtnClick(ActionEvent event) {
+    Pair<String, Integer> wordAndPoints = this.ref.validateWordOnBtnClick();
+    if (wordAndPoints != null) {
+      String word = wordAndPoints.getKey().toUpperCase();
+      int points = wordAndPoints.getValue();
+      this.tblDisplay.getItems().add(new WordPoint(word, points));
     }
-
-    @FXML
-    public void initialize() {
-        this.wordTblCol.setCellValueFactory(new PropertyValueFactory<>("word"));
-        this.pointsTblCol.setCellValueFactory(new PropertyValueFactory<>("points"));
-    }
-
-    @FXML
-    public void onGoBtnClick(ActionEvent event) {
-        Pair<String, Integer> wordAndPoints = this.ref.validateWordOnBtnClick();
-        if (wordAndPoints != null) {
-            String word = wordAndPoints.getKey().toUpperCase();
-            int points = wordAndPoints.getValue();
-            this.tblDisplay.getItems().add(new WordPoint(word, points));
-        }
-    }
-
+  }
 }

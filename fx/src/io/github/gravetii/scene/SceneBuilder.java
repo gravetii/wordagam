@@ -45,7 +45,8 @@ public class SceneBuilder {
   }
 
   public MenuBar loadMenuBar() throws Exception {
-    MenuBar menuBar = (MenuBar) loadFxComponent("fxml/menuBar.fxml", new MenuBarController(this.stage));
+    MenuBar menuBar =
+        (MenuBar) loadFxComponent("fxml/menuBar.fxml", new MenuBarController(this.stage));
     menuBar.prefWidthProperty().bind(this.root.widthProperty());
     return menuBar;
   }
@@ -70,8 +71,12 @@ public class SceneBuilder {
     Image img = getRandomImage("background");
     BackgroundSize size = new BackgroundSize(100, 100, true, true, true, true);
     BackgroundImage background =
-            new BackgroundImage(img, BackgroundRepeat.NO_REPEAT, BackgroundRepeat.NO_REPEAT,
-                    BackgroundPosition.DEFAULT, size);
+        new BackgroundImage(
+            img,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundPosition.DEFAULT,
+            size);
     gridPane.setBackground(new Background(background));
 
     for (int i = 0, c = 0; i < 4; ++i) {

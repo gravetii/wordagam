@@ -1,6 +1,5 @@
 package io.github.gravetii.util;
 
-import java.util.LinkedHashSet;
 import java.util.Objects;
 
 public class GridUnit {
@@ -51,5 +50,4 @@ public class GridUnit {
   public int hashCode() {
     return Objects.hash(alphabet, gridPoint);
   }
-
 }
