@@ -25,6 +25,11 @@ public class App extends Application {
     scene.show("WORDAGAM!");
   }
 
+  @Override
+  public void init() throws Exception {
+    GameService.init();
+  }
+
   private void setDimensions() {
     this.stage.setMinWidth(Constants.DEFAULT_SCENE_WIDTH);
     this.stage.setMinHeight(Constants.DEFAULT_SCENE_HEIGHT);

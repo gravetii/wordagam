@@ -44,6 +44,12 @@ public class GameFactory {
 
   private Game create() {
     Game game = new Game(this.dictionary);
+    Quality q = game.getQuality();
+    while (q == Quality.LOW) {
+      game = new Game(this.dictionary);
+      q = game.getQuality();
+    }
+
     return game;
   }
 

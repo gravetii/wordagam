@@ -4,6 +4,10 @@ public class GameService {
 
   private GameFactory factory;
 
+  public static void init() {
+    GameFactory.get();
+  }
+
   public GameService() {
     this.factory = GameFactory.get();
   }
