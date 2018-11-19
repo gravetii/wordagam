@@ -65,7 +65,7 @@ public class Game {
   private boolean isValidWord(String word) {
     return word.length() >= Constants.MIN_WORD_LENGTH
         && this.dictionary.search(word)
-        && !allWords.contains(word);
+        && !this.allWords.contains(word);
   }
 
   private void crawl(GridPoint point, String prefix, boolean[][] visited) {
@@ -81,14 +81,15 @@ public class Game {
 
     int points = this.wordPoints.get(prefix) + unit.getPoints();
     this.wordPoints.put(word, points);
+
     if (isValidWord(word)) {
       this.allWords.add(word);
-      this.totalPoints += wordPoints.get(word);
+      this.totalPoints += this.wordPoints.get(word);
     }
 
     for (GridPoint n : point.getNeighbors()) {
       if (!visited[n.x][n.y]) {
-        boolean[][] v = visited.clone();
+        boolean[][] v = Utils.arrCopy(visited);
         this.crawl(n, word, v);
       }
     }

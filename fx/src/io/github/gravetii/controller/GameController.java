@@ -3,6 +3,7 @@ package io.github.gravetii.controller;
 import io.github.gravetii.game.Game;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
+import io.github.gravetii.util.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -29,16 +30,11 @@ public class GameController implements FxController {
     this.styler = new GamePlayStyler();
   }
 
-  private static GridPoint getGridPointFromImageViewLabel(String label) {
-    String[] tokens = label.split("\\$")[1].split("_");
-    return new GridPoint(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]));
-  }
-
   @FXML
   public void onImgViewClick(MouseEvent event) {
     ImageView imgView = (ImageView) event.getSource();
     this.styler.apply(imgView);
-    GridPoint point = getGridPointFromImageViewLabel(imgView.getId());
+    GridPoint point = Utils.getGridPointFromImageViewLabel(imgView.getId());
     GridUnit unit = game.getGridUnit(point);
     if (!this.validator.validateClick(unit)) {
       this.styler.reset();
