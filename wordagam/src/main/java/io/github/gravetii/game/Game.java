@@ -132,6 +132,8 @@ public class Game {
     return "Game{"
         + "totalPoints="
         + totalPoints
+        + ", count="
+        + allWords.size()
         + ", allWords="
         + allWords
         + ", quality="
