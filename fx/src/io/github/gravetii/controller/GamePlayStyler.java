@@ -77,7 +77,7 @@ public class GamePlayStyler {
       transition.setToX(1.2);
       transition.setFromY(1.0);
       transition.setToY(1.2);
-      transition.setCycleCount(4);
+      transition.setCycleCount(6);
       transition.setAutoReverse(true);
       transition.play();
     });

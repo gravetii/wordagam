@@ -22,7 +22,7 @@ public class GamePlayValidator {
     this.validatedEntries = new HashMap<>();
   }
 
-  public void invalidate() {
+  public void reset() {
     this.seq.clear();
     this.builder = new StringBuilder();
   }
@@ -34,7 +34,7 @@ public class GamePlayValidator {
 
   private boolean validateSubsequentClick(GridUnit unit) {
     if (this.seq.contains(unit) || !unit.isNeighbor(this.seq.getLast())) {
-      this.invalidate();
+      this.reset();
       return false;
     } else {
       this.append(unit);

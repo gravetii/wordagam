@@ -68,7 +68,7 @@ public class SceneBuilder {
 
   private GridPane loadGamePane(Game game, FxController controller) throws Exception {
     GridPane gridPane = (GridPane) loadFxComponent("fxml/game.fxml", controller);
-    Image img = getRandomImage("background");
+    Image img = getRandomImage("themes");
     BackgroundSize size = new BackgroundSize(100, 100, true, true, true, true);
     BackgroundImage background =
         new BackgroundImage(

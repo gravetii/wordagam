@@ -27,6 +27,6 @@
 .custom-img-view-click {
     -fx-scale-x: 0.88;
     -fx-scale-y: 0.88;
-    -fx-blend-mode: SRC_OVER;
+    -fx-blend-mode: SRC_ATOP;
 }
 
