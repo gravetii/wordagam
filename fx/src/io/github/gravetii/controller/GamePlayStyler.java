@@ -3,7 +3,6 @@ package io.github.gravetii.controller;
 import javafx.animation.FadeTransition;
 import javafx.animation.RotateTransition;
 import javafx.animation.ScaleTransition;
-import javafx.scene.effect.BlendMode;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
@@ -41,17 +40,13 @@ public class GamePlayStyler {
   }
 
   public void apply(ImageView imgView) {
-    imgView.setScaleX(0.88);
-    imgView.setScaleY(0.88);
-    imgView.setBlendMode(BlendMode.SRC_OVER);
+    imgView.getStyleClass().add("custom-img-view-click");
     this.seq.add(imgView);
   }
 
   private void revert() {
     this.seq.forEach(imgView -> {
-      imgView.setScaleX(1.0);
-      imgView.setScaleY(1.0);
-      imgView.setBlendMode(BlendMode.MULTIPLY);
+      imgView.getStyleClass().remove("custom-img-view-click");
     });
   }
 
