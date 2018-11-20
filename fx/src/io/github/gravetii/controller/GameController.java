@@ -10,22 +10,17 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.util.Pair;
 
-import java.util.HashMap;
-import java.util.Map;
-
 public class GameController implements FxController {
 
   private Stage stage;
   private Game game;
 
-  private Map<String, Integer> wordsAndPoints;
   private GamePlayValidator validator;
   private GamePlayStyler styler;
 
   public GameController(Stage stage, Game game) {
     this.stage = stage;
     this.game = game;
-    this.wordsAndPoints = new HashMap<>();
     this.validator = new GamePlayValidator(game);
     this.styler = new GamePlayStyler();
   }
@@ -37,21 +32,28 @@ public class GameController implements FxController {
     GridPoint point = Utils.getGridPointFromImageViewLabel(imgView.getId());
     GridUnit unit = game.getGridUnit(point);
     if (!this.validator.validateClick(unit)) {
-      this.styler.reset();
+      this.styler.forInvalidClick();
     }
   }
 
   public Pair<String, Integer> validateWordOnBtnClick() {
-    String word = this.validator.validateWord();
-    this.validator.invalidate();
-    this.styler.reset();
+    Pair<String, Integer> result = null;
+    boolean valid = this.validator.validateWord();
 
-    if (word == null || this.wordsAndPoints.containsKey(word)) {
-      return null;
+    if (!valid) {
+      this.styler.forIncorrectWord();
+    }
+    else {
+      result = this.validator.get();
+      if (result == null) {
+        this.styler.forRepeatedWord();
+      }
+      else {
+        this.styler.forCorrectWord();
+      }
     }
 
-    int points = this.game.getWordPoints(word);
-    this.wordsAndPoints.put(word, points);
-    return new Pair<>(word, points);
+    this.validator.invalidate();
+    return result;
   }
 }
