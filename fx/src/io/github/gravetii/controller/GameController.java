@@ -28,11 +28,25 @@ public class GameController implements FxController {
   @FXML
   public void onImgViewClick(MouseEvent event) {
     ImageView imgView = (ImageView) event.getSource();
-    this.styler.apply(imgView);
     GridPoint point = Utils.getGridPointFromImageViewLabel(imgView.getId());
     GridUnit unit = game.getGridUnit(point);
-    if (!this.validator.validateClick(unit)) {
-      this.styler.forInvalidClick();
+    ValidationResult result = this.validator.validateClick(unit);
+    this.applyStyleAfterValidation(imgView, result);
+  }
+
+  private void applyStyleAfterValidation(ImageView imgView, ValidationResult result) {
+    switch (result) {
+      case ALL_INVALID:
+        this.styler.forInvalidClick();
+        break;
+      case LAST_INVALID:
+        this.styler.forLastInvalidClick(imgView);
+        break;
+      case ALL_VALID:
+        this.styler.forValidClick(imgView);
+        break;
+      default:
+        break;
     }
   }
 

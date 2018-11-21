@@ -23,29 +23,40 @@ public class GamePlayValidator {
   }
 
   public void reset() {
-    this.seq.clear();
     this.builder = new StringBuilder();
+    this.seq.clear();
   }
 
   private void append(GridUnit unit) {
-    this.seq.add(unit);
     this.builder.append(unit.getLetter());
+    this.seq.add(unit);
   }
 
-  private boolean validateSubsequentClick(GridUnit unit) {
-    if (this.seq.contains(unit) || !unit.isNeighbor(this.seq.getLast())) {
-      this.reset();
-      return false;
-    } else {
-      this.append(unit);
-      return true;
+  private void truncate() {
+    this.builder.deleteCharAt(this.seq.size() - 1);
+    this.seq.pollLast();
+  }
+
+  private ValidationResult validateSubsequentClick(GridUnit unit) {
+    if (unit == this.seq.getLast()) {
+      this.truncate();
+      return ValidationResult.LAST_INVALID;
+    }
+    else {
+      if (this.seq.contains(unit) || !unit.isNeighbor(this.seq.getLast())) {
+        this.reset();
+        return ValidationResult.ALL_INVALID;
+      } else {
+        this.append(unit);
+        return ValidationResult.ALL_VALID;
+      }
     }
   }
 
-  public boolean validateClick(GridUnit unit) {
+  public ValidationResult validateClick(GridUnit unit) {
     if (this.seq.isEmpty()) {
       this.append(unit);
-      return true;
+      return ValidationResult.ALL_VALID;
     } else {
       return this.validateSubsequentClick(unit);
     }
@@ -53,7 +64,12 @@ public class GamePlayValidator {
 
   public boolean validateWord() {
     String word = this.builder.toString();
-    return this.game.exists(word);
+    if (word.isEmpty()) {
+      return false;
+    }
+    else {
+      return this.game.exists(word);
+    }
   }
 
   public Pair<String, Integer> get() {

@@ -39,15 +39,22 @@ public class GamePlayStyler {
     this.reset();
   }
 
-  public void apply(ImageView imgView) {
+  public void forLastInvalidClick(ImageView imgView) {
+    this.revert(imgView);
+    this.truncate();
+  }
+
+  public void forValidClick(ImageView imgView) {
     imgView.getStyleClass().add("custom-img-view-click");
     this.seq.add(imgView);
   }
 
+  private void revert(ImageView imgView) {
+    imgView.getStyleClass().remove("custom-img-view-click");
+  }
+
   private void revert() {
-    this.seq.forEach(imgView -> {
-      imgView.getStyleClass().remove("custom-img-view-click");
-    });
+    this.seq.forEach(this::revert);
   }
 
   private void rotate() {
@@ -82,6 +89,10 @@ public class GamePlayStyler {
       transition.play();
     });
 
+  }
+
+  private void truncate() {
+    this.seq.pollLast();
   }
 
   private void reset() {
