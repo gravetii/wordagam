@@ -21,7 +21,7 @@ public class Dictionary {
       reader = new BufferedReader(new InputStreamReader(istream));
       String word;
       while ((word = reader.readLine()) != null) {
-        word = word.trim();
+        word = word.trim().toLowerCase();
         trie.insert(word);
       }
 

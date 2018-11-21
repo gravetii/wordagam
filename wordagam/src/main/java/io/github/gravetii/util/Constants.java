@@ -4,9 +4,7 @@ public class Constants {
 
   public static final int ALPHABET_COUNT = 26;
 
-  public static final int WORDS_COUNT_LOW = 100;
-
-  public static final int WORDS_COUNT_HIGH = 180;
+  public static final int WORDS_COUNT_HIGH = 220;
 
   public static final int MIN_WORD_LENGTH = 3;
 

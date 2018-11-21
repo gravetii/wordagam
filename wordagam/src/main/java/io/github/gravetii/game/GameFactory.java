@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GameFactory {
 
-  private static final int MAX_GAMES_IN_QUEUE = 5;
+  private static final int MAX_GAMES_IN_QUEUE = 7;
   private static volatile GameFactory INSTANCE;
   private Dictionary dictionary;
   private LinkedBlockingDeque<Game> queue;
@@ -101,11 +101,7 @@ public class GameFactory {
     public void run() {
       for (int i = 1; i < n; ++i) {
         Game game = create();
-        if (game.getQuality() == Quality.HIGH) {
-          queue.offerFirst(game);
-        } else {
-          queue.offerLast(game);
-        }
+        queue.offerLast(game);
       }
     }
   }
