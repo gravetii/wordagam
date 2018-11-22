@@ -5,13 +5,13 @@
     <menus>
         <Menu mnemonicParsing="false" text="File">
             <items>
-                <MenuItem fx:id="newGame" mnemonicParsing="false" onAction="#newGame" text="New Game"/>
-                <MenuItem fx:id="exit" mnemonicParsing="false" onAction="#exit" text="Exit"/>
+                <MenuItem fx:id="newGameMenuItem" mnemonicParsing="false" onAction="#newGame" text="New Game"/>
+                <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exit" text="Exit"/>
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Edit">
             <items>
-                <MenuItem mnemonicParsing="false" text="Delete"/>
+                <MenuItem fx:id="editThemeMenuItem" mnemonicParsing="false" onAction="#editTheme" text="Theme"/>
             </items>
         </Menu>
         <Menu mnemonicParsing="false" text="Help">

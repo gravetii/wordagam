@@ -3,7 +3,8 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
-<SplitPane xmlns:fx="http://javafx.com/fxml/1" dividerPositions="0.14423076923076922" orientation="VERTICAL" prefHeight="520.0"
+<SplitPane xmlns:fx="http://javafx.com/fxml/1" dividerPositions="0.14423076923076922" orientation="VERTICAL"
+           prefHeight="520.0"
            prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.172-ea">
     <items>
         <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="100.0" prefWidth="300.0">

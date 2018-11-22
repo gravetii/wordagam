@@ -58,23 +58,23 @@ public class GamePlayStyler {
   }
 
   private void rotate(ImageView imgView) {
-      RotateTransition transition = new RotateTransition(Duration.millis(65), imgView);
-      transition.setByAngle(360);
-      transition.setCycleCount(4);
-      transition.play();
+    RotateTransition transition = new RotateTransition(Duration.millis(65), imgView);
+    transition.setByAngle(360);
+    transition.setCycleCount(4);
+    transition.play();
   }
 
   private void applyRotateTransition() {
-      this.seq.forEach(this::rotate);
+    this.seq.forEach(this::rotate);
   }
 
   private void fade(ImageView imgView) {
-      FadeTransition transition = new FadeTransition(Duration.millis(50), imgView);
-      transition.setFromValue(1.0);
-      transition.setToValue(0.3);
-      transition.setCycleCount(6);
-      transition.setAutoReverse(true);
-      transition.play();
+    FadeTransition transition = new FadeTransition(Duration.millis(50), imgView);
+    transition.setFromValue(1.0);
+    transition.setToValue(0.3);
+    transition.setCycleCount(6);
+    transition.setAutoReverse(true);
+    transition.play();
   }
 
   private void applyFadeTransition() {
@@ -82,12 +82,12 @@ public class GamePlayStyler {
   }
 
   private void scale(ImageView imgView) {
-      ScaleTransition transition = new ScaleTransition(Duration.millis(50), imgView);
-      transition.setByX(0.2);
-      transition.setByY(0.2);
-      transition.setCycleCount(6);
-      transition.setAutoReverse(true);
-      transition.play();
+    ScaleTransition transition = new ScaleTransition(Duration.millis(50), imgView);
+    transition.setByX(0.2);
+    transition.setByY(0.2);
+    transition.setCycleCount(6);
+    transition.setAutoReverse(true);
+    transition.play();
   }
 
   private void applyScaleTransition() {

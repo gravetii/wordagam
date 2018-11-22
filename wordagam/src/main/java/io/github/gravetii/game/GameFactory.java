@@ -39,6 +39,7 @@ public class GameFactory {
   public static void close() {
     if (INSTANCE != null) {
       INSTANCE.shutdown();
+      INSTANCE = null;
     }
   }
 

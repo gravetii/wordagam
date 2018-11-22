@@ -68,10 +68,8 @@ public class Game {
   }
 
   private void crawl(GridPoint point, String prefix, boolean[][] visited) {
-    int x = point.x;
-    int y = point.y;
-    GridUnit unit = grid[x][y];
-    visited[x][y] = true;
+    GridUnit unit = grid[point.x][point.y];
+    visited[point.x][point.y] = true;
 
     String word = prefix + unit.getLetter();
     if (!this.dictionary.prefix(word)) {
