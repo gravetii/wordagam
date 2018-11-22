@@ -33,8 +33,13 @@ public class GamePlayValidator {
   }
 
   private void truncate() {
-    this.builder.deleteCharAt(this.seq.size() - 1);
+    this.builder.deleteCharAt(this.builder.length() - 1);
     this.seq.pollLast();
+  }
+
+  private ValidationResult validateFirstClick(GridUnit unit) {
+    this.append(unit);
+    return ValidationResult.ALL_VALID;
   }
 
   private ValidationResult validateSubsequentClick(GridUnit unit) {
@@ -54,8 +59,7 @@ public class GamePlayValidator {
 
   public ValidationResult validateClick(GridUnit unit) {
     if (this.seq.isEmpty()) {
-      this.append(unit);
-      return ValidationResult.ALL_VALID;
+      return this.validateFirstClick(unit);
     } else {
       return this.validateSubsequentClick(unit);
     }
