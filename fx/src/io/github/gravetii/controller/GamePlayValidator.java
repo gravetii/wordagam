@@ -1,10 +1,11 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
+import io.github.gravetii.pojo.WordPoint;
 import io.github.gravetii.util.GridUnit;
 import javafx.util.Pair;
 
-import java.util.HashMap;
+import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
 
@@ -19,7 +20,7 @@ public class GamePlayValidator {
     this.game = game;
     this.seq = new LinkedList<>();
     this.builder = new StringBuilder();
-    this.validatedEntries = new HashMap<>();
+    this.validatedEntries = new LinkedHashMap<>();
   }
 
   public void reset() {
@@ -72,7 +73,7 @@ public class GamePlayValidator {
     }
   }
 
-  public Pair<String, Integer> get() {
+  public WordPoint get() {
     String word = this.builder.toString();
     if (this.validatedEntries.containsKey(word)) {
       return null;
@@ -80,7 +81,7 @@ public class GamePlayValidator {
     else {
       int points = this.game.getWordPoints(word);
       this.validatedEntries.put(word, points);
-      return new Pair<>(word, points);
+      return new WordPoint(this.validatedEntries.size(), word.toUpperCase(), points);
     }
   }
 }

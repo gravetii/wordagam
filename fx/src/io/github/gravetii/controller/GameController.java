@@ -1,6 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
+import io.github.gravetii.pojo.WordPoint;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
 import io.github.gravetii.util.Utils;
@@ -8,7 +9,6 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.util.Pair;
 
 public class GameController implements FxController {
 
@@ -50,8 +50,8 @@ public class GameController implements FxController {
     }
   }
 
-  public Pair<String, Integer> validateWordOnBtnClick() {
-    Pair<String, Integer> result = null;
+  public WordPoint validateWordOnBtnClick() {
+    WordPoint result = null;
     boolean valid = this.validator.validateWord();
 
     if (!valid) {
