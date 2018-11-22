@@ -6,7 +6,7 @@ import io.github.gravetii.util.*;
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static io.github.gravetii.util.Constants.WORDS_COUNT_HIGH;
+import static io.github.gravetii.util.Constants.MIN_WORDS_COUNT;
 
 public class Game {
 
@@ -109,7 +109,7 @@ public class Game {
 
   private Quality assignQuality() {
     int sz = allWords.size();
-    return sz >= WORDS_COUNT_HIGH ? Quality.HIGH : Quality.LOW;
+    return sz >= MIN_WORDS_COUNT ? Quality.HIGH : Quality.LOW;
   }
 
   public Quality getQuality() {
