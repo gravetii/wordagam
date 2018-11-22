@@ -18,6 +18,7 @@
 
 .table-view .column-header .label {
     -fx-text-fill: #0074D9;
+    -fx-alignment: CENTER;
 }
 
 .custom-img-view:hover {
