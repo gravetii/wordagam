@@ -1,15 +1,20 @@
 package io.github.gravetii.util;
 
+import javafx.scene.image.Image;
+
 import java.util.Objects;
 
 public class GridUnit {
 
   private Alphabet alphabet;
   private GridPoint gridPoint;
+  private String imgPath;
+  private Image img;
 
   public GridUnit(Alphabet alphabet, GridPoint gridPoint) {
     this.alphabet = alphabet;
     this.gridPoint = gridPoint;
+    this.imgPath = "images/" + this.alphabet.get() + ".png";
   }
 
   public Alphabet getAlphabet() {
@@ -34,6 +39,14 @@ public class GridUnit {
 
   public boolean isNeighbor(GridUnit unit) {
     return this.getGridPoint().isNeighbor(unit.getGridPoint());
+  }
+
+  public Image getImage() {
+    if (this.img == null) {
+      this.img = new Image(ClassLoader.getSystemResourceAsStream(this.imgPath));
+    }
+
+    return this.img;
   }
 
   @Override

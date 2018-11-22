@@ -1,4 +1,4 @@
-package io.github.gravetii.scene;
+package io.github.gravetii.pojo;
 
 import javafx.scene.control.SplitPane;
 import javafx.scene.layout.GridPane;

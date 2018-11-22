@@ -2,6 +2,7 @@ package io.github.gravetii.scene;
 
 import io.github.gravetii.game.Game;
 import io.github.gravetii.game.GameService;
+import io.github.gravetii.pojo.GameComponent;
 import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.stage.Stage;
