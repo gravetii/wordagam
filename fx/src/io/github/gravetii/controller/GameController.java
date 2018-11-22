@@ -56,13 +56,11 @@ public class GameController implements FxController {
 
     if (!valid) {
       this.styler.forIncorrectWord();
-    }
-    else {
+    } else {
       result = this.validator.get();
       if (result == null) {
         this.styler.forRepeatedWord();
-      }
-      else {
+      } else {
         this.styler.forCorrectWord();
       }
     }

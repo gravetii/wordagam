@@ -3,7 +3,6 @@ package io.github.gravetii.controller;
 import io.github.gravetii.game.Game;
 import io.github.gravetii.pojo.WordPoint;
 import io.github.gravetii.util.GridUnit;
-import javafx.util.Pair;
 
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
@@ -42,8 +41,7 @@ public class GamePlayValidator {
     if (unit == this.seq.getLast()) {
       this.truncate();
       return ValidationResult.LAST_INVALID;
-    }
-    else {
+    } else {
       if (this.seq.contains(unit) || !unit.isNeighbor(this.seq.getLast())) {
         this.reset();
         return ValidationResult.ALL_INVALID;
@@ -67,8 +65,7 @@ public class GamePlayValidator {
     String word = this.builder.toString();
     if (word.isEmpty()) {
       return false;
-    }
-    else {
+    } else {
       return this.game.exists(word);
     }
   }
@@ -77,8 +74,7 @@ public class GamePlayValidator {
     String word = this.builder.toString();
     if (this.validatedEntries.containsKey(word)) {
       return null;
-    }
-    else {
+    } else {
       int points = this.game.getWordPoints(word);
       this.validatedEntries.put(word, points);
       return new WordPoint(this.validatedEntries.size(), word.toUpperCase(), points);
