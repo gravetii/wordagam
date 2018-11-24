@@ -7,7 +7,6 @@ public enum ThemeType {
   SUNSET,
   BEACH,
   RED_DAWN,
-  GARNET,
   TERRA,
   BLUEZY,
   HORIZON,

@@ -42,8 +42,16 @@ public abstract class FxScene {
   protected abstract Scene build() throws Exception;
 
   public void show(String title) throws Exception {
+    this.show(title, false);
+  }
+
+  public void show(String title, boolean wait) throws Exception {
     this.stage.setScene(this.build());
     this.stage.setTitle(title);
-    this.stage.show();
+    if (wait) {
+      this.stage.showAndWait();
+    } else {
+      this.stage.show();
+    }
   }
 }

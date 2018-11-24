@@ -45,7 +45,6 @@ public class ThemeFactory {
     themes.add(new Theme(ThemeType.BLACK_AND_WHITE, ThemeType.BLACK_AND_WHITE.getImgPath()));
     themes.add(new Theme(ThemeType.BLUEZY, ThemeType.BLUEZY.getImgPath()));
     themes.add(new Theme(ThemeType.EUANTHE, ThemeType.EUANTHE.getImgPath()));
-    themes.add(new Theme(ThemeType.GARNET, ThemeType.GARNET.getImgPath()));
     themes.add(new Theme(ThemeType.GOLDEN_SKY, ThemeType.GOLDEN_SKY.getImgPath()));
     themes.add(new Theme(ThemeType.HORIZON, ThemeType.HORIZON.getImgPath()));
     themes.add(new Theme(ThemeType.KAITO, ThemeType.KAITO.getImgPath()));

@@ -4,9 +4,12 @@ import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.GameScene;
 import io.github.gravetii.scene.ThemeListScene;
+import io.github.gravetii.store.PreferenceStore;
 import io.github.gravetii.util.Utils;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MenuBarController implements FxController {
@@ -28,19 +31,22 @@ public class MenuBarController implements FxController {
   }
 
   @FXML
-  public void exit(ActionEvent event) {
+  public void exit(ActionEvent event) throws Exception {
     GameService.close();
     this.stage.close();
+    PreferenceStore.close();
+    Platform.exit();
   }
 
   @FXML
   public void editTheme(ActionEvent event) {
-    System.out.println("Edit theme");
     try {
       Stage stage = new Stage();
+      stage.initOwner(this.stage);
+      stage.initModality(Modality.APPLICATION_MODAL);
       Utils.setThemeDimensions(stage);
       FxScene scene = new ThemeListScene(stage);
-      scene.show("Edit Theme");
+      scene.show("Edit Theme", true);
     } catch (Exception e) {
       throw new RuntimeException(e);
     }

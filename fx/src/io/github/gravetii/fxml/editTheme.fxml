@@ -22,8 +22,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
                     GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_0" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -33,8 +33,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_1" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -44,8 +44,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_2" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -55,8 +55,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_3" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -66,8 +66,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_4" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -77,8 +77,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_5" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -88,8 +88,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_6" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -99,8 +99,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_7" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -110,8 +110,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_8" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -121,8 +121,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_9" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -132,8 +132,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_10" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -143,8 +143,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_11" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -154,8 +154,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_12" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -165,8 +165,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_13" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
@@ -176,8 +176,8 @@
         <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="CENTER"
                     GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
-                <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" styleClass="theme-img-view"
-                           BorderPane.alignment="CENTER">
+                <ImageView fx:id="imgView_14" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick"
+                           pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
                     <effect>
                         <InnerShadow/>
                     </effect>
