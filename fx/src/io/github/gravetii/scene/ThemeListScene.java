@@ -13,7 +13,7 @@ public class ThemeListScene extends FxScene {
   @Override
   protected Scene build() throws Exception {
     GridPane gridPane = this.builder.loadEditThemePane();
-    this.showCenter(gridPane);
+    this.showLeft(gridPane);
     return this.builder.build();
   }
 }

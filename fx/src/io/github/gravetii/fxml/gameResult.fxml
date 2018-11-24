@@ -1,33 +1,33 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Separator?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
-
-<VBox prefHeight="520.0" prefWidth="300.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="520.0" prefWidth="300.0" stylesheets="@../css/styles.css"
+      xmlns="http://javafx.com/javafx/8.0.172-ea">
     <children>
-        <Button fx:id="goBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onGoBtnClick" prefHeight="83.0" prefWidth="200.0" styleClass="custom-button" text="GO">
+        <Button fx:id="goBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onGoBtnClick" prefHeight="83.0"
+                prefWidth="200.0" styleClass="custom-button" text="GO">
             <VBox.margin>
-                <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                <Insets bottom="50.0" left="50.0" right="50.0" top="50.0"/>
             </VBox.margin>
             <padding>
-                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
             </padding>
         </Button>
-        <Separator prefWidth="200.0" />
+        <Separator prefWidth="200.0"/>
         <AnchorPane VBox.vgrow="ALWAYS">
             <children>
-                <TableView fx:id="tblDisplay" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                    <placeholder><Label/></placeholder>
+                <TableView fx:id="tblDisplay" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
+                           AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                    <placeholder>
+                        <Label/>
+                    </placeholder>
                     <columns>
-                        <TableColumn fx:id="idTblCol" editable="false" prefWidth="53.0" sortable="false" text="ID" />
-                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="138.0" sortable="false" text="WORD" />
-                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="88.0" text="SCORE" />
+                        <TableColumn fx:id="idTblCol" editable="false" prefWidth="53.0" sortable="false" text="ID"/>
+                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="138.0" sortable="false"
+                                     text="WORD"/>
+                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="88.0" text="SCORE"/>
                     </columns>
                 </TableView>
             </children>

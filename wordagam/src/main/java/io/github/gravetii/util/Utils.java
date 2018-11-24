@@ -9,6 +9,11 @@ public class Utils {
     return new GridPoint(Integer.parseInt(tokens[0]), Integer.parseInt(tokens[1]));
   }
 
+  public static int getImageViewIndexFromLabel(String label) {
+    String[] tokens = label.split("_");
+    return Integer.parseInt(tokens[1]);
+  }
+
   public static boolean[][] arrCopy(boolean[][] arr) {
     int len = arr.length;
     boolean[][] result = new boolean[len][arr[0].length];

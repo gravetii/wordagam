@@ -110,7 +110,7 @@ public class SceneBuilder {
 
   public GridPane loadEditThemePane() throws Exception {
     GridPane gridPane =
-        (GridPane) loadFxComponent("fxml/editTheme.fxml", new EditThemesController(this.stage));
+        (GridPane) loadFxComponent("fxml/editTheme.fxml", new EditThemeController(this.stage));
     List<Theme> allThemes = this.themes.getAll();
     for (int c = 0; c < allThemes.size(); ++c) {
       Theme theme = allThemes.get(c);

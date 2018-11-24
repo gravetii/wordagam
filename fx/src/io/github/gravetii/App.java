@@ -3,6 +3,7 @@ package io.github.gravetii;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.StartScene;
+import io.github.gravetii.store.PreferenceStore;
 import io.github.gravetii.util.AppLogger;
 import io.github.gravetii.util.Utils;
 import javafx.application.Application;
@@ -32,13 +33,14 @@ public class App extends Application {
   }
 
   @Override
-  public void init() throws Exception {
+  public void init() {
     GameService.init();
   }
 
   @Override
-  public void stop() {
+  public void stop() throws Exception {
     GameService.close();
     this.stage.close();
+    PreferenceStore.close();
   }
 }
