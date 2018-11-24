@@ -1,6 +1,7 @@
-package io.github.gravetii.themes;
+package io.github.gravetii.theme;
 
 public enum ThemeType {
+  RANDOM,
   KAITO,
   BLACK_AND_WHITE,
   AZURE,
@@ -14,9 +15,9 @@ public enum ThemeType {
   EUANTHE,
   LAVENDER,
   GOLDEN_SKY,
-  RANDOM;
+  ;
 
-  private static final String THEME_BASE_PATH = "themes/files";
+  private static final String THEME_BASE_PATH = "theme/files";
 
   public String getImgPath() {
     return THEME_BASE_PATH + "/" + this.name().toLowerCase() + ".jpg";
