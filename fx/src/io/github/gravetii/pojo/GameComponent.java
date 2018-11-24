@@ -1,24 +1,24 @@
 package io.github.gravetii.pojo;
 
-import javafx.scene.control.SplitPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 
 public class GameComponent {
 
   private GridPane gridPane;
 
-  private SplitPane splitPane;
+  private VBox vBox;
 
-  public GameComponent(GridPane gridPane, SplitPane splitPane) {
+  public GameComponent(GridPane gridPane, VBox vBox) {
     this.gridPane = gridPane;
-    this.splitPane = splitPane;
+    this.vBox = vBox;
   }
 
   public GridPane getGridPane() {
     return gridPane;
   }
 
-  public SplitPane getSplitPane() {
-    return splitPane;
+  public VBox getvBox() {
+    return vBox;
   }
 }

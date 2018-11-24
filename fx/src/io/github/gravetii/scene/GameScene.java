@@ -20,7 +20,7 @@ public class GameScene extends FxScene {
   protected Scene build() throws Exception {
     MenuBar menuBar = this.builder.loadMenuBar();
     GameComponent component = this.builder.loadGameComponent(this.game);
-    this.showTop(menuBar).showCenter(component.getGridPane()).showRight(component.getSplitPane());
+    this.showTop(menuBar).showCenter(component.getGridPane()).showRight(component.getvBox());
     return this.builder.build();
   }
 }

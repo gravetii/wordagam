@@ -5,6 +5,7 @@
     -fx-text-fill: #FFFFFF;
     -fx-background-color: #7FDBFF;
     -fx-text-alignment: center;
+    -fx-alignment: center;
 }
 
 .custom-button:hover {
