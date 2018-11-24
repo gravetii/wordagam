@@ -23,13 +23,11 @@
         <AnchorPane VBox.vgrow="ALWAYS">
             <children>
                 <TableView fx:id="tblDisplay" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
-                    <placeholder>
-                        <Label />
-                    </placeholder>
+                    <placeholder><Label/></placeholder>
                     <columns>
-                        <TableColumn fx:id="idTblCol" prefWidth="53.0" text="ID" />
-                        <TableColumn fx:id="wordTblCol" prefWidth="138.0" text="WORD" />
-                        <TableColumn fx:id="pointsTblCol" prefWidth="88.0" text="SCORE" />
+                        <TableColumn fx:id="idTblCol" editable="false" prefWidth="53.0" sortable="false" text="ID" />
+                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="138.0" sortable="false" text="WORD" />
+                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="88.0" text="SCORE" />
                     </columns>
                 </TableView>
             </children>
