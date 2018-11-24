@@ -13,7 +13,6 @@ import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
-import javafx.scene.control.SplitPane;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
@@ -70,8 +69,8 @@ public class SceneBuilder {
     return pane;
   }
 
-  private SplitPane loadSplitPane(FxController controller) throws Exception {
-    return (SplitPane) loadFxComponent("fxml/grid.fxml", controller);
+  private VBox loadGameResultVBox(FxController controller) throws Exception {
+    return (VBox) loadFxComponent("fxml/gameResult.fxml", controller);
   }
 
   private GridPane loadGamePane(Game game, FxController controller) throws Exception {
@@ -103,10 +102,10 @@ public class SceneBuilder {
 
   public GameComponent loadGameComponent(Game game) throws Exception {
     GameController gameController = new GameController(this.stage, game);
-    GridController gridController = new GridController(gameController);
+    GameResultController gameResultController = new GameResultController(gameController);
     GridPane gridPane = this.loadGamePane(game, gameController);
-    SplitPane splitPane = this.loadSplitPane(gridController);
-    return new GameComponent(gridPane, splitPane);
+    VBox vBox = this.loadGameResultVBox(gameResultController);
+    return new GameComponent(gridPane, vBox);
   }
 
   public GridPane loadEditThemePane() throws Exception {

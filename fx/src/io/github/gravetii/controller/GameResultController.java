@@ -7,7 +7,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-public class GridController implements FxController {
+public class GameResultController implements FxController {
 
   private GameController ref;
 
@@ -19,7 +19,7 @@ public class GridController implements FxController {
 
   @FXML private TableColumn<WordPoint, Integer> pointsTblCol;
 
-  public GridController(GameController ref) {
+  public GameResultController(GameController ref) {
     this.ref = ref;
   }
 
