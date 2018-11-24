@@ -1,12 +1,9 @@
-package io.github.gravetii.themes;
+package io.github.gravetii.theme;
 
 import io.github.gravetii.App;
-import io.github.gravetii.store.PreferenceStore;
 import javafx.scene.image.Image;
 
 public class Theme {
-
-  private static volatile ThemeType current = PreferenceStore.getTheme();
 
   private ThemeType type;
   private String imgPath;
@@ -16,15 +13,6 @@ public class Theme {
   public Theme(ThemeType type, String imgPath) {
     this.type = type;
     this.imgPath = imgPath;
-  }
-
-  public static ThemeType getCurrent() {
-    return current;
-  }
-
-  public static void setCurrent(ThemeType type) {
-    current = type;
-    PreferenceStore.saveTheme(type);
   }
 
   public ThemeType getType() {

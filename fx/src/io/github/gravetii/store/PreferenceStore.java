@@ -1,6 +1,6 @@
 package io.github.gravetii.store;
 
-import io.github.gravetii.themes.ThemeType;
+import io.github.gravetii.theme.ThemeType;
 
 import java.util.prefs.Preferences;
 

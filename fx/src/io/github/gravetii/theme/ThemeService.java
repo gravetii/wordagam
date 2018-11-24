@@ -1,4 +1,4 @@
-package io.github.gravetii.themes;
+package io.github.gravetii.theme;
 
 import java.util.List;
 
@@ -22,7 +22,7 @@ public class ThemeService {
     return this.factory.random();
   }
 
-  public List<Theme> getAll() {
+  public List<ThemeType> getAll() {
     return this.factory.getAll();
   }
 }

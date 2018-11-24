@@ -4,11 +4,11 @@ import io.github.gravetii.App;
 import io.github.gravetii.controller.*;
 import io.github.gravetii.game.Game;
 import io.github.gravetii.pojo.GameComponent;
-import io.github.gravetii.themes.Theme;
-import io.github.gravetii.themes.ThemeService;
+import io.github.gravetii.theme.Theme;
+import io.github.gravetii.theme.ThemeService;
+import io.github.gravetii.theme.ThemeType;
 import io.github.gravetii.util.GridUnit;
 import javafx.fxml.FXMLLoader;
-import javafx.geometry.Pos;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
@@ -111,15 +111,18 @@ public class SceneBuilder {
   public GridPane loadEditThemePane() throws Exception {
     GridPane gridPane =
         (GridPane) loadFxComponent("fxml/editTheme.fxml", new EditThemeController(this.stage));
-    List<Theme> allThemes = this.themes.getAll();
+    List<ThemeType> allThemes = this.themes.getAll();
     for (int c = 0; c < allThemes.size(); ++c) {
-      Theme theme = allThemes.get(c);
-      BorderPane pane = (BorderPane) gridPane.getChildren().get(c);
-      ImageView imgView = (ImageView) pane.getCenter();
+      Theme theme = themes.get(allThemes.get(c));
+      BorderPane borderPane = (BorderPane) gridPane.getChildren().get(c);
+      Pane pane = (Pane) borderPane.getCenter();
+      ImageView imgView = (ImageView) pane.getChildren().get(0);
+      imgView.fitWidthProperty().bind(pane.widthProperty());
+      imgView.fitHeightProperty().bind(pane.heightProperty());
       imgView.setImage(theme.getImage());
-      Label label = new Label(theme.getShowableName());
-      BorderPane.setAlignment(label, Pos.CENTER);
-      pane.setBottom(label);
+      Label label = (Label) borderPane.getBottom();
+      label.setText(theme.getShowableName());
+      borderPane.setBottom(label);
     }
 
     return gridPane;

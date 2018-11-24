@@ -16,7 +16,7 @@ public class Constants {
 
   public static final double MAX_SCENE_HEIGHT = 780;
 
-  public static final double THEME_SCENE_WIDTH = 1100;
+  public static final double THEME_SCENE_WIDTH = 800;
 
-  public static final double THEME_SCENE_HEIGHT = 640;
+  static final double THEME_SCENE_HEIGHT = 550;
 }
