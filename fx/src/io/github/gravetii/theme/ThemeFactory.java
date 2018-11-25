@@ -69,7 +69,7 @@ public class ThemeFactory {
     }
   }
 
-  public Theme random() {
+  private Theme random() {
     ThemeType[] allThemeTypes = ThemeType.values();
     int count = ThemeType.values().length;
     int r = ThreadLocalRandom.current().nextInt(1, count);
