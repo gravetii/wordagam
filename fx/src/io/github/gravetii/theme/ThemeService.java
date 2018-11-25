@@ -18,10 +18,6 @@ public class ThemeService {
     return this.factory.current();
   }
 
-  public Theme random() {
-    return this.factory.random();
-  }
-
   public List<ThemeType> getAll() {
     return this.factory.getAll();
   }
