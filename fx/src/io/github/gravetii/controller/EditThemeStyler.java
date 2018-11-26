@@ -17,12 +17,10 @@ public class EditThemeStyler {
   }
 
   private void apply(ImageView imgView) {
-    Pane pane = (Pane) imgView.getParent();
-    pane.getStyleClass().add("theme-img-view-click");
+    imgView.getParent().getStyleClass().add("theme-img-view-click");
   }
 
   private void revert(ImageView imgView) {
-    Pane pane = (Pane) imgView.getParent();
-    pane.getStyleClass().remove("theme-img-view-click");
+    imgView.getParent().getStyleClass().remove("theme-img-view-click");
   }
 }

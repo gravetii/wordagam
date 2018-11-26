@@ -1,7 +1,6 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.store.PreferenceStore;
-import io.github.gravetii.theme.CurrentTheme;
 import io.github.gravetii.theme.ThemeService;
 import io.github.gravetii.theme.ThemeType;
 import io.github.gravetii.util.Utils;
@@ -67,12 +66,12 @@ public class EditThemeController implements FxController {
   public void onImgViewClick(MouseEvent event) {
     ImageView imgView = (ImageView) event.getSource();
     int idx = Utils.getImageViewIndexFromLabel(imgView.getId());
-    if (idx >= this.themes.getAll().size()) {
+    if (idx >= this.themes.count()) {
       return;
     }
 
-    ThemeType type = themes.getAll().get(idx);
-    CurrentTheme.set(type);
+    ThemeType type = this.themes.getAll().get(idx);
+    this.themes.setCurrent(type);
     this.styler.applySelectStyle(imgView);
   }
 
