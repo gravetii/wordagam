@@ -49,7 +49,7 @@ public class Theme {
               this.getImage(),
               BackgroundRepeat.NO_REPEAT,
               BackgroundRepeat.NO_REPEAT,
-              BackgroundPosition.DEFAULT,
+              BackgroundPosition.CENTER,
               size);
       this.gameGridBackground = new Background(image);
     }
