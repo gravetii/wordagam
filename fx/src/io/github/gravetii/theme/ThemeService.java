@@ -21,4 +21,12 @@ public class ThemeService {
   public List<ThemeType> getAll() {
     return this.factory.getAll();
   }
+
+  public void setCurrent(ThemeType type) {
+    this.factory.setCurrent(type);
+  }
+
+  public int count() {
+    return this.getAll().size();
+  }
 }

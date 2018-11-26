@@ -45,12 +45,12 @@ public class Theme {
     if (this.gameGridBackground == null) {
       BackgroundSize size = new BackgroundSize(100, 100, true, true, true, true);
       BackgroundImage image =
-              new BackgroundImage(
-                      this.getImage(),
-                      BackgroundRepeat.NO_REPEAT,
-                      BackgroundRepeat.NO_REPEAT,
-                      BackgroundPosition.DEFAULT,
-                      size);
+          new BackgroundImage(
+              this.getImage(),
+              BackgroundRepeat.NO_REPEAT,
+              BackgroundRepeat.NO_REPEAT,
+              BackgroundPosition.DEFAULT,
+              size);
       this.gameGridBackground = new Background(image);
     }
 
