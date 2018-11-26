@@ -78,7 +78,7 @@ public class SceneBuilder {
 
   private GridPane loadGamePane(Game game, FxController controller) throws Exception {
     GridPane gridPane = (GridPane) loadFxComponent("fxml/game.fxml", controller);
-    gridPane.setBackground(this.themes.current().getGameGridBackground());
+    gridPane.setBackground(this.themes.loadCurrentTheme().getGameGridBackground());
 
     for (int i = 0, c = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {

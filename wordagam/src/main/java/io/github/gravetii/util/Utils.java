@@ -34,10 +34,6 @@ public class Utils {
   }
 
   public static void setThemeDimensions(Stage stage) {
-    stage.setMinWidth(Constants.THEME_SCENE_WIDTH);
-    stage.setMinHeight(Constants.THEME_SCENE_HEIGHT);
-    stage.setMaxWidth(Constants.THEME_SCENE_WIDTH);
-    stage.setMaxHeight(Constants.THEME_SCENE_HEIGHT);
     stage.setWidth(Constants.THEME_SCENE_WIDTH);
     stage.setHeight(Constants.THEME_SCENE_HEIGHT);
   }

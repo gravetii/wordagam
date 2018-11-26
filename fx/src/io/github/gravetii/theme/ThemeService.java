@@ -14,12 +14,16 @@ public class ThemeService {
     return this.factory.get(type);
   }
 
-  public Theme current() {
-    return this.factory.current();
+  public Theme loadCurrentTheme() {
+    return this.factory.loadCurrentTheme();
   }
 
   public List<ThemeType> getAll() {
     return this.factory.getAll();
+  }
+
+  public ThemeType getCurrent() {
+    return this.factory.getCurrent();
   }
 
   public void setCurrent(ThemeType type) {
