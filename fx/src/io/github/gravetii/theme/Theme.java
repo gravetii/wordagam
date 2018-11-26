@@ -1,6 +1,8 @@
 package io.github.gravetii.theme;
 
 import io.github.gravetii.App;
+import javafx.event.Event;
+import javafx.event.EventType;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
@@ -55,5 +57,14 @@ public class Theme {
     }
 
     return this.gameGridBackground;
+  }
+
+  public static class ChangeEvent extends Event {
+    public static final EventType<ChangeEvent> THEME_CHANGE_EVENT_TYPE =
+        new EventType<>(Event.ANY, "theme-change");
+
+    public ChangeEvent() {
+      super(THEME_CHANGE_EVENT_TYPE);
+    }
   }
 }

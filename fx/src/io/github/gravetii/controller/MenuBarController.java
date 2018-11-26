@@ -42,6 +42,7 @@ public class MenuBarController implements FxController {
   public void editTheme(ActionEvent event) {
     try {
       Stage stage = new Stage();
+      stage.setResizable(false);
       stage.initOwner(this.stage);
       stage.initModality(Modality.APPLICATION_MODAL);
       Utils.setThemeDimensions(stage);

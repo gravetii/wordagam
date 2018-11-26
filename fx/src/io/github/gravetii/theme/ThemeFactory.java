@@ -64,12 +64,16 @@ public class ThemeFactory {
     return this.themeMap.get(type);
   }
 
+  public ThemeType getCurrent() {
+    return this.current;
+  }
+
   public void setCurrent(ThemeType current) {
     this.current = current;
     PreferenceStore.saveTheme(current);
   }
 
-  public Theme current() {
+  public Theme loadCurrentTheme() {
     if (this.current == null || this.current == ThemeType.RANDOM) {
       return this.random();
     } else {

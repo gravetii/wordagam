@@ -1,6 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.store.PreferenceStore;
+import io.github.gravetii.theme.Theme;
 import io.github.gravetii.theme.ThemeService;
 import io.github.gravetii.theme.ThemeType;
 import io.github.gravetii.util.Utils;
@@ -8,6 +9,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
+import javafx.stage.Window;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -71,8 +73,21 @@ public class EditThemeController implements FxController {
     }
 
     ThemeType type = this.themes.getAll().get(idx);
-    this.themes.setCurrent(type);
     this.styler.applySelectStyle(imgView);
+    this.handleThemeChange(type);
+  }
+
+  private void handleThemeChange(ThemeType type) {
+    boolean changed = type != this.themes.getCurrent();
+    if (changed) {
+      this.themes.setCurrent(type);
+      this.dispatchEvent();
+    }
+  }
+
+  private void dispatchEvent() {
+    Window parent = this.stage.getOwner();
+    parent.getScene().getRoot().fireEvent(new Theme.ChangeEvent());
   }
 
   private void initStyle() {

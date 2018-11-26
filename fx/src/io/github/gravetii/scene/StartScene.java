@@ -18,4 +18,7 @@ public class StartScene extends FxScene {
     this.showTop(menuBar).showCenter(pane);
     return this.builder.build();
   }
+
+  @Override
+  protected void addEventFilters() {}
 }

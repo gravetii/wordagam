@@ -8,10 +8,8 @@ import javafx.stage.Stage;
 public abstract class FxScene {
 
   protected SceneBuilder builder;
-
-  private Stage stage;
-
-  private BorderPane root;
+  protected Stage stage;
+  protected BorderPane root;
 
   FxScene(Stage stage) {
     this.stage = stage;
@@ -41,9 +39,12 @@ public abstract class FxScene {
 
   protected abstract Scene build() throws Exception;
 
+  protected abstract void addEventFilters();
+
   public void show(String title) throws Exception {
     this.stage.setScene(this.build());
     this.stage.setTitle(title);
     this.stage.show();
+    this.addEventFilters();
   }
 }
