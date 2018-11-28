@@ -3,20 +3,20 @@
 #goBtn {
     -fx-font-family: "Futura";
     -fx-font-weight: bold;
-    -fx-font-size: 15px;
-    -fx-text-fill: #FFFFFF;
-    -fx-background-color: #7FDBFF;
+    -fx-font-size: 20px;
+    -fx-text-fill: #000000;
+    -fx-background-color: #fbbd7e;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
 
 #goBtn:hover {
-    -fx-background-color: #4095C6;
+    -fx-background-color: #e5994c;
     -fx-cursor: HAND;
 }
 
 #goBtn:pressed {
-    -fx-background-color: #3487BA;
+    -fx-background-color: #d98631;
 }
 
 #game_pane {
