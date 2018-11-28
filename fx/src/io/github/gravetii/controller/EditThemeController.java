@@ -1,7 +1,5 @@
 package io.github.gravetii.controller;
 
-import io.github.gravetii.store.PreferenceStore;
-import io.github.gravetii.theme.Theme;
 import io.github.gravetii.theme.ThemeService;
 import io.github.gravetii.theme.ThemeType;
 import io.github.gravetii.util.Utils;
@@ -74,24 +72,16 @@ public class EditThemeController implements FxController {
 
     ThemeType type = this.themes.getAll().get(idx);
     this.styler.applySelectStyle(imgView);
-    this.handleThemeChange(type);
-  }
 
-  private void handleThemeChange(ThemeType type) {
-    boolean changed = type != this.themes.getCurrent();
+    boolean changed = this.themes.changeTheme(type);
     if (changed) {
-      this.themes.setCurrent(type);
-      this.dispatchEvent();
+      Window parent = this.stage.getOwner();
+      this.themes.dispatch(parent);
     }
   }
 
-  private void dispatchEvent() {
-    Window parent = this.stage.getOwner();
-    parent.getScene().getRoot().fireEvent(new Theme.ChangeEvent());
-  }
-
   private void initStyle() {
-    ThemeType current = PreferenceStore.getTheme();
+    ThemeType current = this.themes.getCurrent();
     int idx = this.themes.getAll().indexOf(current);
     ImageView imgView = this.imgViewMap.get(idx);
     this.styler.applySelectStyle(imgView);

@@ -17,9 +17,11 @@ public enum ThemeType {
   GOLDEN_SKY,
   ;
 
-  private static final String THEME_BASE_PATH = "theme/files";
-
   public String getImgPath() {
-    return THEME_BASE_PATH + "/" + this.name().toLowerCase() + ".jpg";
+    return "files/" + this.name().toLowerCase() + ".jpg";
+  }
+
+  public String getCssPath() {
+    return "css/" + this.name().toLowerCase() + ".css";
   }
 }

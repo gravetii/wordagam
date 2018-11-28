@@ -29,7 +29,7 @@ public class App extends Application {
 
     Utils.setPrimaryDimensions(this.stage);
     FxScene scene = new StartScene(stage);
-    scene.show("WORDAGAM!");
+    scene.show();
   }
 
   @Override

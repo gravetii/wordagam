@@ -1,0 +1,51 @@
+.custom-img-view-click {
+    -fx-scale-x: 0.90;
+    -fx-scale-y: 0.90;
+    -fx-blend-mode: SRC_ATOP;
+}
+
+.custom-img-view:hover {
+    -fx-cursor: HAND;
+}
+
+.table-view {
+    -fx-background-color: grey;
+}
+
+.table-view .column-header-background {
+    -fx-background-color: linear-gradient(#131313 0%, #424141 100%);
+}
+
+.table-view .column-header-background .label {
+    -fx-background-color: transparent;
+    -fx-text-fill: white;
+}
+
+.table-view .column-header {
+    -fx-background-color: transparent;
+}
+
+.table-view .table-cell {
+    -fx-text-fill: white;
+}
+
+.table-row-cell {
+    -fx-background-color: -fx-table-cell-border-color, #616161;
+    -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
+}
+
+.table-row-cell:odd {
+    -fx-background-color: -fx-table-cell-border-color, #424242;
+    -fx-background-insets: 0, 0 0 1 0;
+}
+
+.table-row-cell:selected {
+    -fx-background-color: #005797;
+    -fx-background-insets: 0;
+    -fx-background-radius: 1;
+}
+
+.table-row-cell:empty {
+    -fx-background-color: transparent;
+}

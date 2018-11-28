@@ -10,7 +10,6 @@ import io.github.gravetii.theme.ThemeType;
 import io.github.gravetii.util.GridUnit;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
-import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
 import javafx.scene.image.Image;
@@ -40,7 +39,7 @@ public class SceneBuilder {
     this.themes = new ThemeService();
   }
 
-  private static Image getSkin() throws Exception {
+  private static Image skin() throws Exception {
     String fPath = App.class.getResource("skins").getFile();
     Stream<Path> files = Files.list(Paths.get(fPath));
     int count = Math.toIntExact(files.count());
@@ -66,7 +65,7 @@ public class SceneBuilder {
     pane.prefHeightProperty().bind(root.heightProperty());
     pane.prefWidthProperty().bind(root.widthProperty());
     ImageView imgView = (ImageView) pane.getChildren().get(0);
-    imgView.setImage(SceneBuilder.getSkin());
+    imgView.setImage(SceneBuilder.skin());
     imgView.fitHeightProperty().bind(pane.heightProperty());
     imgView.fitWidthProperty().bind(pane.widthProperty());
     return pane;
@@ -78,7 +77,6 @@ public class SceneBuilder {
 
   private GridPane loadGamePane(Game game, FxController controller) throws Exception {
     GridPane gridPane = (GridPane) loadFxComponent("fxml/game.fxml", controller);
-    gridPane.setBackground(this.themes.loadCurrentTheme().getGameGridBackground());
 
     for (int i = 0, c = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {
@@ -102,12 +100,13 @@ public class SceneBuilder {
     return new GameComponent(gridPane, vBox);
   }
 
-  public GridPane loadEditThemePane() throws Exception {
+  public GridPane loadChangeThemePane() throws Exception {
     GridPane gridPane =
-        (GridPane) loadFxComponent("fxml/editTheme.fxml", new EditThemeController(this.stage));
+        (GridPane) loadFxComponent("fxml/changeTheme.fxml", new EditThemeController(this.stage));
     List<ThemeType> allThemes = this.themes.getAll();
     for (int c = 0; c < allThemes.size(); ++c) {
-      Theme theme = themes.get(allThemes.get(c));
+      ThemeType type = allThemes.get(c);
+      Theme theme = this.themes.loadTheme(type);
       BorderPane borderPane = (BorderPane) gridPane.getChildren().get(c);
       Pane pane = (Pane) borderPane.getCenter();
       ImageView imgView = (ImageView) pane.getChildren().get(0);
@@ -120,9 +119,5 @@ public class SceneBuilder {
     }
 
     return gridPane;
-  }
-
-  public Scene build() {
-    return new Scene(this.root);
   }
 }
