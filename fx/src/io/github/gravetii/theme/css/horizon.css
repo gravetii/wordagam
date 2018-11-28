@@ -1,0 +1,28 @@
+@import url("theme_common.css");
+
+#goBtn {
+    -fx-font-family: "Futura";
+    -fx-font-weight: bold;
+    -fx-font-size: 15px;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #7FDBFF;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
+#goBtn:hover {
+    -fx-background-color: #4095C6;
+    -fx-cursor: HAND;
+}
+
+#goBtn:pressed {
+    -fx-background-color: #3487BA;
+}
+
+#game_pane {
+    -fx-background-image: url("../files/horizon.jpg");
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat no-repeat;
+    -fx-background-position: center;
+}
+

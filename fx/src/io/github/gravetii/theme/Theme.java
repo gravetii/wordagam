@@ -1,10 +1,8 @@
 package io.github.gravetii.theme;
 
-import io.github.gravetii.App;
 import javafx.event.Event;
 import javafx.event.EventType;
 import javafx.scene.image.Image;
-import javafx.scene.layout.*;
 
 public class Theme {
 
@@ -12,7 +10,7 @@ public class Theme {
   private String imgPath;
   private Image img;
   private String name;
-  private Background gameGridBackground;
+  private String styleSheet;
 
   public Theme(ThemeType type, String imgPath) {
     this.type = type;
@@ -20,11 +18,11 @@ public class Theme {
   }
 
   public ThemeType getType() {
-    return type;
+    return this.type;
   }
 
   public String getImgPath() {
-    return imgPath;
+    return this.imgPath;
   }
 
   public void setImgPath(String imgPath) {
@@ -33,7 +31,7 @@ public class Theme {
 
   public Image getImage() {
     if (this.img == null) {
-      this.img = new Image(App.class.getResourceAsStream(this.imgPath), 0, 0, false, false);
+      this.img = new Image(Theme.class.getResourceAsStream(this.imgPath), 0, 0, false, false);
     }
 
     return this.img;
@@ -43,20 +41,12 @@ public class Theme {
     return this.type.name().replace("_", " ");
   }
 
-  public Background getGameGridBackground() {
-    if (this.gameGridBackground == null) {
-      BackgroundSize size = new BackgroundSize(100, 100, true, true, true, true);
-      BackgroundImage image =
-          new BackgroundImage(
-              this.getImage(),
-              BackgroundRepeat.NO_REPEAT,
-              BackgroundRepeat.NO_REPEAT,
-              BackgroundPosition.CENTER,
-              size);
-      this.gameGridBackground = new Background(image);
+  public String getStyleSheet() {
+    if (this.styleSheet == null) {
+      this.styleSheet = Theme.class.getResource(this.type.getCssPath()).toExternalForm();
     }
 
-    return this.gameGridBackground;
+    return this.styleSheet;
   }
 
   public static class ChangeEvent extends Event {

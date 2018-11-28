@@ -1,5 +1,7 @@
 package io.github.gravetii.theme;
 
+import javafx.stage.Window;
+
 import java.util.List;
 
 public class ThemeService {
@@ -7,11 +9,11 @@ public class ThemeService {
   private ThemeFactory factory;
 
   public ThemeService() {
-    this.factory = ThemeFactory.get();
+    this.factory = ThemeFactory.getOrCreate();
   }
 
-  public Theme get(ThemeType type) {
-    return this.factory.get(type);
+  public Theme loadTheme(ThemeType type) {
+    return this.factory.getOrCreate(type);
   }
 
   public Theme loadCurrentTheme() {
@@ -22,15 +24,29 @@ public class ThemeService {
     return this.factory.getAll();
   }
 
+  public int count() {
+    return this.getAll().size();
+  }
+
   public ThemeType getCurrent() {
     return this.factory.getCurrent();
   }
 
-  public void setCurrent(ThemeType type) {
+  private void setCurrent(ThemeType type) {
     this.factory.setCurrent(type);
   }
 
-  public int count() {
-    return this.getAll().size();
+  public boolean changeTheme(ThemeType type) {
+    boolean changed = type != this.getCurrent();
+    if (changed) {
+      this.setCurrent(type);
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  public void dispatch(Window window) {
+    window.getScene().getRoot().fireEvent(new Theme.ChangeEvent());
   }
 }

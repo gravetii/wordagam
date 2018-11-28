@@ -1,6 +1,5 @@
 package io.github.gravetii.scene;
 
-import javafx.scene.Scene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
@@ -12,13 +11,14 @@ public class StartScene extends FxScene {
   }
 
   @Override
-  protected Scene build() throws Exception {
+  protected void build() throws Exception {
     MenuBar menuBar = this.builder.loadMenuBar();
     Pane pane = this.builder.loadStartPane();
     this.showTop(menuBar).showCenter(pane);
-    return this.builder.build();
   }
 
   @Override
-  protected void addEventFilters() {}
+  public String title() {
+    return "W-O-R-D-A-G-A-M";
+  }
 }

@@ -23,7 +23,7 @@ public class ThemeFactory {
     this.current = PreferenceStore.getTheme();
   }
 
-  public static ThemeFactory get() {
+  public static ThemeFactory getOrCreate() {
     if (INSTANCE == null) {
       synchronized (ThemeFactory.class) {
         if (INSTANCE == null) {
@@ -60,7 +60,7 @@ public class ThemeFactory {
     this.themeMap.put(ThemeType.URIEL, new Theme(ThemeType.URIEL, ThemeType.URIEL.getImgPath()));
   }
 
-  public Theme get(ThemeType type) {
+  public Theme getOrCreate(ThemeType type) {
     return this.themeMap.get(type);
   }
 
@@ -86,7 +86,7 @@ public class ThemeFactory {
     int count = ThemeType.values().length;
     int r = ThreadLocalRandom.current().nextInt(1, count);
     ThemeType type = allThemeTypes[r];
-    return this.get(type);
+    return this.getOrCreate(type);
   }
 
   public List<ThemeType> getAll() {
