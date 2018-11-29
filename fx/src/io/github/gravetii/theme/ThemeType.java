@@ -17,6 +17,10 @@ public enum ThemeType {
   GOLDEN_SKY,
   ;
 
+  public String getShowableName() {
+    return this.name().replace("_", " ");
+  }
+
   public String getImgPath() {
     return "files/" + this.name().toLowerCase() + ".jpg";
   }

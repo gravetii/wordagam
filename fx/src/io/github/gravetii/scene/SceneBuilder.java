@@ -3,6 +3,7 @@ package io.github.gravetii.scene;
 import io.github.gravetii.App;
 import io.github.gravetii.controller.*;
 import io.github.gravetii.game.Game;
+import io.github.gravetii.pojo.ChangeThemeComponent;
 import io.github.gravetii.pojo.GameComponent;
 import io.github.gravetii.theme.Theme;
 import io.github.gravetii.theme.ThemeService;
@@ -12,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -100,9 +102,8 @@ public class SceneBuilder {
     return new GameComponent(gridPane, vBox);
   }
 
-  public GridPane loadChangeThemePane() throws Exception {
-    GridPane gridPane =
-        (GridPane) loadFxComponent("fxml/changeTheme.fxml", new EditThemeController(this.stage));
+  private GridPane loadChangeThemePane(FxController controller) throws Exception {
+    GridPane gridPane = (GridPane) loadFxComponent("fxml/changeTheme.fxml", controller);
     List<ThemeType> allThemes = this.themes.getAll();
     for (int c = 0; c < allThemes.size(); ++c) {
       ThemeType type = allThemes.get(c);
@@ -114,10 +115,20 @@ public class SceneBuilder {
       imgView.fitHeightProperty().bind(pane.heightProperty());
       imgView.setImage(theme.getImage());
       Label label = (Label) borderPane.getBottom();
-      label.setText(theme.getShowableName());
+      label.setText(type.getShowableName());
       borderPane.setBottom(label);
     }
 
     return gridPane;
+  }
+
+  public ChangeThemeComponent loadChangeThemeComponent() throws Exception {
+    ChangeThemeFooterController footerController = new ChangeThemeFooterController(this.stage);
+    ChangeThemeController changeThemeController =
+        new ChangeThemeController(this.stage, footerController);
+    ToolBar footer =
+        (ToolBar) this.loadFxComponent("fxml/changeThemeFooter.fxml", footerController);
+    GridPane themesPane = this.loadChangeThemePane(changeThemeController);
+    return new ChangeThemeComponent(themesPane, footer);
   }
 }
