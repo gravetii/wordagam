@@ -7,17 +7,17 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
-import javafx.stage.Window;
 
 import java.util.HashMap;
 import java.util.Map;
 
-public class EditThemeController implements FxController {
+public class ChangeThemeController implements FxController {
 
   private Stage stage;
+  private ChangeThemeFooterController footerController;
   private Map<Integer, ImageView> imgViewMap;
   private ThemeService themes;
-  private EditThemeStyler styler;
+  private ChangeThemeStyler styler;
 
   @FXML private ImageView imgView_0;
   @FXML private ImageView imgView_1;
@@ -35,11 +35,12 @@ public class EditThemeController implements FxController {
   @FXML private ImageView imgView_13;
   @FXML private ImageView imgView_14;
 
-  public EditThemeController(Stage stage) {
+  public ChangeThemeController(Stage stage, ChangeThemeFooterController footerController) {
     this.stage = stage;
+    this.footerController = footerController;
     this.imgViewMap = new HashMap<>();
     this.themes = new ThemeService();
-    this.styler = new EditThemeStyler();
+    this.styler = new ChangeThemeStyler();
   }
 
   @FXML
@@ -75,8 +76,8 @@ public class EditThemeController implements FxController {
 
     boolean changed = this.themes.changeTheme(type);
     if (changed) {
-      Window parent = this.stage.getOwner();
-      this.themes.dispatch(parent);
+      this.themes.dispatch(this.stage.getOwner());
+      this.footerController.updateThemeChange(type);
     }
   }
 

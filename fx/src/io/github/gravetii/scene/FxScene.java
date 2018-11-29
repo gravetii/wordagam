@@ -38,6 +38,11 @@ public abstract class FxScene {
     return this;
   }
 
+  protected FxScene showBottom(Node node) {
+    this.root.setBottom(node);
+    return this;
+  }
+
   protected abstract void build() throws Exception;
 
   public abstract String title();

@@ -1,6 +1,6 @@
 package io.github.gravetii.scene;
 
-import javafx.scene.layout.GridPane;
+import io.github.gravetii.pojo.ChangeThemeComponent;
 import javafx.stage.Stage;
 
 public class ChangeThemeScene extends FxScene {
@@ -11,8 +11,8 @@ public class ChangeThemeScene extends FxScene {
 
   @Override
   protected void build() throws Exception {
-    GridPane gridPane = this.builder.loadChangeThemePane();
-    this.showCenter(gridPane);
+    ChangeThemeComponent component = this.builder.loadChangeThemeComponent();
+    this.showCenter(component.getThemesPane()).showBottom(component.getFooter());
   }
 
   @Override

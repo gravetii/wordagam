@@ -37,10 +37,6 @@ public class Theme {
     return this.img;
   }
 
-  public String getShowableName() {
-    return this.type.name().replace("_", " ");
-  }
-
   public String getStyleSheet() {
     if (this.styleSheet == null) {
       this.styleSheet = Theme.class.getResource(this.type.getCssPath()).toExternalForm();

@@ -1,36 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-
-<GridPane alignment="CENTER" hgap="15.0" stylesheets="@../css/styles.css" vgap="15.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" hgap="15.0" stylesheets="@../css/styles.css"
+          vgap="15.0" xmlns="http://javafx.com/javafx/8.0.172-ea">
     <columnConstraints>
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0" />
-        <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0" />
-        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0" />
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0"/>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0"/>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0"/>
+        <ColumnConstraints fillWidth="false" halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0"/>
+        <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0"/>
     </columnConstraints>
     <rowConstraints>
-        <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
-        <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
-        <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS" />
+        <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS"/>
+        <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS"/>
+        <RowConstraints prefHeight="30.0" valignment="CENTER" vgrow="ALWAYS"/>
     </rowConstraints>
     <children>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS"
+                    GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_0" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_0" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -39,18 +37,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_1" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_1" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -59,18 +60,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_2" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_2" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -79,18 +83,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_3" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_3" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -99,18 +106,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="0" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_4" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_4" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -119,18 +129,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_5" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_5" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -139,18 +152,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_6" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_6" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -159,18 +175,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_7" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_7" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -179,18 +198,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_8" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_8" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -199,18 +221,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_9" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_9" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -219,18 +244,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="0" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_10" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_10" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -239,18 +267,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_11" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_11" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -259,18 +290,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_12" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_12" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -279,18 +313,21 @@
             <bottom>
                 <Label BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_13" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_13" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -299,18 +336,21 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
         </BorderPane>
-        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+        <BorderPane prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.halignment="CENTER"
+                    GridPane.hgrow="ALWAYS" GridPane.rowIndex="2" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
             <center>
                 <Pane>
                     <children>
-                        <ImageView fx:id="imgView_14" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0" onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view" BorderPane.alignment="CENTER">
+                        <ImageView fx:id="imgView_14" blendMode="MULTIPLY" fitHeight="150.0" fitWidth="200.0"
+                                   onMouseClicked="#onImgViewClick" pickOnBounds="true" styleClass="theme-img-view"
+                                   BorderPane.alignment="CENTER">
                             <effect>
-                                <DropShadow />
+                                <DropShadow/>
                             </effect>
                         </ImageView>
                     </children>
@@ -320,7 +360,7 @@
             <bottom>
                 <Label alignment="CENTER" BorderPane.alignment="CENTER">
                     <padding>
-                        <Insets top="5.0" />
+                        <Insets top="5.0"/>
                     </padding>
                 </Label>
             </bottom>
@@ -328,6 +368,6 @@
 
     </children>
     <padding>
-        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+        <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
     </padding>
 </GridPane>
