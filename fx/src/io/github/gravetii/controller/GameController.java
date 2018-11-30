@@ -1,6 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
+import io.github.gravetii.pojo.GamePlayResult;
 import io.github.gravetii.pojo.WordPoint;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
@@ -10,6 +11,11 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+
 public class GameController implements FxController {
 
   private Stage stage;
@@ -17,12 +23,14 @@ public class GameController implements FxController {
 
   private GamePlayValidator validator;
   private GamePlayStyler styler;
+  private Map<String, GamePlayResult> wordToResultMap;
 
   public GameController(Stage stage, Game game) {
     this.stage = stage;
     this.game = game;
     this.validator = new GamePlayValidator(game);
     this.styler = new GamePlayStyler();
+    this.wordToResultMap = new HashMap<>();
   }
 
   @FXML
@@ -30,14 +38,14 @@ public class GameController implements FxController {
     ImageView imgView = (ImageView) event.getSource();
     GridPoint point = Utils.getGridPointFromImageViewLabel(imgView.getId());
     GridUnit unit = game.getGridUnit(point);
-    ValidationResult result = this.validator.validateClick(unit);
-    this.applyStyleAfterValidation(imgView, result);
+    ValidationResult validation = this.validator.validate(unit);
+    this.applyStyleAfterValidation(imgView, validation);
   }
 
   private void applyStyleAfterValidation(ImageView imgView, ValidationResult result) {
     switch (result) {
       case ALL_INVALID:
-        this.styler.forInvalidClick();
+        this.styler.invalidate();
         break;
       case LAST_INVALID:
         this.styler.forLastInvalidClick(imgView);
@@ -50,22 +58,42 @@ public class GameController implements FxController {
     }
   }
 
-  public WordPoint validateWordOnBtnClick() {
-    WordPoint result = null;
-    boolean valid = this.validator.validateWord();
+  public GamePlayResult validateWordOnBtnClick() {
+    GamePlayResult result = null;
+    String word = this.validator.validate();
 
-    if (!valid) {
+    if (word == null) {
       this.styler.forIncorrectWord();
+    } else if (this.wordToResultMap.containsKey(word)) {
+      this.styler.forRepeatedWord();
     } else {
-      result = this.validator.get();
-      if (result == null) {
-        this.styler.forRepeatedWord();
-      } else {
-        this.styler.forCorrectWord();
-      }
+      int points = this.game.getWordPoints(word);
+      List<GridUnit> seq = this.validator.getSeq();
+      WordPoint wordPoint = new WordPoint(this.wordToResultMap.size() + 1, word, points);
+      result = new GamePlayResult(wordPoint, seq);
+      this.wordToResultMap.put(word, result);
+      this.styler.forCorrectWord();
     }
 
     this.validator.reset();
     return result;
+  }
+
+  public void revisitOnRowClick(WordPoint wordPoint) {
+    String word = wordPoint.getWord();
+    GamePlayResult result = this.wordToResultMap.get(word);
+    List<ImageView> imgViews =
+        result
+            .getSeq()
+            .stream()
+            .map(
+                gridUnit -> {
+                  String id = Utils.getImgViewLabelFromGridPoint(gridUnit.getGridPoint());
+                  return (ImageView) this.stage.getScene().lookup("#" + id);
+                })
+            .collect(Collectors.toList());
+
+    this.validator.reset();
+    this.styler.revisit(imgViews);
   }
 }

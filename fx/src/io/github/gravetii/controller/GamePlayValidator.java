@@ -1,25 +1,21 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
-import io.github.gravetii.pojo.WordPoint;
 import io.github.gravetii.util.GridUnit;
 
-import java.util.LinkedHashMap;
 import java.util.LinkedList;
-import java.util.Map;
+import java.util.List;
 
 public class GamePlayValidator {
 
   private Game game;
   private LinkedList<GridUnit> seq;
   private StringBuilder builder;
-  private Map<String, Integer> validatedEntries;
 
   public GamePlayValidator(Game game) {
     this.game = game;
     this.seq = new LinkedList<>();
     this.builder = new StringBuilder();
-    this.validatedEntries = new LinkedHashMap<>();
   }
 
   public void reset() {
@@ -57,7 +53,7 @@ public class GamePlayValidator {
     }
   }
 
-  public ValidationResult validateClick(GridUnit unit) {
+  public ValidationResult validate(GridUnit unit) {
     if (this.seq.isEmpty()) {
       return this.validateFirstClick(unit);
     } else {
@@ -65,23 +61,12 @@ public class GamePlayValidator {
     }
   }
 
-  public boolean validateWord() {
+  public String validate() {
     String word = this.builder.toString();
-    if (word.isEmpty()) {
-      return false;
-    } else {
-      return this.game.exists(word);
-    }
+    return word.isEmpty() || !this.game.exists(word) ? null : word;
   }
 
-  public WordPoint get() {
-    String word = this.builder.toString();
-    if (this.validatedEntries.containsKey(word)) {
-      return null;
-    } else {
-      int points = this.game.getWordPoints(word);
-      this.validatedEntries.put(word, points);
-      return new WordPoint(this.validatedEntries.size(), word.toUpperCase(), points);
-    }
+  public List<GridUnit> getSeq() {
+    return new LinkedList<>(this.seq);
   }
 }
