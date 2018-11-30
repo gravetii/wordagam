@@ -33,7 +33,7 @@ public class GridUnit {
     return alphabet.getWeight();
   }
 
-  private GridPoint getGridPoint() {
+  public GridPoint getGridPoint() {
     return gridPoint;
   }
 

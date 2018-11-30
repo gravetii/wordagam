@@ -14,7 +14,7 @@ import java.util.Map;
 public class ChangeThemeController implements FxController {
 
   private Stage stage;
-  private ChangeThemeFooterController footerController;
+  private ChangeThemeFooterController ref;
   private Map<Integer, ImageView> imgViewMap;
   private ThemeService themes;
   private ChangeThemeStyler styler;
@@ -35,9 +35,9 @@ public class ChangeThemeController implements FxController {
   @FXML private ImageView imgView_13;
   @FXML private ImageView imgView_14;
 
-  public ChangeThemeController(Stage stage, ChangeThemeFooterController footerController) {
+  public ChangeThemeController(Stage stage, ChangeThemeFooterController ref) {
     this.stage = stage;
-    this.footerController = footerController;
+    this.ref = ref;
     this.imgViewMap = new HashMap<>();
     this.themes = new ThemeService();
     this.styler = new ChangeThemeStyler();
@@ -77,7 +77,7 @@ public class ChangeThemeController implements FxController {
     boolean changed = this.themes.changeTheme(type);
     if (changed) {
       this.themes.dispatch(this.stage.getOwner());
-      this.footerController.updateThemeChange(type);
+      this.ref.updateThemeChange(type);
     }
   }
 

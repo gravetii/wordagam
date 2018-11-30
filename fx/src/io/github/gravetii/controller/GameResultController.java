@@ -1,9 +1,11 @@
 package io.github.gravetii.controller;
 
+import io.github.gravetii.pojo.GamePlayResult;
 import io.github.gravetii.pojo.WordPoint;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
@@ -28,14 +30,26 @@ public class GameResultController implements FxController {
     this.idTblCol.setCellValueFactory(new PropertyValueFactory<>("index"));
     this.wordTblCol.setCellValueFactory(new PropertyValueFactory<>("word"));
     this.pointsTblCol.setCellValueFactory(new PropertyValueFactory<>("points"));
-    // this.tblDisplay.getItems().add(new WordPoint(null, null, null));
+    this.tblDisplay.setRowFactory(
+        callback -> {
+          TableRow<WordPoint> row = new TableRow<>();
+          row.setOnMouseClicked(
+              event -> {
+                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                  WordPoint wordPoint = row.getItem();
+                  this.ref.revisitOnRowClick(wordPoint);
+                }
+              });
+
+          return row;
+        });
   }
 
   @FXML
   public void onGoBtnClick(ActionEvent event) {
-    WordPoint wordPoint = this.ref.validateWordOnBtnClick();
-    if (wordPoint != null) {
-      this.tblDisplay.getItems().add(wordPoint);
+    GamePlayResult result = this.ref.validateWordOnBtnClick();
+    if (result != null) {
+      this.tblDisplay.getItems().add(result.getWordPoint());
     }
   }
 }

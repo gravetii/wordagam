@@ -1,22 +1,28 @@
 package io.github.gravetii.controller;
 
-import javafx.animation.FadeTransition;
-import javafx.animation.RotateTransition;
-import javafx.animation.ScaleTransition;
+import javafx.animation.*;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 public class GamePlayStyler {
 
   private LinkedList<ImageView> seq;
+  private PauseTransition revisitPauser;
 
   public GamePlayStyler() {
     this.seq = new LinkedList<>();
+    this.revisitPauser = new PauseTransition(Duration.millis(160));
+    this.revisitPauser.setOnFinished(
+        (event) -> {
+          this.invalidate();
+        });
   }
 
-  public void forInvalidClick() {
+  public void invalidate() {
     this.revert();
     this.reset();
   }
@@ -100,5 +106,27 @@ public class GamePlayStyler {
 
   private void reset() {
     this.seq.clear();
+  }
+
+  public void revisit(List<ImageView> imgViews) {
+    this.invalidate();
+    Iterator<ImageView> itr = imgViews.iterator();
+
+    Timeline timeline =
+        new Timeline(
+            new KeyFrame(
+                Duration.millis(160),
+                (event) -> {
+                  ImageView imgView = itr.next();
+                  this.forValidClick(imgView);
+                }));
+
+    timeline.setOnFinished(
+        (event) -> {
+          this.revisitPauser.play();
+        });
+
+    timeline.setCycleCount(imgViews.size());
+    timeline.play();
   }
 }

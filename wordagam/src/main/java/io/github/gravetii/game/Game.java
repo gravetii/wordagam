@@ -1,6 +1,8 @@
 package io.github.gravetii.game;
 
 import io.github.gravetii.dictionary.Dictionary;
+import io.github.gravetii.pojo.GamePlayResult;
+import io.github.gravetii.pojo.WordPoint;
 import io.github.gravetii.util.*;
 
 import java.util.*;
@@ -16,8 +18,8 @@ public class Game {
 
   private Map<String, Integer> wordPoints;
   private int totalPoints;
-  private Set<String> allWords;
   private Quality quality;
+  private Map<String, GamePlayResult> wordToResultMap;
 
   public Game(Dictionary dictionary) {
     this.dictionary = dictionary;
@@ -25,14 +27,14 @@ public class Game {
     this.wordPoints = new HashMap<>();
     this.wordPoints.put("", 0);
     this.totalPoints = 0;
-    this.allWords = new HashSet<>();
+    this.wordToResultMap = new HashMap<>();
     this.create();
     this.crawl();
     this.quality = assignQuality();
   }
 
   public boolean exists(String word) {
-    return this.allWords.contains(word);
+    return this.wordToResultMap.containsKey(word);
   }
 
   public int getTotalPoints() {
@@ -64,14 +66,16 @@ public class Game {
   private boolean isValidWord(String word) {
     return word.length() >= Constants.MIN_WORD_LENGTH
         && this.dictionary.search(word)
-        && !this.allWords.contains(word);
+        && !this.wordToResultMap.containsKey(word);
   }
 
-  private void crawl(GridPoint point, String prefix, boolean[][] visited) {
+  private void crawl(GridPoint point, String prefix, List<GridUnit> seq, boolean[][] visited) {
     GridUnit unit = grid[point.x][point.y];
     visited[point.x][point.y] = true;
 
     String word = prefix + unit.getLetter();
+    seq.add(unit);
+
     if (!this.dictionary.prefix(word)) {
       return;
     }
@@ -79,15 +83,17 @@ public class Game {
     int points = this.wordPoints.get(prefix) + unit.getPoints();
     this.wordPoints.put(word, points);
 
-    if (isValidWord(word)) {
-      this.allWords.add(word);
+    if (this.isValidWord(word)) {
+      WordPoint wordPoint = new WordPoint(1 + this.wordToResultMap.size(), word, points);
+      GamePlayResult result = new GamePlayResult(wordPoint, seq);
+      this.wordToResultMap.put(word, result);
       this.totalPoints += this.wordPoints.get(word);
     }
 
     for (GridPoint n : point.getNeighbors()) {
       if (!visited[n.x][n.y]) {
         boolean[][] v = Utils.arrCopy(visited);
-        this.crawl(n, word, v);
+        this.crawl(n, word, new LinkedList<>(seq), v);
       }
     }
   }
@@ -100,13 +106,13 @@ public class Game {
           Arrays.fill(row, false);
         }
 
-        this.crawl(new GridPoint(i, j), "", visited);
+        this.crawl(new GridPoint(i, j), "", new LinkedList<>(), visited);
       }
     }
   }
 
   private Quality assignQuality() {
-    int sz = allWords.size();
+    int sz = this.wordToResultMap.size();
     return sz >= MIN_WORDS_COUNT ? Quality.HIGH : Quality.LOW;
   }
 
@@ -120,9 +126,9 @@ public class Game {
         + "totalPoints="
         + totalPoints
         + ", count="
-        + allWords.size()
+        + wordToResultMap.size()
         + ", allWords="
-        + allWords
+        + wordToResultMap.keySet()
         + ", quality="
         + quality
         + '}';
