@@ -39,7 +39,6 @@ public class ThemeFactory {
   private void initAllThemes() {
     this.themeMap.put(ThemeType.RANDOM, new Theme(ThemeType.RANDOM, ThemeType.RANDOM.getImgPath()));
     this.themeMap.put(ThemeType.AZURE, new Theme(ThemeType.AZURE, ThemeType.AZURE.getImgPath()));
-    this.themeMap.put(ThemeType.BEACH, new Theme(ThemeType.BEACH, ThemeType.BEACH.getImgPath()));
     this.themeMap.put(
         ThemeType.BLACK_AND_WHITE,
         new Theme(ThemeType.BLACK_AND_WHITE, ThemeType.BLACK_AND_WHITE.getImgPath()));
@@ -50,7 +49,6 @@ public class ThemeFactory {
         ThemeType.GOLDEN_SKY, new Theme(ThemeType.GOLDEN_SKY, ThemeType.GOLDEN_SKY.getImgPath()));
     this.themeMap.put(
         ThemeType.HORIZON, new Theme(ThemeType.HORIZON, ThemeType.HORIZON.getImgPath()));
-    this.themeMap.put(ThemeType.KAITO, new Theme(ThemeType.KAITO, ThemeType.KAITO.getImgPath()));
     this.themeMap.put(
         ThemeType.LAVENDER, new Theme(ThemeType.LAVENDER, ThemeType.LAVENDER.getImgPath()));
     this.themeMap.put(
