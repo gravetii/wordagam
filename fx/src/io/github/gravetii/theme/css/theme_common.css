@@ -1,7 +1,7 @@
 .custom-img-view-click {
     -fx-scale-x: 0.90;
     -fx-scale-y: 0.90;
-    -fx-blend-mode: SRC_ATOP;
+    -fx-blend-mode: HARD_LIGHT;
 }
 
 .custom-img-view:hover {

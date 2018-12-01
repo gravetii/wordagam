@@ -2,11 +2,9 @@ package io.github.gravetii.theme;
 
 public enum ThemeType {
   RANDOM,
-  KAITO,
   BLACK_AND_WHITE,
   AZURE,
   SUNSET,
-  BEACH,
   RED_DAWN,
   TERRA,
   BLUEZY,
