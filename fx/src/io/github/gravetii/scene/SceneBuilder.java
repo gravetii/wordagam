@@ -73,8 +73,8 @@ public class SceneBuilder {
     return pane;
   }
 
-  private VBox loadGameResultVBox(FxController controller) throws Exception {
-    return (VBox) loadFxComponent("fxml/gameResult.fxml", controller);
+  private VBox loadGamePlayVBox(FxController controller) throws Exception {
+    return (VBox) loadFxComponent("fxml/gamePlay.fxml", controller);
   }
 
   private GridPane loadGamePane(Game game, FxController controller) throws Exception {
@@ -96,9 +96,9 @@ public class SceneBuilder {
 
   public GameComponent loadGameComponent(Game game) throws Exception {
     GameController gameController = new GameController(this.stage, game);
-    GameResultController gameResultController = new GameResultController(gameController);
+    GamePlayController gamePlayController = new GamePlayController(gameController);
     GridPane gridPane = this.loadGamePane(game, gameController);
-    VBox vBox = this.loadGameResultVBox(gameResultController);
+    VBox vBox = this.loadGamePlayVBox(gamePlayController);
     return new GameComponent(gridPane, vBox);
   }
 
