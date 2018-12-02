@@ -11,11 +11,13 @@ public abstract class FxScene {
   protected SceneBuilder builder;
   protected Stage stage;
   protected BorderPane root;
+  private ThemeService themes;
 
   FxScene(Stage stage) {
     this.stage = stage;
     this.root = new BorderPane();
     this.builder = new SceneBuilder(stage, root);
+    this.themes = new ThemeService();
   }
 
   protected FxScene showTop(Node node) {
@@ -50,7 +52,7 @@ public abstract class FxScene {
   protected void setEventHandlers() {}
 
   protected void applyCurrentTheme() {
-    String styleSheet = new ThemeService().loadCurrentTheme().getStyleSheet();
+    String styleSheet = this.themes.loadCurrentTheme().getStyleSheet();
     this.root.getStylesheets().clear();
     this.root.getStylesheets().add(styleSheet);
   }

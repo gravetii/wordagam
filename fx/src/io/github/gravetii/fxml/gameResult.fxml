@@ -15,7 +15,7 @@
                     <Label />
                 </placeholder>
               <columns>
-                <TableColumn fx:id="idTblCol" editable="false" prefWidth="47.0" resizable="false" sortable="false" text="ID" />
+                <TableColumn fx:id="idTblCol" editable="false" prefWidth="47.0" resizable="false" text="ID" />
                 <TableColumn fx:id="wordTblCol" editable="false" prefWidth="148.0" resizable="false" sortable="false" text="WORD" />
                   <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="84.0" resizable="false" text="SCORE" />
               </columns>
