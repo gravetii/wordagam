@@ -13,6 +13,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.control.Label;
 import javafx.scene.control.MenuBar;
+import javafx.scene.control.ProgressBar;
 import javafx.scene.control.ToolBar;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -80,6 +81,10 @@ public class SceneBuilder {
     return (BorderPane) loadFxComponent("fxml/gameResult.fxml", controller);
   }
 
+  private ProgressBar loadGameProgressBar(FxController controller) throws Exception {
+    return (ProgressBar) loadFxComponent("fxml/progressBar.fxml", controller);
+  }
+
   private GridPane loadGamePane(Game game, FxController controller) throws Exception {
     GridPane gridPane = (GridPane) loadFxComponent("fxml/game.fxml", controller);
 
@@ -89,7 +94,6 @@ public class SceneBuilder {
         Pane pane = (Pane) gridPane.getChildren().get(c++);
         ImageView imgView = (ImageView) pane.getChildren().get(0);
         imgView.setImage(unit.getImage());
-        imgView.fitHeightProperty().bind(pane.heightProperty());
         imgView.fitWidthProperty().bind(pane.widthProperty());
       }
     }
@@ -101,10 +105,14 @@ public class SceneBuilder {
     GameController gameController = new GameController(this.stage, game);
     GamePlayController gamePlayController = new GamePlayController(gameController);
     GameResultController gameResultController = new GameResultController(game, gameController);
+    ProgressBarController progressBarController = new ProgressBarController(60);
     GridPane gamePane = this.loadGamePane(game, gameController);
     BorderPane gamePlayPane = this.loadGamePlayPane(gamePlayController);
     BorderPane gameResultPane = this.loadGameResultPane(gameResultController);
-    return new GameComponent(gamePane, gamePlayPane, gameResultPane);
+    ProgressBar gameProgressBar = this.loadGameProgressBar(progressBarController);
+    gameProgressBar.prefWidthProperty().bind(this.root.widthProperty());
+    gameProgressBar.prefHeightProperty().bind(this.root.heightProperty());
+    return new GameComponent(gamePane, gamePlayPane, gameResultPane, gameProgressBar);
   }
 
   private GridPane loadChangeThemePane(FxController controller) throws Exception {

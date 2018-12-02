@@ -22,7 +22,8 @@ public class GameScene extends FxScene {
     GameComponent component = this.builder.loadGameComponent(this.game);
     this.showTop(menuBar).showLeft(component.getGamePane())
             .showCenter(component.getPlayVBox())
-            .showRight(component.getResultVBox());
+            .showRight(component.getResultVBox())
+            .showBottom(component.getProgressBar());
     this.applyCurrentTheme();
   }
 
