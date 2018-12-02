@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<?import javafx.scene.control.Label?>
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <AnchorPane prefHeight="520.0" prefWidth="300.0">
+         <children>
+            <TableView fx:id="tblDisplay" prefHeight="400.0" prefWidth="365.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <placeholder>
+                    <Label/>
+                </placeholder>
+              <columns>
+                <TableColumn fx:id="idTblCol" prefWidth="75.0" text="ID" />
+                <TableColumn fx:id="wordTblCol" prefWidth="98.0" text="WORD" />
+                  <TableColumn fx:id="pointsTblCol" prefWidth="106.0" text="SCORE" />
+              </columns>
+            </TableView>
+         </children>
+      </AnchorPane>
+   </children>
+</VBox>
