@@ -49,3 +49,10 @@
 .table-row-cell:empty {
     -fx-background-color: transparent;
 }
+
+
+.progress-bar .bar {
+    -fx-background-color: #7FDBFF;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em;
+}
