@@ -27,6 +27,9 @@ public class GamePlayController implements FxController {
 
   @FXML
   public void initialize() {
+    this.idTblCol.prefWidthProperty().bind(tblDisplay.widthProperty().divide(4));
+    this.wordTblCol.prefWidthProperty().bind(tblDisplay.widthProperty().divide(2));
+    this.pointsTblCol.prefWidthProperty().bind(tblDisplay.widthProperty().divide(4));
     this.idTblCol.setCellValueFactory(new PropertyValueFactory<>("index"));
     this.wordTblCol.setCellValueFactory(new PropertyValueFactory<>("word"));
     this.pointsTblCol.setCellValueFactory(new PropertyValueFactory<>("points"));

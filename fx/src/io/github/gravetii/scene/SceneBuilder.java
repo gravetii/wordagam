@@ -19,7 +19,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 import java.nio.file.Files;
@@ -73,12 +72,12 @@ public class SceneBuilder {
     return pane;
   }
 
-  private VBox loadGamePlayVBox(FxController controller) throws Exception {
-    return (VBox) loadFxComponent("fxml/gamePlay.fxml", controller);
+  private BorderPane loadGamePlayPane(FxController controller) throws Exception {
+    return (BorderPane) loadFxComponent("fxml/gamePlay.fxml", controller);
   }
 
-  private VBox loadGameResultVBox(FxController controller) throws Exception {
-    return (VBox) loadFxComponent("fxml/gameResult.fxml", controller);
+  private BorderPane loadGameResultPane(FxController controller) throws Exception {
+    return (BorderPane) loadFxComponent("fxml/gameResult.fxml", controller);
   }
 
   private GridPane loadGamePane(Game game, FxController controller) throws Exception {
@@ -103,9 +102,9 @@ public class SceneBuilder {
     GamePlayController gamePlayController = new GamePlayController(gameController);
     GameResultController gameResultController = new GameResultController(game, gameController);
     GridPane gamePane = this.loadGamePane(game, gameController);
-    VBox gamePlayVBox = this.loadGamePlayVBox(gamePlayController);
-    VBox gameResultVBox = this.loadGameResultVBox(gameResultController);
-    return new GameComponent(gamePane, gamePlayVBox, gameResultVBox);
+    BorderPane gamePlayPane = this.loadGamePlayPane(gamePlayController);
+    BorderPane gameResultPane = this.loadGameResultPane(gameResultController);
+    return new GameComponent(gamePane, gamePlayPane, gameResultPane);
   }
 
   private GridPane loadChangeThemePane(FxController controller) throws Exception {

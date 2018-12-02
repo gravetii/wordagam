@@ -1,29 +1,29 @@
 package io.github.gravetii.pojo;
 
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 
 public class GameComponent {
 
   private GridPane gamePane;
-  private VBox playVBox;
-  private VBox resultVBox;
+  private BorderPane playPane;
+  private BorderPane resultPane;
 
-  public GameComponent(GridPane gamePane, VBox playVBox, VBox resultVBox) {
+  public GameComponent(GridPane gamePane, BorderPane playPane, BorderPane resultPane) {
     this.gamePane = gamePane;
-    this.playVBox = playVBox;
-    this.resultVBox = resultVBox;
+    this.playPane = playPane;
+    this.resultPane = resultPane;
   }
 
   public GridPane getGamePane() {
     return gamePane;
   }
 
-  public VBox getPlayVBox() {
-    return playVBox;
+  public BorderPane getPlayVBox() {
+    return playPane;
   }
 
-  public VBox getResultVBox() {
-    return resultVBox;
+  public BorderPane getResultVBox() {
+    return resultPane;
   }
 }
