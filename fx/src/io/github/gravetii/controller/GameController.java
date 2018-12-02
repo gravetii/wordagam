@@ -79,19 +79,21 @@ public class GameController implements FxController {
     return result;
   }
 
-  public void revisitOnRowClick(WordPoint wordPoint) {
-    String word = wordPoint.getWord();
-    GamePlayResult result = this.wordToResultMap.get(word);
+  public void revisitWord(String word) {
+    this.revisitResult(this.wordToResultMap.get(word));
+  }
+
+  public void revisitResult(GamePlayResult result) {
     List<ImageView> imgViews =
-        result
-            .getSeq()
-            .stream()
-            .map(
-                gridUnit -> {
-                  String id = Utils.getImgViewLabelFromGridPoint(gridUnit.getGridPoint());
-                  return (ImageView) this.stage.getScene().lookup("#" + id);
-                })
-            .collect(Collectors.toList());
+            result
+                    .getSeq()
+                    .stream()
+                    .map(
+                            gridUnit -> {
+                              String id = Utils.getImgViewLabelFromGridPoint(gridUnit.getGridPoint());
+                              return (ImageView) this.stage.getScene().lookup("#" + id);
+                            })
+                    .collect(Collectors.toList());
 
     this.validator.reset();
     this.styler.revisit(imgViews);

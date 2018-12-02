@@ -5,20 +5,25 @@ import javafx.scene.layout.VBox;
 
 public class GameComponent {
 
-  private GridPane gridPane;
+  private GridPane gamePane;
+  private VBox playVBox;
+  private VBox resultVBox;
 
-  private VBox vBox;
-
-  public GameComponent(GridPane gridPane, VBox vBox) {
-    this.gridPane = gridPane;
-    this.vBox = vBox;
+  public GameComponent(GridPane gamePane, VBox playVBox, VBox resultVBox) {
+    this.gamePane = gamePane;
+    this.playVBox = playVBox;
+    this.resultVBox = resultVBox;
   }
 
-  public GridPane getGridPane() {
-    return gridPane;
+  public GridPane getGamePane() {
+    return gamePane;
   }
 
-  public VBox getvBox() {
-    return vBox;
+  public VBox getPlayVBox() {
+    return playVBox;
+  }
+
+  public VBox getResultVBox() {
+    return resultVBox;
   }
 }

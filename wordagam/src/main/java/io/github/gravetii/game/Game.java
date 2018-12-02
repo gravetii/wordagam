@@ -27,7 +27,7 @@ public class Game {
     this.wordPoints = new HashMap<>();
     this.wordPoints.put("", 0);
     this.totalPoints = 0;
-    this.wordToResultMap = new HashMap<>();
+    this.wordToResultMap = new LinkedHashMap<>();
     this.create();
     this.crawl();
     this.quality = assignQuality();
@@ -51,6 +51,10 @@ public class Game {
 
   public GridUnit getGridUnit(GridPoint point) {
     return grid[point.x][point.y];
+  }
+
+  public Map<String, GamePlayResult> getResult() {
+    return this.wordToResultMap;
   }
 
   private void create() {
