@@ -41,8 +41,7 @@ public class ProgressBarController implements FxController {
         }
 
         return gameTime;
-      }
-      catch (InterruptedException e) {
+      } catch (InterruptedException e) {
         return null;
       }
     }

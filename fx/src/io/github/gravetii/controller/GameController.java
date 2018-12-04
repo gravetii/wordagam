@@ -2,7 +2,6 @@ package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
 import io.github.gravetii.pojo.GamePlayResult;
-import io.github.gravetii.pojo.WordPoint;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
 import io.github.gravetii.util.Utils;
@@ -69,8 +68,7 @@ public class GameController implements FxController {
     } else {
       int points = this.game.getWordPoints(word);
       List<GridUnit> seq = this.validator.getSeq();
-      WordPoint wordPoint = new WordPoint(this.wordToResultMap.size() + 1, word, points);
-      result = new GamePlayResult(wordPoint, seq);
+      result = new GamePlayResult(word, points, seq);
       this.wordToResultMap.put(word, result);
       this.styler.forCorrectWord();
     }
@@ -85,15 +83,15 @@ public class GameController implements FxController {
 
   public void revisitResult(GamePlayResult result) {
     List<ImageView> imgViews =
-            result
-                    .getSeq()
-                    .stream()
-                    .map(
-                            gridUnit -> {
-                              String id = Utils.getImgViewLabelFromGridPoint(gridUnit.getGridPoint());
-                              return (ImageView) this.stage.getScene().lookup("#" + id);
-                            })
-                    .collect(Collectors.toList());
+        result
+            .getSeq()
+            .stream()
+            .map(
+                gridUnit -> {
+                  String id = Utils.getImgViewLabelFromGridPoint(gridUnit.getGridPoint());
+                  return (ImageView) this.stage.getScene().lookup("#" + id);
+                })
+            .collect(Collectors.toList());
 
     this.validator.reset();
     this.styler.revisit(imgViews);

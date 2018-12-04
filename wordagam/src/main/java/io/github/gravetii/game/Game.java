@@ -2,7 +2,6 @@ package io.github.gravetii.game;
 
 import io.github.gravetii.dictionary.Dictionary;
 import io.github.gravetii.pojo.GamePlayResult;
-import io.github.gravetii.pojo.WordPoint;
 import io.github.gravetii.util.*;
 
 import java.util.*;
@@ -88,8 +87,7 @@ public class Game {
     this.wordPoints.put(word, points);
 
     if (this.isValidWord(word)) {
-      WordPoint wordPoint = new WordPoint(1 + this.wordToResultMap.size(), word, points);
-      GamePlayResult result = new GamePlayResult(wordPoint, seq);
+      GamePlayResult result = new GamePlayResult(word, points, seq);
       this.wordToResultMap.put(word, result);
       this.totalPoints += this.wordPoints.get(word);
     }
@@ -105,7 +103,7 @@ public class Game {
   private void crawl() {
     for (int i = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {
-        boolean visited[][] = new boolean[4][4];
+        boolean[][] visited = new boolean[4][4];
         for (boolean[] row : visited) {
           Arrays.fill(row, false);
         }
