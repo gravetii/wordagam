@@ -7,11 +7,11 @@ import java.util.concurrent.FutureTask;
 
 public class SingleLatestTaskScheduler {
 
-    private static volatile SingleLatestTaskScheduler INSTANCE;
+  private static volatile SingleLatestTaskScheduler INSTANCE;
 
-    private ExecutorService executor;
+  private ExecutorService executor;
 
-    private Future current;
+  private Future current;
 
   private SingleLatestTaskScheduler() {
     this.executor =
@@ -21,25 +21,25 @@ public class SingleLatestTaskScheduler {
               thread.setDaemon(true);
               return thread;
             });
-        }
+  }
 
-    public static SingleLatestTaskScheduler get() {
+  public static SingleLatestTaskScheduler get() {
+    if (INSTANCE == null) {
+      synchronized (SingleLatestTaskScheduler.class) {
         if (INSTANCE == null) {
-            synchronized (SingleLatestTaskScheduler.class) {
-                if (INSTANCE == null) {
-                    INSTANCE = new SingleLatestTaskScheduler();
-                }
-            }
+          INSTANCE = new SingleLatestTaskScheduler();
         }
-
-        return INSTANCE;
-    }
-
-    public void submit(FutureTask<?> task) {
-      if (this.current != null) {
-          this.current.cancel(true);
       }
-
-      this.current = this.executor.submit(task);
     }
+
+    return INSTANCE;
+  }
+
+  public void submit(FutureTask<?> task) {
+    if (this.current != null) {
+      this.current.cancel(true);
+    }
+
+    this.current = this.executor.submit(task);
+  }
 }

@@ -20,10 +20,11 @@ public class GameScene extends FxScene {
   protected void build() throws Exception {
     MenuBar menuBar = this.builder.loadMenuBar();
     GameComponent component = this.builder.loadGameComponent(this.game);
-    this.showTop(menuBar).showLeft(component.getGamePane())
-            .showCenter(component.getPlayVBox())
-            .showRight(component.getResultVBox())
-            .showBottom(component.getProgressBar());
+    this.showTop(menuBar)
+        .showLeft(component.getGamePane())
+        .showCenter(component.getPlayVBox())
+        //.showRight(component.getResultVBox())
+        .showBottom(component.getProgressBar());
     this.applyCurrentTheme();
   }
 

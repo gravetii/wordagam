@@ -11,7 +11,8 @@ public class GameComponent {
   private BorderPane resultPane;
   private ProgressBar progressBar;
 
-  public GameComponent(GridPane gamePane, BorderPane playPane, BorderPane resultPane, ProgressBar progressBar) {
+  public GameComponent(
+      GridPane gamePane, BorderPane playPane, BorderPane resultPane, ProgressBar progressBar) {
     this.gamePane = gamePane;
     this.playPane = playPane;
     this.resultPane = resultPane;

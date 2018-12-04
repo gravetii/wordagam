@@ -6,25 +6,30 @@ import java.util.List;
 
 public class GamePlayResult {
 
-  private WordPoint wordPoint;
-
+  private String word;
+  private int score;
   private List<GridUnit> seq;
 
-  public GamePlayResult(WordPoint wordPoint, List<GridUnit> seq) {
-    this.wordPoint = wordPoint;
+  public GamePlayResult(String word, int score, List<GridUnit> seq) {
+    this.word = word;
+    this.score = score;
     this.seq = seq;
   }
 
-  public WordPoint getWordPoint() {
-    return wordPoint;
+  public String getWord() {
+    return this.word;
+  }
+
+  public int getScore() {
+    return this.score;
   }
 
   public List<GridUnit> getSeq() {
-    return seq;
+    return this.seq;
   }
 
   @Override
   public String toString() {
-    return "GamePlayResult{" + "wordPoint=" + wordPoint + ", seq=" + seq + '}';
+    return "GamePlayResult{" + "word='" + word + '\'' + ", score=" + score + ", seq=" + seq + '}';
   }
 }
