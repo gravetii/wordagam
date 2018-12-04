@@ -1,6 +1,5 @@
 package io.github.gravetii.scene;
 
-import io.github.gravetii.theme.ThemeService;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -8,54 +7,39 @@ import javafx.stage.Stage;
 
 public abstract class FxScene {
 
-  protected SceneBuilder builder;
   protected Stage stage;
   protected BorderPane root;
-  private ThemeService themes;
 
-  FxScene(Stage stage) {
+  protected FxScene(Stage stage) {
     this.stage = stage;
     this.root = new BorderPane();
-    this.builder = new SceneBuilder(stage, root);
-    this.themes = new ThemeService();
   }
 
-  protected FxScene showTop(Node node) {
+  protected void showTop(Node node) {
     this.root.setTop(node);
-    return this;
   }
 
-  protected FxScene showLeft(Node node) {
+  protected void showLeft(Node node) {
     this.root.setLeft(node);
-    return this;
   }
 
-  protected FxScene showCenter(Node node) {
+  protected void showCenter(Node node) {
     this.root.setCenter(node);
-    return this;
   }
 
-  protected FxScene showRight(Node node) {
+  protected void showRight(Node node) {
     this.root.setRight(node);
-    return this;
   }
 
-  protected FxScene showBottom(Node node) {
+  protected void showBottom(Node node) {
     this.root.setBottom(node);
-    return this;
   }
 
   protected abstract void build() throws Exception;
 
-  public abstract String title();
-
   protected void setEventHandlers() {}
 
-  protected void applyCurrentTheme() {
-    String styleSheet = this.themes.loadCurrentTheme().getStyleSheet();
-    this.root.getStylesheets().clear();
-    this.root.getStylesheets().add(styleSheet);
-  }
+  protected abstract String title();
 
   public void show() throws Exception {
     this.build();

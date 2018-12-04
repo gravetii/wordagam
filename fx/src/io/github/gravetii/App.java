@@ -1,13 +1,16 @@
 package io.github.gravetii;
 
+import io.github.gravetii.controller.FxController;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
-import io.github.gravetii.scene.StartScene;
+import io.github.gravetii.scene.start.StartScene;
 import io.github.gravetii.store.PreferenceStore;
 import io.github.gravetii.util.AppLogger;
 import io.github.gravetii.util.Utils;
 import javafx.application.Application;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 import javafx.stage.Stage;
 
 public class App extends Application {
@@ -16,6 +19,12 @@ public class App extends Application {
 
   public static void main(String[] args) {
     launch(args);
+  }
+
+  public static Node loadFxComponent(String fxml, FxController controller) throws Exception {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource(fxml));
+    loader.setController(controller);
+    return loader.load();
   }
 
   @Override
