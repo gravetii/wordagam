@@ -1,20 +1,26 @@
-package io.github.gravetii.scene;
+package io.github.gravetii.scene.start;
 
+import io.github.gravetii.scene.FxScene;
 import javafx.scene.control.MenuBar;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 public class StartScene extends FxScene {
 
-  public StartScene(Stage stage) {
+  private StartSceneBuilder builder;
+
+  public StartScene(Stage stage) throws Exception {
     super(stage);
+    this.builder = new StartSceneBuilder(this.stage, this.root);
+    this.build();
   }
 
   @Override
   protected void build() throws Exception {
     MenuBar menuBar = this.builder.loadMenuBar();
     Pane pane = this.builder.loadStartPane();
-    this.showTop(menuBar).showCenter(pane);
+    this.showTop(menuBar);
+    this.showCenter(pane);
   }
 
   @Override

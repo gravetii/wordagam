@@ -1,9 +1,9 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.GameService;
-import io.github.gravetii.scene.ChangeThemeScene;
 import io.github.gravetii.scene.FxScene;
-import io.github.gravetii.scene.GameScene;
+import io.github.gravetii.scene.game.GameScene;
+import io.github.gravetii.scene.theme.ChangeThemeScene;
 import io.github.gravetii.store.PreferenceStore;
 import io.github.gravetii.util.Utils;
 import javafx.application.Platform;

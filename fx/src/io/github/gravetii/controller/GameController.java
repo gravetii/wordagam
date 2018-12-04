@@ -8,7 +8,6 @@ import io.github.gravetii.util.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
-import javafx.stage.Stage;
 
 import java.util.HashMap;
 import java.util.List;
@@ -17,19 +16,56 @@ import java.util.stream.Collectors;
 
 public class GameController implements FxController {
 
-  private Stage stage;
   private Game game;
 
+  private Map<String, ImageView> imgViewMap;
   private GamePlayValidator validator;
   private GamePlayStyler styler;
   private Map<String, GamePlayResult> wordToResultMap;
 
-  public GameController(Stage stage, Game game) {
-    this.stage = stage;
+  @FXML private ImageView imgView$0_0;
+  @FXML private ImageView imgView$0_1;
+  @FXML private ImageView imgView$0_2;
+  @FXML private ImageView imgView$0_3;
+  @FXML private ImageView imgView$1_0;
+  @FXML private ImageView imgView$1_1;
+  @FXML private ImageView imgView$1_2;
+  @FXML private ImageView imgView$1_3;
+  @FXML private ImageView imgView$2_0;
+  @FXML private ImageView imgView$2_1;
+  @FXML private ImageView imgView$2_2;
+  @FXML private ImageView imgView$2_3;
+  @FXML private ImageView imgView$3_0;
+  @FXML private ImageView imgView$3_1;
+  @FXML private ImageView imgView$3_2;
+  @FXML private ImageView imgView$3_3;
+
+  public GameController(Game game) {
     this.game = game;
+    this.imgViewMap = new HashMap<>();
     this.validator = new GamePlayValidator(game);
     this.styler = new GamePlayStyler();
     this.wordToResultMap = new HashMap<>();
+  }
+
+  @FXML
+  public void initialize() {
+    this.imgViewMap.put("imgView$0_0", this.imgView$0_0);
+    this.imgViewMap.put("imgView$0_1", this.imgView$0_1);
+    this.imgViewMap.put("imgView$0_2", this.imgView$0_2);
+    this.imgViewMap.put("imgView$0_3", this.imgView$0_3);
+    this.imgViewMap.put("imgView$1_0", this.imgView$1_0);
+    this.imgViewMap.put("imgView$1_1", this.imgView$1_1);
+    this.imgViewMap.put("imgView$1_2", this.imgView$1_2);
+    this.imgViewMap.put("imgView$1_3", this.imgView$1_3);
+    this.imgViewMap.put("imgView$2_0", this.imgView$2_0);
+    this.imgViewMap.put("imgView$2_1", this.imgView$2_1);
+    this.imgViewMap.put("imgView$2_2", this.imgView$2_2);
+    this.imgViewMap.put("imgView$2_3", this.imgView$2_3);
+    this.imgViewMap.put("imgView$3_0", this.imgView$3_0);
+    this.imgViewMap.put("imgView$3_1", this.imgView$3_1);
+    this.imgViewMap.put("imgView$3_2", this.imgView$3_2);
+    this.imgViewMap.put("imgView$3_3", this.imgView$3_3);
   }
 
   @FXML
@@ -89,11 +125,20 @@ public class GameController implements FxController {
             .map(
                 gridUnit -> {
                   String id = Utils.getImgViewLabelFromGridPoint(gridUnit.getGridPoint());
-                  return (ImageView) this.stage.getScene().lookup("#" + id);
+                  return this.imgViewMap.get(id);
                 })
             .collect(Collectors.toList());
 
     this.validator.reset();
     this.styler.revisit(imgViews);
+  }
+
+  public void onGameEnd() {
+    this.validator.reset();
+    this.styler.invalidate();
+    this.imgViewMap.forEach(
+        (label, imgView) -> {
+          imgView.setDisable(true);
+        });
   }
 }
