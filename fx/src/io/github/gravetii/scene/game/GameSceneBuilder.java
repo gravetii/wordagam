@@ -27,7 +27,7 @@ public class GameSceneBuilder {
     this.root = root;
     this.game = new GameService().fetch();
     this.gameController = new GameController(this.game);
-    this.gamePlayController = new GamePlayController(this.gameController);
+    this.gamePlayController = new GamePlayController(this.game, this.gameController);
     GameTimerTask timerTask = new GameTimerTask(this.root, 60);
     SingleLatestTaskScheduler.get().submit(timerTask);
     this.progressBarController = new ProgressBarController(timerTask);
@@ -66,5 +66,6 @@ public class GameSceneBuilder {
 
   public void endGame() {
     this.gameController.onGameEnd();
+    this.gamePlayController.onGameEnd();
   }
 }
