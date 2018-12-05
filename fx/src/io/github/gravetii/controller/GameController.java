@@ -114,7 +114,12 @@ public class GameController implements FxController {
   }
 
   public void revisitWord(String word) {
-    this.revisitResult(this.wordToResultMap.get(word));
+    GamePlayResult result = this.wordToResultMap.get(word);
+    if (result == null) {
+      result = this.game.getResult().get(word);
+    }
+
+    this.revisitResult(result);
   }
 
   public void revisitResult(GamePlayResult result) {
