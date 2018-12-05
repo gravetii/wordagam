@@ -12,6 +12,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GameSceneBuilder {
@@ -44,14 +45,15 @@ public class GameSceneBuilder {
         ImageView imgView = (ImageView) pane.getChildren().get(0);
         imgView.setImage(unit.getImage());
         imgView.fitWidthProperty().bind(pane.widthProperty());
+        imgView.fitHeightProperty().bind(pane.heightProperty());
       }
     }
 
     return gamePane;
   }
 
-  public BorderPane loadGamePlayPane() throws Exception {
-    return (BorderPane) App.loadFxComponent("fxml/gamePlay.fxml", this.gamePlayController);
+  public VBox loadGamePlayPane() throws Exception {
+    return (VBox) App.loadFxComponent("fxml/gamePlay.fxml", this.gamePlayController);
   }
 
   public ProgressBar loadGameProgressBar() throws Exception {

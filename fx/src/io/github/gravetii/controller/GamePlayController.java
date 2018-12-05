@@ -9,8 +9,6 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import java.util.Map;
-
 import static io.github.gravetii.controller.TableResultDisplayer.TableResult;
 
 public class GamePlayController implements FxController {
@@ -57,6 +55,10 @@ public class GamePlayController implements FxController {
   @FXML
   public void onGoBtnClick(ActionEvent event) {
     GamePlayResult result = this.ref.validateWordOnBtnClick();
+    this.display(result);
+  }
+
+  private void display(GamePlayResult result) {
     if (result != null) {
       this.displayer.show(result.getWord(), result.getScore());
     }
@@ -64,7 +66,7 @@ public class GamePlayController implements FxController {
 
   private void displayGameWords() {
     this.game.getResult().forEach((word, result) -> {
-      this.displayer.show(result.getWord(), result.getScore());
+      this.display(result);
     });
   }
 

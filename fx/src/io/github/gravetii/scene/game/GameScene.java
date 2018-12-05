@@ -8,6 +8,7 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GameScene extends FxScene {
@@ -25,12 +26,12 @@ public class GameScene extends FxScene {
   @Override
   protected void build() throws Exception {
     GridPane gamePane = this.builder.loadGamePane();
-    BorderPane gamePlayPane = this.builder.loadGamePlayPane();
+    VBox gamePlayPane = this.builder.loadGamePlayPane();
     ProgressBar progressBar = this.builder.loadGameProgressBar();
     MenuBar menuBar = this.builder.loadMenuBar();
     this.showTop(menuBar);
-    this.showLeft(gamePane);
-    this.showCenter(gamePlayPane);
+    this.showCenter(gamePane);
+    this.showRight(gamePlayPane);
     this.showBottom(progressBar);
     this.applyCurrentTheme();
   }
