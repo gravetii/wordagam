@@ -1,5 +1,6 @@
 package io.github.gravetii.controller;
 
+import io.github.gravetii.game.Game;
 import io.github.gravetii.pojo.GamePlayResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -8,10 +9,13 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.Map;
+
 import static io.github.gravetii.controller.TableResultDisplayer.TableResult;
 
 public class GamePlayController implements FxController {
 
+  private final Game game;
   private final GameController ref;
   private TableResultDisplayer displayer;
 
@@ -20,7 +24,8 @@ public class GamePlayController implements FxController {
   @FXML private TableColumn<TableResult, String> wordTblCol;
   @FXML private TableColumn<TableResult, Integer> pointsTblCol;
 
-  public GamePlayController(GameController ref) {
+  public GamePlayController(Game game, GameController ref) {
+    this.game = game;
     this.ref = ref;
   }
 
@@ -55,5 +60,15 @@ public class GamePlayController implements FxController {
     if (result != null) {
       this.displayer.show(result.getWord(), result.getScore());
     }
+  }
+
+  private void displayGameWords() {
+    this.game.getResult().forEach((word, result) -> {
+      this.displayer.show(result.getWord(), result.getScore());
+    });
+  }
+
+  public void onGameEnd() {
+    this.displayGameWords();
   }
 }
