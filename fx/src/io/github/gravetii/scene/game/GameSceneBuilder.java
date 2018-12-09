@@ -29,7 +29,7 @@ public class GameSceneBuilder {
     this.game = new GameService().fetch();
     this.gameController = new GameController(this.game);
     this.gamePlayController = new GamePlayController(this.game, this.gameController);
-    GameTimerTask timerTask = new GameTimerTask(this.root, 60);
+    GameTimerTask timerTask = new GameTimerTask(this.root, 10);
     SingleLatestTaskScheduler.get().submit(timerTask);
     this.progressBarController = new ProgressBarController(timerTask);
     this.menuBarController = new MenuBarController(stage);
