@@ -139,11 +139,11 @@ public class GameController implements FxController {
   }
 
   public void onGameEnd() {
-    this.validator.reset();
-    this.styler.invalidate();
     this.imgViewMap.forEach(
         (label, imgView) -> {
           imgView.setDisable(true);
         });
+    this.validator.reset();
+    this.styler.invalidate();
   }
 }
