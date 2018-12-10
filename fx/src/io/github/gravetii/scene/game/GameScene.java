@@ -6,7 +6,6 @@ import io.github.gravetii.theme.Theme;
 import io.github.gravetii.theme.ThemeService;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -48,18 +47,16 @@ public class GameScene extends FxScene {
 
   @Override
   public void setEventHandlers() {
-    this.root.addEventFilter(
+    this.root.addEventHandler(
         Theme.ChangeEvent.THEME_CHANGE_EVENT_TYPE,
         (event) -> {
           this.applyCurrentTheme();
-          event.consume();
         });
-    this.root.addEventFilter(
+    this.root.addEventHandler(
         Game.EndEvent.GAME_END_EVENT_EVENT_TYPE,
-        (event -> {
+        (event) -> {
           this.endGame();
-          event.consume();
-        }));
+        });
   }
 
   @Override
