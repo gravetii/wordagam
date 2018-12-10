@@ -65,9 +65,12 @@ public class GamePlayController implements FxController {
   }
 
   private void displayGameWords() {
-    this.game.getResult().forEach((word, result) -> {
-      this.display(result);
-    });
+    this.game
+        .getResult()
+        .forEach(
+            (word, result) -> {
+              this.display(result);
+            });
   }
 
   public void onGameEnd() {

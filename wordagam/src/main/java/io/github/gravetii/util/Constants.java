@@ -18,5 +18,9 @@ public class Constants {
 
   public static final double THEME_SCENE_WIDTH = 800;
 
-  static final double THEME_SCENE_HEIGHT = 550;
+  public static final double THEME_SCENE_HEIGHT = 550;
+
+  public static final double ABOUT_SCENE_HEIGHT = 180;
+
+  public static final double ABOUT_SCENE_WIDTH = 500;
 }

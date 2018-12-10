@@ -1,7 +1,5 @@
 package io.github.gravetii.util;
 
-import javafx.stage.Stage;
-
 public class Utils {
 
   public static GridPoint getGridPointFromImageViewLabel(String label) {
@@ -26,19 +24,5 @@ public class Utils {
     }
 
     return result;
-  }
-
-  public static void setPrimaryDimensions(Stage stage) {
-    stage.setMinWidth(Constants.DEFAULT_SCENE_WIDTH);
-    stage.setMinHeight(Constants.DEFAULT_SCENE_HEIGHT);
-    stage.setMaxWidth(Constants.MAX_SCENE_WIDTH);
-    stage.setMaxHeight(Constants.MAX_SCENE_HEIGHT);
-    stage.setWidth(Constants.DEFAULT_SCENE_WIDTH);
-    stage.setHeight(Constants.DEFAULT_SCENE_HEIGHT);
-  }
-
-  public static void setThemeDimensions(Stage stage) {
-    stage.setWidth(Constants.THEME_SCENE_WIDTH);
-    stage.setHeight(Constants.THEME_SCENE_HEIGHT);
   }
 }

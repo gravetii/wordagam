@@ -1,11 +1,12 @@
 package io.github.gravetii.controller;
 
+import io.github.gravetii.App;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.game.GameScene;
+import io.github.gravetii.scene.help.AboutScene;
 import io.github.gravetii.scene.theme.ChangeThemeScene;
 import io.github.gravetii.store.PreferenceStore;
-import io.github.gravetii.util.Utils;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -45,8 +46,23 @@ public class MenuBarController implements FxController {
       stage.setResizable(false);
       stage.initOwner(this.stage);
       stage.initModality(Modality.APPLICATION_MODAL);
-      Utils.setThemeDimensions(stage);
+      App.setThemeDimensions(stage);
       FxScene scene = new ChangeThemeScene(stage);
+      scene.show();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @FXML
+  public void showAbout(ActionEvent event) {
+    try {
+      Stage stage = new Stage();
+      stage.setResizable(false);
+      stage.initOwner(this.stage);
+      stage.initModality(Modality.APPLICATION_MODAL);
+      App.setAboutDimensions(stage);
+      FxScene scene = new AboutScene(stage);
       scene.show();
     } catch (Exception e) {
       throw new RuntimeException(e);
