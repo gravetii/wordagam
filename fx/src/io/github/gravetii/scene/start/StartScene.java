@@ -7,6 +7,8 @@ import javafx.scene.control.MenuBar;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
+import java.util.Optional;
+
 public class StartScene extends FxScene {
 
   private StartSceneBuilder builder;
@@ -27,12 +29,14 @@ public class StartScene extends FxScene {
 
   @Override
   public String title() {
-    return "W-O-R-D-A-G-A-M";
+    return "-WORDAGAM-";
   }
 
   @Override
-  protected FxDimensions preferredDimensions() {
-    return new FxDimensions(
-        new Dimension2D(960, 630), new Dimension2D(960, 630), new Dimension2D(1100, 732));
+  protected Optional<FxDimensions> preferredDimensions() {
+    FxDimensions dimensions =
+        new FxDimensions(
+            new Dimension2D(960, 630), new Dimension2D(960, 630), new Dimension2D(1100, 732));
+    return Optional.of(dimensions);
   }
 }

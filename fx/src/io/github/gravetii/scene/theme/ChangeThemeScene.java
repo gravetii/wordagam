@@ -7,6 +7,8 @@ import javafx.scene.control.ToolBar;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
+import java.util.Optional;
+
 public class ChangeThemeScene extends FxScene {
 
   private ChangeThemeSceneBuilder builder;
@@ -31,8 +33,10 @@ public class ChangeThemeScene extends FxScene {
   }
 
   @Override
-  protected FxDimensions preferredDimensions() {
-    return new FxDimensions(
-        new Dimension2D(800, 550), new Dimension2D(800, 550), new Dimension2D(800, 550));
+  protected Optional<FxDimensions> preferredDimensions() {
+    FxDimensions dimensions =
+        new FxDimensions(
+            new Dimension2D(800, 550), new Dimension2D(800, 550), new Dimension2D(800, 550));
+    return Optional.of(dimensions);
   }
 }
