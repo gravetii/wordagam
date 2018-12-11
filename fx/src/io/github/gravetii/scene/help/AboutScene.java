@@ -11,9 +11,8 @@ import java.util.Optional;
 
 public class AboutScene extends FxScene {
 
-  public AboutScene(Stage stage) throws Exception {
+  public AboutScene(Stage stage) {
     super(stage);
-    this.build();
   }
 
   @Override

@@ -52,8 +52,8 @@ public class GameSceneBuilder {
     return gamePane;
   }
 
-  public VBox loadGamePlayPane() throws Exception {
-    return (VBox) App.loadFxComponent("fxml/gamePlay.fxml", this.gamePlayController);
+  public VBox loadGameResultPane() throws Exception {
+    return (VBox) App.loadFxComponent("fxml/gameResult.fxml", this.gamePlayController);
   }
 
   public ProgressBar loadGameProgressBar() throws Exception {

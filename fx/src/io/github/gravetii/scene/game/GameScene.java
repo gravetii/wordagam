@@ -19,18 +19,17 @@ public class GameScene extends FxScene {
     super(stage);
     this.themes = new ThemeService();
     this.builder = new GameSceneBuilder(this.stage, this.root);
-    this.build();
   }
 
   @Override
   protected void build() throws Exception {
     GridPane gamePane = this.builder.loadGamePane();
-    VBox gamePlayPane = this.builder.loadGamePlayPane();
+    VBox gameResultPane = this.builder.loadGameResultPane();
     ProgressBar progressBar = this.builder.loadGameProgressBar();
     MenuBar menuBar = this.builder.loadMenuBar();
     this.showTop(menuBar);
     this.showCenter(gamePane);
-    this.showRight(gamePlayPane);
+    this.showRight(gameResultPane);
     this.showBottom(progressBar);
     this.applyCurrentTheme();
   }
@@ -51,11 +50,13 @@ public class GameScene extends FxScene {
         Theme.ChangeEvent.THEME_CHANGE_EVENT_TYPE,
         (event) -> {
           this.applyCurrentTheme();
+          event.consume();
         });
     this.root.addEventHandler(
         Game.EndEvent.GAME_END_EVENT_EVENT_TYPE,
         (event) -> {
           this.endGame();
+          event.consume();
         });
   }
 
