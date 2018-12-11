@@ -1,6 +1,8 @@
 package io.github.gravetii.scene.theme;
 
+import io.github.gravetii.scene.FxDimensions;
 import io.github.gravetii.scene.FxScene;
+import javafx.geometry.Dimension2D;
 import javafx.scene.control.ToolBar;
 import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
@@ -26,5 +28,11 @@ public class ChangeThemeScene extends FxScene {
   @Override
   public String title() {
     return "Change theme";
+  }
+
+  @Override
+  protected FxDimensions preferredDimensions() {
+    return new FxDimensions(
+        new Dimension2D(800, 550), new Dimension2D(800, 550), new Dimension2D(800, 550));
   }
 }

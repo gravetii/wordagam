@@ -1,14 +1,14 @@
 package io.github.gravetii.dictionary;
 
-import io.github.gravetii.util.Constants;
-
 public class TrieNode {
+
+  private static final int ALPHABET_COUNT = 26;
 
   private TrieNode[] children;
   private boolean word;
 
   TrieNode() {
-    this.children = new TrieNode[Constants.ALPHABET_COUNT];
+    this.children = new TrieNode[ALPHABET_COUNT];
     this.word = false;
   }
 

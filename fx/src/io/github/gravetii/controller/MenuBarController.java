@@ -1,6 +1,5 @@
 package io.github.gravetii.controller;
 
-import io.github.gravetii.App;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.game.GameScene;
@@ -46,7 +45,6 @@ public class MenuBarController implements FxController {
       stage.setResizable(false);
       stage.initOwner(this.stage);
       stage.initModality(Modality.APPLICATION_MODAL);
-      App.setThemeDimensions(stage);
       FxScene scene = new ChangeThemeScene(stage);
       scene.show();
     } catch (Exception e) {
@@ -61,7 +59,6 @@ public class MenuBarController implements FxController {
       stage.setResizable(false);
       stage.initOwner(this.stage);
       stage.initModality(Modality.APPLICATION_MODAL);
-      App.setAboutDimensions(stage);
       FxScene scene = new AboutScene(stage);
       scene.show();
     } catch (Exception e) {
