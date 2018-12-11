@@ -1,6 +1,6 @@
 package io.github.gravetii.controller;
 
-import io.github.gravetii.game.Game;
+import io.github.gravetii.game.GameResult;
 import io.github.gravetii.util.GridUnit;
 
 import java.util.LinkedList;
@@ -8,12 +8,12 @@ import java.util.List;
 
 public class GamePlayValidator {
 
-  private Game game;
+  private GameResult result;
   private LinkedList<GridUnit> seq;
   private StringBuilder builder;
 
-  public GamePlayValidator(Game game) {
-    this.game = game;
+  public GamePlayValidator(GameResult result) {
+    this.result = result;
     this.seq = new LinkedList<>();
     this.builder = new StringBuilder();
   }
@@ -63,7 +63,7 @@ public class GamePlayValidator {
 
   public String validate() {
     String word = this.builder.toString();
-    return word.isEmpty() || !this.game.exists(word) ? null : word;
+    return word.isEmpty() || !this.result.exists(word) ? null : word;
   }
 
   public List<GridUnit> getSeq() {

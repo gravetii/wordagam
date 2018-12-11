@@ -1,7 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
-import io.github.gravetii.pojo.GamePlayResult;
+import io.github.gravetii.pojo.WordResult;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
@@ -9,20 +9,20 @@ import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
 
-import static io.github.gravetii.controller.TableResultDisplayer.TableResult;
+import static io.github.gravetii.controller.GameResultDisplayer.TableResult;
 
-public class GamePlayController implements FxController {
+public class GameResultController implements FxController {
 
   private final Game game;
   private final GameController ref;
-  private TableResultDisplayer displayer;
+  private GameResultDisplayer displayer;
 
   @FXML private TableView<TableResult> tblDisplay;
   @FXML private TableColumn<TableResult, Integer> idTblCol;
   @FXML private TableColumn<TableResult, String> wordTblCol;
   @FXML private TableColumn<TableResult, Integer> pointsTblCol;
 
-  public GamePlayController(Game game, GameController ref) {
+  public GameResultController(Game game, GameController ref) {
     this.game = game;
     this.ref = ref;
   }
@@ -42,34 +42,36 @@ public class GamePlayController implements FxController {
               event -> {
                 if (event.getClickCount() == 2 && !row.isEmpty()) {
                   TableResult result = row.getItem();
-                  this.ref.revisitWord(result.getWord());
+                  String word = result.getWord();
+                  if (result.isByUser()) {
+                    this.ref.revisitUserWord(word);
+                  } else {
+                    this.ref.revisitGameWord(word);
+                  }
                 }
               });
 
           return row;
         });
 
-    this.displayer = new TableResultDisplayer(this.tblDisplay);
+    this.displayer = new GameResultDisplayer(this.tblDisplay);
   }
 
   @FXML
   public void onGoBtnClick(ActionEvent event) {
-    GamePlayResult result = this.ref.validateWordOnBtnClick();
-    this.display(result);
-  }
-
-  private void display(GamePlayResult result) {
+    WordResult result = this.ref.validateWordOnBtnClick();
     if (result != null) {
-      this.displayer.show(result.getWord(), result.getScore());
+      this.displayer.showUserWord(result);
     }
   }
 
   private void displayGameWords() {
     this.game
-        .getResult()
+        .result()
+        .all()
         .forEach(
             (word, result) -> {
-              this.display(result);
+              this.displayer.showGameWord(result);
             });
   }
 

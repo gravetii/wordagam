@@ -31,6 +31,16 @@ public enum Alphabet {
   Y(10, 4),
   Z(2, 10);
 
+  private static List<Alphabet> weighted = new ArrayList<>();
+
+  static {
+    for (Alphabet alphabet : values()) {
+      for (int c = 0; c < alphabet.weight; ++c) {
+        weighted.add(alphabet);
+      }
+    }
+  }
+
   private int weight;
   private int points;
 
@@ -39,15 +49,8 @@ public enum Alphabet {
     this.points = points;
   }
 
-  public static List<Alphabet> getWeightedAlphabetsAsList() {
-    List<Alphabet> result = new ArrayList<>();
-    for (Alphabet alphabet : values()) {
-      for (int c = 0; c < alphabet.weight; ++c) {
-        result.add(alphabet);
-      }
-    }
-
-    return result;
+  public static List<Alphabet> weightedList() {
+    return weighted;
   }
 
   public String get() {

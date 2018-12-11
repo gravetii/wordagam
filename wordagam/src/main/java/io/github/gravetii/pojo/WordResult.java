@@ -4,13 +4,13 @@ import io.github.gravetii.util.GridUnit;
 
 import java.util.List;
 
-public class GamePlayResult {
+public class WordResult {
 
   private String word;
   private int score;
   private List<GridUnit> seq;
 
-  public GamePlayResult(String word, int score, List<GridUnit> seq) {
+  public WordResult(String word, int score, List<GridUnit> seq) {
     this.word = word;
     this.score = score;
     this.seq = seq;
@@ -30,6 +30,9 @@ public class GamePlayResult {
 
   @Override
   public String toString() {
-    return "GamePlayResult{" + "word='" + word + '\'' + ", score=" + score + ", seq=" + seq + '}';
+    return '{' +
+            "word='" + word + '\'' +
+            ", score=" + score +
+            '}';
   }
 }

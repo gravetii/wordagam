@@ -1,7 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
-import io.github.gravetii.pojo.GamePlayResult;
+import io.github.gravetii.pojo.WordResult;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
 import io.github.gravetii.util.Utils;
@@ -21,7 +21,7 @@ public class GameController implements FxController {
   private Map<String, ImageView> imgViewMap;
   private GamePlayValidator validator;
   private GamePlayStyler styler;
-  private Map<String, GamePlayResult> wordToResultMap;
+  private Map<String, WordResult> userWords;
 
   @FXML private ImageView imgView$0_0;
   @FXML private ImageView imgView$0_1;
@@ -43,9 +43,9 @@ public class GameController implements FxController {
   public GameController(Game game) {
     this.game = game;
     this.imgViewMap = new HashMap<>();
-    this.validator = new GamePlayValidator(game);
+    this.validator = new GamePlayValidator(game.result());
     this.styler = new GamePlayStyler();
-    this.wordToResultMap = new HashMap<>();
+    this.userWords = new HashMap<>();
   }
 
   @FXML
@@ -93,19 +93,19 @@ public class GameController implements FxController {
     }
   }
 
-  public GamePlayResult validateWordOnBtnClick() {
-    GamePlayResult result = null;
+  public WordResult validateWordOnBtnClick() {
+    WordResult result = null;
     String word = this.validator.validate();
 
     if (word == null) {
       this.styler.forIncorrectWord();
-    } else if (this.wordToResultMap.containsKey(word)) {
+    } else if (this.userWords.containsKey(word)) {
       this.styler.forRepeatedWord();
     } else {
-      int points = this.game.getWordPoints(word);
+      int points = this.game.result().getPoints(word);
       List<GridUnit> seq = this.validator.getSeq();
-      result = new GamePlayResult(word, points, seq);
-      this.wordToResultMap.put(word, result);
+      result = new WordResult(word, points, seq);
+      this.userWords.put(word, result);
       this.styler.forCorrectWord();
     }
 
@@ -113,23 +113,24 @@ public class GameController implements FxController {
     return result;
   }
 
-  public void revisitWord(String word) {
-    GamePlayResult result = this.wordToResultMap.get(word);
-    if (result == null) {
-      result = this.game.getResult().get(word);
-    }
-
-    this.revisitResult(result);
+  public void revisitUserWord(String word) {
+    WordResult result = this.userWords.get(word);
+    this.revisit(result);
   }
 
-  public void revisitResult(GamePlayResult result) {
+  public void revisitGameWord(String word) {
+    WordResult result = this.game.result().getWordResult(word);
+    this.revisit(result);
+  }
+
+  private void revisit(WordResult result) {
     List<ImageView> imgViews =
         result
             .getSeq()
             .stream()
             .map(
                 gridUnit -> {
-                  String id = Utils.getImgViewLabelFromGridPoint(gridUnit.getGridPoint());
+                  String id = Utils.getImgViewLabelFromGridPoint(gridUnit.getPoint());
                   return this.imgViewMap.get(id);
                 })
             .collect(Collectors.toList());
