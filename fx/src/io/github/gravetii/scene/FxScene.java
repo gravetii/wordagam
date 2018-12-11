@@ -5,6 +5,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
+import java.util.Optional;
+
 public abstract class FxScene {
 
   protected Stage stage;
@@ -39,17 +41,14 @@ public abstract class FxScene {
 
   protected abstract String title();
 
-  protected FxDimensions preferredDimensions() {
-    return null;
+  protected Optional<FxDimensions> preferredDimensions() {
+    return Optional.empty();
   }
 
   protected void setEventHandlers() {}
 
   private void setDimensions() {
-    FxDimensions dimensions = this.preferredDimensions();
-    if (dimensions != null) {
-      dimensions.setFor(this.stage);
-    }
+    this.preferredDimensions().ifPresent(dimensions -> dimensions.setFor(this.stage));
   }
 
   public void show() throws Exception {

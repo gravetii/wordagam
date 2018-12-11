@@ -7,6 +7,8 @@ import javafx.geometry.Dimension2D;
 import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
+import java.util.Optional;
+
 public class AboutScene extends FxScene {
 
   public AboutScene(Stage stage) throws Exception {
@@ -26,7 +28,8 @@ public class AboutScene extends FxScene {
   }
 
   @Override
-  protected FxDimensions preferredDimensions() {
-    return new FxDimensions(new Dimension2D(500, 180));
+  protected Optional<FxDimensions> preferredDimensions() {
+    FxDimensions dimensions = new FxDimensions(new Dimension2D(500, 180));
+    return Optional.of(dimensions);
   }
 }
