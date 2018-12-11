@@ -37,15 +37,27 @@ public abstract class FxScene {
 
   protected abstract void build() throws Exception;
 
+  protected abstract String title();
+
+  protected FxDimensions preferredDimensions() {
+    return null;
+  }
+
   protected void setEventHandlers() {}
 
-  protected abstract String title();
+  private void setDimensions() {
+    FxDimensions dimensions = this.preferredDimensions();
+    if (dimensions != null) {
+      dimensions.setFor(this.stage);
+    }
+  }
 
   public void show() throws Exception {
     this.build();
     Scene scene = new Scene(this.root);
     this.stage.setScene(scene);
     this.stage.setTitle(this.title());
+    this.setDimensions();
     this.stage.show();
     this.setEventHandlers();
   }

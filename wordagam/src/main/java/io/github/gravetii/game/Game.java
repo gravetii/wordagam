@@ -2,16 +2,20 @@ package io.github.gravetii.game;
 
 import io.github.gravetii.dictionary.Dictionary;
 import io.github.gravetii.pojo.GamePlayResult;
-import io.github.gravetii.util.*;
+import io.github.gravetii.util.Alphabet;
+import io.github.gravetii.util.GridPoint;
+import io.github.gravetii.util.GridUnit;
+import io.github.gravetii.util.Utils;
 import javafx.event.Event;
 import javafx.event.EventType;
 
 import java.util.*;
 import java.util.concurrent.ThreadLocalRandom;
 
-import static io.github.gravetii.util.Constants.MIN_WORDS_COUNT;
-
 public class Game {
+
+  private static final int MIN_WORDS_COUNT = 300;
+  private static final int MIN_WORD_LENGTH = 3;
 
   private io.github.gravetii.dictionary.Dictionary dictionary;
 
@@ -69,7 +73,7 @@ public class Game {
   }
 
   private boolean isValidWord(String word) {
-    return word.length() >= Constants.MIN_WORD_LENGTH
+    return word.length() >= MIN_WORD_LENGTH
         && this.dictionary.search(word)
         && !this.wordToResultMap.containsKey(word);
   }
