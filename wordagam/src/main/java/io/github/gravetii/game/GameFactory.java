@@ -44,8 +44,9 @@ public class GameFactory {
   }
 
   private Game create() {
-    Game game = new Game(this.dictionary);
-    Quality q = game.getQuality();
+    Game game = null;
+    Quality q = Quality.LOW;
+
     while (q == Quality.LOW) {
       game = new Game(this.dictionary);
       q = game.getQuality();

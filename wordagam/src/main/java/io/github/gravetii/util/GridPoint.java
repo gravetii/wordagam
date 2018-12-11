@@ -17,8 +17,8 @@ public class GridPoint {
   }
 
   private List<GridPoint> computeNeighbors() {
-    int dx[] = {-1, -1, -1, 0, 0, 1, 1, 1};
-    int dy[] = {-1, 0, 1, -1, 1, -1, 0, 1};
+    int[] dx = {-1, -1, -1, 0, 0, 1, 1, 1};
+    int[] dy = {-1, 0, 1, -1, 1, -1, 0, 1};
     List<GridPoint> neighbors = new ArrayList<>(8);
     for (int i = 0; i < dx.length; ++i) {
       GridPoint n = new GridPoint(this.x + dx[i], this.y + dy[i]);

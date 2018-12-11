@@ -25,7 +25,7 @@ public class GridUnit {
     return alphabet.get();
   }
 
-  public int getPoints() {
+  public int getScore() {
     return alphabet.getPoints();
   }
 
@@ -33,12 +33,12 @@ public class GridUnit {
     return alphabet.getWeight();
   }
 
-  public GridPoint getGridPoint() {
+  public GridPoint getPoint() {
     return gridPoint;
   }
 
   public boolean isNeighbor(GridUnit unit) {
-    return this.getGridPoint().isNeighbor(unit.getGridPoint());
+    return this.getPoint().isNeighbor(unit.getPoint());
   }
 
   public Image getImage() {

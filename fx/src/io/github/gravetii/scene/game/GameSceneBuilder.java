@@ -20,7 +20,7 @@ public class GameSceneBuilder {
   private Game game;
   private BorderPane root;
   private GameController gameController;
-  private GamePlayController gamePlayController;
+  private GameResultController gameResultController;
   private ProgressBarController progressBarController;
   private MenuBarController menuBarController;
 
@@ -28,7 +28,7 @@ public class GameSceneBuilder {
     this.root = root;
     this.game = new GameService().fetch();
     this.gameController = new GameController(this.game);
-    this.gamePlayController = new GamePlayController(this.game, this.gameController);
+    this.gameResultController = new GameResultController(this.game, this.gameController);
     GameTimerTask timerTask = new GameTimerTask(this.root, 10);
     SingleLatestTaskScheduler.get().submit(timerTask);
     this.progressBarController = new ProgressBarController(timerTask);
@@ -53,7 +53,7 @@ public class GameSceneBuilder {
   }
 
   public VBox loadGameResultPane() throws Exception {
-    return (VBox) App.loadFxComponent("fxml/gameResult.fxml", this.gamePlayController);
+    return (VBox) App.loadFxComponent("fxml/gameResult.fxml", this.gameResultController);
   }
 
   public ProgressBar loadGameProgressBar() throws Exception {
@@ -68,6 +68,6 @@ public class GameSceneBuilder {
 
   public void endGame() {
     this.gameController.onGameEnd();
-    this.gamePlayController.onGameEnd();
+    this.gameResultController.onGameEnd();
   }
 }
