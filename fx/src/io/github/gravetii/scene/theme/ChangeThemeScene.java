@@ -16,7 +16,6 @@ public class ChangeThemeScene extends FxScene {
   public ChangeThemeScene(Stage stage) throws Exception {
     super(stage);
     this.builder = new ChangeThemeSceneBuilder(this.stage, this.root);
-    this.build();
   }
 
   @Override

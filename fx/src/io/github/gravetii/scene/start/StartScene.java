@@ -16,7 +16,6 @@ public class StartScene extends FxScene {
   public StartScene(Stage stage) throws Exception {
     super(stage);
     this.builder = new StartSceneBuilder(this.stage, this.root);
-    this.build();
   }
 
   @Override
