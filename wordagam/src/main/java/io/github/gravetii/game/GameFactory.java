@@ -12,6 +12,7 @@ public class GameFactory {
 
   private static final int MAX_GAMES_IN_QUEUE = 7;
   private static volatile GameFactory INSTANCE;
+
   private Dictionary dictionary;
   private LinkedBlockingDeque<Game> queue;
   private ExecutorService executor;
@@ -101,7 +102,7 @@ public class GameFactory {
 
     @Override
     public void run() {
-      for (int i = 1; i < n; ++i) {
+      for (int i = 1; i <= n; ++i) {
         Game game = create();
         queue.offerLast(game);
       }

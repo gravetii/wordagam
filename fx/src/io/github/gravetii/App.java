@@ -20,8 +20,8 @@ public class App extends Application {
     launch(args);
   }
 
-  public static Node loadFxComponent(String fxml, FxController controller) throws Exception {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource(fxml));
+  public static Node loadFxComponent(String fxmlName, FxController controller) throws Exception {
+    FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + fxmlName));
     loader.setController(controller);
     return loader.load();
   }

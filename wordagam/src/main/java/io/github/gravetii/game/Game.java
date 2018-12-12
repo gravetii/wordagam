@@ -50,6 +50,11 @@ public class Game {
     return this.result;
   }
 
+  @Override
+  public String toString() {
+    return '{' + "result=" + result + '}';
+  }
+
   public static class EndEvent extends Event {
     public static final EventType<EndEvent> GAME_END_EVENT_EVENT_TYPE =
         new EventType<>(Event.ANY, "game-end");
@@ -57,12 +62,5 @@ public class Game {
     public EndEvent() {
       super(GAME_END_EVENT_EVENT_TYPE);
     }
-  }
-
-  @Override
-  public String toString() {
-    return '{' +
-            "result=" + result +
-            '}';
   }
 }

@@ -13,7 +13,7 @@ public class StartScene extends FxScene {
 
   private StartSceneBuilder builder;
 
-  public StartScene(Stage stage) throws Exception {
+  public StartScene(Stage stage) {
     super(stage);
     this.builder = new StartSceneBuilder(this.stage, this.root);
   }
@@ -22,8 +22,7 @@ public class StartScene extends FxScene {
   protected void build() throws Exception {
     MenuBar menuBar = this.builder.loadMenuBar();
     Pane pane = this.builder.loadStartPane();
-    this.showTop(menuBar);
-    this.showCenter(pane);
+    this.showTop(menuBar).showCenter(pane);
   }
 
   @Override

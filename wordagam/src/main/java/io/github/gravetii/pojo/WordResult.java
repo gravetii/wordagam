@@ -30,9 +30,6 @@ public class WordResult {
 
   @Override
   public String toString() {
-    return '{' +
-            "word='" + word + '\'' +
-            ", score=" + score +
-            '}';
+    return '{' + "word='" + word + '\'' + ", score=" + score + '}';
   }
 }

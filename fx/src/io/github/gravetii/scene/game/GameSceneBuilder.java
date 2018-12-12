@@ -19,7 +19,7 @@ public class GameSceneBuilder {
 
   private Game game;
   private BorderPane root;
-  private GameController gameController;
+  private GameGridController gameGridController;
   private GameResultController gameResultController;
   private ProgressBarController progressBarController;
   private MenuBarController menuBarController;
@@ -27,21 +27,21 @@ public class GameSceneBuilder {
   public GameSceneBuilder(Stage stage, BorderPane root) {
     this.root = root;
     this.game = new GameService().fetch();
-    this.gameController = new GameController(this.game);
-    this.gameResultController = new GameResultController(this.game, this.gameController);
+    this.gameGridController = new GameGridController(this.game);
+    this.gameResultController = new GameResultController(this.game, this.gameGridController);
     GameTimerTask timerTask = new GameTimerTask(this.root, 10);
     SingleLatestTaskScheduler.get().submit(timerTask);
     this.progressBarController = new ProgressBarController(timerTask);
     this.menuBarController = new MenuBarController(stage);
   }
 
-  public GridPane loadGamePane() throws Exception {
-    GridPane gamePane = (GridPane) App.loadFxComponent("fxml/game.fxml", this.gameController);
+  public GridPane loadGridPane() throws Exception {
+    GridPane gridPane = (GridPane) App.loadFxComponent("gameGrid.fxml", this.gameGridController);
 
     for (int i = 0, c = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {
         GridUnit unit = this.game.getGrid()[i][j];
-        Pane pane = (Pane) gamePane.getChildren().get(c++);
+        Pane pane = (Pane) gridPane.getChildren().get(c++);
         ImageView imgView = (ImageView) pane.getChildren().get(0);
         imgView.setImage(unit.getImage());
         imgView.fitWidthProperty().bind(pane.widthProperty());
@@ -49,25 +49,25 @@ public class GameSceneBuilder {
       }
     }
 
-    return gamePane;
+    return gridPane;
   }
 
   public VBox loadGameResultPane() throws Exception {
-    return (VBox) App.loadFxComponent("fxml/gameResult.fxml", this.gameResultController);
+    return (VBox) App.loadFxComponent("gameResult.fxml", this.gameResultController);
   }
 
   public ProgressBar loadGameProgressBar() throws Exception {
-    return (ProgressBar) App.loadFxComponent("fxml/progressBar.fxml", this.progressBarController);
+    return (ProgressBar) App.loadFxComponent("progressBar.fxml", this.progressBarController);
   }
 
   public MenuBar loadMenuBar() throws Exception {
-    MenuBar menuBar = (MenuBar) App.loadFxComponent("fxml/menuBar.fxml", this.menuBarController);
+    MenuBar menuBar = (MenuBar) App.loadFxComponent("menuBar.fxml", this.menuBarController);
     menuBar.prefWidthProperty().bind(this.root.widthProperty());
     return menuBar;
   }
 
   public void endGame() {
-    this.gameController.onGameEnd();
+    this.gameGridController.onGameEnd();
     this.gameResultController.onGameEnd();
   }
 }

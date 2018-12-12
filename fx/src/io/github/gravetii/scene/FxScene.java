@@ -17,24 +17,29 @@ public abstract class FxScene {
     this.root = new BorderPane();
   }
 
-  protected void showTop(Node node) {
+  public FxScene showTop(Node node) {
     this.root.setTop(node);
+    return this;
   }
 
-  protected void showLeft(Node node) {
+  public FxScene showLeft(Node node) {
     this.root.setLeft(node);
+    return this;
   }
 
-  protected void showCenter(Node node) {
+  public FxScene showCenter(Node node) {
     this.root.setCenter(node);
+    return this;
   }
 
-  protected void showRight(Node node) {
+  public FxScene showRight(Node node) {
     this.root.setRight(node);
+    return this;
   }
 
-  protected void showBottom(Node node) {
+  public FxScene showBottom(Node node) {
     this.root.setBottom(node);
+    return this;
   }
 
   protected abstract void build() throws Exception;

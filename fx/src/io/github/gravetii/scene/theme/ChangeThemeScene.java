@@ -13,7 +13,7 @@ public class ChangeThemeScene extends FxScene {
 
   private ChangeThemeSceneBuilder builder;
 
-  public ChangeThemeScene(Stage stage) throws Exception {
+  public ChangeThemeScene(Stage stage) {
     super(stage);
     this.builder = new ChangeThemeSceneBuilder(this.stage, this.root);
   }
@@ -22,8 +22,7 @@ public class ChangeThemeScene extends FxScene {
   protected void build() throws Exception {
     GridPane themesPane = this.builder.loadThemesPane();
     ToolBar footer = this.builder.loadFooter();
-    this.showCenter(themesPane);
-    this.showBottom(footer);
+    this.showCenter(themesPane).showBottom(footer);
   }
 
   @Override
