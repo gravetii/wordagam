@@ -103,7 +103,7 @@ public class GameController implements FxController {
       this.styler.forRepeatedWord();
     } else {
       int points = this.game.result().getPoints(word);
-      List<GridUnit> seq = this.validator.getSeq();
+      List<GridPoint> seq = this.validator.getSeq();
       result = new WordResult(word, points, seq);
       this.userWords.put(word, result);
       this.styler.forCorrectWord();
@@ -129,8 +129,8 @@ public class GameController implements FxController {
             .getSeq()
             .stream()
             .map(
-                gridUnit -> {
-                  String id = Utils.getImgViewLabelFromGridPoint(gridUnit.getPoint());
+                point -> {
+                  String id = Utils.getImgViewLabelFromGridPoint(point);
                   return this.imgViewMap.get(id);
                 })
             .collect(Collectors.toList());

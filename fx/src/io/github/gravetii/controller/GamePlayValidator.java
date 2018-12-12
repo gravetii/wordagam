@@ -1,6 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.GameResult;
+import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
 
 import java.util.LinkedList;
@@ -9,7 +10,7 @@ import java.util.List;
 public class GamePlayValidator {
 
   private GameResult result;
-  private LinkedList<GridUnit> seq;
+  private LinkedList<GridPoint> seq;
   private StringBuilder builder;
 
   public GamePlayValidator(GameResult result) {
@@ -25,7 +26,7 @@ public class GamePlayValidator {
 
   private void append(GridUnit unit) {
     this.builder.append(unit.getLetter());
-    this.seq.add(unit);
+    this.seq.add(unit.getPoint());
   }
 
   private void truncate() {
@@ -39,11 +40,12 @@ public class GamePlayValidator {
   }
 
   private ValidationResult validateSubsequentClick(GridUnit unit) {
-    if (unit == this.seq.getLast()) {
+    GridPoint point = unit.getPoint();
+    if (point == this.seq.getLast()) {
       this.truncate();
       return ValidationResult.LAST_INVALID;
     } else {
-      if (this.seq.contains(unit) || !unit.isNeighbor(this.seq.getLast())) {
+      if (this.seq.contains(point) || !point.isNeighbor(this.seq.getLast())) {
         this.reset();
         return ValidationResult.ALL_INVALID;
       } else {
@@ -66,7 +68,7 @@ public class GamePlayValidator {
     return word.isEmpty() || !this.result.exists(word) ? null : word;
   }
 
-  public List<GridUnit> getSeq() {
+  public List<GridPoint> getSeq() {
     return new LinkedList<>(this.seq);
   }
 }
