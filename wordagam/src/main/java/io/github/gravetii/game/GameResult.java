@@ -6,7 +6,7 @@ import java.util.Map;
 
 public class GameResult {
 
-  private static final int MIN_WORDS_COUNT = 300;
+  private static final int MIN_WORDS_COUNT = 400;
 
   private final Map<String, WordResult> wordToResultMap;
   private final int totalScore;
