@@ -37,13 +37,13 @@ public class StartSceneBuilder {
   }
 
   public MenuBar loadMenuBar() throws Exception {
-    MenuBar menuBar = (MenuBar) App.loadFxComponent("fxml/menuBar.fxml", this.menuBarController);
+    MenuBar menuBar = (MenuBar) App.loadFxComponent("menuBar.fxml", this.menuBarController);
     menuBar.prefWidthProperty().bind(this.root.widthProperty());
     return menuBar;
   }
 
   public Pane loadStartPane() throws Exception {
-    Pane pane = (Pane) App.loadFxComponent("fxml/start.fxml", this.startController);
+    Pane pane = (Pane) App.loadFxComponent("start.fxml", this.startController);
     pane.prefHeightProperty().bind(this.root.heightProperty());
     pane.prefWidthProperty().bind(this.root.widthProperty());
     ImageView imgView = (ImageView) pane.getChildren().get(0);

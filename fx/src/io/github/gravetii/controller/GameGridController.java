@@ -12,9 +12,10 @@ import javafx.scene.input.MouseEvent;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
-public class GameController implements FxController {
+public class GameGridController implements FxController {
 
   private Game game;
 
@@ -40,7 +41,7 @@ public class GameController implements FxController {
   @FXML private ImageView imgView$3_2;
   @FXML private ImageView imgView$3_3;
 
-  public GameController(Game game) {
+  public GameGridController(Game game) {
     this.game = game;
     this.imgViewMap = new HashMap<>();
     this.validator = new GamePlayValidator(game.result());
@@ -93,7 +94,7 @@ public class GameController implements FxController {
     }
   }
 
-  public WordResult validateWordOnBtnClick() {
+  public Optional<WordResult> validateWordOnBtnClick() {
     WordResult result = null;
     String word = this.validator.validate();
 
@@ -110,7 +111,7 @@ public class GameController implements FxController {
     }
 
     this.validator.reset();
-    return result;
+    return result == null ? Optional.empty() : Optional.of(result);
   }
 
   public void revisitUserWord(String word) {

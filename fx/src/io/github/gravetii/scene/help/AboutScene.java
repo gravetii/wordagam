@@ -17,7 +17,7 @@ public class AboutScene extends FxScene {
 
   @Override
   protected void build() throws Exception {
-    TextArea area = (TextArea) App.loadFxComponent("fxml/about.fxml");
+    TextArea area = (TextArea) App.loadFxComponent("about.fxml");
     this.showCenter(area);
   }
 

@@ -29,11 +29,11 @@ public class ChangeThemeSceneBuilder {
   }
 
   public ToolBar loadFooter() throws Exception {
-    return (ToolBar) App.loadFxComponent("fxml/changeThemeFooter.fxml", footerController);
+    return (ToolBar) App.loadFxComponent("changeThemeFooter.fxml", footerController);
   }
 
   public GridPane loadThemesPane() throws Exception {
-    GridPane gridPane = (GridPane) App.loadFxComponent("fxml/changeTheme.fxml", themeController);
+    GridPane gridPane = (GridPane) App.loadFxComponent("changeTheme.fxml", themeController);
     List<ThemeType> allThemes = this.themes.getAll();
     for (int c = 0; c < allThemes.size(); ++c) {
       ThemeType type = allThemes.get(c);

@@ -50,10 +50,13 @@ public class GameResult {
 
   @Override
   public String toString() {
-    return '{' +
-            "wordCount=" + wordCount +
-            ", totalScore=" + totalScore +
-            ", all=" + wordToResultMap +
-            '}';
+    return '{'
+        + "wordCount="
+        + wordCount
+        + ", totalScore="
+        + totalScore
+        + ", all="
+        + wordToResultMap
+        + '}';
   }
 }
