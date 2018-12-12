@@ -1,6 +1,6 @@
 package io.github.gravetii.pojo;
 
-import io.github.gravetii.util.GridUnit;
+import io.github.gravetii.util.GridPoint;
 
 import java.util.List;
 
@@ -8,9 +8,9 @@ public class WordResult {
 
   private String word;
   private int score;
-  private List<GridUnit> seq;
+  private List<GridPoint> seq;
 
-  public WordResult(String word, int score, List<GridUnit> seq) {
+  public WordResult(String word, int score, List<GridPoint> seq) {
     this.word = word;
     this.score = score;
     this.seq = seq;
@@ -24,7 +24,7 @@ public class WordResult {
     return this.score;
   }
 
-  public List<GridUnit> getSeq() {
+  public List<GridPoint> getSeq() {
     return this.seq;
   }
 

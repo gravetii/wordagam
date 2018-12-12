@@ -47,12 +47,12 @@ public class GameSolver {
     return new GameResult(this.result, this.totalScore);
   }
 
-  private void solve(GridPoint point, String prefix, List<GridUnit> seq, boolean[][] visited) {
+  private void solve(GridPoint point, String prefix, List<GridPoint> seq, boolean[][] visited) {
     GridUnit unit = grid[point.x][point.y];
     visited[point.x][point.y] = true;
 
     String word = prefix + unit.getLetter();
-    seq.add(unit);
+    seq.add(point);
 
     if (!this.dictionary.prefix(word)) {
       return;

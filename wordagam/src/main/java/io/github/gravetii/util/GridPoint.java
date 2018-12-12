@@ -42,7 +42,7 @@ public class GridPoint {
     return this.neighbors;
   }
 
-  boolean isNeighbor(GridPoint point) {
+  public boolean isNeighbor(GridPoint point) {
     return this.getNeighbors().contains(point);
   }
 
