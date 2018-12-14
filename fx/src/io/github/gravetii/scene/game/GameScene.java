@@ -1,36 +1,37 @@
 package io.github.gravetii.scene.game;
 
 import io.github.gravetii.game.Game;
+import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
+import io.github.gravetii.scene.menu.MenuBarComponent;
 import io.github.gravetii.theme.Theme;
 import io.github.gravetii.theme.ThemeService;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.ProgressBar;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 public class GameScene extends FxScene {
 
-  private GameSceneBuilder builder;
-  private ThemeService themes;
+  private GameGridComponent gridComponent;
+  private GameResultComponent resultComponent;
+  private ProgressBarComponent progressBarComponent;
+  private MenuBarComponent menuBarComponent;
 
-  public GameScene(Stage stage) {
+  private ThemeService themes = new ThemeService();
+
+  public GameScene(Stage stage) throws Exception {
     super(stage);
-    this.themes = new ThemeService();
-    this.builder = new GameSceneBuilder(this.stage, this.root);
+    Game game = new GameService().fetch();
+    this.gridComponent = new GameGridComponent(game);
+    this.resultComponent = new GameResultComponent(game, this.gridComponent);
+    this.progressBarComponent = new ProgressBarComponent(root);
+    this.menuBarComponent = new MenuBarComponent(stage, root);
   }
 
   @Override
-  protected void build() throws Exception {
-    GridPane gameGridPane = this.builder.loadGridPane();
-    VBox gameResultPane = this.builder.loadGameResultPane();
-    ProgressBar progressBar = this.builder.loadGameProgressBar();
-    MenuBar menuBar = this.builder.loadMenuBar();
-    this.showTop(menuBar)
-        .showCenter(gameGridPane)
-        .showRight(gameResultPane)
-        .showBottom(progressBar);
+  protected void build() {
+    this.showTop(this.menuBarComponent.getNode())
+        .showCenter(this.gridComponent.getNode())
+        .showRight(this.resultComponent.getNode())
+        .showBottom(this.progressBarComponent.getNode());
     this.applyCurrentTheme();
   }
 
@@ -38,10 +39,6 @@ public class GameScene extends FxScene {
     String styleSheet = this.themes.loadCurrentTheme().getStyleSheet();
     this.root.getStylesheets().clear();
     this.root.getStylesheets().add(styleSheet);
-  }
-
-  private void endGame() {
-    this.builder.endGame();
   }
 
   @Override
@@ -55,7 +52,7 @@ public class GameScene extends FxScene {
     this.root.addEventHandler(
         Game.EndEvent.GAME_END_EVENT_EVENT_TYPE,
         (event) -> {
-          this.endGame();
+          // this.endGame();
           event.consume();
         });
   }

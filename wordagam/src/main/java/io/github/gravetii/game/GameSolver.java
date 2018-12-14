@@ -52,12 +52,12 @@ public class GameSolver {
     visited[point.x][point.y] = true;
 
     String word = prefix + unit.getLetter();
-    seq.add(point);
 
     if (!this.dictionary.prefix(word)) {
       return;
     }
 
+    seq.add(point);
     int score = this.wordPoints.get(prefix) + unit.getScore();
     this.wordPoints.put(word, score);
 

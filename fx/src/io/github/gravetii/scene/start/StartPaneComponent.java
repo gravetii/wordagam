@@ -1,9 +1,8 @@
 package io.github.gravetii.scene.start;
 
 import io.github.gravetii.App;
-import io.github.gravetii.controller.MenuBarController;
 import io.github.gravetii.controller.StartController;
-import javafx.scene.control.MenuBar;
+import io.github.gravetii.scene.FxComponent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -16,19 +15,19 @@ import java.nio.file.Paths;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
-public class StartSceneBuilder {
+public class StartPaneComponent extends FxComponent<StartController, Pane> {
 
+  private Stage stage;
   private BorderPane root;
-  private MenuBarController menuBarController;
-  private StartController startController;
 
-  public StartSceneBuilder(Stage stage, BorderPane root) {
+  public StartPaneComponent(Stage stage, BorderPane root) throws Exception {
+    super("start.fxml");
+    this.stage = stage;
     this.root = root;
-    this.menuBarController = new MenuBarController(stage);
-    this.startController = new StartController(stage);
+    this.create();
   }
 
-  private static Image skin() throws Exception {
+  private static Image fetchSkin() throws Exception {
     String fPath = App.class.getResource("skins").getFile();
     Stream<Path> files = Files.list(Paths.get(fPath));
     int count = Math.toIntExact(files.count());
@@ -36,18 +35,18 @@ public class StartSceneBuilder {
     return new Image(App.class.getResourceAsStream("skins/" + r + ".jpg"), 0, 0, false, false);
   }
 
-  public MenuBar loadMenuBar() throws Exception {
-    MenuBar menuBar = (MenuBar) App.loadFxComponent("menuBar.fxml", this.menuBarController);
-    menuBar.prefWidthProperty().bind(this.root.widthProperty());
-    return menuBar;
+  @Override
+  protected StartController createController() {
+    return new StartController(this.stage);
   }
 
-  public Pane loadStartPane() throws Exception {
-    Pane pane = (Pane) App.loadFxComponent("start.fxml", this.startController);
-    pane.prefHeightProperty().bind(this.root.heightProperty());
-    pane.prefWidthProperty().bind(this.root.widthProperty());
+  @Override
+  protected Pane createNode() throws Exception {
+    Pane pane = (Pane) this.loadNode();
+    pane.prefHeightProperty().bind(root.heightProperty());
+    pane.prefWidthProperty().bind(root.widthProperty());
     ImageView imgView = (ImageView) pane.getChildren().get(0);
-    imgView.setImage(StartSceneBuilder.skin());
+    imgView.setImage(fetchSkin());
     imgView.fitHeightProperty().bind(pane.heightProperty());
     imgView.fitWidthProperty().bind(pane.widthProperty());
     return pane;
