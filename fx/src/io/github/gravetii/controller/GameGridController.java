@@ -147,5 +147,6 @@ public class GameGridController implements FxController {
         });
     this.validator.reset();
     this.styler.invalidate();
+    this.styler.applyEndTransition(this.imgViewMap.values());
   }
 }

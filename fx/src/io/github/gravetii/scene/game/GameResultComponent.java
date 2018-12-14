@@ -26,4 +26,9 @@ public class GameResultComponent extends FxComponent<GameResultController, VBox>
   protected VBox createNode() throws Exception {
     return (VBox) this.loadNode();
   }
+
+  @Override
+  protected void onGameEnd() {
+    this.getController().onGameEnd();
+  }
 }
