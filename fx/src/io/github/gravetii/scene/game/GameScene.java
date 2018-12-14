@@ -43,18 +43,10 @@ public class GameScene extends FxScene {
 
   @Override
   public void setEventHandlers() {
-    this.root.addEventHandler(
-        Theme.ChangeEvent.THEME_CHANGE_EVENT_TYPE,
-        (event) -> {
-          this.applyCurrentTheme();
-          event.consume();
-        });
-    this.root.addEventHandler(
-        Game.EndEvent.GAME_END_EVENT_EVENT_TYPE,
-        (event) -> {
-          // this.endGame();
-          event.consume();
-        });
+    this.root.addEventHandler(Theme.ChangeEvent.THEME_CHANGE_EVENT_TYPE, (event -> {
+      this.applyCurrentTheme();
+      event.consume();
+    }));
   }
 
   @Override

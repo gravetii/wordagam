@@ -40,4 +40,9 @@ public class GameGridComponent extends FxComponent<GameGridController, GridPane>
 
     return gridPane;
   }
+
+  @Override
+  protected void onGameEnd() {
+    this.getController().onGameEnd();
+  }
 }

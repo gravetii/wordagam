@@ -4,6 +4,7 @@ import javafx.animation.*;
 import javafx.scene.image.ImageView;
 import javafx.util.Duration;
 
+import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
@@ -98,6 +99,25 @@ public class GamePlayStyler {
 
   private void applyScaleTransition() {
     this.seq.forEach(this::scale);
+  }
+
+  private void endTransition(ImageView imgView) {
+    TranslateTransition tt = new TranslateTransition(Duration.millis(80));
+    tt.setByX(20);
+    tt.setByY(20);
+    tt.setCycleCount(4);
+    tt.setAutoReverse(true);
+    ScaleTransition st = new ScaleTransition(Duration.millis(80));
+    st.setByX(0.2);
+    st.setByY(0.2);
+    st.setCycleCount(4);
+    st.setAutoReverse(true);
+    ParallelTransition transition = new ParallelTransition(imgView, tt, st);
+    transition.play();
+  }
+
+  public void applyEndTransition(Collection<ImageView> imgViews) {
+    imgViews.forEach(this::endTransition);
   }
 
   private void truncate() {

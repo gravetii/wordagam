@@ -29,7 +29,7 @@ public class GameTimerTask extends Task<Void> {
       // do nothing
     }
 
-    this.root.fireEvent(new Game.EndEvent());
+    this.root.getChildren().forEach(node -> node.fireEvent(new Game.EndEvent()));
     return null;
   }
 }
