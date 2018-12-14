@@ -3,26 +3,25 @@ package io.github.gravetii.scene.theme;
 import io.github.gravetii.scene.FxDimensions;
 import io.github.gravetii.scene.FxScene;
 import javafx.geometry.Dimension2D;
-import javafx.scene.control.ToolBar;
-import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
 import java.util.Optional;
 
 public class ChangeThemeScene extends FxScene {
 
-  private ChangeThemeSceneBuilder builder;
+  private ChangeThemeFooterComponent footerComponent;
+  private ChangeThemeComponent themeComponent;
 
-  public ChangeThemeScene(Stage stage) {
+  public ChangeThemeScene(Stage stage) throws Exception {
     super(stage);
-    this.builder = new ChangeThemeSceneBuilder(this.stage, this.root);
+    this.footerComponent = new ChangeThemeFooterComponent(stage);
+    this.themeComponent = new ChangeThemeComponent(stage, this.footerComponent);
   }
 
   @Override
-  protected void build() throws Exception {
-    GridPane themesPane = this.builder.loadThemesPane();
-    ToolBar footer = this.builder.loadFooter();
-    this.showCenter(themesPane).showBottom(footer);
+  protected void build() {
+    this.showCenter(this.themeComponent.getNode())
+            .showBottom(this.footerComponent.getNode());
   }
 
   @Override

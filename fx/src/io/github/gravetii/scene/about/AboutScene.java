@@ -1,24 +1,24 @@
-package io.github.gravetii.scene.help;
+package io.github.gravetii.scene.about;
 
-import io.github.gravetii.App;
 import io.github.gravetii.scene.FxDimensions;
 import io.github.gravetii.scene.FxScene;
 import javafx.geometry.Dimension2D;
-import javafx.scene.control.TextArea;
 import javafx.stage.Stage;
 
 import java.util.Optional;
 
 public class AboutScene extends FxScene {
 
-  public AboutScene(Stage stage) {
+  private AboutComponent component;
+
+  public AboutScene(Stage stage) throws Exception {
     super(stage);
+    this.component = new AboutComponent();
   }
 
   @Override
   protected void build() throws Exception {
-    TextArea area = (TextArea) App.loadFxComponent("about.fxml");
-    this.showCenter(area);
+    this.showCenter(this.component.getNode());
   }
 
   @Override

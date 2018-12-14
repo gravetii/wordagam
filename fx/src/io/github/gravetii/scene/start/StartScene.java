@@ -2,27 +2,27 @@ package io.github.gravetii.scene.start;
 
 import io.github.gravetii.scene.FxDimensions;
 import io.github.gravetii.scene.FxScene;
+import io.github.gravetii.scene.menu.MenuBarComponent;
 import javafx.geometry.Dimension2D;
-import javafx.scene.control.MenuBar;
-import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
 import java.util.Optional;
 
 public class StartScene extends FxScene {
 
-  private StartSceneBuilder builder;
+  private MenuBarComponent menuBarComponent;
+  private StartPaneComponent startPaneComponent;
 
-  public StartScene(Stage stage) {
+  public StartScene(Stage stage) throws Exception {
     super(stage);
-    this.builder = new StartSceneBuilder(this.stage, this.root);
+    this.menuBarComponent = new MenuBarComponent(this.stage, this.root);
+    this.startPaneComponent = new StartPaneComponent(this.stage, this.root);
   }
 
   @Override
-  protected void build() throws Exception {
-    MenuBar menuBar = this.builder.loadMenuBar();
-    Pane pane = this.builder.loadStartPane();
-    this.showTop(menuBar).showCenter(pane);
+  protected void build() {
+    this.showTop(this.menuBarComponent.getNode())
+            .showCenter(this.startPaneComponent.getNode());
   }
 
   @Override

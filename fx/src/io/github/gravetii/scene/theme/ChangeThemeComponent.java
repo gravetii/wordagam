@@ -1,13 +1,11 @@
 package io.github.gravetii.scene.theme;
 
-import io.github.gravetii.App;
 import io.github.gravetii.controller.ChangeThemeController;
-import io.github.gravetii.controller.ChangeThemeFooterController;
+import io.github.gravetii.scene.FxComponent;
 import io.github.gravetii.theme.Theme;
 import io.github.gravetii.theme.ThemeService;
 import io.github.gravetii.theme.ThemeType;
 import javafx.scene.control.Label;
-import javafx.scene.control.ToolBar;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.GridPane;
@@ -16,28 +14,32 @@ import javafx.stage.Stage;
 
 import java.util.List;
 
-public class ChangeThemeSceneBuilder {
+public class ChangeThemeComponent extends FxComponent<ChangeThemeController, GridPane> {
 
-  private ThemeService themes;
-  private ChangeThemeFooterController footerController;
-  private ChangeThemeController themeController;
+  private Stage stage;
+  private ChangeThemeFooterComponent ref;
 
-  public ChangeThemeSceneBuilder(Stage stage, BorderPane root) {
-    this.themes = new ThemeService();
-    this.footerController = new ChangeThemeFooterController(stage);
-    this.themeController = new ChangeThemeController(stage, footerController);
+  public ChangeThemeComponent(Stage stage, ChangeThemeFooterComponent ref) throws Exception {
+    super("changeTheme.fxml");
+    this.stage = stage;
+    this.ref = ref;
+    this.create();
   }
 
-  public ToolBar loadFooter() throws Exception {
-    return (ToolBar) App.loadFxComponent("changeThemeFooter.fxml", footerController);
+  @Override
+  protected ChangeThemeController createController() {
+    return new ChangeThemeController(this.stage, this.ref.getController());
   }
 
-  public GridPane loadThemesPane() throws Exception {
-    GridPane gridPane = (GridPane) App.loadFxComponent("changeTheme.fxml", themeController);
-    List<ThemeType> allThemes = this.themes.getAll();
+  @Override
+  protected GridPane createNode() throws Exception {
+    ThemeService themes = new ThemeService();
+    GridPane gridPane = (GridPane) this.loadNode();
+
+    List<ThemeType> allThemes = themes.getAll();
     for (int c = 0; c < allThemes.size(); ++c) {
       ThemeType type = allThemes.get(c);
-      Theme theme = this.themes.loadTheme(type);
+      Theme theme = themes.loadTheme(type);
       BorderPane borderPane = (BorderPane) gridPane.getChildren().get(c);
       Pane pane = (Pane) borderPane.getCenter();
       ImageView imgView = (ImageView) pane.getChildren().get(0);
