@@ -124,6 +124,10 @@ public class GameGridController implements FxController {
     this.revisit(result);
   }
 
+  public Map<String, WordResult> getAllGameWords() {
+    return this.game.result().all();
+  }
+
   private void revisit(WordResult result) {
     List<ImageView> imgViews =
         result
