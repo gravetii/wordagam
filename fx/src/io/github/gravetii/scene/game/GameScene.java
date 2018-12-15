@@ -17,7 +17,7 @@ public class GameScene extends FxScene {
     super(stage);
     Game game = new GameService().fetch();
     this.gridComponent = new GameGridComponent(game);
-    this.resultComponent = new GameResultComponent(game, this.gridComponent);
+    this.resultComponent = new GameResultComponent(this.gridComponent);
     this.progressBarComponent = new ProgressBarComponent(root);
     this.menuBarComponent = new MenuBarComponent(stage, root);
   }
