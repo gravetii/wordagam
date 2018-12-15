@@ -8,8 +8,8 @@ public class AboutComponent extends FxComponent<Void, TextArea> {
   public AboutComponent() throws Exception {
     super("about.fxml");
     this.create();
-
   }
+
   @Override
   protected Void createController() {
     return null;
