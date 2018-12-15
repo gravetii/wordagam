@@ -2,13 +2,10 @@ package io.github.gravetii.scene;
 
 import io.github.gravetii.App;
 import io.github.gravetii.game.Game;
-import io.github.gravetii.theme.ThemeService;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 
 public abstract class FxComponent<Controller, Node> {
-
-  private ThemeService themes = new ThemeService();
 
   private Controller controller;
   private Node node;
@@ -46,10 +43,11 @@ public abstract class FxComponent<Controller, Node> {
 
   private void setEventFilters() {
     Parent parent = (Parent) node;
-    parent.addEventFilter(Game.EndEvent.GAME_END_EVENT_EVENT_TYPE,
-            (event -> {
-              this.onGameEnd();
-              event.consume();
-            }));
+    parent.addEventFilter(
+        Game.EndEvent.GAME_END_EVENT_EVENT_TYPE,
+        (event -> {
+          this.onGameEnd();
+          event.consume();
+        }));
   }
 }

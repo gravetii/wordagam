@@ -4,8 +4,6 @@ import io.github.gravetii.game.Game;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.menu.MenuBarComponent;
-import io.github.gravetii.theme.Theme;
-import io.github.gravetii.theme.ThemeService;
 import javafx.stage.Stage;
 
 public class GameScene extends FxScene {
@@ -14,8 +12,6 @@ public class GameScene extends FxScene {
   private GameResultComponent resultComponent;
   private ProgressBarComponent progressBarComponent;
   private MenuBarComponent menuBarComponent;
-
-  private ThemeService themes = new ThemeService();
 
   public GameScene(Stage stage) throws Exception {
     super(stage);
@@ -32,21 +28,6 @@ public class GameScene extends FxScene {
         .showCenter(this.gridComponent.getNode())
         .showRight(this.resultComponent.getNode())
         .showBottom(this.progressBarComponent.getNode());
-    this.applyCurrentTheme();
-  }
-
-  private void applyCurrentTheme() {
-    String styleSheet = this.themes.loadCurrentTheme().getStyleSheet();
-    this.root.getStylesheets().clear();
-    this.root.getStylesheets().add(styleSheet);
-  }
-
-  @Override
-  public void setEventHandlers() {
-    this.root.addEventHandler(Theme.ChangeEvent.THEME_CHANGE_EVENT_TYPE, (event -> {
-      this.applyCurrentTheme();
-      event.consume();
-    }));
   }
 
   @Override

@@ -1,5 +1,7 @@
 package io.github.gravetii.scene;
 
+import io.github.gravetii.theme.Theme;
+import io.github.gravetii.theme.ThemeService;
 import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
@@ -11,6 +13,7 @@ public abstract class FxScene {
 
   protected Stage stage;
   protected BorderPane root;
+  private ThemeService themes = new ThemeService();
 
   protected FxScene(Stage stage) {
     this.stage = stage;
@@ -50,14 +53,28 @@ public abstract class FxScene {
     return Optional.empty();
   }
 
-  protected void setEventHandlers() {}
-
   private void setDimensions() {
     this.preferredDimensions().ifPresent(dimensions -> dimensions.setFor(this.stage));
   }
 
+  private void applyCurrentTheme() {
+    String styleSheet = this.themes.loadCurrentTheme().getStyleSheet();
+    this.root.getStylesheets().clear();
+    this.root.getStylesheets().add(styleSheet);
+  }
+
+  private void setEventHandlers() {
+    this.root.addEventHandler(
+        Theme.ChangeEvent.THEME_CHANGE_EVENT_TYPE,
+        (event -> {
+          this.applyCurrentTheme();
+          event.consume();
+        }));
+  }
+
   public void show() throws Exception {
     this.build();
+    this.applyCurrentTheme();
     Scene scene = new Scene(this.root);
     this.stage.setScene(scene);
     this.stage.setTitle(this.title());
