@@ -5,7 +5,7 @@
 <?import javafx.scene.effect.*?>
 <?import javafx.scene.image.*?>
 <?import javafx.scene.layout.*?>
-<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" hgap="15.0" stylesheets="@../css/styles.css"
+<GridPane xmlns:fx="http://javafx.com/fxml/1" alignment="CENTER" hgap="15.0"
           vgap="15.0" xmlns="http://javafx.com/javafx/8.0.172-ea">
     <columnConstraints>
         <ColumnConstraints halignment="CENTER" hgrow="ALWAYS" prefWidth="100.0"/>

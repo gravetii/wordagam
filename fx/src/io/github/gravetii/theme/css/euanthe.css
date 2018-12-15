@@ -1,28 +1,38 @@
 @import url("theme_common.css");
 
-#goBtn {
+.custom-button {
     -fx-font-family: "Futura";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
     -fx-text-fill: #000000;
-    -fx-background-color: linear-gradient(to bottom left, #5995A0, #B5CA7B, #D9BE71, #CB6945);
+    -fx-background-color: #B5CA7B;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
 
-#goBtn:hover {
+.custom-button:hover {
     -fx-background-color: #AFAD5B;
     -fx-cursor: HAND;
 }
 
-#goBtn:pressed {
-    -fx-background-color: #77982F;
+.custom-button:pressed {
+    -fx-background-color: #8eae48;
 }
 
 #game_pane {
     -fx-background-image: url("../files/euanthe.jpg");
-    -fx-background-size: 100% 100%;
-    -fx-background-repeat: no-repeat no-repeat;
-    -fx-background-position: center;
 }
 
+.slider .track {
+    -fx-background-color: #8BAB40;
+}
+
+.slider .thumb {
+    -fx-background-color: #2F2F2F;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #CEA959;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em;
+}

@@ -1,28 +1,38 @@
 @import url("theme_common.css");
 
-#goBtn {
+.custom-button {
     -fx-font-family: "Futura";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
     -fx-text-fill: #000000;
-    -fx-background-color: #fbbd7e;
+    -fx-background-color: #FBBD7E;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
 
-#goBtn:hover {
-    -fx-background-color: #e5994c;
+.custom-button:hover {
+    -fx-background-color: #E5994C;
     -fx-cursor: HAND;
 }
 
-#goBtn:pressed {
-    -fx-background-color: #d98631;
+.custom-button:pressed {
+    -fx-background-color: #D98631;
 }
 
 #game_pane {
     -fx-background-image: url("../files/golden_sky.jpg");
-    -fx-background-size: 100% 100%;
-    -fx-background-repeat: no-repeat no-repeat;
-    -fx-background-position: center;
 }
 
+.slider .track {
+    -fx-background-color: #645478;
+}
+
+.slider .thumb {
+    -fx-background-color: #FFFFFF;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #645478;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em;
+}
