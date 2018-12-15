@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<AnchorPane xmlns:fx="http://javafx.com/fxml/1" prefHeight="400.0" prefWidth="600.0"
+            xmlns="http://javafx.com/javafx/8.0.172-ea">
+    <children>
+        <Slider fx:id="slider" blockIncrement="1.0" layoutX="35.0" layoutY="36.0" majorTickUnit="1.0" max="300.0"
+                minorTickCount="0" prefHeight="16.0" prefWidth="266.0" snapToTicks="true"/>
+        <TextField fx:id="textField" layoutX="321.0" layoutY="16.0" prefHeight="40.0" prefWidth="57.0"/>
+        <Label fx:id="secondsLabel" layoutX="381.0" layoutY="36.0" prefHeight="17.0" prefWidth="57.0" text="seconds"/>
+        <Label fx:id="staticLabel" layoutX="138.0" layoutY="70.0" prefHeight="17.0" prefWidth="240.0"
+               text="Set value to 0.0 to disable time limit"/>
+        <Button fx:id="okButton" layoutX="195.0" layoutY="106.0" mnemonicParsing="false" onAction="#onBtnClick"
+                prefHeight="40.0" prefWidth="127.0" text="OK"/>
+    </children>
+</AnchorPane>
