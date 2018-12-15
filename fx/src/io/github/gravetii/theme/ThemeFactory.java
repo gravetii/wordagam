@@ -1,6 +1,6 @@
 package io.github.gravetii.theme;
 
-import io.github.gravetii.store.PreferenceStore;
+import io.github.gravetii.store.Settings;
 import io.github.gravetii.util.AppLogger;
 
 import java.util.Arrays;
@@ -20,7 +20,7 @@ public class ThemeFactory {
   private ThemeFactory() {
     this.themeMap = new ConcurrentHashMap<>();
     this.initAllThemes();
-    this.current = PreferenceStore.getTheme();
+    this.current = Settings.getTheme();
   }
 
   public static ThemeFactory getOrCreate() {
@@ -68,7 +68,7 @@ public class ThemeFactory {
 
   public void setCurrent(ThemeType current) {
     this.current = current;
-    PreferenceStore.saveTheme(current);
+    Settings.saveTheme(current);
   }
 
   public Theme loadCurrentTheme() {

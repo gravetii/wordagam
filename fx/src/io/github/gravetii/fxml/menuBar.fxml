@@ -6,6 +6,12 @@
         <Menu mnemonicParsing="false" text="File">
             <items>
                 <MenuItem fx:id="newGameMenuItem" mnemonicParsing="false" onAction="#newGame" text="New Game"/>
+                <Menu mnemonicParsing="false" text="Settings">
+                    <items>
+                        <MenuItem fx:id="gameTimeMenuItem" mnemonicParsing="false" onAction="#setGameTime"
+                                  text="Configure game time"/>
+                    </items>
+                </Menu>
                 <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exit" text="Exit"/>
             </items>
         </Menu>

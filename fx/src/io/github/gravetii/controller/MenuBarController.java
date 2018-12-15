@@ -4,17 +4,20 @@ import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.about.AboutScene;
 import io.github.gravetii.scene.game.GameScene;
+import io.github.gravetii.scene.settings.SetGameTimeScene;
 import io.github.gravetii.scene.theme.ChangeThemeScene;
-import io.github.gravetii.store.PreferenceStore;
+import io.github.gravetii.store.Settings;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.MenuItem;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
 public class MenuBarController implements FxController {
 
   private Stage stage;
+  @FXML private MenuItem gameTimeMenuItem;
 
   public MenuBarController(Stage stage) {
     this.stage = stage;
@@ -31,10 +34,24 @@ public class MenuBarController implements FxController {
   }
 
   @FXML
+  public void setGameTime(ActionEvent event) {
+    try {
+      Stage stage = new Stage();
+      stage.setResizable(false);
+      stage.initOwner(this.stage);
+      stage.initModality(Modality.APPLICATION_MODAL);
+      FxScene scene = new SetGameTimeScene(stage);
+      scene.show();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @FXML
   public void exit(ActionEvent event) throws Exception {
     GameService.close();
     this.stage.close();
-    PreferenceStore.close();
+    Settings.close();
     Platform.exit();
   }
 
