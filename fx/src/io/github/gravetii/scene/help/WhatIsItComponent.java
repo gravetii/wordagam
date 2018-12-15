@@ -1,12 +1,12 @@
-package io.github.gravetii.scene.about;
+package io.github.gravetii.scene.help;
 
 import io.github.gravetii.scene.FxComponent;
 import javafx.scene.control.TextArea;
 
-public class AboutComponent extends FxComponent<Void, TextArea> {
+public class WhatIsItComponent extends FxComponent<Void, TextArea> {
 
-  public AboutComponent() throws Exception {
-    super("about.fxml");
+  protected WhatIsItComponent() throws Exception {
+    super("whatIsIt.fxml");
     this.create();
   }
 
