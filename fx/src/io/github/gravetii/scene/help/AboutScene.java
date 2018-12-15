@@ -1,4 +1,4 @@
-package io.github.gravetii.scene.about;
+package io.github.gravetii.scene.help;
 
 import io.github.gravetii.scene.FxDimensions;
 import io.github.gravetii.scene.FxScene;

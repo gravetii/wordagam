@@ -2,8 +2,9 @@ package io.github.gravetii.controller;
 
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
-import io.github.gravetii.scene.about.AboutScene;
 import io.github.gravetii.scene.game.GameScene;
+import io.github.gravetii.scene.help.AboutScene;
+import io.github.gravetii.scene.help.WhatIsItScene;
 import io.github.gravetii.scene.settings.SetGameTimeScene;
 import io.github.gravetii.scene.theme.ChangeThemeScene;
 import io.github.gravetii.store.Settings;
@@ -23,6 +24,14 @@ public class MenuBarController implements FxController {
     this.stage = stage;
   }
 
+  private Stage newModalWindow() {
+    Stage stage = new Stage();
+    stage.setResizable(false);
+    stage.initOwner(this.stage);
+    stage.initModality(Modality.APPLICATION_MODAL);
+    return stage;
+  }
+
   @FXML
   public void newGame(ActionEvent event) {
     try {
@@ -36,10 +45,7 @@ public class MenuBarController implements FxController {
   @FXML
   public void setGameTime(ActionEvent event) {
     try {
-      Stage stage = new Stage();
-      stage.setResizable(false);
-      stage.initOwner(this.stage);
-      stage.initModality(Modality.APPLICATION_MODAL);
+      Stage stage = this.newModalWindow();
       FxScene scene = new SetGameTimeScene(stage);
       scene.show();
     } catch (Exception e) {
@@ -58,10 +64,7 @@ public class MenuBarController implements FxController {
   @FXML
   public void editTheme(ActionEvent event) {
     try {
-      Stage stage = new Stage();
-      stage.setResizable(false);
-      stage.initOwner(this.stage);
-      stage.initModality(Modality.APPLICATION_MODAL);
+      Stage stage = this.newModalWindow();
       FxScene scene = new ChangeThemeScene(stage);
       scene.show();
     } catch (Exception e) {
@@ -72,11 +75,19 @@ public class MenuBarController implements FxController {
   @FXML
   public void showAbout(ActionEvent event) {
     try {
-      Stage stage = new Stage();
-      stage.setResizable(false);
-      stage.initOwner(this.stage);
-      stage.initModality(Modality.APPLICATION_MODAL);
+      Stage stage = this.newModalWindow();
       FxScene scene = new AboutScene(stage);
+      scene.show();
+    } catch (Exception e) {
+      throw new RuntimeException(e);
+    }
+  }
+
+  @FXML
+  public void whatIsIt(ActionEvent event) {
+    try {
+      Stage stage = this.newModalWindow();
+      FxScene scene = new WhatIsItScene(stage);
       scene.show();
     } catch (Exception e) {
       throw new RuntimeException(e);
