@@ -1,3 +1,9 @@
+#game_pane {
+    -fx-background-size: 100% 100%;
+    -fx-background-repeat: no-repeat no-repeat;
+    -fx-background-position: center;
+}
+
 .custom-img-view-click {
     -fx-scale-x: 0.90;
     -fx-scale-y: 0.90;
@@ -41,7 +47,7 @@
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #005797;
+    -fx-background-color: #4389BE;
     -fx-background-insets: 0;
     -fx-background-radius: 1;
 }
@@ -50,9 +56,22 @@
     -fx-background-color: transparent;
 }
 
+.theme-img-view-click {
+    -fx-scale-x: 0.90;
+    -fx-scale-y: 0.90;
+    -fx-effect: innershadow(gaussian, #164993, 15, 0.5, 0, 0);
+}
 
-.progress-bar .bar {
-    -fx-background-color: #7FDBFF;
-    -fx-background-insets: 0, 1, 2;
-    -fx-padding: 0.416667em;
+.custom-txt-area {
+    -fx-focus-color: transparent;
+}
+
+.slider .track {
+    -fx-pref-height: 5;
+    -fx-pref-width: 5;
+}
+
+.slider .thumb {
+    -fx-pref-width: 20;
+    -fx-pref-height: 20;
 }

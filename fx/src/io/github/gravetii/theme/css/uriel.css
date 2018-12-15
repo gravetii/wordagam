@@ -1,28 +1,38 @@
 @import url("theme_common.css");
 
-#goBtn {
+.custom-button {
     -fx-font-family: "Futura";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
     -fx-text-fill: #FFFFFF;
-    -fx-background-color: linear-gradient(to top right, #D99C6F, #D38F62, #277F79);
+    -fx-background-color: #139462;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
 
-#goBtn:hover {
-    -fx-background-color: #398c6c;
+.custom-button:hover {
+    -fx-background-color: #398C6C;
     -fx-cursor: HAND;
 }
 
-#goBtn:pressed {
-    -fx-background-color: #139462;
+.custom-button:pressed {
+    -fx-background-color: #277F79;
 }
 
 #game_pane {
     -fx-background-image: url("../files/uriel.jpg");
-    -fx-background-size: 100% 100%;
-    -fx-background-repeat: no-repeat no-repeat;
-    -fx-background-position: center;
 }
 
+.slider .track {
+    -fx-background-color: #D99C6F;
+}
+
+.slider .thumb {
+    -fx-background-color: #FFFFFF;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #F98835;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em;
+}

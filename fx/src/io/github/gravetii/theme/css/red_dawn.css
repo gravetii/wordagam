@@ -1,28 +1,38 @@
 @import url("theme_common.css");
 
-#goBtn {
+.custom-button {
     -fx-font-family: "Futura";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
     -fx-text-fill: #000000;
-    -fx-background-color: linear-gradient(to right, #D6837F, #D73D5F, #D6457E);
+    -fx-background-color: linear-gradient(to right, #D73D5F, #D6457E);
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
 
-#goBtn:hover {
-    -fx-background-color: #fe0957;
+.custom-button:hover {
+    -fx-background-color: #FE0957;
     -fx-cursor: HAND;
 }
 
-#goBtn:pressed {
+.custom-button:pressed {
     -fx-background-color: #D23C6C;
 }
 
 #game_pane {
     -fx-background-image: url("../files/red_dawn.jpg");
-    -fx-background-size: 100% 100%;
-    -fx-background-repeat: no-repeat no-repeat;
-    -fx-background-position: center;
 }
 
+.slider .track {
+    -fx-background-color: #FE0957;
+}
+
+.slider .thumb {
+    -fx-background-color: #000000;
+}
+
+.progress-bar .bar {
+    -fx-background-color: #D73D5F;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em;
+}

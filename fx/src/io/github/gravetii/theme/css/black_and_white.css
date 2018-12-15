@@ -1,28 +1,39 @@
 @import url("theme_common.css");
 
-#goBtn {
+.custom-button {
     -fx-font-family: "Futura";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
     -fx-text-fill: black;
-    -fx-background-color: linear-gradient(to left, gray, darkgray, lightgray);
+    -fx-background-color: #A9A5A2;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
 
-#goBtn:hover {
-    -fx-background-color: #8a8988;
+.custom-button:hover {
+    -fx-background-color: #8A8988;
     -fx-cursor: HAND;
 }
 
-#goBtn:pressed {
-    -fx-background-color: #7a7a7a;
+.custom-button:pressed {
+    -fx-background-color: #7A7A7A;
 }
 
 #game_pane {
     -fx-background-image: url("../files/black_and_white.jpg");
-    -fx-background-size: 100% 100%;
-    -fx-background-repeat: no-repeat no-repeat;
-    -fx-background-position: center;
+}
+
+.slider .track {
+    -fx-background-color: #000000;
+}
+
+.slider .thumb {
+    -fx-background-color: #FFFFFF;
+}
+
+.progress-bar .bar {
+    -fx-background-color: gray;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em;
 }
 
