@@ -2,6 +2,7 @@ package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
 import io.github.gravetii.store.Settings;
+import io.github.gravetii.util.AppLogger;
 import io.github.gravetii.util.SingleLatestTaskScheduler;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
@@ -45,11 +46,10 @@ public class ProgressBarController implements FxController {
         }
 
         this.updateProgress(Double.MIN_VALUE, this.time);
+        this.root.fireEvent(new Game.EndEvent());
       } catch (InterruptedException e) {
-        // do nothing
+        AppLogger.info(this.getClass().getCanonicalName(), "Game stopped in between");
       }
-
-      this.root.getChildren().forEach(node -> node.fireEvent(new Game.EndEvent()));
 
       return null;
     }

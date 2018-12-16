@@ -24,7 +24,6 @@ public class ProgressBarComponent extends FxComponent<ProgressBarController, Pro
 
   @Override
   protected ProgressBar createNode() throws Exception {
-    return (ProgressBar) this.loadNode();
+    return this.loadNode();
   }
-
 }

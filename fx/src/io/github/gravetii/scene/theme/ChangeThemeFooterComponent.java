@@ -22,6 +22,6 @@ public class ChangeThemeFooterComponent extends FxComponent<ChangeThemeFooterCon
 
   @Override
   protected ToolBar createNode() throws Exception {
-    return (ToolBar) this.loadNode();
+    return this.loadNode();
   }
 }

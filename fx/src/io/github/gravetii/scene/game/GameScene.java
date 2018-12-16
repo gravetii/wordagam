@@ -4,6 +4,7 @@ import io.github.gravetii.game.Game;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.menu.MenuBarComponent;
+import javafx.application.Platform;
 import javafx.stage.Stage;
 
 public class GameScene extends FxScene {
@@ -28,6 +29,38 @@ public class GameScene extends FxScene {
         .showCenter(this.gridComponent.getNode())
         .showRight(this.resultComponent.getNode())
         .showBottom(this.progressBarComponent.getNode());
+  }
+
+  private void endGame() {
+    this.gridComponent.endGame();
+    this.showGameEndScene();
+  }
+
+  public GameGridComponent getGridComponent() {
+    return gridComponent;
+  }
+
+  @Override
+  public void setEventHandlers() {
+    super.setEventHandlers();
+    this.root.addEventHandler(
+        Game.EndEvent.GAME_END_EVENT_EVENT_TYPE,
+        (event -> {
+          this.endGame();
+          event.consume();
+        }));
+  }
+
+  private void showGameEndScene() {
+    Platform.runLater(
+        () -> {
+          try {
+            FxScene endScene = new GameEndScene(this.stage, this);
+            endScene.show();
+          } catch (Exception e) {
+            throw new RuntimeException(e);
+          }
+        });
   }
 
   @Override

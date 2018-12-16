@@ -22,6 +22,6 @@ public class SetGameTimeComponent extends FxComponent<SetGameTimeController, Anc
 
   @Override
   protected AnchorPane createNode() throws Exception {
-    return (AnchorPane) this.loadNode();
+    return this.loadNode();
   }
 }

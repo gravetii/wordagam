@@ -22,13 +22,13 @@
             </padding>
         </Button>
         <Separator prefWidth="200.0">
-         <effect>
-            <Lighting bumpInput="$null">
-               <light>
-                  <Light.Distant />
-               </light>
-            </Lighting>
-         </effect></Separator>
+            <effect>
+                <Lighting bumpInput="$null">
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect></Separator>
         <AnchorPane VBox.vgrow="ALWAYS">
             <children>
                 <TableView fx:id="tblDisplay" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">

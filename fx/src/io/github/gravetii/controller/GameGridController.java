@@ -1,6 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
+import io.github.gravetii.pojo.GameStats;
 import io.github.gravetii.pojo.WordResult;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
@@ -9,20 +10,17 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Optional;
+import java.util.*;
 import java.util.stream.Collectors;
 
 public class GameGridController implements FxController {
-
   private Game game;
 
   private Map<String, ImageView> imgViewMap;
   private GamePlayValidator validator;
   private GamePlayStyler styler;
   private Map<String, WordResult> userWords;
+  private int userScore = 0;
 
   @FXML private ImageView imgView$0_0;
   @FXML private ImageView imgView$0_1;
@@ -46,7 +44,7 @@ public class GameGridController implements FxController {
     this.imgViewMap = new HashMap<>();
     this.validator = new GamePlayValidator(game.result());
     this.styler = new GamePlayStyler();
-    this.userWords = new HashMap<>();
+    this.userWords = new LinkedHashMap<>();
   }
 
   @FXML
@@ -107,6 +105,7 @@ public class GameGridController implements FxController {
       List<GridPoint> seq = this.validator.getSeq();
       result = new WordResult(word, points, seq);
       this.userWords.put(word, result);
+      this.userScore += result.getScore();
       this.styler.forCorrectWord();
     }
 
@@ -128,6 +127,10 @@ public class GameGridController implements FxController {
     return this.game.result().all();
   }
 
+  public Map<String, WordResult> getAllUserWords() {
+    return this.userWords;
+  }
+
   private void revisit(WordResult result) {
     List<ImageView> imgViews =
         result
@@ -144,7 +147,7 @@ public class GameGridController implements FxController {
     this.styler.revisit(imgViews);
   }
 
-  public void onGameEnd() {
+  public void endGame() {
     this.imgViewMap.forEach(
         (label, imgView) -> {
           imgView.setDisable(true);
@@ -152,5 +155,18 @@ public class GameGridController implements FxController {
     this.validator.reset();
     this.styler.invalidate();
     this.styler.applyEndTransition(this.imgViewMap.values());
+  }
+
+  public GameStats computeStats() {
+    GameStats.Builder builder = new GameStats.Builder();
+    int totalWordsCount = this.getAllGameWords().size();
+    int totalScore = this.game.result().getTotalScore();
+    int userWordsCount = this.getAllUserWords().size();
+    builder
+        .setTotalWordsCount(totalWordsCount)
+        .setTotalScore(totalScore)
+        .setUserWordsCount(userWordsCount)
+        .setUserScore(this.userScore);
+    return builder.build();
   }
 }

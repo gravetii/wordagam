@@ -34,7 +34,7 @@ public class ChangeThemeComponent extends FxComponent<ChangeThemeController, Gri
   @Override
   protected GridPane createNode() throws Exception {
     ThemeService themes = new ThemeService();
-    GridPane gridPane = (GridPane) this.loadNode();
+    GridPane gridPane = this.loadNode();
 
     List<ThemeType> allThemes = themes.getAll();
     for (int c = 0; c < allThemes.size(); ++c) {

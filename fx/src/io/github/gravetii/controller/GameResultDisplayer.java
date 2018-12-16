@@ -34,6 +34,10 @@ public class GameResultDisplayer {
     this.show(result, true);
   }
 
+  public void showEmpty() {
+    this.table.getItems().add(new TableResult());
+  }
+
   private void show(WordResult result, boolean byUser) {
     String word = result.getWord();
     if (this.notAlreadyDisplayed(word)) {
@@ -44,19 +48,21 @@ public class GameResultDisplayer {
   }
 
   public static class TableResult {
-    private int id;
+    private Integer id;
     private String word;
-    private int score;
+    private Integer score;
     private boolean byUser;
 
-    private TableResult(int id, String word, int score, boolean byUser) {
+    private TableResult(Integer id, String word, Integer score, boolean byUser) {
       this.id = id;
       this.word = word;
       this.score = score;
       this.byUser = byUser;
     }
 
-    public int getId() {
+    private TableResult() {}
+
+    public Integer getId() {
       return id;
     }
 
@@ -64,12 +70,16 @@ public class GameResultDisplayer {
       return word;
     }
 
-    public int getScore() {
+    public Integer getScore() {
       return score;
     }
 
     public boolean isByUser() {
       return byUser;
+    }
+
+    public boolean isEmpty() {
+      return this.word == null;
     }
   }
 }

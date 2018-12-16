@@ -62,8 +62,13 @@
     -fx-effect: innershadow(gaussian, #164993, 15, 0.5, 0, 0);
 }
 
-.custom-txt-area {
+.text-area {
     -fx-focus-color: transparent;
+    -fx-text-fill: black;
+}
+
+.text-area .content {
+    -fx-background-color: lightgrey;
 }
 
 .slider .track {
