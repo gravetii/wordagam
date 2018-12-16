@@ -25,7 +25,7 @@ public class MenuBarComponent extends FxComponent<MenuBarController, MenuBar> {
 
   @Override
   protected MenuBar createNode() throws Exception {
-    MenuBar menuBar = (MenuBar) this.loadNode();
+    MenuBar menuBar = this.loadNode();
     menuBar.prefWidthProperty().bind(root.widthProperty());
     return menuBar;
   }

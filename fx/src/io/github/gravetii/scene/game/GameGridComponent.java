@@ -2,6 +2,7 @@ package io.github.gravetii.scene.game;
 
 import io.github.gravetii.controller.GameGridController;
 import io.github.gravetii.game.Game;
+import io.github.gravetii.pojo.GameStats;
 import io.github.gravetii.scene.FxComponent;
 import io.github.gravetii.util.GridUnit;
 import javafx.scene.image.ImageView;
@@ -25,7 +26,7 @@ public class GameGridComponent extends FxComponent<GameGridController, GridPane>
 
   @Override
   protected GridPane createNode() throws Exception {
-    GridPane gridPane = (GridPane) this.loadNode();
+    GridPane gridPane = this.loadNode();
 
     for (int i = 0, c = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {
@@ -41,8 +42,11 @@ public class GameGridComponent extends FxComponent<GameGridController, GridPane>
     return gridPane;
   }
 
-  @Override
-  protected void onGameEnd() {
-    this.getController().onGameEnd();
+  public void endGame() {
+    this.getController().endGame();
+  }
+
+  public GameStats computeStats() {
+    return this.getController().computeStats();
   }
 }

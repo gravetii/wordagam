@@ -63,7 +63,7 @@ public abstract class FxScene {
     this.root.getStylesheets().add(styleSheet);
   }
 
-  private void setEventHandlers() {
+  protected void setEventHandlers() {
     this.root.addEventHandler(
         Theme.ChangeEvent.THEME_CHANGE_EVENT_TYPE,
         (event -> {

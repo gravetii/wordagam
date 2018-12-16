@@ -42,7 +42,7 @@ public class StartPaneComponent extends FxComponent<StartController, Pane> {
 
   @Override
   protected Pane createNode() throws Exception {
-    Pane pane = (Pane) this.loadNode();
+    Pane pane = this.loadNode();
     pane.prefHeightProperty().bind(root.heightProperty());
     pane.prefWidthProperty().bind(root.widthProperty());
     ImageView imgView = (ImageView) pane.getChildren().get(0);

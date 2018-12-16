@@ -17,6 +17,6 @@ public class WhatIsItComponent extends FxComponent<Void, TextArea> {
 
   @Override
   protected TextArea createNode() throws Exception {
-    return (TextArea) this.loadNode();
+    return this.loadNode();
   }
 }
