@@ -19,7 +19,7 @@
     -fx-background-color: #D23C6C;
 }
 
-#game_pane {
+#gamePane {
     -fx-background-image: url("../files/red_dawn.jpg");
 }
 

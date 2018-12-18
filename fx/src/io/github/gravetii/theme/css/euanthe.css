@@ -19,7 +19,7 @@
     -fx-background-color: #8eae48;
 }
 
-#game_pane {
+#gamePane {
     -fx-background-image: url("../files/euanthe.jpg");
 }
 

@@ -19,7 +19,7 @@
     -fx-background-color: #A94E65;
 }
 
-#game_pane {
+#gamePane {
     -fx-background-image: url("../files/lavender.jpg");
 }
 

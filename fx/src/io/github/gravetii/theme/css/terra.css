@@ -19,7 +19,7 @@
     -fx-background-color: #795849;
 }
 
-#game_pane {
+#gamePane {
     -fx-background-image: url("../files/terra.jpg");
 }
 

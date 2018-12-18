@@ -19,7 +19,7 @@
     -fx-background-color: #7A7A7A;
 }
 
-#game_pane {
+#gamePane {
     -fx-background-image: url("../files/black_and_white.jpg");
 }
 

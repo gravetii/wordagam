@@ -19,7 +19,7 @@
     -fx-background-color: #D98631;
 }
 
-#game_pane {
+#gamePane {
     -fx-background-image: url("../files/golden_sky.jpg");
 }
 
