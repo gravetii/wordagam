@@ -7,13 +7,14 @@ import javafx.stage.Stage;
 
 import java.util.Optional;
 
-public class SetGameTimeScene extends FxScene {
+public class GameTimeScene extends FxScene {
 
-  private SetGameTimeComponent component;
+  private GameTimeComponent component;
 
-  public SetGameTimeScene(Stage stage) throws Exception {
+  public GameTimeScene(Stage stage) throws Exception {
     super(stage);
-    this.component = new SetGameTimeComponent(stage);
+
+    this.component = new GameTimeComponent(stage);
   }
 
   @Override

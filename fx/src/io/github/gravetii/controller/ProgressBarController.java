@@ -16,7 +16,7 @@ public class ProgressBarController implements FxController {
   @FXML private ProgressBar bar;
 
   public ProgressBarController(BorderPane root) {
-    double gameTime = Settings.getGameTime();
+    int gameTime = Settings.getGameTime().getValueInSeconds();
     this.task = new GameTimerTask(root, gameTime);
     SingleLatestTaskScheduler.get().submit(this.task);
   }
@@ -28,9 +28,9 @@ public class ProgressBarController implements FxController {
 
   public static class GameTimerTask extends Task<Void> {
     private BorderPane root;
-    private double time;
+    private int time;
 
-    public GameTimerTask(BorderPane root, double time) {
+    public GameTimerTask(BorderPane root, int time) {
       this.root = root;
       this.time = time;
     }

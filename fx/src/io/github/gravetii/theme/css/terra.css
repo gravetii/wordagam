@@ -1,4 +1,4 @@
-@import url("theme_common.css");
+@import url("common.css");
 
 .custom-button {
     -fx-font-family: "Futura";
@@ -23,16 +23,13 @@
     -fx-background-image: url("../files/terra.jpg");
 }
 
-.slider .track {
-    -fx-background-color: #99705B;
-}
-
-.slider .thumb {
-    -fx-background-color: #FFFFFF;
-}
-
 .progress-bar .bar {
     -fx-background-color: #99705B;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
+}
+
+.text-field {
+    -fx-background-color: #99705B;
+    -fx-text-fill: #FFFFFF;
 }

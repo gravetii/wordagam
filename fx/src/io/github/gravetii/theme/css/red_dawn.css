@@ -1,4 +1,4 @@
-@import url("theme_common.css");
+@import url("common.css");
 
 .custom-button {
     -fx-font-family: "Futura";
@@ -11,7 +11,7 @@
 }
 
 .custom-button:hover {
-    -fx-background-color: #FE0957;
+    -fx-background-color: #D6457E;
     -fx-cursor: HAND;
 }
 
@@ -23,16 +23,13 @@
     -fx-background-image: url("../files/red_dawn.jpg");
 }
 
-.slider .track {
-    -fx-background-color: #FE0957;
-}
-
-.slider .thumb {
-    -fx-background-color: #000000;
-}
-
 .progress-bar .bar {
     -fx-background-color: #D73D5F;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
+}
+
+.text-field {
+    -fx-background-color: #D6457E;
+    -fx-text-fill: #FFFFFF;
 }
