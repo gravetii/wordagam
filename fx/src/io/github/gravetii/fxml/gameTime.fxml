@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.Reflection?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
@@ -11,12 +12,15 @@
         <TextField fx:id="minutesTxtField" alignment="CENTER" focusTraversable="false" layoutX="183.0" layoutY="88.0" prefHeight="34.0" prefWidth="47.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font name="Avenir Medium" size="15.0" />
-         </font></TextField>
+         </font>
+         <effect>
+            <Reflection />
+         </effect></TextField>
         <Label layoutX="208.0" layoutY="37.0" text="minutes" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="37.0">
          <font>
             <Font name="Avenir Medium" size="14.0" />
          </font></Label>
-      <Label fx:id="validationLbl" layoutX="264.0" layoutY="37.0" prefHeight="20.0" prefWidth="3.0" text="," textAlignment="CENTER">
+      <Label layoutX="264.0" layoutY="37.0" prefHeight="20.0" prefWidth="3.0" text="," textAlignment="CENTER">
          <font>
             <Font name="Avenir Medium" size="14.0" />
          </font>
@@ -24,7 +28,10 @@
         <TextField fx:id="secondsTxtField" alignment="CENTER" focusTraversable="false" layoutX="277.0" layoutY="20.0" prefHeight="34.0" prefWidth="47.0" AnchorPane.topAnchor="20.0">
          <font>
             <Font name="Avenir Medium" size="15.0" />
-         </font></TextField>
+         </font>
+         <effect>
+            <Reflection />
+         </effect></TextField>
         <Label layoutX="333.0" layoutY="37.0" text="seconds" AnchorPane.topAnchor="37.0">
          <font>
             <Font name="Avenir Medium" size="14.0" />
@@ -33,7 +40,7 @@
          <font>
             <Font name="Avenir Medium" size="14.0" />
          </font></Label>
-        <Button fx:id="okBtn" layoutX="150.0" layoutY="100.0" mnemonicParsing="false" onAction="#ok" prefHeight="34.0" prefWidth="79.0" styleClass="custom-button" text="OK" AnchorPane.topAnchor="100.0" />
-        <Button fx:id="cancelBtn" layoutX="275.0" layoutY="100.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="104.0" styleClass="custom-button" text="Cancel" AnchorPane.topAnchor="100.0" />
+        <Button fx:id="okBtn" layoutX="111.0" layoutY="100.0" mnemonicParsing="false" onAction="#ok" prefHeight="34.0" prefWidth="79.0" styleClass="custom-button" text="OK" AnchorPane.topAnchor="100.0" />
+        <Button fx:id="cancelBtn" layoutX="307.0" layoutY="100.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="104.0" styleClass="custom-button" text="Cancel" AnchorPane.topAnchor="100.0" />
     </children>
 </AnchorPane>

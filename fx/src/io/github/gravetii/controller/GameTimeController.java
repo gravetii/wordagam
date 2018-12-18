@@ -25,7 +25,6 @@ public class GameTimeController implements FxController {
 
   @FXML
   public void initialize() {
-    System.out.println("Initialized GameTimeController...");
     GameTime gameTime = Settings.getGameTime();
     this.minutesTxtField.setText(Integer.toString(gameTime.getMinutes()));
     this.secondsTxtField.setText(Integer.toString(gameTime.getSeconds()));

@@ -19,7 +19,7 @@
     -fx-background-color: #EE4933;
 }
 
-#game_pane {
+#gamePane {
     -fx-background-image: url("../files/sunset.jpg");
 }
 
