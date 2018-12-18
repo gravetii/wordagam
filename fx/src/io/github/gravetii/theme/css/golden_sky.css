@@ -1,4 +1,4 @@
-@import url("theme_common.css");
+@import url("common.css");
 
 .custom-button {
     -fx-font-family: "Futura";
@@ -23,16 +23,13 @@
     -fx-background-image: url("../files/golden_sky.jpg");
 }
 
-.slider .track {
-    -fx-background-color: #645478;
-}
-
-.slider .thumb {
-    -fx-background-color: #FFFFFF;
-}
-
 .progress-bar .bar {
     -fx-background-color: #645478;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
+}
+
+.text-field {
+    -fx-background-color: #FBBD7E;
+    -fx-text-fill: #000000;
 }

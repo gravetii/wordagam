@@ -2,7 +2,6 @@ package io.github.gravetii.scene.game;
 
 import io.github.gravetii.controller.ProgressBarController;
 import io.github.gravetii.scene.FxComponent;
-import io.github.gravetii.store.Settings;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 
@@ -18,7 +17,6 @@ public class ProgressBarComponent extends FxComponent<ProgressBarController, Pro
 
   @Override
   protected ProgressBarController createController() {
-    double gameTime = Settings.getGameTime();
     return new ProgressBarController(this.root);
   }
 

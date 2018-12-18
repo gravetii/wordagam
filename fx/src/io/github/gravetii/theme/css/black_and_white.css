@@ -1,10 +1,10 @@
-@import url("theme_common.css");
+@import url("common.css");
 
 .custom-button {
     -fx-font-family: "Futura";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
-    -fx-text-fill: black;
+    -fx-text-fill: #000000;
     -fx-background-color: #A9A5A2;
     -fx-text-alignment: center;
     -fx-alignment: center;
@@ -23,17 +23,13 @@
     -fx-background-image: url("../files/black_and_white.jpg");
 }
 
-.slider .track {
-    -fx-background-color: #000000;
-}
-
-.slider .thumb {
-    -fx-background-color: #FFFFFF;
-}
-
 .progress-bar .bar {
-    -fx-background-color: gray;
+    -fx-background-color: #808080;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
 }
 
+.text-field {
+    -fx-background-color: #A9A5A2;
+    -fx-text-fill: #000000;
+}

@@ -5,7 +5,7 @@ import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.game.GameScene;
 import io.github.gravetii.scene.help.AboutScene;
 import io.github.gravetii.scene.help.WhatIsItScene;
-import io.github.gravetii.scene.settings.SetGameTimeScene;
+import io.github.gravetii.scene.settings.GameTimeScene;
 import io.github.gravetii.scene.theme.ChangeThemeScene;
 import io.github.gravetii.store.Settings;
 import javafx.application.Platform;
@@ -46,7 +46,7 @@ public class MenuBarController implements FxController {
   public void setGameTime(ActionEvent event) {
     try {
       Stage stage = this.newModalWindow();
-      FxScene scene = new SetGameTimeScene(stage);
+      FxScene scene = new GameTimeScene(stage);
       scene.show();
     } catch (Exception e) {
       throw new RuntimeException(e);
