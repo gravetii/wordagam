@@ -13,7 +13,7 @@ public abstract class FxScene {
 
   protected Stage stage;
   protected BorderPane root;
-  private ThemeService themes = new ThemeService();
+  protected ThemeService themes = new ThemeService();
 
   protected FxScene(Stage stage) {
     this.stage = stage;
@@ -57,8 +57,12 @@ public abstract class FxScene {
     this.preferredDimensions().ifPresent(dimensions -> dimensions.setFor(this.stage));
   }
 
+  protected Theme loadTheme() {
+    return this.themes.loadCurrentTheme();
+  }
+
   private void applyCurrentTheme() {
-    String styleSheet = this.themes.loadCurrentTheme().getStyleSheet();
+    String styleSheet = this.loadTheme().getStyleSheet();
     this.root.getStylesheets().clear();
     this.root.getStylesheets().add(styleSheet);
   }
