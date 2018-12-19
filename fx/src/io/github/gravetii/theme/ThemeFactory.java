@@ -14,6 +14,7 @@ public class ThemeFactory {
   private static volatile ThemeFactory INSTANCE;
 
   private ThemeType current;
+  private Theme currentRandomTheme;
 
   private Map<ThemeType, Theme> themeMap;
 
@@ -21,9 +22,10 @@ public class ThemeFactory {
     this.themeMap = new ConcurrentHashMap<>();
     this.initAllThemes();
     this.current = Settings.getTheme();
+    this.currentRandomTheme = null;
   }
 
-  public static ThemeFactory getOrCreate() {
+  public static ThemeFactory get() {
     if (INSTANCE == null) {
       synchronized (ThemeFactory.class) {
         if (INSTANCE == null) {
@@ -58,7 +60,7 @@ public class ThemeFactory {
     this.themeMap.put(ThemeType.URIEL, new Theme(ThemeType.URIEL, ThemeType.URIEL.getImgPath()));
   }
 
-  public Theme getOrCreate(ThemeType type) {
+  public Theme get(ThemeType type) {
     return this.themeMap.get(type);
   }
 
@@ -72,10 +74,22 @@ public class ThemeFactory {
   }
 
   public Theme loadCurrentTheme() {
-    if (this.current == null || this.current == ThemeType.RANDOM) {
-      return this.random();
+    if (this.current == ThemeType.RANDOM) {
+      if (this.currentRandomTheme == null) {
+        this.currentRandomTheme = this.random();
+      }
+      return this.currentRandomTheme;
     } else {
-      return this.themeMap.get(current);
+      return this.get(this.current);
+    }
+  }
+
+  public Theme loadNewCurrentTheme() {
+    if (this.current == ThemeType.RANDOM) {
+      this.currentRandomTheme = this.random();
+      return this.currentRandomTheme;
+    } else {
+      return this.get(this.current);
     }
   }
 
@@ -84,7 +98,7 @@ public class ThemeFactory {
     int count = ThemeType.values().length;
     int r = ThreadLocalRandom.current().nextInt(1, count);
     ThemeType type = allThemeTypes[r];
-    return this.getOrCreate(type);
+    return this.get(type);
   }
 
   public List<ThemeType> getAll() {

@@ -9,15 +9,19 @@ public class ThemeService {
   private ThemeFactory factory;
 
   public ThemeService() {
-    this.factory = ThemeFactory.getOrCreate();
+    this.factory = ThemeFactory.get();
   }
 
   public Theme loadTheme(ThemeType type) {
-    return this.factory.getOrCreate(type);
+    return this.factory.get(type);
   }
 
   public Theme loadCurrentTheme() {
     return this.factory.loadCurrentTheme();
+  }
+
+  public Theme loadNewCurrentTheme() {
+    return this.factory.loadNewCurrentTheme();
   }
 
   public List<ThemeType> getAll() {
