@@ -2,7 +2,6 @@ package io.github.gravetii.controller;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.TableColumn;
-import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -11,6 +10,7 @@ public class GameEndResultController implements FxController {
 
   private final GameGridController ref;
   private GameResultDisplayer displayer;
+  private TableViewRenderer renderer;
 
   @FXML private TextArea txtArea;
 
@@ -31,27 +31,7 @@ public class GameEndResultController implements FxController {
     this.idTblCol.setCellValueFactory(new PropertyValueFactory<>("id"));
     this.wordTblCol.setCellValueFactory(new PropertyValueFactory<>("word"));
     this.pointsTblCol.setCellValueFactory(new PropertyValueFactory<>("score"));
-    this.tblDisplay.setRowFactory(
-        callback -> {
-          TableRow<GameResultDisplayer.TableResult> row = new TableRow<>();
-          row.setOnMouseClicked(
-              event -> {
-                if (event.getClickCount() == 2 && !row.isEmpty()) {
-                  GameResultDisplayer.TableResult result = row.getItem();
-                  if (!result.isEmpty()) {
-                    String word = result.getWord();
-                    if (result.isByUser()) {
-                      this.ref.revisitUserWord(word);
-                    } else {
-                      this.ref.revisitGameWord(word);
-                    }
-                  }
-                }
-              });
-
-          return row;
-        });
-
+    this.renderer = new TableViewRenderer(this.ref);
     this.displayer = new GameResultDisplayer(this.tblDisplay);
     this.showAllWords();
   }
@@ -75,8 +55,11 @@ public class GameEndResultController implements FxController {
   }
 
   private void showAllWords() {
+    this.tblDisplay.setRowFactory(callback ->
+            renderer.getStartFactory());
     this.displayUserWords();
-    this.displayer.showEmpty();
+    this.tblDisplay.setRowFactory(callback ->
+            renderer.getEndFactory());
     this.displayGameWords();
   }
 

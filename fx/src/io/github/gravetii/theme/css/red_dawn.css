@@ -33,3 +33,11 @@
     -fx-background-color: #D6457E;
     -fx-text-fill: #FFFFFF;
 }
+
+.table-row-cell:game .text {
+    -fx-fill: #D73D5F;
+}
+
+.table-row-cell:end .text {
+    -fx-fill: #FFFFFF;
+}

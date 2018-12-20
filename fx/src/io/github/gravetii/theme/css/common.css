@@ -47,9 +47,7 @@
 }
 
 .table-row-cell:selected {
-    -fx-background-color: #4389BE;
-    -fx-background-insets: 0;
-    -fx-background-radius: 1;
+    -fx-table-cell-border-color: #FFFFFF;
 }
 
 .table-row-cell:empty {
@@ -74,3 +72,4 @@
 .text-field:focused {
     -fx-highlight-fill: transparent;
 }
+
