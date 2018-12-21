@@ -52,24 +52,21 @@ public class GameSolver {
     visited[point.x][point.y] = true;
 
     String word = prefix + unit.getLetter();
+    if (this.dictionary.prefix(word)) {
+      seq.add(point);
+      int score = this.wordPoints.get(prefix) + unit.getScore();
+      this.wordPoints.put(word, score);
 
-    if (!this.dictionary.prefix(word)) {
-      return;
-    }
+      if (this.isValidWord(word)) {
+        this.result.put(word, new WordResult(word, score, seq));
+        this.totalScore += this.wordPoints.get(word);
+      }
 
-    seq.add(point);
-    int score = this.wordPoints.get(prefix) + unit.getScore();
-    this.wordPoints.put(word, score);
-
-    if (this.isValidWord(word)) {
-      this.result.put(word, new WordResult(word, score, seq));
-      this.totalScore += this.wordPoints.get(word);
-    }
-
-    for (GridPoint n : point.getNeighbors()) {
-      if (!visited[n.x][n.y]) {
-        boolean[][] v = Utils.arrCopy(visited);
-        this.solve(n, word, new LinkedList<>(seq), v);
+      for (GridPoint n : point.getNeighbors()) {
+        if (!visited[n.x][n.y]) {
+          boolean[][] v = Utils.arrCopy(visited);
+          this.solve(n, word, new LinkedList<>(seq), v);
+        }
       }
     }
   }

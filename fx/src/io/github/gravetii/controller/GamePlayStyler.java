@@ -2,6 +2,7 @@ package io.github.gravetii.controller;
 
 import javafx.animation.*;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.GridPane;
 import javafx.util.Duration;
 
 import java.util.Collection;
@@ -11,10 +12,15 @@ import java.util.List;
 
 public class GamePlayStyler {
 
+  private GridPane gamePane;
+  private Collection<ImageView> imgViews;
+
   private LinkedList<ImageView> seq;
   private PauseTransition revisitPauser;
 
-  public GamePlayStyler() {
+  public GamePlayStyler(GridPane gamePane, Collection<ImageView> imgViews) {
+    this.gamePane = gamePane;
+    this.imgViews = imgViews;
     this.seq = new LinkedList<>();
     this.revisitPauser = new PauseTransition(Duration.millis(160));
     this.revisitPauser.setOnFinished(
@@ -116,8 +122,23 @@ public class GamePlayStyler {
     transition.play();
   }
 
-  public void applyEndTransition(Collection<ImageView> imgViews) {
-    imgViews.forEach(this::endTransition);
+  public void rotateGamePane() {
+    imgViews.forEach(
+        imgView -> {
+          RotateTransition imgViewTransition = new RotateTransition(Duration.millis(300), imgView);
+          imgViewTransition.setByAngle(180);
+          imgViewTransition.setCycleCount(1);
+          imgViewTransition.play();
+        });
+
+    RotateTransition gridTransition = new RotateTransition(Duration.millis(150), this.gamePane);
+    gridTransition.setByAngle(180);
+    gridTransition.setCycleCount(1);
+    gridTransition.play();
+  }
+
+  public void applyEndTransition() {
+    this.imgViews.forEach(this::endTransition);
   }
 
   private void truncate() {
