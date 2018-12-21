@@ -1,6 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
+import io.github.gravetii.game.UserResult;
 import io.github.gravetii.pojo.GameStats;
 import io.github.gravetii.pojo.WordResult;
 import io.github.gravetii.util.GridPoint;
@@ -9,8 +10,12 @@ import io.github.gravetii.util.Utils;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class GameGridController implements FxController {
@@ -19,8 +24,9 @@ public class GameGridController implements FxController {
   private Map<String, ImageView> imgViewMap;
   private GamePlayValidator validator;
   private GamePlayStyler styler;
-  private Map<String, WordResult> userWords;
-  private int userScore = 0;
+  private UserResult userResult;
+
+  @FXML private GridPane gamePane;
 
   @FXML private ImageView imgView$0_0;
   @FXML private ImageView imgView$0_1;
@@ -43,8 +49,7 @@ public class GameGridController implements FxController {
     this.game = game;
     this.imgViewMap = new HashMap<>();
     this.validator = new GamePlayValidator(game.result());
-    this.styler = new GamePlayStyler();
-    this.userWords = new LinkedHashMap<>();
+    this.userResult = new UserResult();
   }
 
   @FXML
@@ -65,6 +70,7 @@ public class GameGridController implements FxController {
     this.imgViewMap.put("imgView$3_1", this.imgView$3_1);
     this.imgViewMap.put("imgView$3_2", this.imgView$3_2);
     this.imgViewMap.put("imgView$3_3", this.imgView$3_3);
+    this.styler = new GamePlayStyler(this.gamePane, this.imgViewMap.values());
   }
 
   @FXML
@@ -74,6 +80,10 @@ public class GameGridController implements FxController {
     GridUnit unit = game.getGridUnit(point);
     ValidationResult validation = this.validator.validate(unit);
     this.applyStyleAfterValidation(imgView, validation);
+  }
+
+  public void rotate() {
+    this.styler.rotateGamePane();
   }
 
   private void applyStyleAfterValidation(ImageView imgView, ValidationResult result) {
@@ -98,14 +108,13 @@ public class GameGridController implements FxController {
 
     if (word == null) {
       this.styler.forIncorrectWord();
-    } else if (this.userWords.containsKey(word)) {
+    } else if (this.userResult.exists(word)) {
       this.styler.forRepeatedWord();
     } else {
       int points = this.game.result().getPoints(word);
       List<GridPoint> seq = this.validator.getSeq();
       result = new WordResult(word, points, seq);
-      this.userWords.put(word, result);
-      this.userScore += result.getScore();
+      this.userResult.add(word, result);
       this.styler.forCorrectWord();
     }
 
@@ -114,7 +123,7 @@ public class GameGridController implements FxController {
   }
 
   public void revisitUserWord(String word) {
-    WordResult result = this.userWords.get(word);
+    WordResult result = this.userResult.get(word);
     this.revisit(result);
   }
 
@@ -128,7 +137,7 @@ public class GameGridController implements FxController {
   }
 
   public Map<String, WordResult> getAllUserWords() {
-    return this.userWords;
+    return this.userResult.all();
   }
 
   private void revisit(WordResult result) {
@@ -154,19 +163,20 @@ public class GameGridController implements FxController {
         });
     this.validator.reset();
     this.styler.invalidate();
-    this.styler.applyEndTransition(this.imgViewMap.values());
+    this.styler.applyEndTransition();
   }
 
   public GameStats computeStats() {
     GameStats.Builder builder = new GameStats.Builder();
     int totalWordsCount = this.getAllGameWords().size();
     int totalScore = this.game.result().getTotalScore();
-    int userWordsCount = this.getAllUserWords().size();
+    int userScore = this.userResult.getTotalScore();
+    int userWordsCount = this.userResult.getWordCount();
     builder
         .setTotalWordsCount(totalWordsCount)
         .setTotalScore(totalScore)
         .setUserWordsCount(userWordsCount)
-        .setUserScore(this.userScore);
+        .setUserScore(userScore);
     return builder.build();
   }
 }
