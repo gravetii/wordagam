@@ -16,7 +16,7 @@ public class GameSolver {
   private Dictionary dictionary;
 
   private Map<String, Integer> wordPoints = new HashMap<>();
-  private Map<String, WordResult> result = new HashMap<>();
+  private Map<String, WordResult> result = new LinkedHashMap<>();
   private int totalScore = 0;
 
   public GameSolver(GridUnit[][] grid, Dictionary dictionary) {
