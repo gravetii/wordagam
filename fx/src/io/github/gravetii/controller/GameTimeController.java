@@ -49,6 +49,14 @@ public class GameTimeController implements FxController {
   private GameTime validate() {
     String minText = this.minutesTxtField.getText();
     String secText = this.secondsTxtField.getText();
+    if (minText.isEmpty()) {
+      minText = "0";
+    }
+    if (secText.isEmpty()) {
+      secText = "0";
+    }
+
+    System.out.println(minText + ", " + secText);
     if (minText.matches("[0-9]+") && secText.matches("[0-9]+")) {
       try {
         int minutes = Integer.parseInt(minText);
