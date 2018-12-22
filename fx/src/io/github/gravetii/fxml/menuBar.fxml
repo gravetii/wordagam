@@ -4,21 +4,34 @@
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.control.SeparatorMenuItem?>
+<?import javafx.scene.input.KeyCodeCombination?>
 
 <MenuBar xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <menus>
         <Menu mnemonicParsing="false" text="File">
             <items>
-                <MenuItem fx:id="newGameMenuItem" mnemonicParsing="false" onAction="#newGame" text="New Game" />
+                <MenuItem fx:id="newGameMenuItem" mnemonicParsing="false" onAction="#newGame" text="New Game">
+               <accelerator>
+                  <KeyCodeCombination alt="DOWN" code="N" control="UP" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator></MenuItem>
                 <SeparatorMenuItem mnemonicParsing="false" />
-                <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exit" text="Exit" />
+                <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exit" text="Exit">
+               <accelerator>
+                  <KeyCodeCombination alt="DOWN" code="Q" control="UP" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator></MenuItem>
             </items>
         </Menu>
           <Menu mnemonicParsing="false" text="Settings">
               <items>
-                  <MenuItem fx:id="editThemeMenuItem" mnemonicParsing="false" onAction="#editTheme" text="Change theme" />
+                  <MenuItem fx:id="editThemeMenuItem" mnemonicParsing="false" onAction="#editTheme" text="Change theme">
+               <accelerator>
+                  <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
-                  <MenuItem fx:id="gameTimeMenuItem" mnemonicParsing="false" onAction="#setGameTime" text="Configure game time" />
+                  <MenuItem fx:id="gameTimeMenuItem" mnemonicParsing="false" onAction="#setGameTime" text="Configure game time">
+               <accelerator>
+                  <KeyCodeCombination alt="DOWN" code="G" control="UP" meta="UP" shift="UP" shortcut="UP" />
+               </accelerator></MenuItem>
             <MenuItem mnemonicParsing="false" onAction="#resetGameCounter" text="Reset game counter" />
               </items>
           </Menu>

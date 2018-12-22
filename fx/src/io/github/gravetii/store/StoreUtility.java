@@ -7,12 +7,13 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.prefs.Preferences;
 
+
 public class StoreUtility {
 
   private static final String CURRENT_THEME_KEY = "theme";
   private static final String GAME_TIME_KEY = "time";
   private static final String GAME_RUNNING_KEY = "game_r";
-  private static final String GAME_ID = "game_id";
+  private static final String GAME_ID_KEY = "game_id";
 
   private static final String DEFAULT_GAME_TIME = "5$0";
   private static final String DEFAULT_GAME_ID = "1";
@@ -67,21 +68,21 @@ public class StoreUtility {
 
   public static int getGameId() {
     String value;
-    if (store.containsKey(GAME_ID)) {
-      value = (String) store.get(GAME_ID);
+    if (store.containsKey(GAME_ID_KEY)) {
+      value = (String) store.get(GAME_ID_KEY);
     } else {
-      value = preferences().get(GAME_ID, DEFAULT_GAME_ID);
+      value = preferences().get(GAME_ID_KEY, DEFAULT_GAME_ID);
     }
 
     int id = Integer.parseInt(value);
     String incrValue = Integer.toString(id+1);
-    preferences().put(GAME_ID, incrValue);
-    store.put(GAME_ID, incrValue);
+    preferences().put(GAME_ID_KEY, incrValue);
+    store.put(GAME_ID_KEY, incrValue);
     return id;
   }
 
   public static void resetGameId() {
-    preferences().put(GAME_ID, "1");
-    store.put(GAME_ID, "1");
+    preferences().put(GAME_ID_KEY, DEFAULT_GAME_ID);
+    store.put(GAME_ID_KEY, DEFAULT_GAME_ID);
   }
 }
