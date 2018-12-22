@@ -17,8 +17,11 @@ public class Dictionary {
     BufferedReader reader = null;
     try {
       this.trie = new Trie();
-      InputStream istream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
-      reader = new BufferedReader(new InputStreamReader(istream));
+      InputStream inputStream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
+      if (inputStream == null) {
+        throw new IOException("Invalid URL specified");
+      }
+      reader = new BufferedReader(new InputStreamReader(inputStream));
       String word;
       while ((word = reader.readLine()) != null) {
         word = word.trim().toLowerCase();

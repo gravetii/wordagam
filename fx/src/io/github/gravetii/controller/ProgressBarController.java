@@ -1,7 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
-import io.github.gravetii.store.Settings;
+import io.github.gravetii.store.StoreUtility;
 import io.github.gravetii.util.AppLogger;
 import io.github.gravetii.util.SingleLatestTaskScheduler;
 import javafx.concurrent.Task;
@@ -16,7 +16,7 @@ public class ProgressBarController implements FxController {
   @FXML private ProgressBar bar;
 
   public ProgressBarController(BorderPane root) {
-    int gameTime = Settings.getGameTime().getValueInSeconds();
+    int gameTime = StoreUtility.getGameTime().getValueInSeconds();
     this.task = new GameTimerTask(root, gameTime);
     SingleLatestTaskScheduler.get().submit(this.task);
   }

@@ -2,10 +2,11 @@
 
 <?import javafx.scene.control.TextArea?>
 <?import javafx.scene.text.Font?>
-
-<TextArea xmlns:fx="http://javafx.com/fxml/1" fx:id="txtArea" editable="false" focusTraversable="false" prefHeight="200.0"
+<TextArea xmlns:fx="http://javafx.com/fxml/1" fx:id="txtArea" editable="false" focusTraversable="false"
+          prefHeight="200.0"
           prefWidth="200.0"
-          text="© Developed by gravetii.&#10;&#10;Written in Java with frontend in JavaFX.&#10;&#10;If you are interested in the details of the implementation, check out the blog posts on my website - https://gravetii.github.io and/or the code at https://github.com/gravetii/wordagam." wrapText="true" xmlns="http://javafx.com/javafx/8.0.172-ea">
+          text="© Developed by gravetii.&#10;&#10;Written in Java with frontend in JavaFX.&#10;&#10;If you are interested in the details of the implementation, check out the blog posts on my website - https://gravetii.github.io and/or the code at https://github.com/gravetii/wordagam."
+          wrapText="true" xmlns="http://javafx.com/javafx/8.0.172-ea">
     <font>
         <Font name="Avenir Medium" size="15.0"/>
     </font>

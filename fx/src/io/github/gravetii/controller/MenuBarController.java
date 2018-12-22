@@ -7,18 +7,20 @@ import io.github.gravetii.scene.help.AboutScene;
 import io.github.gravetii.scene.help.WhatIsItScene;
 import io.github.gravetii.scene.settings.GameTimeScene;
 import io.github.gravetii.scene.theme.ChangeThemeScene;
-import io.github.gravetii.store.Settings;
+import io.github.gravetii.store.StoreUtility;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+
+import java.util.Optional;
 
 public class MenuBarController implements FxController {
 
   private Stage stage;
-  @FXML private MenuItem gameTimeMenuItem;
 
   public MenuBarController(Stage stage) {
     this.stage = stage;
@@ -32,65 +34,76 @@ public class MenuBarController implements FxController {
     return stage;
   }
 
+  private boolean showQuitGameAlert() {
+    Alert alert =
+        new Alert(
+            Alert.AlertType.CONFIRMATION, "Quit current game?",
+                ButtonType.NO, ButtonType.YES);
+    alert.setHeaderText("");
+    alert.setTitle("Quit?");
+    alert.initOwner(this.stage);
+    Optional<ButtonType> type = alert.showAndWait();
+    return type.isPresent() && type.get() == ButtonType.YES;
+  }
+
+  private boolean currentGameCheck() {
+    return !StoreUtility.isGameRunning() || this.showQuitGameAlert();
+  }
+
+  private boolean exitCheck() {
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+            "Are you sure?", ButtonType.NO, ButtonType.YES);
+    alert.setHeaderText("");
+    alert.setTitle("Really Exit?");
+    alert.initOwner(this.stage);
+    Optional<ButtonType> type = alert.showAndWait();
+    return type.isPresent() && type.get() == ButtonType.YES;
+  }
+
   @FXML
-  public void newGame(ActionEvent event) {
-    try {
+  public void newGame(ActionEvent event) throws Exception {
+    if (this.currentGameCheck()) {
       FxScene scene = new GameScene(this.stage);
       scene.show();
-    } catch (Exception e) {
-      throw new RuntimeException(e);
+      StoreUtility.setGameRunning(true);
     }
   }
 
   @FXML
-  public void setGameTime(ActionEvent event) {
-    try {
-      Stage stage = this.newModalWindow();
-      FxScene scene = new GameTimeScene(stage);
-      scene.show();
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+  public void setGameTime(ActionEvent event) throws Exception {
+    Stage stage = this.newModalWindow();
+    FxScene scene = new GameTimeScene(stage);
+    scene.show();
   }
 
   @FXML
   public void exit(ActionEvent event) throws Exception {
-    GameService.close();
-    this.stage.close();
-    Settings.close();
-    Platform.exit();
-  }
-
-  @FXML
-  public void editTheme(ActionEvent event) {
-    try {
-      Stage stage = this.newModalWindow();
-      FxScene scene = new ChangeThemeScene(stage);
-      scene.show();
-    } catch (Exception e) {
-      throw new RuntimeException(e);
+    if (this.exitCheck()) {
+      GameService.close();
+      this.stage.close();
+      StoreUtility.close();
+      Platform.exit();
     }
   }
 
   @FXML
-  public void showAbout(ActionEvent event) {
-    try {
-      Stage stage = this.newModalWindow();
-      FxScene scene = new AboutScene(stage);
-      scene.show();
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+  public void editTheme(ActionEvent event) throws Exception {
+    Stage stage = this.newModalWindow();
+    FxScene scene = new ChangeThemeScene(stage);
+    scene.show();
   }
 
   @FXML
-  public void whatIsIt(ActionEvent event) {
-    try {
-      Stage stage = this.newModalWindow();
-      FxScene scene = new WhatIsItScene(stage);
-      scene.show();
-    } catch (Exception e) {
-      throw new RuntimeException(e);
-    }
+  public void showAbout(ActionEvent event) throws Exception {
+    Stage stage = this.newModalWindow();
+    FxScene scene = new AboutScene(stage);
+    scene.show();
+  }
+
+  @FXML
+  public void whatIsIt(ActionEvent event) throws Exception {
+    Stage stage = this.newModalWindow();
+    FxScene scene = new WhatIsItScene(stage);
+    scene.show();
   }
 }
