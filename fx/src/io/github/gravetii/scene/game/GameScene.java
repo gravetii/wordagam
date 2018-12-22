@@ -73,6 +73,6 @@ public class GameScene extends FxScene {
 
   @Override
   public String title() {
-    return "New game";
+    return "Game #" + StoreUtility.getGameId();
   }
 }
