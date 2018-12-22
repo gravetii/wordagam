@@ -7,10 +7,9 @@ public class GameTimeValidator {
 
   public GameTime validate(Pair<String, String> obj) {
     return this.gameTimeParser()
-            .validate(this.integerParser()
-                    .validate(this.isNumberRule()
-                            .validate(this.nonEmptyRule()
-                                    .validate(obj))));
+        .validate(
+            this.integerParser()
+                .validate(this.isNumberRule().validate(this.nonEmptyRule().validate(obj))));
   }
 
   private ValidationRule<Pair<String, String>, Pair<String, String>> nonEmptyRule() {
@@ -72,7 +71,4 @@ public class GameTimeValidator {
       return null;
     };
   }
-
-
-
 }
