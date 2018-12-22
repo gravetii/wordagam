@@ -1,7 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.pojo.GameTime;
-import io.github.gravetii.store.Settings;
+import io.github.gravetii.store.StoreUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -25,7 +25,7 @@ public class GameTimeController implements FxController {
 
   @FXML
   public void initialize() {
-    GameTime gameTime = Settings.getGameTime();
+    GameTime gameTime = StoreUtility.getGameTime();
     this.minutesTxtField.setText(Integer.toString(gameTime.getMinutes()));
     this.secondsTxtField.setText(Integer.toString(gameTime.getSeconds()));
   }
@@ -34,7 +34,7 @@ public class GameTimeController implements FxController {
   public void ok(ActionEvent event) {
     GameTime gameTime = this.validate();
     if (gameTime != null) {
-      Settings.setGameTime(gameTime);
+      StoreUtility.setGameTime(gameTime);
       this.stage.close();
     } else {
       this.validationLbl.setText("Invalid value");
