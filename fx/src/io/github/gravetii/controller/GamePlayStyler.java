@@ -17,6 +17,7 @@ public class GamePlayStyler {
 
   private LinkedList<ImageView> seq;
   private PauseTransition revisitPauser;
+  private SequentialTransition sequencer;
 
   public GamePlayStyler(GridPane gamePane, Collection<ImageView> imgViews) {
     this.gamePane = gamePane;
@@ -27,6 +28,7 @@ public class GamePlayStyler {
         (event) -> {
           this.invalidate();
         });
+    this.sequencer = new SequentialTransition();
   }
 
   public void invalidate() {
@@ -125,16 +127,21 @@ public class GamePlayStyler {
   public void rotateGamePane() {
     imgViews.forEach(
         imgView -> {
-          RotateTransition imgViewTransition = new RotateTransition(Duration.millis(300), imgView);
+          RotateTransition imgViewTransition = new RotateTransition(Duration.millis(20), imgView);
           imgViewTransition.setByAngle(180);
           imgViewTransition.setCycleCount(1);
-          imgViewTransition.play();
+          this.sequencer.getChildren().add(imgViewTransition);
         });
 
-    RotateTransition gridTransition = new RotateTransition(Duration.millis(150), this.gamePane);
+    RotateTransition gridTransition = new RotateTransition(Duration.millis(100), this.gamePane);
     gridTransition.setByAngle(180);
     gridTransition.setCycleCount(1);
-    gridTransition.play();
+    this.sequencer.getChildren().add(gridTransition);
+    this.sequencer.play();
+    this.sequencer.setOnFinished(
+        event -> {
+          this.sequencer.getChildren().clear();
+        });
   }
 
   public void applyEndTransition() {

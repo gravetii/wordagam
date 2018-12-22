@@ -37,8 +37,7 @@ public class MenuBarController implements FxController {
   private boolean showQuitGameAlert() {
     Alert alert =
         new Alert(
-            Alert.AlertType.CONFIRMATION, "Quit current game?",
-                ButtonType.NO, ButtonType.YES);
+            Alert.AlertType.CONFIRMATION, "Quit current game?", ButtonType.NO, ButtonType.YES);
     alert.setHeaderText("");
     alert.setTitle("Quit?");
     alert.initOwner(this.stage);
@@ -51,8 +50,8 @@ public class MenuBarController implements FxController {
   }
 
   private boolean exitCheck() {
-    Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
-            "Are you sure?", ButtonType.NO, ButtonType.YES);
+    Alert alert =
+        new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.NO, ButtonType.YES);
     alert.setHeaderText("");
     alert.setTitle("Really Exit?");
     alert.initOwner(this.stage);
