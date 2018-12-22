@@ -10,7 +10,7 @@ import java.util.concurrent.TimeUnit;
 
 public class GameFactory {
 
-  private static final int MAX_GAMES_IN_QUEUE = 7;
+  private static final int MAX_GAMES_IN_QUEUE = 5;
   private static volatile GameFactory INSTANCE;
 
   private Dictionary dictionary;
