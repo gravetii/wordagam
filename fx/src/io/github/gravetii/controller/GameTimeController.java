@@ -8,10 +8,12 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
+import javafx.util.Pair;
 
 public class GameTimeController implements FxController {
 
   private Stage stage;
+  private GameTimeValidator validator;
 
   @FXML private TextField minutesTxtField;
   @FXML private TextField secondsTxtField;
@@ -21,6 +23,7 @@ public class GameTimeController implements FxController {
 
   public GameTimeController(Stage stage) {
     this.stage = stage;
+    this.validator = new GameTimeValidator();
   }
 
   @FXML
@@ -37,7 +40,7 @@ public class GameTimeController implements FxController {
       StoreUtility.setGameTime(gameTime);
       this.stage.close();
     } else {
-      this.validationLbl.setText("Invalid value");
+      this.validationLbl.setText("Invalid value!");
     }
   }
 
@@ -49,32 +52,6 @@ public class GameTimeController implements FxController {
   private GameTime validate() {
     String minText = this.minutesTxtField.getText();
     String secText = this.secondsTxtField.getText();
-    if (minText.isEmpty()) {
-      minText = "0";
-    }
-    if (secText.isEmpty()) {
-      secText = "0";
-    }
-
-    System.out.println(minText + ", " + secText);
-    if (minText.matches("[0-9]+") && secText.matches("[0-9]+")) {
-      try {
-        int minutes = Integer.parseInt(minText);
-        int seconds = Integer.parseInt(secText);
-        if (minutes == 0 && seconds == 0) {
-          return null;
-        }
-
-        if (seconds < 0 || seconds > 60) {
-          return null;
-        }
-
-        return new GameTime(minutes, seconds);
-      } catch (NumberFormatException e) {
-        return null;
-      }
-    }
-
-    return null;
+    return this.validator.validate(new Pair<>(minText, secText));
   }
 }
