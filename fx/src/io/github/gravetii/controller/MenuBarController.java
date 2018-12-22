@@ -77,6 +77,11 @@ public class MenuBarController implements FxController {
   }
 
   @FXML
+  public void resetGameCounter(ActionEvent event) throws Exception {
+    StoreUtility.resetGameId();
+  }
+
+  @FXML
   public void exit(ActionEvent event) throws Exception {
     if (this.exitCheck()) {
       GameService.close();
