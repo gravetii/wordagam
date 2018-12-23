@@ -2,6 +2,7 @@ package io.github.gravetii.util;
 
 import javafx.scene.image.Image;
 
+import java.io.InputStream;
 import java.util.Objects;
 
 public class GridUnit {
@@ -37,13 +38,12 @@ public class GridUnit {
     return gridPoint;
   }
 
-  public boolean isNeighbor(GridUnit unit) {
-    return this.getPoint().isNeighbor(unit.getPoint());
-  }
-
   public Image getImage() {
     if (this.img == null) {
-      this.img = new Image(ClassLoader.getSystemResourceAsStream(this.imgPath));
+      InputStream inputStream = ClassLoader.getSystemResourceAsStream(this.imgPath);
+      if (inputStream != null) {
+        this.img = new Image(inputStream);
+      }
     }
 
     return this.img;

@@ -12,12 +12,12 @@
             <items>
                 <MenuItem fx:id="newGameMenuItem" mnemonicParsing="false" onAction="#newGame" text="New Game">
                <accelerator>
-                  <KeyCodeCombination alt="DOWN" code="N" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  <KeyCodeCombination alt="UP" code="N" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                </accelerator></MenuItem>
                 <SeparatorMenuItem mnemonicParsing="false" />
                 <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exit" text="Exit">
                <accelerator>
-                  <KeyCodeCombination alt="DOWN" code="Q" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  <KeyCodeCombination alt="UP" code="Q" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                </accelerator></MenuItem>
             </items>
         </Menu>
@@ -25,12 +25,12 @@
               <items>
                   <MenuItem fx:id="editThemeMenuItem" mnemonicParsing="false" onAction="#editTheme" text="Change theme">
                <accelerator>
-                  <KeyCodeCombination alt="DOWN" code="T" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  <KeyCodeCombination alt="UP" code="T" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                </accelerator></MenuItem>
                   <SeparatorMenuItem mnemonicParsing="false" />
                   <MenuItem fx:id="gameTimeMenuItem" mnemonicParsing="false" onAction="#setGameTime" text="Configure game time">
                <accelerator>
-                  <KeyCodeCombination alt="DOWN" code="G" control="UP" meta="UP" shift="UP" shortcut="UP" />
+                  <KeyCodeCombination alt="UP" code="G" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                </accelerator></MenuItem>
             <MenuItem mnemonicParsing="false" onAction="#resetGameCounter" text="Reset game counter" />
               </items>
