@@ -14,7 +14,7 @@ public class ChangeThemeScene extends FxScene {
 
   public ChangeThemeScene(Stage stage) throws Exception {
     super(stage);
-    this.footerComponent = new ChangeThemeFooterComponent(stage);
+    this.footerComponent = new ChangeThemeFooterComponent();
     this.themeComponent = new ChangeThemeComponent(stage, this.footerComponent);
   }
 

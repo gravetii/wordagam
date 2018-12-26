@@ -8,12 +8,10 @@ import javafx.stage.Stage;
 
 public class ChangeThemeFooterController implements FxController {
 
-  private Stage stage;
   private ThemeService themes;
   @FXML private Label footerLabel;
 
-  public ChangeThemeFooterController(Stage stage) {
-    this.stage = stage;
+  public ChangeThemeFooterController() {
     this.themes = new ThemeService();
   }
 

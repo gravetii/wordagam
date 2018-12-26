@@ -7,17 +7,14 @@ import javafx.stage.Stage;
 
 public class ChangeThemeFooterComponent extends FxComponent<ChangeThemeFooterController, ToolBar> {
 
-  private Stage stage;
-
-  public ChangeThemeFooterComponent(Stage stage) throws Exception {
+  public ChangeThemeFooterComponent() throws Exception {
     super("changeThemeFooter.fxml");
-    this.stage = stage;
     this.create();
   }
 
   @Override
   protected ChangeThemeFooterController createController() {
-    return new ChangeThemeFooterController(this.stage);
+    return new ChangeThemeFooterController();
   }
 
   @Override
