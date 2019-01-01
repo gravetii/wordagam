@@ -1,36 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.effect.Lighting?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.Light.Distant?>
+<?import javafx.scene.effect.Lighting?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
 
-<VBox xmlns:fx="http://javafx.com/fxml/1" prefHeight="520.0" prefWidth="300.0"
-      xmlns="http://javafx.com/javafx/8.0.172-ea">
+<VBox prefHeight="520.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <TextArea fx:id="txtArea" editable="false" prefHeight="186.0" prefWidth="300.0" wrapText="true"/>
+        <TextArea fx:id="txtArea" editable="false" prefHeight="186.0" prefWidth="300.0" wrapText="true">
+         <effect>
+            <Blend />
+         </effect></TextArea>
         <Separator prefWidth="200.0">
             <effect>
                 <Lighting bumpInput="$null">
                     <light>
-                        <Light.Distant/>
+                        <Light.Distant />
                     </light>
                 </Lighting>
             </effect>
         </Separator>
         <AnchorPane VBox.vgrow="ALWAYS">
             <children>
-                <TableView fx:id="tblDisplay" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0"
-                           AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <TableView fx:id="tblDisplay" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
                     <placeholder>
-                        <Label/>
+                        <Label />
                     </placeholder>
                     <columns>
-                        <TableColumn fx:id="idTblCol" editable="false" prefWidth="53.0" sortable="false" text="ID"/>
-                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="138.0" sortable="false"
-                                     text="WORD"/>
-                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="88.0" sortable="false"
-                                     text="SCORE"/>
+                        <TableColumn fx:id="idTblCol" editable="false" prefWidth="53.0" sortable="false" text="ID" />
+                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="138.0" sortable="false" text="WORD" />
+                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="88.0" sortable="false" text="SCORE" />
                     </columns>
                 </TableView>
             </children>

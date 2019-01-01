@@ -45,7 +45,7 @@
                 <Font name="Avenir Medium" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="okBtn" defaultButton="true" layoutX="111.0" layoutY="100.0" mnemonicParsing="false" onAction="#ok" prefHeight="34.0" prefWidth="79.0" styleClass="custom-button" text="OK" AnchorPane.topAnchor="100.0" />
-        <Button fx:id="cancelBtn" cancelButton="true" layoutX="307.0" layoutY="100.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="104.0" styleClass="custom-button" text="Cancel" AnchorPane.topAnchor="100.0" />
+        <Button fx:id="okBtn" defaultButton="true" layoutX="133.0" layoutY="83.0" mnemonicParsing="false" onAction="#ok" prefHeight="34.0" prefWidth="79.0" styleClass="custom-button" text="OK" AnchorPane.topAnchor="83.0" />
+        <Button fx:id="cancelBtn" cancelButton="true" layoutX="292.0" layoutY="84.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="104.0" styleClass="custom-button" text="Cancel" AnchorPane.topAnchor="84.0" />
     </children>
 </AnchorPane>

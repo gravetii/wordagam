@@ -39,10 +39,6 @@ public class GameScene extends FxScene {
     StoreUtility.setGameRunning(false);
   }
 
-  public GameGridComponent getGridComponent() {
-    return gridComponent;
-  }
-
   @Override
   protected Theme loadTheme() {
     return this.themes.loadNewCurrentTheme();
@@ -63,8 +59,8 @@ public class GameScene extends FxScene {
     Platform.runLater(
         () -> {
           try {
-            FxScene endScene = new GameEndScene(this.stage, this);
-            endScene.show();
+            FxScene scene = new GameEndScene(this.stage, gridComponent);
+            scene.show();
           } catch (Exception e) {
             throw new RuntimeException(e);
           }

@@ -31,11 +31,9 @@ public class GameStats {
 
   public String to() {
     String result =
-        "Words made by you - %d\n"
-            + "Total words in the game - %d\n"
+        "\n\nWords - %d/%d\n"
             + "Words count percentage - %.2f\n\n"
-            + "Your score - %d\n"
-            + "Total possible score - %d\n"
+            + "Score - %d/%d\n"
             + "Score percentage - %.2f\n\n";
 
     float wordsCountPercent = ((float) this.userWordsCount * 100) / this.totalWordsCount;
