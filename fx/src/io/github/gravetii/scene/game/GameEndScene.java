@@ -10,10 +10,10 @@ public class GameEndScene extends FxScene {
   private GameGridComponent gameGridComponent;
   private GameEndResultComponent gameEndResultComponent;
 
-  protected GameEndScene(Stage stage, GameScene parent) throws Exception {
+  protected GameEndScene(Stage stage, GameGridComponent gameGridComponent) throws Exception {
     super(stage);
     this.menuBarComponent = new MenuBarComponent(stage, this.root);
-    this.gameGridComponent = parent.getGridComponent();
+    this.gameGridComponent = gameGridComponent;
     this.gameEndResultComponent = new GameEndResultComponent(this.gameGridComponent);
   }
 
