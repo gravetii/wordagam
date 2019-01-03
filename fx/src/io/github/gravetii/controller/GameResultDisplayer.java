@@ -10,12 +10,10 @@ public class GameResultDisplayer {
 
   private TableView<TableResult> table;
   private Set<String> displayedWords;
-  private int counter;
 
   public GameResultDisplayer(TableView<TableResult> table) {
     this.table = table;
     this.displayedWords = new HashSet<>();
-    this.counter = 0;
   }
 
   private boolean notAlreadyDisplayed(String word) {
@@ -41,30 +39,24 @@ public class GameResultDisplayer {
   private void show(WordResult result, boolean byUser) {
     String word = result.getWord();
     if (this.notAlreadyDisplayed(word)) {
-      TableResult tableResult = new TableResult(++this.counter, word, result.getScore(), byUser);
+      TableResult tableResult = new TableResult(word, result.getScore(), byUser);
       this.table.getItems().add(tableResult);
       this.markDisplayed(word);
     }
   }
 
   public static class TableResult {
-    private Integer id;
     private String word;
     private Integer score;
     private boolean byUser;
 
-    private TableResult(Integer id, String word, Integer score, boolean byUser) {
-      this.id = id;
+    private TableResult(String word, Integer score, boolean byUser) {
       this.word = word;
       this.score = score;
       this.byUser = byUser;
     }
 
     private TableResult() {}
-
-    public Integer getId() {
-      return id;
-    }
 
     public String getWord() {
       return word;

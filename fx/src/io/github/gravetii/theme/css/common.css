@@ -71,6 +71,10 @@
     -fx-background-color: #D3D3D3;
 }
 
+.text-area .content .text {
+    -fx-text-alignment: center;
+}
+
 .text-field:focused {
     -fx-highlight-fill: transparent;
 }

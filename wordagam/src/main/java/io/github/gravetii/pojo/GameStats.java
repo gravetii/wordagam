@@ -32,7 +32,7 @@ public class GameStats {
   public String to() {
     String result =
         "\n\nWords - %d/%d\n"
-            + "Words count percentage - %.2f\n\n"
+            + "Words percentage - %.2f\n\n"
             + "Score - %d/%d\n"
             + "Score percentage - %.2f\n\n";
 

@@ -15,7 +15,6 @@ public class GameEndResultController implements FxController {
   @FXML private TextArea txtArea;
 
   @FXML private TableView<GameResultDisplayer.TableResult> tblDisplay;
-  @FXML private TableColumn<GameResultDisplayer.TableResult, Integer> idTblCol;
   @FXML private TableColumn<GameResultDisplayer.TableResult, String> wordTblCol;
   @FXML private TableColumn<GameResultDisplayer.TableResult, Integer> pointsTblCol;
 
@@ -25,10 +24,6 @@ public class GameEndResultController implements FxController {
 
   @FXML
   public void initialize() {
-    this.idTblCol.prefWidthProperty().bind(tblDisplay.widthProperty().divide(4));
-    this.wordTblCol.prefWidthProperty().bind(tblDisplay.widthProperty().divide(2));
-    this.pointsTblCol.prefWidthProperty().bind(tblDisplay.widthProperty().divide(4));
-    this.idTblCol.setCellValueFactory(new PropertyValueFactory<>("id"));
     this.wordTblCol.setCellValueFactory(new PropertyValueFactory<>("word"));
     this.pointsTblCol.setCellValueFactory(new PropertyValueFactory<>("score"));
     this.tblDisplay.setRowFactory(
