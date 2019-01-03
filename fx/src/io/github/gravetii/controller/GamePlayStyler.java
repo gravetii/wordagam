@@ -23,7 +23,7 @@ public class GamePlayStyler {
     this.gamePane = gamePane;
     this.imgViews = imgViews;
     this.seq = new LinkedList<>();
-    this.revisitPauser = new PauseTransition(Duration.millis(160));
+    this.revisitPauser = new PauseTransition(Duration.millis(200));
     this.revisitPauser.setOnFinished(
         (event) -> {
           this.invalidate();
@@ -163,7 +163,7 @@ public class GamePlayStyler {
     Timeline timeline =
         new Timeline(
             new KeyFrame(
-                Duration.millis(160),
+                Duration.millis(180),
                 (event) -> {
                   ImageView imgView = itr.next();
                   this.forValidClick(imgView);

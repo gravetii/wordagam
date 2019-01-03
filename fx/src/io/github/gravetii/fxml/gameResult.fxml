@@ -51,8 +51,8 @@
                         <Label />
                     </placeholder>
                     <columns>
-                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="173.0" sortable="false" text="WORD" />
-                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="106.0" text="SCORE" />
+                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="163.0" sortable="false" text="WORD" />
+                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="116.0" text="SCORE" />
                     </columns>
                <effect>
                   <DropShadow />

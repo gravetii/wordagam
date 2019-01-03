@@ -34,8 +34,8 @@
                         <Label />
                     </placeholder>
                     <columns>
-                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="173.0" sortable="false" text="WORD" />
-                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="106.0" sortable="false" text="SCORE" />
+                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="164.0" sortable="false" text="WORD" />
+                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="115.0" sortable="false" text="SCORE" />
                     </columns>
                <effect>
                   <DropShadow />
