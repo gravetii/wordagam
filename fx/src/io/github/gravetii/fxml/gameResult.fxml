@@ -51,10 +51,12 @@
                         <Label />
                     </placeholder>
                     <columns>
-                        <TableColumn fx:id="idTblCol" editable="false" prefWidth="53.0" sortable="false" text="ID" />
-                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="138.0" sortable="false" text="WORD" />
-                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="88.0" text="SCORE" />
+                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="173.0" sortable="false" text="WORD" />
+                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="106.0" text="SCORE" />
                     </columns>
+               <effect>
+                  <DropShadow />
+               </effect>
                 </TableView>
             </children>
         </AnchorPane>
