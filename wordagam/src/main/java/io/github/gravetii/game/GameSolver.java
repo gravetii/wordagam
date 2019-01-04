@@ -24,8 +24,7 @@ public class GameSolver {
   }
 
   private boolean isValidWord(String word) {
-    return word.length() >= MIN_WORD_LENGTH
-        && this.dictionary.contains(word);
+    return word.length() >= MIN_WORD_LENGTH && this.dictionary.contains(word);
   }
 
   public GameResult solve() {

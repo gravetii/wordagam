@@ -7,6 +7,8 @@ import javafx.scene.control.TableView;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 
+import java.util.Comparator;
+
 public class GameEndResultController implements FxController {
 
   private final GameGridController ref;
@@ -47,6 +49,7 @@ public class GameEndResultController implements FxController {
           return row;
         });
 
+    this.wordTblCol.setComparator(Comparator.comparingInt(String::length));
     this.displayer = new GameResultDisplayer(this.tblDisplay);
     this.showAllWords();
   }
@@ -71,7 +74,6 @@ public class GameEndResultController implements FxController {
 
   private void showAllWords() {
     this.displayUserWords();
-    this.displayer.showEmpty();
     this.displayGameWords();
   }
 

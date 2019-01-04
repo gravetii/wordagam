@@ -4,7 +4,6 @@ import io.github.gravetii.theme.ThemeService;
 import io.github.gravetii.theme.ThemeType;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 public class ChangeThemeFooterController implements FxController {
 
