@@ -1,7 +1,6 @@
 package io.github.gravetii.game;
 
 import io.github.gravetii.dictionary.Dictionary;
-import io.github.gravetii.pojo.WordResult;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
 import io.github.gravetii.util.Utils;
@@ -16,8 +15,7 @@ public class GameSolver {
   private Dictionary dictionary;
 
   private Map<String, Integer> wordPoints = new HashMap<>();
-  private Map<String, WordResult> result = new LinkedHashMap<>();
-  private int totalScore = 0;
+  private GameResult result = new GameResult();
 
   public GameSolver(GridUnit[][] grid, Dictionary dictionary) {
     this.grid = grid;
@@ -27,8 +25,7 @@ public class GameSolver {
 
   private boolean isValidWord(String word) {
     return word.length() >= MIN_WORD_LENGTH
-        && this.dictionary.contains(word)
-        && !this.result.containsKey(word);
+        && this.dictionary.contains(word);
   }
 
   public GameResult solve() {
@@ -44,7 +41,7 @@ public class GameSolver {
       }
     }
 
-    return new GameResult(this.result, this.totalScore);
+    return this.result;
   }
 
   private void solve(GridPoint point, String prefix, List<GridPoint> seq, boolean[][] visited) {
@@ -58,8 +55,7 @@ public class GameSolver {
       this.wordPoints.put(word, score);
 
       if (this.isValidWord(word)) {
-        this.result.put(word, new WordResult(word, score, seq));
-        this.totalScore += this.wordPoints.get(word);
+        this.result.put(word, score, seq);
       }
 
       for (GridPoint n : point.getNeighbors()) {

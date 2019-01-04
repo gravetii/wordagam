@@ -167,16 +167,6 @@ public class GameGridController implements FxController {
   }
 
   public GameStats computeStats() {
-    GameStats.Builder builder = new GameStats.Builder();
-    int totalWordsCount = this.getAllGameWords().size();
-    int totalScore = this.game.result().getTotalScore();
-    int userScore = this.userResult.getTotalScore();
-    int userWordsCount = this.userResult.getWordCount();
-    builder
-        .setTotalWordsCount(totalWordsCount)
-        .setTotalScore(totalScore)
-        .setUserWordsCount(userWordsCount)
-        .setUserScore(userScore);
-    return builder.build();
+    return new GameStats(this.game.result(), this.userResult);
   }
 }

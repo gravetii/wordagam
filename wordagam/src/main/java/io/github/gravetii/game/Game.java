@@ -12,6 +12,8 @@ import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
 
+  private static final int MIN_WORDS_COUNT = 450;
+
   private final GridUnit[][] grid;
   private final GameResult result;
   private final Quality quality;
@@ -21,7 +23,7 @@ public class Game {
     this.populateGrid();
     GameSolver solver = new GameSolver(grid, dictionary);
     this.result = solver.solve();
-    this.quality = this.result.defineQuality();
+    this.quality = this.defineQuality();
   }
 
   public GridUnit[][] getGrid() {
@@ -40,6 +42,11 @@ public class Game {
         grid[i][j] = new GridUnit(weightedAlphabets.get(idx), new GridPoint(i, j));
       }
     }
+  }
+
+  private Quality defineQuality() {
+    int sz = this.result.all().size();
+    return sz >= MIN_WORDS_COUNT ? Quality.HIGH : Quality.LOW;
   }
 
   public Quality getQuality() {
