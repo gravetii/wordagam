@@ -1,27 +1,22 @@
 package io.github.gravetii.game;
 
 import io.github.gravetii.pojo.WordResult;
+import io.github.gravetii.util.GridPoint;
 
+import java.util.LinkedHashMap;
+import java.util.List;
 import java.util.Map;
 
 public class GameResult {
 
-  private static final int MIN_WORDS_COUNT = 450;
+  private Map<String, WordResult> wordToResultMap = new LinkedHashMap<>();
+  private int totalScore = 0;
 
-  private final Map<String, WordResult> wordToResultMap;
-  private final int totalScore;
-  private final int wordCount;
-
-  public GameResult(Map<String, WordResult> wordToResultMap, int totalScore) {
-
-    this.wordToResultMap = wordToResultMap;
-    this.totalScore = totalScore;
-    this.wordCount = this.wordToResultMap.size();
-  }
-
-  public Quality defineQuality() {
-    int sz = this.wordToResultMap.size();
-    return sz >= MIN_WORDS_COUNT ? Quality.HIGH : Quality.LOW;
+  public void put(String word, int score, List<GridPoint> seq) {
+    if (!this.wordToResultMap.containsKey(word)) {
+      this.wordToResultMap.put(word, new WordResult(word, score, seq));
+      this.totalScore += score;
+    }
   }
 
   public boolean exists(String word) {
@@ -44,15 +39,11 @@ public class GameResult {
     return this.wordToResultMap.get(word);
   }
 
-  private int getWordCount() {
-    return this.wordCount;
-  }
-
   @Override
   public String toString() {
     return '{'
         + "wordCount="
-        + wordCount
+        + this.wordToResultMap.size()
         + ", totalScore="
         + totalScore
         + ", all="
