@@ -4,36 +4,37 @@ import io.github.gravetii.game.GameResult;
 import io.github.gravetii.game.UserResult;
 
 public class GameStats {
-  private int totalWordsCount;
-  private int totalScore;
-  private int userWordsCount;
-  private int userScore;
-  private float wordsPercent;
-  private float scorePercent;
+  private GameResult gameResult;
+  private UserResult userResult;
 
   public GameStats(GameResult gameResult, UserResult userResult) {
-    this.totalWordsCount = gameResult.all().size();
-    this.totalScore = gameResult.getTotalScore();
-    this.userScore = userResult.getTotalScore();
-    this.userWordsCount = userResult.getWordCount();
-    this.wordsPercent = ((float) this.userWordsCount * 100) / this.totalWordsCount;
-    this.scorePercent = ((float) this.userScore * 100) / this.totalScore;
+    this.gameResult = gameResult;
+    this.userResult = userResult;
   }
 
   public String to() {
     String result =
-            "\n\nWords - %d/%d\n"
-                    + "Words percentage - %.2f\n\n"
-                    + "Score - %d/%d\n"
-                    + "Score percentage - %.2f\n\n";
+        "\nWords - %d/%d\n"
+            + "Words percentage - %.2f\n\n"
+            + "Score - %d/%d\n"
+            + "Score percentage - %.2f\n\n";
+
+    int userWordsCount = this.userResult.getWordCount();
+    int totalWordsCount = this.gameResult.all().size();
+    int userScore = this.userResult.getTotalScore();
+    int totalScore = this.gameResult.getTotalScore();
+
+    float wordsPercent = ((float) userWordsCount * 100) / totalWordsCount;
+    float scorePercent = ((float) userScore * 100) / totalScore;
 
     return String.format(
-            result,
-            userWordsCount,
-            totalWordsCount,
-            wordsPercent,
-            userScore,
-            totalScore,
-            scorePercent);
+        result,
+        this.userResult.getWordCount(),
+        gameResult.all().size(),
+        wordsPercent,
+        this.userResult.getTotalScore(),
+        this.gameResult.getTotalScore(),
+        scorePercent
+    );
   }
 }

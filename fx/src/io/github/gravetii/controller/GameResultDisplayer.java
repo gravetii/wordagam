@@ -32,10 +32,6 @@ public class GameResultDisplayer {
     this.show(result, true);
   }
 
-  public void showEmpty() {
-    this.table.getItems().add(new TableResult());
-  }
-
   private void show(WordResult result, boolean byUser) {
     String word = result.getWord();
     if (this.notAlreadyDisplayed(word)) {
@@ -55,8 +51,6 @@ public class GameResultDisplayer {
       this.score = score;
       this.byUser = byUser;
     }
-
-    private TableResult() {}
 
     public String getWord() {
       return word;
