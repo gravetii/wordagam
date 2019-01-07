@@ -125,23 +125,24 @@ public class GamePlayStyler {
   }
 
   public void rotateGamePane() {
+    RotateTransition gridTransition = new RotateTransition(Duration.millis(75), this.gamePane);
+    gridTransition.setByAngle(360);
+    gridTransition.setCycleCount(1);
+    this.sequencer.getChildren().add(gridTransition);
+
     imgViews.forEach(
         imgView -> {
           RotateTransition imgViewTransition = new RotateTransition(Duration.millis(20), imgView);
-          imgViewTransition.setByAngle(180);
-          imgViewTransition.setCycleCount(1);
+          imgViewTransition.setByAngle(90);
+          imgViewTransition.setCycleCount(2);
+          imgViewTransition.setAutoReverse(true);
           this.sequencer.getChildren().add(imgViewTransition);
         });
 
-    RotateTransition gridTransition = new RotateTransition(Duration.millis(100), this.gamePane);
-    gridTransition.setByAngle(180);
-    gridTransition.setCycleCount(1);
-    this.sequencer.getChildren().add(gridTransition);
     this.sequencer.play();
-    this.sequencer.setOnFinished(
-        event -> {
-          this.sequencer.getChildren().clear();
-        });
+    this.sequencer.setOnFinished(event -> {
+      this.sequencer.getChildren().clear();
+    });
   }
 
   public void applyEndTransition() {

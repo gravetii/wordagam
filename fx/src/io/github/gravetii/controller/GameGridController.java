@@ -11,6 +11,7 @@ import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 
 import java.util.HashMap;
 import java.util.List;
@@ -20,7 +21,7 @@ import java.util.stream.Collectors;
 
 public class GameGridController implements FxController {
   private Game game;
-
+  private Pane[][] panes;
   private Map<String, ImageView> imgViewMap;
   private GamePlayValidator validator;
   private GamePlayStyler styler;
@@ -50,6 +51,7 @@ public class GameGridController implements FxController {
     this.imgViewMap = new HashMap<>();
     this.validator = new GamePlayValidator(game.result());
     this.userResult = new UserResult();
+    this.panes =  new Pane[4][4];
   }
 
   @FXML
@@ -71,6 +73,16 @@ public class GameGridController implements FxController {
     this.imgViewMap.put("imgView$3_2", this.imgView$3_2);
     this.imgViewMap.put("imgView$3_3", this.imgView$3_3);
     this.styler = new GamePlayStyler(this.gamePane, this.imgViewMap.values());
+    this.setPanes();
+  }
+
+  private void setPanes() {
+    int c = 0;
+    for (int i=0;i<4;++i) {
+      for (int j=0;j<4;++j) {
+        this.panes[i][j] = (Pane) this.gamePane.getChildren().get(c++);
+      }
+    }
   }
 
   @FXML
@@ -82,8 +94,28 @@ public class GameGridController implements FxController {
     this.applyStyleAfterValidation(imgView, validation);
   }
 
+  private void rotateGrid() {
+    for (int x = 0; x < 2; x++) {
+      for (int y = x; y < 3-x; y++) {
+        Pane temp = this.panes[y][3-x];
+        this.panes[y][3-x] = this.panes[x][y];
+        this.panes[x][y] = this.panes[3-y][x];
+        this.panes[3-y][x] = this.panes[3-x][3-y];
+        this.panes[3-x][3-y] = temp;
+      }
+    }
+  }
+
   public void rotate() {
     this.styler.rotateGamePane();
+    this.rotateGrid();
+    for (int i=0;i<4;++i) {
+      for (int j=0;j<4;++j) {
+        Pane pane = this.panes[i][j];
+        GridPane.setRowIndex(pane, i);
+        GridPane.setColumnIndex(pane, j);
+      }
+    }
   }
 
   private void applyStyleAfterValidation(ImageView imgView, ValidationResult result) {
