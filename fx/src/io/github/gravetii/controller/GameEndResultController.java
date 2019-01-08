@@ -30,7 +30,20 @@ public class GameEndResultController implements FxController {
     this.pointsTblCol.setCellValueFactory(new PropertyValueFactory<>("score"));
     this.tblDisplay.setRowFactory(
         callback -> {
-          TableRow<GameResultDisplayer.TableResult> row = new TableRow<>();
+          TableRow<GameResultDisplayer.TableResult> row =
+              new TableRow<GameResultDisplayer.TableResult>() {
+                @Override
+                public void updateItem(GameResultDisplayer.TableResult item, boolean empty) {
+                  getStyleClass().remove("user-table-row-cell");
+                  super.updateItem(item, empty);
+                  if (item != null && !empty) {
+                    if (item.isByUser()) {
+                      getStyleClass().add("user-table-row-cell");
+                    }
+                  }
+                }
+              };
+
           row.setOnMouseClicked(
               event -> {
                 if (event.getClickCount() == 2 && !row.isEmpty()) {
