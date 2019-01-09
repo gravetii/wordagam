@@ -4,8 +4,8 @@ Just Another Word Game.
 
 ### Game play video
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=6NQFCw_t_dU
-" target="_blank"><img src="http://img.youtube.com/vi/6NQFCw_t_dU/0.jpg" 
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=jp0Td1MQy_8
+" target="_blank"><img src="http://img.youtube.com/vi/jp0Td1MQy_8/0.jpg" 
 alt="Wordagam game play video" width="240" height="180" border="10" /></a>
 
 
@@ -18,4 +18,12 @@ alt="Wordagam game play video" width="240" height="180" border="10" /></a>
 ![Screenshot 5](screenshots/5.png)
 ![Screenshot 6](screenshots/6.png)
 ![Screenshot 7](screenshots/7.png)
+![Screenshot 8](screenshots/8.png)
+![Screenshot 9](screenshots/9.png)
+![Screenshot 10](screenshots/10.png)
+![Screenshot 11](screenshots/11.png)
+![Screenshot 12](screenshots/12.png)
+![Screenshot 13](screenshots/13.png)
+![Screenshot 14](screenshots/14.png)
+
 
