@@ -17,15 +17,15 @@ public class ChangeThemeFooterController implements FxController {
   @FXML
   public void initialize() {
     this.footerLabel.setText(
-        "Your current theme is set to " + this.themes.getCurrent().getShowableName() + ".");
+        "Your current theme is set to " + this.themes.getCurrent().getShowableName());
   }
 
   public void updateThemeChange(ThemeType type) {
     String text;
     if (ThemeType.RANDOM == type) {
-      text = "You have changed the theme to be random. You will see a new theme each time.";
+      text = "You have changed the theme to be random, you will see a new theme each time";
     } else {
-      text = "Theme changed to " + type.getShowableName() + ".";
+      text = "Theme changed to " + type.getShowableName();
     }
 
     this.footerLabel.setText(text);
