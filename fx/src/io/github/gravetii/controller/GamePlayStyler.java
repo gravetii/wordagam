@@ -3,6 +3,7 @@ package io.github.gravetii.controller;
 import javafx.animation.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 import java.util.Collection;
@@ -18,10 +19,13 @@ public class GamePlayStyler {
   private LinkedList<ImageView> seq;
   private PauseTransition revisitPauser;
   private SequentialTransition sequencer;
+  private Pane[][] panes;
+  private int gridRotCount = 0;
 
   public GamePlayStyler(GridPane gamePane, Collection<ImageView> imgViews) {
     this.gamePane = gamePane;
     this.imgViews = imgViews;
+    this.panes = this.fetchPanes();
     this.seq = new LinkedList<>();
     this.revisitPauser = new PauseTransition(Duration.millis(200));
     this.revisitPauser.setOnFinished(
@@ -29,6 +33,18 @@ public class GamePlayStyler {
           this.invalidate();
         });
     this.sequencer = new SequentialTransition();
+  }
+
+  private Pane[][] fetchPanes() {
+    int c = 0;
+    Pane[][] panes =  new Pane[4][4];
+    for (int i=0;i<4;++i) {
+      for (int j=0;j<4;++j) {
+        panes[i][j] = (Pane) this.gamePane.getChildren().get(c++);
+      }
+    }
+
+    return panes;
   }
 
   public void invalidate() {
@@ -124,7 +140,7 @@ public class GamePlayStyler {
     transition.play();
   }
 
-  public void rotateGamePane() {
+  private void rotateGamePane() {
     RotateTransition gridTransition = new RotateTransition(Duration.millis(75), this.gamePane);
     gridTransition.setByAngle(360);
     gridTransition.setCycleCount(1);
@@ -143,6 +159,41 @@ public class GamePlayStyler {
     this.sequencer.setOnFinished(event -> {
       this.sequencer.getChildren().clear();
     });
+  }
+
+  public void rotateOnEnd() {
+    while (this.gridRotCount != 0) {
+      this.rotate();
+    }
+  }
+
+  public void rotate() {
+    this.rotateGamePane();
+    this.rotateGrid();
+    ++this.gridRotCount;
+    if (this.gridRotCount % 4 == 0) {
+      this.gridRotCount = 0;
+    }
+  }
+
+  private void rotateGrid() {
+    for (int x = 0; x < 2; x++) {
+      for (int y = x; y < 3-x; y++) {
+        Pane temp = this.panes[y][3-x];
+        this.panes[y][3-x] = this.panes[x][y];
+        this.panes[x][y] = this.panes[3-y][x];
+        this.panes[3-y][x] = this.panes[3-x][3-y];
+        this.panes[3-x][3-y] = temp;
+      }
+    }
+
+    for (int i=0;i<4;++i) {
+      for (int j=0;j<4;++j) {
+        Pane pane = this.panes[i][j];
+        GridPane.setRowIndex(pane, i);
+        GridPane.setColumnIndex(pane, j);
+      }
+    }
   }
 
   public void applyEndTransition() {
