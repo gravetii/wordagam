@@ -5,18 +5,18 @@
     -fx-font-weight: bold;
     -fx-font-size: 20px;
     -fx-text-fill: #000000;
-    -fx-background-color: #7FDBFF;
+    -fx-background-color: #477F7E;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
 
 .custom-button:hover {
-    -fx-background-color: #4095C6;
+    -fx-background-color: #3C7A79;
     -fx-cursor: HAND;
 }
 
 .custom-button:pressed {
-    -fx-background-color: #3487BA;
+    -fx-background-color: #106463;
 }
 
 #gamePane {
@@ -24,12 +24,12 @@
 }
 
 .progress-bar .bar {
-    -fx-background-color: #4095C6;
+    -fx-background-color: #5C5D63;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
 }
 
 .text-field {
-    -fx-background-color: #7FDBFF;
+    -fx-background-color: #3FA7A6;
     -fx-text-fill: #000000;
 }
