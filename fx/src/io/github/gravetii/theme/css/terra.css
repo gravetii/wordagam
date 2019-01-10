@@ -33,7 +33,3 @@
     -fx-background-color: #99705B;
     -fx-text-fill: #FFFFFF;
 }
-
-.user-table-row-cell .table-cell {
-    -fx-text-fill: #B8734F;
-}
