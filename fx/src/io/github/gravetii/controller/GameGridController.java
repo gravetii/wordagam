@@ -26,7 +26,7 @@ public class GameGridController implements FxController {
   private GamePlayValidator validator;
   private GamePlayStyler styler;
   private UserResult userResult;
-  private int rotCount;
+  private int rotCount = 0;
 
   @FXML private GridPane gamePane;
 
@@ -205,7 +205,8 @@ public class GameGridController implements FxController {
     while (this.rotCount != 0) {
       this.rotate();
     }
-    //this.styler.applyEndTransition();
+
+    this.styler.applyEndTransition();
   }
 
   public GameStats computeStats() {
