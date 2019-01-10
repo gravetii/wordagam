@@ -26,6 +26,7 @@ public class GameGridController implements FxController {
   private GamePlayValidator validator;
   private GamePlayStyler styler;
   private UserResult userResult;
+  private int rotCount;
 
   @FXML private GridPane gamePane;
 
@@ -116,6 +117,11 @@ public class GameGridController implements FxController {
         GridPane.setColumnIndex(pane, j);
       }
     }
+
+    ++this.rotCount;
+    if (this.rotCount % 4 == 0) {
+      this.rotCount = 0;
+    }
   }
 
   private void applyStyleAfterValidation(ImageView imgView, ValidationResult result) {
@@ -193,9 +199,13 @@ public class GameGridController implements FxController {
         (label, imgView) -> {
           imgView.setDisable(true);
         });
+
     this.validator.reset();
     this.styler.invalidate();
-    this.styler.applyEndTransition();
+    while (this.rotCount != 0) {
+      this.rotate();
+    }
+    //this.styler.applyEndTransition();
   }
 
   public GameStats computeStats() {
