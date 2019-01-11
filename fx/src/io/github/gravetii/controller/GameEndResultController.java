@@ -36,7 +36,7 @@ public class GameEndResultController implements FxController {
                 public void updateItem(GameResultDisplayer.TableResult item, boolean empty) {
                   getStyleClass().remove("user-table-row-cell");
                   super.updateItem(item, empty);
-                  if (item != null && !empty) {
+                  if (!empty) {
                     if (item.isByUser()) {
                       getStyleClass().add("user-table-row-cell");
                     }
@@ -91,6 +91,7 @@ public class GameEndResultController implements FxController {
   }
 
   public void updateText(String text) {
-    this.txtArea.setText(text);
+
+    this.txtArea.setText("\n" + text + "\n");
   }
 }

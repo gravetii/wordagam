@@ -14,10 +14,10 @@ public class GameStats {
 
   public String to() {
     String result =
-        "\nWords - %d/%d\n"
+        "Words - %d/%d\n"
             + "Words percentage - %.2f\n\n"
             + "Score - %d/%d\n"
-            + "Score percentage - %.2f\n\n";
+            + "Score percentage - %.2f";
 
     int userWordsCount = this.userResult.getWordCount();
     int totalWordsCount = this.gameResult.all().size();
