@@ -12,29 +12,12 @@ public class GameResult {
 
   private Map<String, WordResult> wordToResultMap = new LinkedHashMap<>();
   private int totalScore = 0;
-  private List<String> longestWords = new ArrayList<>();
-  private int longestLength;
 
   public void put(String word, int score, List<GridPoint> seq) {
     if (!this.wordToResultMap.containsKey(word)) {
       this.wordToResultMap.put(word, new WordResult(word, score, seq));
       this.totalScore += score;
-      this.checkLongest(word);
     }
-  }
-
-  private void checkLongest(String word) {
-    int len = word.length();
-    if (len < this.longestLength) {
-      return;
-    }
-
-    if (len > this.longestLength) {
-      this.longestWords.clear();
-      this.longestLength = len;
-    }
-
-    this.longestWords.add(word.toUpperCase());
   }
 
   public boolean exists(String word) {
@@ -55,10 +38,6 @@ public class GameResult {
 
   public WordResult getWordResult(String word) {
     return this.wordToResultMap.get(word);
-  }
-
-  public List<String> getLongestWords() {
-    return this.longestWords;
   }
 
   @Override
