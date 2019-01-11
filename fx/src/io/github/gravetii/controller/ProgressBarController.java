@@ -3,22 +3,41 @@ package io.github.gravetii.controller;
 import io.github.gravetii.game.Game;
 import io.github.gravetii.store.StoreUtility;
 import io.github.gravetii.util.AppLogger;
-import io.github.gravetii.util.SingleLatestTaskScheduler;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 
+import java.util.concurrent.ExecutorService;
+import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+
 public class ProgressBarController implements FxController {
 
-  private final GameTimerTask task;
+  private static Future currentTask;
 
+  private final GameTimerTask task;
   @FXML private ProgressBar bar;
+
+  private static final ExecutorService EXECUTOR = Executors
+          .newSingleThreadExecutor((r) -> {
+    Thread thread = new Thread(r);
+    thread.setDaemon(true);
+    return thread;
+  });
 
   public ProgressBarController(BorderPane root) {
     int gameTime = StoreUtility.getGameTime().getValueInSeconds();
     this.task = new GameTimerTask(root, gameTime);
-    SingleLatestTaskScheduler.get().submit(this.task);
+    this.submit();
+  }
+
+  private void submit() {
+    if (currentTask != null) {
+      currentTask.cancel(true);
+    }
+
+    currentTask = EXECUTOR.submit(this.task);
   }
 
   @FXML
