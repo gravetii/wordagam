@@ -9,7 +9,6 @@ public class Theme {
   private ThemeType type;
   private String imgPath;
   private Image img;
-  private String name;
   private String styleSheet;
 
   public Theme(ThemeType type, String imgPath) {

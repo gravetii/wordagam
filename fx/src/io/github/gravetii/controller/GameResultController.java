@@ -6,7 +6,6 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
 import javafx.scene.control.cell.PropertyValueFactory;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 
 import static io.github.gravetii.controller.GameResultDisplayer.TableResult;
@@ -16,7 +15,6 @@ public class GameResultController implements FxController {
   private final GameGridController ref;
   private GameResultDisplayer displayer;
 
-  @FXML private ImageView rotateImgView;
   @FXML private TableView<TableResult> tblDisplay;
   @FXML private TableColumn<TableResult, String> wordTblCol;
   @FXML private TableColumn<TableResult, Integer> pointsTblCol;

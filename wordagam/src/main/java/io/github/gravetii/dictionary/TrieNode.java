@@ -24,7 +24,7 @@ public class TrieNode {
     return word;
   }
 
-  void setWord() {
+  public void setWord() {
     this.word = true;
   }
 }
