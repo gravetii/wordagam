@@ -28,7 +28,8 @@ public class GameGridComponent extends FxComponent<GameGridController, GridPane>
   protected GridPane createNode() throws Exception {
     GridPane gridPane = this.loadNode();
 
-    for (int i = 0, c = 0; i < 4; ++i) {
+    int c = 0;
+    for (int i = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {
         GridUnit unit = game.getGrid()[i][j];
         Pane pane = (Pane) gridPane.getChildren().get(c++);

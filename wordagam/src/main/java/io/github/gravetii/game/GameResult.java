@@ -3,7 +3,6 @@ package io.github.gravetii.game;
 import io.github.gravetii.pojo.WordResult;
 import io.github.gravetii.util.GridPoint;
 
-import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;

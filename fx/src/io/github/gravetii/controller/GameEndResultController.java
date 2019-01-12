@@ -36,10 +36,8 @@ public class GameEndResultController implements FxController {
                 public void updateItem(GameResultDisplayer.TableResult item, boolean empty) {
                   getStyleClass().remove("user-table-row-cell");
                   super.updateItem(item, empty);
-                  if (!empty) {
-                    if (item.isByUser()) {
-                      getStyleClass().add("user-table-row-cell");
-                    }
+                  if (!empty && item.isByUser()) {
+                    getStyleClass().add("user-table-row-cell");
                   }
                 }
               };

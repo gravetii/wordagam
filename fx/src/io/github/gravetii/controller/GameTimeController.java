@@ -4,7 +4,6 @@ import io.github.gravetii.pojo.GameTime;
 import io.github.gravetii.store.StoreUtility;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.stage.Stage;
@@ -18,8 +17,6 @@ public class GameTimeController implements FxController {
   @FXML private TextField minutesTxtField;
   @FXML private TextField secondsTxtField;
   @FXML private Label validationLbl;
-  @FXML private Button okBtn;
-  @FXML private Button cancelBtn;
 
   public GameTimeController(Stage stage) {
     this.stage = stage;

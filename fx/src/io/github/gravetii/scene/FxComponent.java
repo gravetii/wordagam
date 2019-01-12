@@ -3,36 +3,36 @@ package io.github.gravetii.scene;
 import io.github.gravetii.App;
 import javafx.fxml.FXMLLoader;
 
-public abstract class FxComponent<Controller, Node> {
+public abstract class FxComponent<C, N> {
 
-  private Controller controller;
-  private Node node;
+  private C controller;
+  private N node;
   private String fxml;
 
   protected FxComponent(String fxml) {
     this.fxml = fxml;
   }
 
-  protected abstract Controller createController();
+  protected abstract C createController();
 
-  protected abstract Node createNode() throws Exception;
+  protected abstract N createNode() throws Exception;
 
   protected void create() throws Exception {
     this.controller = this.createController();
     this.node = this.createNode();
   }
 
-  protected Node loadNode() throws Exception {
+  protected N loadNode() throws Exception {
     FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + this.fxml));
     loader.setController(this.controller);
     return loader.load();
   }
 
-  public Controller getController() {
+  public C getController() {
     return controller;
   }
 
-  public Node getNode() {
+  public N getNode() {
     return node;
   }
 }

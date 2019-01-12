@@ -1,13 +1,11 @@
 package io.github.gravetii.scene.start;
 
 import io.github.gravetii.App;
-import io.github.gravetii.controller.StartController;
 import io.github.gravetii.scene.FxComponent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-import javafx.stage.Stage;
 
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -15,14 +13,12 @@ import java.nio.file.Paths;
 import java.util.concurrent.ThreadLocalRandom;
 import java.util.stream.Stream;
 
-public class StartPaneComponent extends FxComponent<StartController, Pane> {
+public class StartPaneComponent extends FxComponent<Void, Pane> {
 
-  private Stage stage;
   private BorderPane root;
 
-  public StartPaneComponent(Stage stage, BorderPane root) throws Exception {
+  public StartPaneComponent(BorderPane root) throws Exception {
     super("start.fxml");
-    this.stage = stage;
     this.root = root;
     this.create();
   }
@@ -36,8 +32,8 @@ public class StartPaneComponent extends FxComponent<StartController, Pane> {
   }
 
   @Override
-  protected StartController createController() {
-    return new StartController(this.stage);
+  protected Void createController() {
+    return null;
   }
 
   @Override

@@ -16,7 +16,7 @@ public class StartScene extends FxScene {
   public StartScene(Stage stage) throws Exception {
     super(stage);
     this.menuBarComponent = new MenuBarComponent(this.stage, this.root);
-    this.startPaneComponent = new StartPaneComponent(this.stage, this.root);
+    this.startPaneComponent = new StartPaneComponent(this.root);
   }
 
   @Override

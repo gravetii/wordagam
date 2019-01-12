@@ -4,14 +4,13 @@
 
 Just Another Word Game.
 
-### Game play video
+## Game play video
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=jp0Td1MQy_8
 " target="_blank"><img src="http://img.youtube.com/vi/jp0Td1MQy_8/0.jpg" 
 alt="Wordagam game play video" width="240" height="180" border="10" /></a>
 
-
-### Screenshots
+## Screenshots
 
 ![Screenshot 1](screenshots/1.png)
 ![Screenshot 2](screenshots/2.png)
@@ -27,5 +26,3 @@ alt="Wordagam game play video" width="240" height="180" border="10" /></a>
 ![Screenshot 12](screenshots/12.png)
 ![Screenshot 13](screenshots/13.png)
 ![Screenshot 14](screenshots/14.png)
-
-
