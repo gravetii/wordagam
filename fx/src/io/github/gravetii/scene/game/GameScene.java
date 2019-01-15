@@ -59,7 +59,7 @@ public class GameScene extends FxScene {
     Platform.runLater(
         () -> {
           try {
-            FxScene scene = new GameEndScene(this.stage, gridComponent);
+            FxScene scene = new GameEndScene(this.stage, this.gridComponent);
             scene.show();
           } catch (Exception e) {
             throw new RuntimeException(e);
