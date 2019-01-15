@@ -17,6 +17,7 @@ public class GamePlayStyler {
   private Collection<ImageView> imgViews;
 
   private LinkedList<ImageView> seq;
+  private Timeline revisitTimeline;
   private PauseTransition revisitPauser;
   private SequentialTransition sequencer;
   private Pane[][] panes;
@@ -27,6 +28,7 @@ public class GamePlayStyler {
     this.imgViews = imgViews;
     this.panes = this.fetchPanes();
     this.seq = new LinkedList<>();
+    this.revisitTimeline = new Timeline();
     this.revisitPauser = new PauseTransition(Duration.millis(200));
     this.revisitPauser.setOnFinished(
         (event) -> {
@@ -209,10 +211,10 @@ public class GamePlayStyler {
   }
 
   public void revisit(List<ImageView> imgViews) {
+    this.revisitTimeline.stop();
     this.invalidate();
     Iterator<ImageView> itr = imgViews.iterator();
-
-    Timeline timeline =
+    this.revisitTimeline =
         new Timeline(
             new KeyFrame(
                 Duration.millis(200),
@@ -221,12 +223,12 @@ public class GamePlayStyler {
                   this.forValidClick(imgView);
                 }));
 
-    timeline.setOnFinished(
+    this.revisitTimeline.setOnFinished(
         (event) -> {
           this.revisitPauser.play();
         });
 
-    timeline.setCycleCount(imgViews.size());
-    timeline.play();
+    this.revisitTimeline.setCycleCount(imgViews.size());
+    this.revisitTimeline.play();
   }
 }
