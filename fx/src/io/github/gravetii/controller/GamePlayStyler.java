@@ -128,14 +128,14 @@ public class GamePlayStyler {
   }
 
   private void endTransition(ImageView imgView) {
-    TranslateTransition tt = new TranslateTransition(Duration.millis(80));
-    tt.setByX(20);
-    tt.setByY(20);
+    TranslateTransition tt = new TranslateTransition(Duration.millis(100));
+    tt.setByX(50);
+    tt.setByY(50);
     tt.setCycleCount(4);
     tt.setAutoReverse(true);
-    ScaleTransition st = new ScaleTransition(Duration.millis(80));
-    st.setByX(0.2);
-    st.setByY(0.2);
+    ScaleTransition st = new ScaleTransition(Duration.millis(100));
+    st.setByX(0.4);
+    st.setByY(0.4);
     st.setCycleCount(4);
     st.setAutoReverse(true);
     ParallelTransition transition = new ParallelTransition(imgView, tt, st);
