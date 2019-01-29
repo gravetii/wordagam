@@ -34,12 +34,15 @@
                         <Label />
                     </placeholder>
                     <columns>
-                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="164.0" text="WORD" />
-                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="115.0" sortType="DESCENDING" text="SCORE" />
+                        <TableColumn fx:id="wordTblCol" editable="false" prefWidth="171.0" resizable="false" text="WORD" />
+                        <TableColumn fx:id="pointsTblCol" editable="false" prefWidth="108.0" resizable="false" sortType="DESCENDING" text="SCORE" />
                     </columns>
                <effect>
                   <DropShadow />
                </effect>
+               <columnResizePolicy>
+                  <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+               </columnResizePolicy>
                 </TableView>
             </children>
         </AnchorPane>
