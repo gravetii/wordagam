@@ -16,6 +16,7 @@ public class GameResultController implements FxController {
   private GameResultDisplayer displayer;
 
   @FXML private TableView<TableResult> tblDisplay;
+  @FXML private TableColumn<TableResult, Integer> idTblCol;
   @FXML private TableColumn<TableResult, String> wordTblCol;
   @FXML private TableColumn<TableResult, Integer> pointsTblCol;
 
@@ -25,6 +26,7 @@ public class GameResultController implements FxController {
 
   @FXML
   public void initialize() {
+    this.idTblCol.setCellValueFactory(new PropertyValueFactory<>("id"));
     this.wordTblCol.setCellValueFactory(new PropertyValueFactory<>("word"));
     this.pointsTblCol.setCellValueFactory(new PropertyValueFactory<>("score"));
     this.tblDisplay.setRowFactory(
