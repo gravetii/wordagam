@@ -23,6 +23,3 @@ alt="Wordagam game play video" width="240" height="180" /></a>
 ![Screenshot 9](screenshots/9.png)
 ![Screenshot 10](screenshots/10.png)
 ![Screenshot 11](screenshots/11.png)
-![Screenshot 12](screenshots/12.png)
-![Screenshot 13](screenshots/13.png)
-![Screenshot 14](screenshots/14.png)
