@@ -36,6 +36,7 @@ public class GameTimeController implements FxController {
       PreferenceStore.setGameTime(gameTime);
       this.stage.close();
     } else {
+      this.initialize();
       this.validationLbl.setText("Invalid value!");
     }
   }
