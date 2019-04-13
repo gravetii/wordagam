@@ -5,7 +5,6 @@ import io.github.gravetii.util.GridPoint;
 import java.util.List;
 
 public class WordResult {
-
   private String word;
   private int score;
   private List<GridPoint> seq;

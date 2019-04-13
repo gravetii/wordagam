@@ -5,7 +5,6 @@ import io.github.gravetii.scene.menu.MenuBarComponent;
 import javafx.stage.Stage;
 
 public class GameEndScene extends FxScene {
-
   private MenuBarComponent menuBarComponent;
   private GameGridComponent gameGridComponent;
   private GameEndResultComponent gameEndResultComponent;

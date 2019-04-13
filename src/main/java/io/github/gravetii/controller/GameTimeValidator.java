@@ -4,7 +4,6 @@ import io.github.gravetii.pojo.GameTime;
 import javafx.util.Pair;
 
 public class GameTimeValidator {
-
   public GameTime validate(Pair<String, String> obj) {
     return this.gameTimeParser()
         .validate(

@@ -8,7 +8,6 @@ import io.github.gravetii.util.Utils;
 import java.util.*;
 
 public class GameSolver {
-
   private static final int MIN_WORD_LENGTH = 3;
 
   private GridUnit[][] grid;
@@ -46,17 +45,14 @@ public class GameSolver {
   private void solve(GridPoint point, String prefix, List<GridPoint> seq, boolean[][] visited) {
     GridUnit unit = grid[point.x][point.y];
     visited[point.x][point.y] = true;
-
     String word = prefix + unit.getLetter();
     if (this.dictionary.prefix(word)) {
       seq.add(point);
       int score = this.wordPoints.get(prefix) + unit.getScore();
       this.wordPoints.put(word, score);
-
       if (this.isValidWord(word)) {
         this.result.put(word, score, seq);
       }
-
       for (GridPoint n : point.getNeighbors()) {
         if (!visited[n.x][n.y]) {
           boolean[][] v = Utils.arrCopy(visited);

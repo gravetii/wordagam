@@ -8,7 +8,6 @@ import java.util.List;
 import java.util.Map;
 
 public class GameResult {
-
   private Map<String, WordResult> wordToResultMap = new LinkedHashMap<>();
   private int totalScore = 0;
 

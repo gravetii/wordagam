@@ -6,7 +6,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class GameTimeComponent extends FxComponent<GameTimeController, AnchorPane> {
-
   private Stage stage;
 
   public GameTimeComponent(Stage stage) throws Exception {

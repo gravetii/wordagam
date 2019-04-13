@@ -12,7 +12,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class GamePlayStyler {
-
   private GridPane gamePane;
   private Collection<ImageView> imgViews;
 

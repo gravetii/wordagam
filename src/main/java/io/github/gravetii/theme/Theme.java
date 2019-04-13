@@ -5,7 +5,6 @@ import javafx.event.EventType;
 import javafx.scene.image.Image;
 
 public class Theme {
-
   private ThemeType type;
   private String imgPath;
   private Image img;

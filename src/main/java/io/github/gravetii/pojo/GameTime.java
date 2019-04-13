@@ -1,7 +1,6 @@
 package io.github.gravetii.pojo;
 
 public class GameTime {
-
   private int minutes;
   private int seconds;
 

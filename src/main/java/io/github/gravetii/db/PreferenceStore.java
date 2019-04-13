@@ -1,4 +1,4 @@
-package io.github.gravetii.store;
+package io.github.gravetii.db;
 
 import io.github.gravetii.pojo.GameTime;
 import io.github.gravetii.theme.ThemeType;
@@ -7,8 +7,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.prefs.Preferences;
 
-public class StoreUtility {
-
+public class PreferenceStore {
   private static final String CURRENT_THEME_KEY = "theme";
   private static final String GAME_TIME_KEY = "time";
   private static final String GAME_RUNNING_KEY = "game_r";
@@ -20,7 +19,7 @@ public class StoreUtility {
   private static final Map<String, Object> store = new HashMap<>();
 
   private static Preferences preferences() {
-    return Preferences.userNodeForPackage(StoreUtility.class);
+    return Preferences.userNodeForPackage(PreferenceStore.class);
   }
 
   public static void saveTheme(ThemeType type) {

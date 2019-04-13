@@ -8,7 +8,6 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class Dictionary {
-
   private static final String WORDS_FILE = "words.txt";
 
   private Trie trie;

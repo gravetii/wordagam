@@ -15,7 +15,6 @@ import javafx.stage.Stage;
 import java.util.List;
 
 public class ChangeThemeComponent extends FxComponent<ChangeThemeController, GridPane> {
-
   private Stage stage;
   private ChangeThemeFooterComponent ref;
 

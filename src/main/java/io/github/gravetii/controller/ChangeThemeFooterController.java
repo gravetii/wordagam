@@ -6,7 +6,6 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 
 public class ChangeThemeFooterController implements FxController {
-
   private ThemeService themes;
   @FXML private Label footerLabel;
 

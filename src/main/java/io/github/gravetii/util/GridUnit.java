@@ -5,7 +5,6 @@ import javafx.scene.image.Image;
 import java.util.Objects;
 
 public class GridUnit {
-
   private Alphabet alphabet;
   private GridPoint gridPoint;
   private String imgPath;

@@ -6,7 +6,7 @@ import io.github.gravetii.scene.help.AboutScene;
 import io.github.gravetii.scene.help.WhatIsItScene;
 import io.github.gravetii.scene.settings.GameTimeScene;
 import io.github.gravetii.scene.theme.ChangeThemeScene;
-import io.github.gravetii.store.StoreUtility;
+import io.github.gravetii.db.PreferenceStore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -17,7 +17,6 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public class MenuBarController implements FxController {
-
   private Stage stage;
 
   public MenuBarController(Stage stage) {
@@ -44,7 +43,7 @@ public class MenuBarController implements FxController {
   }
 
   private boolean currentGameCheck() {
-    return !StoreUtility.isGameRunning() || this.showQuitGameAlert();
+    return !PreferenceStore.isGameRunning() || this.showQuitGameAlert();
   }
 
   private boolean exitCheck() {
@@ -62,7 +61,7 @@ public class MenuBarController implements FxController {
     if (this.currentGameCheck()) {
       FxScene scene = new GameScene(this.stage);
       scene.show();
-      StoreUtility.setGameRunning(true);
+      PreferenceStore.setGameRunning(true);
     }
   }
 
@@ -75,7 +74,7 @@ public class MenuBarController implements FxController {
 
   @FXML
   public void resetGameCounter(ActionEvent event) throws Exception {
-    StoreUtility.resetGameId();
+    PreferenceStore.resetGameId();
   }
 
   @FXML

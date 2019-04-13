@@ -10,7 +10,6 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class GameGridComponent extends FxComponent<GameGridController, GridPane> {
-
   private Game game;
 
   public GameGridComponent(Game game) throws Exception {

@@ -10,7 +10,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import java.util.Comparator;
 
 public class GameEndResultController implements FxController {
-
   private final GameGridController ref;
   private GameResultDisplayer displayer;
 

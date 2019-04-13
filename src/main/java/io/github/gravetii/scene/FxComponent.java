@@ -3,7 +3,6 @@ package io.github.gravetii.scene;
 import javafx.fxml.FXMLLoader;
 
 public abstract class FxComponent<C, N> {
-
   private C controller;
   private N node;
   private String fxml;

@@ -6,7 +6,6 @@ import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 
 public class ProgressBarComponent extends FxComponent<ProgressBarController, ProgressBar> {
-
   private BorderPane root;
 
   public ProgressBarComponent(BorderPane root) throws Exception {
