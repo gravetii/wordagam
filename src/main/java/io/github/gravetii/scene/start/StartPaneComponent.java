@@ -6,12 +6,6 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.concurrent.ThreadLocalRandom;
-import java.util.stream.Stream;
-
 public class StartPaneComponent extends FxComponent<Void, Pane> {
 
   private BorderPane root;
@@ -23,11 +17,7 @@ public class StartPaneComponent extends FxComponent<Void, Pane> {
   }
 
   private static Image fetchSkin() throws Exception {
-    String fPath = ClassLoader.getSystemResource("images/skin").getFile();
-    Stream<Path> files = Files.list(Paths.get(fPath));
-    int count = Math.toIntExact(files.count());
-    int r = 1 + ThreadLocalRandom.current().nextInt(count);
-    return new Image("images/skin/" + r + ".jpg");
+    return new Image("images/skin/1.jpg");
   }
 
   @Override

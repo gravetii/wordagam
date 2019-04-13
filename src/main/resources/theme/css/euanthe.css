@@ -1,7 +1,7 @@
 @import url("common.css");
 
 .custom-button {
-    -fx-font-family: "Futura";
+    -fx-font-family: Futura, "Trebuchet MS", Arial, sans-serif;
     -fx-font-weight: bold;
     -fx-font-size: 20px;
     -fx-text-fill: #000000;
