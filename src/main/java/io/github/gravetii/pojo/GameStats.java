@@ -34,7 +34,6 @@ public class GameStats {
         wordsPercent,
         this.userResult.getTotalScore(),
         this.gameResult.getTotalScore(),
-        scorePercent
-    );
+        scorePercent);
   }
 }

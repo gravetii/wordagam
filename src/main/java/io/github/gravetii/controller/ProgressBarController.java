@@ -14,17 +14,16 @@ import java.util.concurrent.Future;
 
 public class ProgressBarController implements FxController {
 
+  private static final ExecutorService EXECUTOR =
+      Executors.newSingleThreadExecutor(
+          (r) -> {
+            Thread thread = new Thread(r);
+            thread.setDaemon(true);
+            return thread;
+          });
   private static Future currentTask;
-
   private final GameTimerTask task;
   @FXML private ProgressBar bar;
-
-  private static final ExecutorService EXECUTOR = Executors
-          .newSingleThreadExecutor((r) -> {
-    Thread thread = new Thread(r);
-    thread.setDaemon(true);
-    return thread;
-  });
 
   public ProgressBarController(BorderPane root) {
     int gameTime = StoreUtility.getGameTime().getValueInSeconds();

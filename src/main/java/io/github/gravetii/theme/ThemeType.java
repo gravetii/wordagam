@@ -2,17 +2,17 @@ package io.github.gravetii.theme;
 
 public enum ThemeType {
   RANDOM,
-  BLACK_AND_WHITE,
   AZURE,
-  SUNSET,
-  RED_DAWN,
-  TERRA,
+  BLACK_AND_WHITE,
   BLUEZY,
-  HORIZON,
-  URIEL,
   EUANTHE,
-  LAVENDER,
   GOLDEN_SKY,
+  HORIZON,
+  LAVENDER,
+  RED_DAWN,
+  SUNSET,
+  TERRA,
+  URIEL,
   ;
 
   public String getShowableName() {
@@ -20,10 +20,10 @@ public enum ThemeType {
   }
 
   public String getImgPath() {
-    return "files/" + this.name().toLowerCase() + ".jpg";
+    return "theme/files/" + this.name().toLowerCase() + ".jpg";
   }
 
   public String getCssPath() {
-    return "css/" + this.name().toLowerCase() + ".css";
+    return "theme/css/" + this.name().toLowerCase() + ".css";
   }
 }

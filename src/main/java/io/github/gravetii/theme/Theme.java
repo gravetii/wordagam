@@ -20,17 +20,9 @@ public class Theme {
     return this.type;
   }
 
-  public String getImgPath() {
-    return this.imgPath;
-  }
-
-  public void setImgPath(String imgPath) {
-    this.imgPath = imgPath;
-  }
-
   public Image getImage() {
     if (this.img == null) {
-      this.img = new Image(Theme.class.getResourceAsStream(this.imgPath), 0, 0, false, false);
+      this.img = new Image(this.imgPath);
     }
 
     return this.img;
@@ -38,7 +30,7 @@ public class Theme {
 
   public String getStyleSheet() {
     if (this.styleSheet == null) {
-      this.styleSheet = Theme.class.getResource(this.type.getCssPath()).toExternalForm();
+      this.styleSheet = ClassLoader.getSystemResource(this.type.getCssPath()).toExternalForm();
     }
 
     return this.styleSheet;

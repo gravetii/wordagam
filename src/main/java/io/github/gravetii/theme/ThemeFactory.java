@@ -39,25 +39,9 @@ public class ThemeFactory {
   }
 
   private void initAllThemes() {
-    this.themeMap.put(ThemeType.RANDOM, new Theme(ThemeType.RANDOM, ThemeType.RANDOM.getImgPath()));
-    this.themeMap.put(ThemeType.AZURE, new Theme(ThemeType.AZURE, ThemeType.AZURE.getImgPath()));
-    this.themeMap.put(
-        ThemeType.BLACK_AND_WHITE,
-        new Theme(ThemeType.BLACK_AND_WHITE, ThemeType.BLACK_AND_WHITE.getImgPath()));
-    this.themeMap.put(ThemeType.BLUEZY, new Theme(ThemeType.BLUEZY, ThemeType.BLUEZY.getImgPath()));
-    this.themeMap.put(
-        ThemeType.EUANTHE, new Theme(ThemeType.EUANTHE, ThemeType.EUANTHE.getImgPath()));
-    this.themeMap.put(
-        ThemeType.GOLDEN_SKY, new Theme(ThemeType.GOLDEN_SKY, ThemeType.GOLDEN_SKY.getImgPath()));
-    this.themeMap.put(
-        ThemeType.HORIZON, new Theme(ThemeType.HORIZON, ThemeType.HORIZON.getImgPath()));
-    this.themeMap.put(
-        ThemeType.LAVENDER, new Theme(ThemeType.LAVENDER, ThemeType.LAVENDER.getImgPath()));
-    this.themeMap.put(
-        ThemeType.RED_DAWN, new Theme(ThemeType.RED_DAWN, ThemeType.RED_DAWN.getImgPath()));
-    this.themeMap.put(ThemeType.SUNSET, new Theme(ThemeType.SUNSET, ThemeType.SUNSET.getImgPath()));
-    this.themeMap.put(ThemeType.TERRA, new Theme(ThemeType.TERRA, ThemeType.TERRA.getImgPath()));
-    this.themeMap.put(ThemeType.URIEL, new Theme(ThemeType.URIEL, ThemeType.URIEL.getImgPath()));
+    for (ThemeType type : ThemeType.values()) {
+      this.themeMap.put(type, new Theme(type, type.getImgPath()));
+    }
   }
 
   public Theme get(ThemeType type) {
@@ -79,9 +63,9 @@ public class ThemeFactory {
         this.currentRandomTheme = this.random();
       }
       return this.currentRandomTheme;
-    } else {
-      return this.get(this.current);
     }
+
+    return this.get(this.current);
   }
 
   public Theme loadNewCurrentTheme() {
