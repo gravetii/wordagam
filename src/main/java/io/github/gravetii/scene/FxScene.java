@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public abstract class FxScene {
-
   protected Stage stage;
   protected BorderPane root;
   protected ThemeService themes = new ThemeService();

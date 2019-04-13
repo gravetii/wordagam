@@ -8,7 +8,6 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class GamePlayValidator {
-
   private GameResult result;
   private LinkedList<GridPoint> seq;
   private StringBuilder builder;

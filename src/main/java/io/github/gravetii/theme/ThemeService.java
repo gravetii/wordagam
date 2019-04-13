@@ -5,7 +5,6 @@ import javafx.stage.Window;
 import java.util.List;
 
 public class ThemeService {
-
   private ThemeFactory factory;
 
   public ThemeService() {

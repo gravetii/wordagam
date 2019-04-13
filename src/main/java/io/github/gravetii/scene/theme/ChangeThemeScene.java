@@ -8,7 +8,6 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public class ChangeThemeScene extends FxScene {
-
   private ChangeThemeFooterComponent footerComponent;
   private ChangeThemeComponent themeComponent;
 

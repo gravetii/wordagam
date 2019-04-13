@@ -4,7 +4,6 @@ import java.util.concurrent.ConcurrentHashMap;
 import java.util.logging.Logger;
 
 public class AppLogger {
-
   private static ConcurrentHashMap<String, Logger> loggerMap = new ConcurrentHashMap<>();
 
   public static void fine(String c, String msg) {

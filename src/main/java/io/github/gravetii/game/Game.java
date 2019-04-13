@@ -11,7 +11,6 @@ import java.util.List;
 import java.util.concurrent.ThreadLocalRandom;
 
 public class Game {
-
   private static final int MIN_WORDS_COUNT = 450;
 
   private final GridUnit[][] grid;
@@ -69,5 +68,10 @@ public class Game {
     public EndEvent() {
       super(GAME_END_EVENT_EVENT_TYPE);
     }
+  }
+
+  public enum Quality {
+    LOW,
+    HIGH;
   }
 }

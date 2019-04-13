@@ -1,7 +1,6 @@
 package io.github.gravetii.dictionary;
 
 public class Trie {
-
   private TrieNode root;
 
   Trie() {

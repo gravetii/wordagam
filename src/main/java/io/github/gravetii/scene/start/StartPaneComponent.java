@@ -7,7 +7,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
 public class StartPaneComponent extends FxComponent<Void, Pane> {
-
   private BorderPane root;
 
   public StartPaneComponent(BorderPane root) throws Exception {

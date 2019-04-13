@@ -7,7 +7,6 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
 
 public class MenuBarComponent extends FxComponent<MenuBarController, MenuBar> {
-
   private Stage stage;
   private BorderPane root;
 

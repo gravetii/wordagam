@@ -7,7 +7,6 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class GameResultDisplayer {
-
   private int counter = 0;
   private TableView<TableResult> table;
   private Set<String> displayedWords;

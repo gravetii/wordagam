@@ -5,7 +5,6 @@ import java.util.List;
 import java.util.Objects;
 
 public class GridPoint {
-
   public final int x;
   public final int y;
 

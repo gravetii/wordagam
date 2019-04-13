@@ -5,7 +5,6 @@ import io.github.gravetii.scene.FxComponent;
 import javafx.scene.layout.VBox;
 
 public class GameResultComponent extends FxComponent<GameResultController, VBox> {
-
   private GameGridComponent ref;
 
   public GameResultComponent(GameGridComponent ref) throws Exception {

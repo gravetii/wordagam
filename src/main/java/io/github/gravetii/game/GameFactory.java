@@ -9,9 +9,8 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
 
 public class GameFactory {
-
   private static final int MAX_GAMES_IN_QUEUE = 5;
-  private static volatile GameFactory INSTANCE;
+  private static volatile GameFactory instance;
 
   private Dictionary dictionary;
   private LinkedBlockingDeque<Game> queue;
@@ -25,30 +24,30 @@ public class GameFactory {
   }
 
   public static GameFactory get() {
-    if (INSTANCE == null) {
+    if (instance == null) {
       synchronized (GameFactory.class) {
-        if (INSTANCE == null) {
-          INSTANCE = new GameFactory();
+        if (instance == null) {
+          instance = new GameFactory();
           AppLogger.fine(GameFactory.class.getCanonicalName(), "Created instance of GameFactory");
         }
       }
     }
 
-    return INSTANCE;
+    return instance;
   }
 
   public static void close() {
-    if (INSTANCE != null) {
-      INSTANCE.shutdown();
-      INSTANCE = null;
+    if (instance != null) {
+      instance.shutdown();
+      instance = null;
     }
   }
 
   private Game create() {
     Game game = null;
-    Quality q = Quality.LOW;
+    Game.Quality q = Game.Quality.LOW;
 
-    while (q == Quality.LOW) {
+    while (q == Game.Quality.LOW) {
       game = new Game(this.dictionary);
       q = game.getQuality();
     }

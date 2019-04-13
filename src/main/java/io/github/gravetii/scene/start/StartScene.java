@@ -9,7 +9,6 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public class StartScene extends FxScene {
-
   private MenuBarComponent menuBarComponent;
   private StartPaneComponent startPaneComponent;
 

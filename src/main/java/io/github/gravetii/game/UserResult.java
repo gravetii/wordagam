@@ -6,7 +6,6 @@ import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class UserResult {
-
   private final Map<String, WordResult> wordToResultMap;
   private int totalScore = 0;
 

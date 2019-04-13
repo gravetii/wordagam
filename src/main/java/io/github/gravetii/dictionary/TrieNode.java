@@ -1,7 +1,6 @@
 package io.github.gravetii.dictionary;
 
 public class TrieNode {
-
   private static final int ALPHABET_COUNT = 26;
 
   private TrieNode[] children;

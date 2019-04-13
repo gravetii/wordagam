@@ -11,7 +11,6 @@ import javafx.scene.input.MouseEvent;
 import static io.github.gravetii.controller.GameResultDisplayer.TableResult;
 
 public class GameResultController implements FxController {
-
   private final GameGridController ref;
   private GameResultDisplayer displayer;
 

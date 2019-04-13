@@ -4,7 +4,6 @@ import io.github.gravetii.scene.FxComponent;
 import javafx.scene.control.TextArea;
 
 public class WhatIsItComponent extends FxComponent<Void, TextArea> {
-
   protected WhatIsItComponent() throws Exception {
     super("whatIsIt.fxml");
     this.create();

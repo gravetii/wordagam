@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChangeThemeController implements FxController {
-
   private Stage stage;
   private ChangeThemeFooterController ref;
   private Map<Integer, ImageView> imgViewMap;

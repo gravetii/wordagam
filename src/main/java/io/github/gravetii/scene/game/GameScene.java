@@ -4,13 +4,12 @@ import io.github.gravetii.game.Game;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.menu.MenuBarComponent;
-import io.github.gravetii.store.StoreUtility;
+import io.github.gravetii.db.PreferenceStore;
 import io.github.gravetii.theme.Theme;
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
 public class GameScene extends FxScene {
-
   private GameGridComponent gridComponent;
   private GameResultComponent resultComponent;
   private ProgressBarComponent progressBarComponent;
@@ -36,7 +35,7 @@ public class GameScene extends FxScene {
   private void endGame() {
     this.gridComponent.endGame();
     this.showGameEndScene();
-    StoreUtility.setGameRunning(false);
+    PreferenceStore.setGameRunning(false);
   }
 
   @Override
@@ -69,6 +68,6 @@ public class GameScene extends FxScene {
 
   @Override
   public String title() {
-    return "Game #" + StoreUtility.getGameId();
+    return "Game #" + PreferenceStore.getGameId();
   }
 }

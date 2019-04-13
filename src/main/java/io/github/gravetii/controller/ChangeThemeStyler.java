@@ -3,7 +3,6 @@ package io.github.gravetii.controller;
 import javafx.scene.image.ImageView;
 
 public class ChangeThemeStyler {
-
   private ImageView current;
 
   public void applySelectStyle(ImageView imgView) {
