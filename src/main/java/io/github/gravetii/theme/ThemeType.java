@@ -8,11 +8,11 @@ public enum ThemeType {
   EUANTHE,
   GOLDEN_SKY,
   HORIZON,
-  LAVENDER,
   RED_DAWN,
   SUNSET,
   TERRA,
   URIEL,
+  PATCHY,
   ;
 
   public String getShowableName() {
