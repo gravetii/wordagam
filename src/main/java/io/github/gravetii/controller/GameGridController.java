@@ -142,9 +142,7 @@ public class GameGridController implements FxController {
 
   private void revisit(WordResult result) {
     List<ImageView> imgViews =
-        result
-            .getSeq()
-            .stream()
+        result.getSeq().stream()
             .map(
                 point -> {
                   String id = Utils.getImgViewLabelFromGridPoint(point);

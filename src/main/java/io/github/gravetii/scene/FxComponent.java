@@ -1,6 +1,5 @@
 package io.github.gravetii.scene;
 
-import io.github.gravetii.App;
 import javafx.fxml.FXMLLoader;
 
 public abstract class FxComponent<C, N> {
@@ -23,7 +22,7 @@ public abstract class FxComponent<C, N> {
   }
 
   protected N loadNode() throws Exception {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("fxml/" + this.fxml));
+    FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/" + this.fxml));
     loader.setController(this.controller);
     return loader.load();
   }

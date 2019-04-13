@@ -1,6 +1,5 @@
 package io.github.gravetii.scene.start;
 
-import io.github.gravetii.App;
 import io.github.gravetii.scene.FxComponent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -24,11 +23,11 @@ public class StartPaneComponent extends FxComponent<Void, Pane> {
   }
 
   private static Image fetchSkin() throws Exception {
-    String fPath = App.class.getResource("skins").getFile();
+    String fPath = ClassLoader.getSystemResource("images/skin").getFile();
     Stream<Path> files = Files.list(Paths.get(fPath));
     int count = Math.toIntExact(files.count());
     int r = 1 + ThreadLocalRandom.current().nextInt(count);
-    return new Image(App.class.getResourceAsStream("skins/" + r + ".jpg"), 0, 0, false, false);
+    return new Image("images/skin/" + r + ".jpg");
   }
 
   @Override
