@@ -66,7 +66,7 @@ public class ProgressBarController implements FxController {
         this.updateProgress(Double.MIN_VALUE, this.time);
         this.root.fireEvent(new Game.EndEvent());
       } catch (InterruptedException e) {
-        AppLogger.info(this.getClass().getCanonicalName(), "Game stopped in between...");
+        AppLogger.fine(this.getClass().getCanonicalName(), "Game stopped in between...");
       }
 
       return null;

@@ -11,8 +11,6 @@ import javafx.stage.Stage;
 
 public class App extends Application {
 
-  private Stage stage;
-
   public static void main(String[] args) {
     launch(args);
   }
@@ -20,8 +18,7 @@ public class App extends Application {
   @Override
   public void start(Stage stage) throws Exception {
     AppLogger.info(getClass().getCanonicalName(), "Starting application...");
-    this.stage = stage;
-    this.stage.setOnCloseRequest(
+    stage.setOnCloseRequest(
         event -> {
           Platform.exit();
         });
@@ -38,7 +35,7 @@ public class App extends Application {
   @Override
   public void stop() throws Exception {
     GameService.close();
-    this.stage.close();
     StoreUtility.close();
+    AppLogger.info(getClass().getCanonicalName(), "Stopped application...");
   }
 }

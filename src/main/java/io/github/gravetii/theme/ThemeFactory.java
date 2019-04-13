@@ -30,7 +30,7 @@ public class ThemeFactory {
       synchronized (ThemeFactory.class) {
         if (INSTANCE == null) {
           INSTANCE = new ThemeFactory();
-          AppLogger.info(ThemeFactory.class.getCanonicalName(), "Created instance of ThemeFactory");
+          AppLogger.fine(ThemeFactory.class.getCanonicalName(), "Created instance of ThemeFactory");
         }
       }
     }

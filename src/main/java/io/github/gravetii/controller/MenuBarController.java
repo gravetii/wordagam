@@ -1,6 +1,5 @@
 package io.github.gravetii.controller;
 
-import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.game.GameScene;
 import io.github.gravetii.scene.help.AboutScene;
@@ -8,7 +7,6 @@ import io.github.gravetii.scene.help.WhatIsItScene;
 import io.github.gravetii.scene.settings.GameTimeScene;
 import io.github.gravetii.scene.theme.ChangeThemeScene;
 import io.github.gravetii.store.StoreUtility;
-import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
@@ -83,10 +81,7 @@ public class MenuBarController implements FxController {
   @FXML
   public void exit(ActionEvent event) throws Exception {
     if (this.exitCheck()) {
-      GameService.close();
       this.stage.close();
-      StoreUtility.close();
-      Platform.exit();
     }
   }
 
