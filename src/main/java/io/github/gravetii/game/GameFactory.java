@@ -29,7 +29,7 @@ public class GameFactory {
       synchronized (GameFactory.class) {
         if (INSTANCE == null) {
           INSTANCE = new GameFactory();
-          AppLogger.info(GameFactory.class.getCanonicalName(), "Created instance of GameFactory");
+          AppLogger.fine(GameFactory.class.getCanonicalName(), "Created instance of GameFactory");
         }
       }
     }
@@ -67,7 +67,7 @@ public class GameFactory {
     }
 
     this.backFill();
-    AppLogger.info(getClass().getCanonicalName(), "Fetched new game: " + game);
+    AppLogger.fine(getClass().getCanonicalName(), "Fetched new game: " + game);
     return game;
   }
 

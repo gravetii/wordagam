@@ -28,9 +28,9 @@ public class Dictionary {
         trie.insert(word);
       }
 
-      AppLogger.info(getClass().getCanonicalName(), "Completed loading all words into the trie.");
+      AppLogger.fine(getClass().getCanonicalName(), "Completed loading all words into the trie.");
     } catch (IOException e) {
-      AppLogger.info(getClass().getCanonicalName(), "Could not load all words into the trie.");
+      AppLogger.severe(getClass().getCanonicalName(), "Could not load all words into the trie.");
       throw new RuntimeException(e);
     } finally {
       try {
