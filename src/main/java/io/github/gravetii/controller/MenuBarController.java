@@ -1,13 +1,13 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.App;
+import io.github.gravetii.db.PreferenceStore;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.game.GameScene;
 import io.github.gravetii.scene.help.AboutScene;
 import io.github.gravetii.scene.help.WhatIsItScene;
 import io.github.gravetii.scene.settings.GameTimeScene;
 import io.github.gravetii.scene.theme.ChangeThemeScene;
-import io.github.gravetii.db.PreferenceStore;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;

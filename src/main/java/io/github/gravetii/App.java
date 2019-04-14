@@ -1,9 +1,9 @@
 package io.github.gravetii;
 
+import io.github.gravetii.db.PreferenceStore;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.start.StartScene;
-import io.github.gravetii.db.PreferenceStore;
 import io.github.gravetii.util.AppLogger;
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -20,7 +20,7 @@ public class App extends Application {
 
   private static boolean exitCheck(Stage stage) {
     Alert alert =
-            new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.NO, ButtonType.YES);
+        new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.NO, ButtonType.YES);
     alert.setHeaderText("");
     alert.setTitle("Really Exit?");
     alert.initOwner(stage);

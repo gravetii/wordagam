@@ -1,10 +1,10 @@
 package io.github.gravetii.scene.game;
 
+import io.github.gravetii.db.PreferenceStore;
 import io.github.gravetii.game.Game;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.menu.MenuBarComponent;
-import io.github.gravetii.db.PreferenceStore;
 import io.github.gravetii.theme.Theme;
 import javafx.application.Platform;
 import javafx.stage.Stage;

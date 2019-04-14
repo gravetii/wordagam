@@ -61,6 +61,11 @@ public class Game {
     return '{' + "result=" + result + '}';
   }
 
+  public enum Quality {
+    LOW,
+    HIGH;
+  }
+
   public static class EndEvent extends Event {
     public static final EventType<EndEvent> GAME_END_EVENT_EVENT_TYPE =
         new EventType<>(Event.ANY, "game-end");
@@ -68,10 +73,5 @@ public class Game {
     public EndEvent() {
       super(GAME_END_EVENT_EVENT_TYPE);
     }
-  }
-
-  public enum Quality {
-    LOW,
-    HIGH;
   }
 }
