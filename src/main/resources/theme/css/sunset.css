@@ -5,7 +5,7 @@
     -fx-font-weight: bold;
     -fx-font-size: 20px;
     -fx-text-fill: #000000;
-    -fx-background-color: linear-gradient(to top left, #F45F4D, #F66A51, #E05B4A, #D24F32);
+    -fx-background-color: #CE6E2A;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
@@ -16,7 +16,7 @@
 }
 
 .custom-button:pressed {
-    -fx-background-color: #EE4933;
+    -fx-background-color: #DD5B1D;
 }
 
 #gamePane {
@@ -24,12 +24,12 @@
 }
 
 .progress-bar .bar {
-    -fx-background-color: #F45F4D;
+    -fx-background-color: #496674;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
 }
 
 .text-field {
-    -fx-background-color: #F66A51;
+    -fx-background-color: #CE6E2A;
     -fx-text-fill: #000000;
 }
