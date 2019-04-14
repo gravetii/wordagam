@@ -8,7 +8,7 @@ public enum ThemeType {
   EUANTHE,
   CONTRA,
   MOTLEY,
-  RED_DAWN,
+  MOSSY,
   SUNSET,
   TERRA,
   VERDURA,
