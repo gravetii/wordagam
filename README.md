@@ -1,8 +1,9 @@
 # Wordagam
 
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f7b9f7655b3f4ff795775ab49a39fc52)](https://app.codacy.com/app/gravetii/wordagam?utm_source=github.com&utm_medium=referral&utm_content=gravetii/wordagam&utm_campaign=Badge_Grade_Dashboard)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
-Just Another Word Game.
+A fun & interactive word game. Check out the screenshots and the game play video.
 
 ## Game play video
 
