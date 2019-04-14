@@ -6,9 +6,8 @@ Just Another Word Game.
 
 ## Game play video
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=KrFGQWFkPVY
-" target="_blank"><img src="http://img.youtube.com/vi/KrFGQWFkPVY/0.jpg" 
-alt="Wordagam game play video" width="240" height="180" /></a>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=dIdsylbVcuA
+" target="_blank"><img src="http://img.youtube.com/vi/dIdsylbVcuA/0.jpg" alt="Wordagam game play video" width="240" height="180" /></a>
 
 ## Screenshots
 
