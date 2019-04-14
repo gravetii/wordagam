@@ -23,3 +23,7 @@ alt="Wordagam game play video" width="240" height="180" /></a>
 ![Screenshot 9](screenshots/9.png)
 ![Screenshot 10](screenshots/10.png)
 ![Screenshot 11](screenshots/11.png)
+
+---
+
+<div>Theme images picked from <a href="https://unsplash.com" target="_blank">Unsplash</a>.</div>
