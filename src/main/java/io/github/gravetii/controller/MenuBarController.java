@@ -1,5 +1,6 @@
 package io.github.gravetii.controller;
 
+import io.github.gravetii.App;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.game.GameScene;
 import io.github.gravetii.scene.help.AboutScene;
@@ -46,16 +47,6 @@ public class MenuBarController implements FxController {
     return !PreferenceStore.isGameRunning() || this.showQuitGameAlert();
   }
 
-  private boolean exitCheck() {
-    Alert alert =
-        new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.NO, ButtonType.YES);
-    alert.setHeaderText("");
-    alert.setTitle("Really Exit?");
-    alert.initOwner(this.stage);
-    Optional<ButtonType> type = alert.showAndWait();
-    return type.isPresent() && type.get() == ButtonType.YES;
-  }
-
   @FXML
   public void newGame(ActionEvent event) throws Exception {
     if (this.currentGameCheck()) {
@@ -79,9 +70,7 @@ public class MenuBarController implements FxController {
 
   @FXML
   public void exit(ActionEvent event) throws Exception {
-    if (this.exitCheck()) {
-      this.stage.close();
-    }
+    App.close(this.stage);
   }
 
   @FXML
