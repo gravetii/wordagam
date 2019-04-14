@@ -5,31 +5,31 @@
     -fx-font-weight: bold;
     -fx-font-size: 20px;
     -fx-text-fill: #000000;
-    -fx-background-color: linear-gradient(to right, #D73D5F, #D6457E);
+    -fx-background-color: #B4CE73;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
 
 .custom-button:hover {
-    -fx-background-color: #D6457E;
+    -fx-background-color: #ADCA70;
     -fx-cursor: HAND;
 }
 
 .custom-button:pressed {
-    -fx-background-color: #D23C6C;
+    -fx-background-color: #9CBB5C;
 }
 
 #gamePane {
-    -fx-background-image: url("../files/red_dawn.jpg");
+    -fx-background-image: url("../files/mossy.jpg");
 }
 
 .progress-bar .bar {
-    -fx-background-color: #D73D5F;
+    -fx-background-color: #A3C161;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
 }
 
 .text-field {
-    -fx-background-color: #D6457E;
+    -fx-background-color: #B4CE73;
     -fx-text-fill: #FFFFFF;
 }
