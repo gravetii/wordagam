@@ -5,6 +5,11 @@
 
 A fun & interactive word game. Check out the screenshots and the game play video.
 
+## Download & Play
+
+Download the jar [here](https://github.com/gravetii/wordagam/releases/download/v1.0/wordagam-1.0.jar) to play the game.
+
+
 ## Game play video
 
 <a href="http://www.youtube.com/watch?feature=player_embedded&v=dIdsylbVcuA
