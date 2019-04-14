@@ -7,7 +7,7 @@ public enum ThemeType {
   BLUEZY,
   EUANTHE,
   CONTRA,
-  HORIZON,
+  MOTLEY,
   RED_DAWN,
   SUNSET,
   TERRA,
