@@ -6,7 +6,7 @@ public enum ThemeType {
   BLACK_AND_WHITE,
   BLUEZY,
   EUANTHE,
-  GOLDEN_SKY,
+  CONTRA,
   HORIZON,
   RED_DAWN,
   SUNSET,
