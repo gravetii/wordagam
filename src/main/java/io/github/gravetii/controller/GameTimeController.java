@@ -1,7 +1,7 @@
 package io.github.gravetii.controller;
 
-import io.github.gravetii.pojo.GameTime;
 import io.github.gravetii.db.PreferenceStore;
+import io.github.gravetii.pojo.GameTime;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;

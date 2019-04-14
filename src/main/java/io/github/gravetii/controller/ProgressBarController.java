@@ -1,7 +1,7 @@
 package io.github.gravetii.controller;
 
-import io.github.gravetii.game.Game;
 import io.github.gravetii.db.PreferenceStore;
+import io.github.gravetii.game.Game;
 import io.github.gravetii.util.AppLogger;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
