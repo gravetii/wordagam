@@ -4,32 +4,32 @@
     -fx-font-family: "Futura";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
-    -fx-text-fill: #FFFFFF;
-    -fx-background-color: #7FDBFF;
+    -fx-text-fill: #000000;
+    -fx-background-color: #C18D8A;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
 
 .custom-button:hover {
-    -fx-background-color: #4095C6;
+    -fx-background-color: #AB7676;
     -fx-cursor: HAND;
 }
 
 .custom-button:pressed {
-    -fx-background-color: #3487BA;
+    -fx-background-color: #A96150;
 }
 
 #gamePane {
-    -fx-background-image: url("../files/horizon.jpg");
+    -fx-background-image: url("../files/motley.jpg");
 }
 
 .progress-bar .bar {
-    -fx-background-color: #7FDBFF;
+    -fx-background-color: #4FA6D0;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
 }
 
 .text-field {
-    -fx-background-color: #7FDBFF;
+    -fx-background-color: #C18D8A;
     -fx-text-fill: #FFFFFF;
 }
