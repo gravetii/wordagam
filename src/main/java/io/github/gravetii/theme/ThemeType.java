@@ -11,7 +11,7 @@ public enum ThemeType {
   RED_DAWN,
   SUNSET,
   TERRA,
-  URIEL,
+  VERDURA,
   PATCHY,
   ;
 
