@@ -4,32 +4,32 @@
     -fx-font-family: "Futura";
     -fx-font-weight: bold;
     -fx-font-size: 20px;
-    -fx-text-fill: #FFFFFF;
-    -fx-background-color: #139462;
+    -fx-text-fill: #000000;
+    -fx-background-color: #94CC3A;
     -fx-text-alignment: center;
     -fx-alignment: center;
 }
 
 .custom-button:hover {
-    -fx-background-color: #398C6C;
+    -fx-background-color: #78BD3E;
     -fx-cursor: HAND;
 }
 
 .custom-button:pressed {
-    -fx-background-color: #277F79;
+    -fx-background-color: #4CA120;
 }
 
 #gamePane {
-    -fx-background-image: url("../files/uriel.jpg");
+    -fx-background-image: url("../files/verdura.jpg");
 }
 
 .progress-bar .bar {
-    -fx-background-color: #F98835;
+    -fx-background-color: #6DB838;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
 }
 
 .text-field {
-    -fx-background-color: #139462;
-    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #5AAE29;
+    -fx-text-fill: #000000;
 }
