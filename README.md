@@ -3,13 +3,18 @@
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/f7b9f7655b3f4ff795775ab49a39fc52)](https://app.codacy.com/app/gravetii/wordagam?utm_source=github.com&utm_medium=referral&utm_content=gravetii/wordagam&utm_campaign=Badge_Grade_Dashboard)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Donate](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/sandeepdasika)
+[![GitHub release](https://img.shields.io/github/release/gravetii/wordagam.svg?style=flat-square)](https://github.com/gravetii/wordagam/releases/latest)
+[![Github All Releases](https://img.shields.io/github/downloads/gravetii/wordagam/total.svg?style=flat-square)](https://github.com/gravetii/wordagam/releases)
 
 A fun & interactive word game. Check out the screenshots and the game play video.
 
 ## Download & Play
 
-Download the jar [here](https://github.com/gravetii/wordagam/releases/download/v1.0/wordagam-1.0.jar) to play the game.
+Download the JAR [here](https://github.com/gravetii/wordagam/releases/download/v1.0/wordagam-1.0.jar) to play the game.
 
+## Prerequisites
+
+Wordagam requires Java 8 to be installed to run the JAR.
 
 ## Game play video
 
