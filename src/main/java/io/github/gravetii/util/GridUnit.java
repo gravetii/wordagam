@@ -25,7 +25,7 @@ public class GridUnit {
   }
 
   public int getScore() {
-    return alphabet.getPoints();
+    return alphabet.getScore();
   }
 
   public int getWeight() {
