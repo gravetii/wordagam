@@ -42,11 +42,11 @@ public enum Alphabet {
   }
 
   private int weight;
-  private int points;
+  private int score;
 
-  Alphabet(int weight, int points) {
+  Alphabet(int weight, int score) {
     this.weight = weight;
-    this.points = points;
+    this.score = score;
   }
 
   public static List<Alphabet> weightedList() {
@@ -61,7 +61,7 @@ public enum Alphabet {
     return weight;
   }
 
-  public int getPoints() {
-    return points;
+  public int getScore() {
+    return score;
   }
 }

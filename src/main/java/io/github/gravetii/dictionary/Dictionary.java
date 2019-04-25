@@ -44,12 +44,12 @@ public class Dictionary {
 
   public static void main(String[] args) {
     Dictionary dictionary = new Dictionary();
-    System.out.println(dictionary.contains("mask"));
-    System.out.println(dictionary.contains("silhouette"));
+    System.out.println(dictionary.search("mask"));
+    System.out.println(dictionary.search("silhouette"));
     System.out.println(dictionary.prefix("silhou"));
   }
 
-  public boolean contains(String word) {
+  public int search(String word) {
     return this.trie.search(word);
   }
 

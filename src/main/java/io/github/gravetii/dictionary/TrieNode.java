@@ -4,26 +4,22 @@ public class TrieNode {
   private static final int ALPHABET_COUNT = 26;
 
   private TrieNode[] children;
-  private boolean word;
+  private int score;
 
   TrieNode() {
     this.children = new TrieNode[ALPHABET_COUNT];
-    this.word = false;
+    this.score = 0;
   }
 
   public TrieNode[] getChildren() {
     return children;
   }
 
-  public void setChildren(TrieNode[] children) {
-    this.children = children;
+  public void setScore(int score) {
+    this.score = score;
   }
 
-  public boolean isWord() {
-    return word;
-  }
-
-  public void setWord() {
-    this.word = true;
+  public int getScore() {
+    return score;
   }
 }

@@ -12,18 +12,19 @@ public class GameSolver {
 
   private GridUnit[][] grid;
   private Dictionary dictionary;
-
-  private Map<String, Integer> wordPoints = new HashMap<>();
   private GameResult result = new GameResult();
 
   public GameSolver(GridUnit[][] grid, Dictionary dictionary) {
     this.grid = grid;
     this.dictionary = dictionary;
-    this.wordPoints.put("", 0);
   }
 
-  private boolean isValidWord(String word) {
-    return word.length() >= MIN_WORD_LENGTH && this.dictionary.contains(word);
+  private int validate(String word) {
+    if (word.length() < MIN_WORD_LENGTH) {
+      return 0;
+    }
+
+    return this.dictionary.search(word);
   }
 
   public GameResult solve() {
@@ -35,28 +36,27 @@ public class GameSolver {
         }
 
         GridPoint point = grid[i][j].getPoint();
-        this.solve(point, "", new LinkedList<>(), visited);
+        this.crawl(point, "", new LinkedList<>(), visited);
       }
     }
 
     return this.result;
   }
 
-  private void solve(GridPoint point, String prefix, List<GridPoint> seq, boolean[][] visited) {
+  private void crawl(GridPoint point, String prefix, List<GridPoint> seq, boolean[][] visited) {
     GridUnit unit = grid[point.x][point.y];
     visited[point.x][point.y] = true;
     String word = prefix + unit.getLetter();
     if (this.dictionary.prefix(word)) {
       seq.add(point);
-      int score = this.wordPoints.get(prefix) + unit.getScore();
-      this.wordPoints.put(word, score);
-      if (this.isValidWord(word)) {
+      int score = this.validate(word);
+      if (score > 0) {
         this.result.put(word, score, seq);
       }
       for (GridPoint n : point.getNeighbors()) {
         if (!visited[n.x][n.y]) {
           boolean[][] v = Utils.arrCopy(visited);
-          this.solve(n, word, new LinkedList<>(seq), v);
+          this.crawl(n, word, new LinkedList<>(seq), v);
         }
       }
     }
