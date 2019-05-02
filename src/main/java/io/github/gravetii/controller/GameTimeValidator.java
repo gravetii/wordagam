@@ -1,7 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.pojo.GameTime;
-import javafx.util.Pair;
+import io.github.gravetii.util.Pair;
 
 public class GameTimeValidator {
   public GameTime validate(Pair<String, String> obj) {
@@ -17,8 +17,8 @@ public class GameTimeValidator {
         return null;
       }
 
-      String min = obj.getKey().isEmpty() ? "0" : obj.getKey();
-      String sec = obj.getValue().isEmpty() ? "0" : obj.getValue();
+      String min = obj.getFirst().isEmpty() ? "0" : obj.getSecond();
+      String sec = obj.getFirst().isEmpty() ? "0" : obj.getSecond();
       return new Pair<>(min, sec);
     };
   }
@@ -29,8 +29,8 @@ public class GameTimeValidator {
         return null;
       }
 
-      String min = obj.getKey();
-      String sec = obj.getValue();
+      String min = obj.getFirst();
+      String sec = obj.getSecond();
       return (min.matches("[0-9]+") && sec.matches("[0-9]+")) ? obj : null;
     };
   }
@@ -42,8 +42,8 @@ public class GameTimeValidator {
       }
 
       try {
-        int minutes = Integer.parseInt(obj.getKey());
-        int seconds = Integer.parseInt(obj.getValue());
+        int minutes = Integer.parseInt(obj.getFirst());
+        int seconds = Integer.parseInt(obj.getSecond());
         return new Pair<>(minutes, seconds);
       } catch (NumberFormatException e) {
         return null;
@@ -57,8 +57,8 @@ public class GameTimeValidator {
         return null;
       }
 
-      int minutes = obj.getKey();
-      int seconds = obj.getValue();
+      int minutes = obj.getFirst();
+      int seconds = obj.getSecond();
       if (minutes == 0 && seconds == 0) {
         return null;
       }
