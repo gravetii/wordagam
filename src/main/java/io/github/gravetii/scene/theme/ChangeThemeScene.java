@@ -19,7 +19,7 @@ public class ChangeThemeScene extends FxScene {
 
   @Override
   protected void build() {
-    this.showCenter(this.themeComponent.getNode()).showBottom(this.footerComponent.getNode());
+    this.showCenter(this.themeComponent).showBottom(this.footerComponent);
   }
 
   @Override

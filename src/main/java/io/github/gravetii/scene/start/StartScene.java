@@ -20,7 +20,7 @@ public class StartScene extends FxScene {
 
   @Override
   protected void build() {
-    this.showTop(this.menuBarComponent.getNode()).showCenter(this.startPaneComponent.getNode());
+    this.showTop(this.menuBarComponent).showCenter(this.startPaneComponent);
   }
 
   @Override
