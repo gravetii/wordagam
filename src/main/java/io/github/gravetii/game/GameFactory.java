@@ -19,8 +19,8 @@ public class GameFactory {
   private GameFactory() {
     this.dictionary = new Dictionary();
     this.queue = new LinkedBlockingDeque<>(MAX_GAMES_IN_QUEUE);
-    this.executor = Executors.newFixedThreadPool(1);
-    this.bootstrap();
+    this.executor = Executors.newFixedThreadPool(2);
+    this.backFill();
   }
 
   public static GameFactory get() {
@@ -55,10 +55,6 @@ public class GameFactory {
     return game;
   }
 
-  private void bootstrap() {
-    this.executor.submit(new GameLoaderTask(MAX_GAMES_IN_QUEUE));
-  }
-
   public synchronized Game fetch() {
     Game game = this.queue.poll();
     if (game == null) {
@@ -71,16 +67,22 @@ public class GameFactory {
   }
 
   private void backFill() {
-    int n = MAX_GAMES_IN_QUEUE - queue.size();
-    if (n > 0) {
-      this.executor.submit(new GameLoaderTask(n));
+    this.backFill(MAX_GAMES_IN_QUEUE - queue.size());
+  }
+
+  private void backFill(int n) {
+    while (n-- > 0) {
+      this.executor.submit(() -> {
+        Game game = create();
+        queue.offerLast(game);
+      });
     }
   }
 
   public void shutdown() {
     try {
       this.executor.shutdown();
-      boolean terminated = this.executor.awaitTermination(2, TimeUnit.SECONDS);
+      boolean terminated = this.executor.awaitTermination(5, TimeUnit.SECONDS);
       if (!terminated) {
         this.executor.shutdownNow();
       }
@@ -88,23 +90,6 @@ public class GameFactory {
       this.queue.clear();
     } catch (Exception e) {
       AppLogger.severe(getClass().getCanonicalName(), "Error while closing GameFactory: " + e);
-    }
-  }
-
-  private class GameLoaderTask implements Runnable {
-
-    private int n;
-
-    GameLoaderTask(int n) {
-      this.n = n;
-    }
-
-    @Override
-    public void run() {
-      for (int i = 1; i <= n; ++i) {
-        Game game = create();
-        queue.offerLast(game);
-      }
     }
   }
 }
