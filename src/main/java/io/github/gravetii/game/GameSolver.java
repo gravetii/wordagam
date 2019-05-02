@@ -1,6 +1,7 @@
 package io.github.gravetii.game;
 
 import io.github.gravetii.dictionary.Dictionary;
+import io.github.gravetii.util.AppLogger;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
 import io.github.gravetii.util.Utils;
@@ -40,6 +41,7 @@ public class GameSolver {
       }
     }
 
+    AppLogger.info(GameSolver.class.getCanonicalName(), "Total Words: " + this.result.all().size());
     return this.result;
   }
 

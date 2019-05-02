@@ -3,11 +3,8 @@ package io.github.gravetii.dictionary;
 import io.github.gravetii.util.Alphabet;
 
 public class Trie {
-  private TrieNode root;
-
-  Trie() {
-    this.root = new TrieNode();
-  }
+  private Trie[] children = new Trie[26];
+  private int score = 0;
 
   /**
    * Add a new word from the English dictionary to this trie.
@@ -16,22 +13,21 @@ public class Trie {
    */
   public void insert(String word) {
     char[] arr = word.toCharArray();
-    TrieNode node = root;
     int score = 0;
 
+    Trie node = this;
     for (char c : arr) {
       int idx = c - 'a';
       Alphabet alphabet = Alphabet.values()[idx];
-      TrieNode[] children = node.getChildren();
-      if (children[idx] == null) {
-        children[idx] = new TrieNode();
+      if (node.children[idx] == null) {
+        node.children[idx] = new Trie();
       }
 
-      node = children[idx];
+      node = node.children[idx];
       score += alphabet.getScore();
     }
 
-    node.setScore(score);
+    node.score = score;
   }
 
   /**
@@ -41,19 +37,18 @@ public class Trie {
    * @return the score of the word if it's valid, 0 otherwise.
    */
   public int search(String word) {
-    TrieNode node = root;
+    Trie node = this;
     char[] arr = word.toCharArray();
     for (char c : arr) {
       int idx = c - 'a';
-      TrieNode[] children = node.getChildren();
-      if (children[idx] == null) {
+      if (node.children[idx] == null) {
         return 0;
       }
 
-      node = children[idx];
+      node = node.children[idx];
     }
 
-    return node != null ? node.getScore() : 0;
+    return node != null ? node.score : 0;
   }
 
   /**
@@ -63,16 +58,15 @@ public class Trie {
    * @return true if the word is a prefix of some other word, false otherwise.
    */
   public boolean prefix(String word) {
-    TrieNode node = root;
+    Trie node = this;
     char[] arr = word.toCharArray();
     for (char c : arr) {
       int idx = c - 'a';
-      TrieNode[] children = node.getChildren();
-      if (children[idx] == null) {
+      if (node.children[idx] == null) {
         return false;
       }
 
-      node = children[idx];
+      node = node.children[idx];
     }
 
     return node != null;
