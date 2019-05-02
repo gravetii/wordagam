@@ -41,7 +41,6 @@ public class GameSolver {
       }
     }
 
-    AppLogger.info(GameSolver.class.getCanonicalName(), "Total Words: " + this.result.all().size());
     return this.result;
   }
 
