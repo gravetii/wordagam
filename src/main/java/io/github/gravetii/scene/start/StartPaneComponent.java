@@ -1,12 +1,13 @@
 package io.github.gravetii.scene.start;
 
+import io.github.gravetii.controller.BasicController;
 import io.github.gravetii.scene.FxComponent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-public class StartPaneComponent extends FxComponent<Void, Pane> {
+public class StartPaneComponent extends FxComponent<BasicController, Pane> {
   private BorderPane root;
 
   public StartPaneComponent(BorderPane root) throws Exception {
@@ -15,13 +16,9 @@ public class StartPaneComponent extends FxComponent<Void, Pane> {
     this.create();
   }
 
-  private static Image fetchSkin() throws Exception {
-    return new Image("images/skin/1.jpg");
-  }
-
   @Override
-  protected Void createController() {
-    return null;
+  protected BasicController createController() {
+    return new BasicController();
   }
 
   @Override
@@ -30,7 +27,7 @@ public class StartPaneComponent extends FxComponent<Void, Pane> {
     pane.prefHeightProperty().bind(root.heightProperty());
     pane.prefWidthProperty().bind(root.widthProperty());
     ImageView imgView = (ImageView) pane.getChildren().get(0);
-    imgView.setImage(fetchSkin());
+    imgView.setImage(new Image("images/skin/1.jpg"));
     imgView.fitHeightProperty().bind(pane.heightProperty());
     imgView.fitWidthProperty().bind(pane.widthProperty());
     return pane;

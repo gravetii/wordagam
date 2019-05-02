@@ -1,8 +1,10 @@
 package io.github.gravetii.scene;
 
+import io.github.gravetii.controller.FxController;
 import javafx.fxml.FXMLLoader;
+import javafx.scene.Node;
 
-public abstract class FxComponent<C, N> {
+public abstract class FxComponent<C extends FxController, N extends Node> {
   private C controller;
   private N node;
   private String fxml;

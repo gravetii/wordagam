@@ -26,10 +26,10 @@ public class GameScene extends FxScene {
 
   @Override
   protected void build() {
-    this.showTop(this.menuBarComponent.getNode())
-        .showCenter(this.gridComponent.getNode())
-        .showRight(this.resultComponent.getNode())
-        .showBottom(this.progressBarComponent.getNode());
+    this.showTop(this.menuBarComponent)
+        .showCenter(this.gridComponent)
+        .showRight(this.resultComponent)
+        .showBottom(this.progressBarComponent);
   }
 
   private void endGame() {

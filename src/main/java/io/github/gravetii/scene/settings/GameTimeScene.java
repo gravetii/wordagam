@@ -17,8 +17,8 @@ public class GameTimeScene extends FxScene {
   }
 
   @Override
-  protected void build() throws Exception {
-    this.showCenter(this.component.getNode());
+  protected void build() {
+    this.showCenter(this.component);
   }
 
   @Override
