@@ -17,10 +17,10 @@ public class GameEndScene extends FxScene {
   }
 
   @Override
-  protected void build() throws Exception {
+  protected void build() {
     this.showTop(this.menuBarComponent)
-            .showCenter(this.gameGridComponent)
-            .showRight(this.gameEndResultComponent);
+        .showCenter(this.gameGridComponent)
+        .showRight(this.gameEndResultComponent);
   }
 
   @Override

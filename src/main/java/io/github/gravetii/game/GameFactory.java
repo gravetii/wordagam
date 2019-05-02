@@ -72,10 +72,11 @@ public class GameFactory {
 
   private void backFill(int n) {
     while (n-- > 0) {
-      this.executor.submit(() -> {
-        Game game = create();
-        queue.offerLast(game);
-      });
+      this.executor.submit(
+          () -> {
+            Game game = create();
+            queue.offerLast(game);
+          });
     }
   }
 
