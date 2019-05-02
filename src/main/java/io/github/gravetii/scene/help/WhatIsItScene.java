@@ -16,7 +16,7 @@ public class WhatIsItScene extends FxScene {
   }
 
   @Override
-  protected void build() throws Exception {
+  protected void build() {
     this.showCenter(this.component);
   }
 

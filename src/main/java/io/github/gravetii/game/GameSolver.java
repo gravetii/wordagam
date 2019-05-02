@@ -1,12 +1,13 @@
 package io.github.gravetii.game;
 
 import io.github.gravetii.dictionary.Dictionary;
-import io.github.gravetii.util.AppLogger;
 import io.github.gravetii.util.GridPoint;
 import io.github.gravetii.util.GridUnit;
 import io.github.gravetii.util.Utils;
 
-import java.util.*;
+import java.util.Arrays;
+import java.util.LinkedList;
+import java.util.List;
 
 public class GameSolver {
   private static final int MIN_WORD_LENGTH = 3;

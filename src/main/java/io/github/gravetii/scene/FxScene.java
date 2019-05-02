@@ -2,7 +2,6 @@ package io.github.gravetii.scene;
 
 import io.github.gravetii.theme.Theme;
 import io.github.gravetii.theme.ThemeService;
-import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Stage;
@@ -44,7 +43,7 @@ public abstract class FxScene {
     return this;
   }
 
-  protected abstract void build() throws Exception;
+  protected abstract void build();
 
   protected abstract String title();
 
@@ -75,7 +74,7 @@ public abstract class FxScene {
         }));
   }
 
-  public void show() throws Exception {
+  public void show() {
     this.build();
     this.applyCurrentTheme();
     Scene scene = new Scene(this.root);
