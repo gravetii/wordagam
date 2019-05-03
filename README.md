@@ -10,7 +10,7 @@ A fun & interactive word game. Check out the screenshots and the game play video
 
 ## Download & Play
 
-Download the JAR [here](https://github.com/gravetii/wordagam/releases/download/v1.0/wordagam-1.0.jar) to play the game.
+Download the JAR [here](https://github.com/gravetii/wordagam/releases/download/v1.2/wordagam-1.2.jar) to play the game.
 
 ## Prerequisites
 
