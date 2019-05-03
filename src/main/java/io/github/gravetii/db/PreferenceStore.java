@@ -18,21 +18,19 @@ public class PreferenceStore {
 
   private static final Map<String, Object> store = new HashMap<>();
 
-  private static Preferences preferences() {
-    return Preferences.userNodeForPackage(PreferenceStore.class);
-  }
+  private static Preferences preferences = Preferences.userNodeForPackage(PreferenceStore.class);
 
   public static void saveTheme(ThemeType type) {
-    preferences().put(CURRENT_THEME_KEY, type.name());
+    preferences.put(CURRENT_THEME_KEY, type.name());
   }
 
   public static ThemeType getTheme() {
-    String theme = preferences().get(CURRENT_THEME_KEY, ThemeType.RANDOM.name());
+    String theme = preferences.get(CURRENT_THEME_KEY, ThemeType.RANDOM.name());
     return ThemeType.valueOf(theme);
   }
 
   public static void close() throws Exception {
-    preferences().flush();
+    preferences.flush();
   }
 
   public static GameTime getGameTime() {
@@ -40,7 +38,7 @@ public class PreferenceStore {
     if (store.containsKey(GAME_TIME_KEY)) {
       time = (String) store.get(GAME_TIME_KEY);
     } else {
-      time = preferences().get(GAME_TIME_KEY, DEFAULT_GAME_TIME);
+      time = preferences.get(GAME_TIME_KEY, DEFAULT_GAME_TIME);
       store.put(GAME_TIME_KEY, time);
     }
 
@@ -48,7 +46,7 @@ public class PreferenceStore {
   }
 
   public static void setGameTime(GameTime value) {
-    preferences().put(GAME_TIME_KEY, value.to());
+    preferences.put(GAME_TIME_KEY, value.to());
     store.put(GAME_TIME_KEY, value.to());
   }
 
@@ -69,18 +67,18 @@ public class PreferenceStore {
     if (store.containsKey(GAME_ID_KEY)) {
       value = (String) store.get(GAME_ID_KEY);
     } else {
-      value = preferences().get(GAME_ID_KEY, DEFAULT_GAME_ID);
+      value = preferences.get(GAME_ID_KEY, DEFAULT_GAME_ID);
     }
 
     int id = Integer.parseInt(value);
     String incrValue = Integer.toString(id + 1);
-    preferences().put(GAME_ID_KEY, incrValue);
+    preferences.put(GAME_ID_KEY, incrValue);
     store.put(GAME_ID_KEY, incrValue);
     return id;
   }
 
   public static void resetGameId() {
-    preferences().put(GAME_ID_KEY, DEFAULT_GAME_ID);
+    preferences.put(GAME_ID_KEY, DEFAULT_GAME_ID);
     store.put(GAME_ID_KEY, DEFAULT_GAME_ID);
   }
 }
