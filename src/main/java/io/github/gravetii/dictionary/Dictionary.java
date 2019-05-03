@@ -47,7 +47,6 @@ public class Dictionary {
     System.out.println(dictionary.search("mask"));
     System.out.println(dictionary.search("silhouette"));
     System.out.println(dictionary.prefix("silhou"));
-    System.out.println(dictionary.search("silhou"));
   }
 
   public int search(String word) {
