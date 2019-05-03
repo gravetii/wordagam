@@ -17,8 +17,8 @@ public class GameTimeValidator {
         return null;
       }
 
-      String min = obj.getFirst().isEmpty() ? "0" : obj.getSecond();
-      String sec = obj.getFirst().isEmpty() ? "0" : obj.getSecond();
+      String min = obj.getFirst().isEmpty() ? "0" : obj.getFirst();
+      String sec = obj.getSecond().isEmpty() ? "0" : obj.getSecond();
       return new Pair<>(min, sec);
     };
   }
