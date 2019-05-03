@@ -16,7 +16,7 @@
 
 <VBox prefHeight="520.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <ImageView fx:id="rotateImgView" blendMode="MULTIPLY" cache="true" fitHeight="18.0" fitWidth="22.0" onMouseClicked="#rotate" pickOnBounds="true" smooth="false" styleClass="custom-img-view">
+        <ImageView fx:id="rotateImgView" blendMode="MULTIPLY" cache="true" fitHeight="28.0" fitWidth="32.0" onMouseClicked="#rotate" pickOnBounds="true" smooth="false" styleClass="custom-img-view">
             <VBox.margin>
                 <Insets left="10.0" top="10.0" />
             </VBox.margin>
