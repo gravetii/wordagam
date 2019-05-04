@@ -62,6 +62,7 @@ public class GameResultController implements FxController {
         .ifPresent(
             result -> {
               this.displayer.showUserWord(result);
+              this.displayer.setMarker();
             });
   }
 }
