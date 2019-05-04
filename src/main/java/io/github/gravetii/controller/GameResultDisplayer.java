@@ -32,6 +32,10 @@ public class GameResultDisplayer {
     this.show(result, true);
   }
 
+  public void setMarker() {
+    this.table.scrollTo(this.counter);
+  }
+
   private void show(WordResult result, boolean byUser) {
     String word = result.getWord();
     if (this.notAlreadyDisplayed(word)) {
