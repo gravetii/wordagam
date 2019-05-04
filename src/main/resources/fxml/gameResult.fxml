@@ -26,7 +26,7 @@
         </ImageView>
         <Button fx:id="goBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onGoBtnClick" prefHeight="85.0" prefWidth="200.0" styleClass="custom-button" text="GO!" VBox.vgrow="ALWAYS">
             <VBox.margin>
-                <Insets bottom="40.0" left="50.0" right="50.0" top="25.0" />
+                <Insets bottom="15.0" left="50.0" right="50.0" top="15.0" />
             </VBox.margin>
             <padding>
                 <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
@@ -35,7 +35,7 @@
                 <DropShadow color="#8a8989" />
             </effect>
         </Button>
-        <Separator prefWidth="200.0">
+        <Separator prefHeight="47.0" prefWidth="300.0">
             <effect>
                 <Lighting bumpInput="$null">
                     <light>
@@ -46,7 +46,7 @@
         </Separator>
         <AnchorPane VBox.vgrow="ALWAYS">
             <children>
-                <TableView fx:id="tblDisplay" prefWidth="280.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
+                <TableView fx:id="tblDisplay" prefWidth="280.0" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="0.0">
                     <placeholder>
                         <Label />
                     </placeholder>
