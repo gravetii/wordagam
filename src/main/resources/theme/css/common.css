@@ -14,6 +14,13 @@
     -fx-cursor: HAND;
 }
 
+.custom-button {
+    -fx-font-family: "Futura";
+    -fx-font-size: 20px;
+    -fx-text-alignment: center;
+    -fx-alignment: center;
+}
+
 .table-view {
     -fx-background-color: #808080;
 }

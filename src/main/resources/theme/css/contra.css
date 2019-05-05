@@ -1,13 +1,8 @@
 @import url("common.css");
 
 .custom-button {
-    -fx-font-family: "Futura";
-    -fx-font-weight: bold;
-    -fx-font-size: 20px;
     -fx-text-fill: #000000;
     -fx-background-color: #C28B86;
-    -fx-text-alignment: center;
-    -fx-alignment: center;
 }
 
 .custom-button:hover {
