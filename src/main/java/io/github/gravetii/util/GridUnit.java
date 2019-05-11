@@ -16,10 +16,6 @@ public class GridUnit {
     this.imgPath = "images/alphabet/" + this.alphabet.get() + ".png";
   }
 
-  public Alphabet getAlphabet() {
-    return alphabet;
-  }
-
   public String getLetter() {
     return alphabet.get();
   }
