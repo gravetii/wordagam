@@ -45,9 +45,8 @@ public class GameFactory {
 
   private Game create() {
     Game game = null;
-    Game.Quality q = Game.Quality.LOW;
-
-    while (q == Game.Quality.LOW) {
+    Quality q = Quality.LOW;
+    while (q == Quality.LOW) {
       game = new Game(this.dictionary);
       q = game.getQuality();
     }
@@ -75,8 +74,17 @@ public class GameFactory {
       this.executor.submit(
           () -> {
             Game game = create();
-            queue.offerLast(game);
+            this.pushToQueue(game);
           });
+    }
+  }
+
+  private void pushToQueue(Game game) {
+    Quality q = game.getQuality();
+    if (q == Quality.HIGH) {
+      queue.offerFirst(game);
+    } else if (q == Quality.MEDIUM) {
+      queue.offerLast(game);
     }
   }
 

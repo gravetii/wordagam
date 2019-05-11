@@ -42,7 +42,8 @@ public class GameSolver {
       }
     }
 
-    return this.result;
+    result.defineQuality();
+    return result;
   }
 
   private void crawl(GridPoint point, String prefix, List<GridPoint> seq, boolean[][] visited) {

@@ -10,6 +10,7 @@ import java.util.Map;
 public class GameResult {
   private Map<String, WordResult> wordToResultMap = new LinkedHashMap<>();
   private int totalScore = 0;
+  private Quality quality;
 
   public void put(String word, int score, List<GridPoint> seq) {
     if (!this.wordToResultMap.containsKey(word)) {
@@ -38,15 +39,28 @@ public class GameResult {
     return this.wordToResultMap.get(word);
   }
 
+  public void defineQuality() {
+    for (Quality q : Quality.values()) {
+      if (this.wordToResultMap.size() > q.getMinCount()) {
+        this.quality = q;
+        break;
+      }
+    }
+  }
+
+  public Quality getQuality() {
+    return this.quality;
+  }
+
   @Override
   public String toString() {
-    return '{'
-        + "wordCount="
-        + this.wordToResultMap.size()
+    return "GameResult{"
+        + "wordToResultMap="
+        + wordToResultMap
         + ", totalScore="
         + totalScore
-        + ", all="
-        + wordToResultMap
+        + ", quality="
+        + quality
         + '}';
   }
 }
