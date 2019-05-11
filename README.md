@@ -10,11 +10,15 @@ A fun & interactive word game. Check out the screenshots and the game play video
 
 ## Download & Play
 
-Download the JAR [here](https://github.com/gravetii/wordagam/releases/download/v1.2/wordagam-1.2.jar) to play the game.
+Download the JAR [here](https://github.com/gravetii/wordagam/releases/download/v1.3/wordagam-1.3.jar) to play the game.
 
 ## Prerequisites
 
 Wordagam requires Java 8 to be installed to run the JAR.
+
+## Building the project
+
+This is a maven project. In the root folder of the project, run `mvn clean compile assembly:single` which outputs the JAR file in the `target/` folder.
 
 ## Game play video
 
