@@ -1,7 +1,10 @@
 package io.github.gravetii.util;
 
 import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.concurrent.ThreadLocalRandom;
 
 public enum Alphabet {
   A(20, 1),
@@ -31,13 +34,11 @@ public enum Alphabet {
   Y(10, 4),
   Z(2, 10);
 
-  private static List<Alphabet> weighted = new ArrayList<>();
+  private static int totalWeight = 0;
 
   static {
     for (Alphabet alphabet : values()) {
-      for (int c = 0; c < alphabet.weight; ++c) {
-        weighted.add(alphabet);
-      }
+      totalWeight += alphabet.getWeight();
     }
   }
 
@@ -49,8 +50,16 @@ public enum Alphabet {
     this.score = score;
   }
 
-  public static List<Alphabet> weightedList() {
-    return weighted;
+  public static Alphabet newRandom() {
+    int value = 1 + ThreadLocalRandom.current().nextInt(totalWeight);
+    for (Alphabet alphabet : values()) {
+      value = value - alphabet.getWeight();
+      if (value <= 0) {
+        return alphabet;
+      }
+    }
+
+    return null;
   }
 
   public String get() {

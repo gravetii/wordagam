@@ -7,9 +7,6 @@ import io.github.gravetii.util.GridUnit;
 import javafx.event.Event;
 import javafx.event.EventType;
 
-import java.util.List;
-import java.util.concurrent.ThreadLocalRandom;
-
 public class Game {
   private final GridUnit[][] grid;
   private final GameResult result;
@@ -30,11 +27,9 @@ public class Game {
   }
 
   private void populateGrid() {
-    List<Alphabet> weightedAlphabets = Alphabet.weightedList();
     for (int i = 0; i < 4; ++i) {
       for (int j = 0; j < 4; ++j) {
-        int idx = ThreadLocalRandom.current().nextInt(weightedAlphabets.size());
-        grid[i][j] = new GridUnit(weightedAlphabets.get(idx), new GridPoint(i, j));
+        grid[i][j] = new GridUnit(Alphabet.newRandom(), new GridPoint(i, j));
       }
     }
   }
