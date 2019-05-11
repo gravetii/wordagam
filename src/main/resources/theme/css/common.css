@@ -42,6 +42,10 @@
     -fx-text-fill: #FFFFFF;
 }
 
+.table-view .table-column {
+    -fx-alignment: center;
+}
+
 .table-row-cell {
     -fx-background-color: -fx-table-cell-border-color, #616161;
     -fx-background-insets: 0, 0 0 1 0;
