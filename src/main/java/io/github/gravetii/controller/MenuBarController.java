@@ -8,7 +8,6 @@ import io.github.gravetii.scene.help.AboutScene;
 import io.github.gravetii.scene.help.WhatIsItScene;
 import io.github.gravetii.scene.settings.GameTimeScene;
 import io.github.gravetii.scene.theme.ChangeThemeScene;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.ButtonType;
@@ -48,7 +47,7 @@ public class MenuBarController implements FxController {
   }
 
   @FXML
-  public void newGame(ActionEvent event) throws Exception {
+  public void newGame() throws Exception {
     if (this.currentGameCheck()) {
       FxScene scene = new GameScene(this.stage);
       scene.show();
@@ -57,38 +56,38 @@ public class MenuBarController implements FxController {
   }
 
   @FXML
-  public void setGameTime(ActionEvent event) throws Exception {
+  public void setGameTime() throws Exception {
     Stage stage = this.newModalWindow();
     FxScene scene = new GameTimeScene(stage);
     scene.show();
   }
 
   @FXML
-  public void resetGameCounter(ActionEvent event) throws Exception {
+  public void resetGameCounter() throws Exception {
     PreferenceStore.resetGameId();
   }
 
   @FXML
-  public void exit(ActionEvent event) throws Exception {
+  public void exit() throws Exception {
     App.close(this.stage);
   }
 
   @FXML
-  public void editTheme(ActionEvent event) throws Exception {
+  public void editTheme() throws Exception {
     Stage stage = this.newModalWindow();
     FxScene scene = new ChangeThemeScene(stage);
     scene.show();
   }
 
   @FXML
-  public void showAbout(ActionEvent event) throws Exception {
+  public void showAbout() throws Exception {
     Stage stage = this.newModalWindow();
     FxScene scene = new AboutScene(stage);
     scene.show();
   }
 
   @FXML
-  public void whatIsIt(ActionEvent event) throws Exception {
+  public void whatIsIt() throws Exception {
     Stage stage = this.newModalWindow();
     FxScene scene = new WhatIsItScene(stage);
     scene.show();

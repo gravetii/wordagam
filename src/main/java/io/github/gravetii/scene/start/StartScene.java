@@ -10,17 +10,21 @@ import java.util.Optional;
 
 public class StartScene extends FxScene {
   private MenuBarComponent menuBarComponent;
-  private StartPaneComponent startPaneComponent;
+  private StartImageComponent startImageComponent;
+  private StartControlsComponent startControlsComponent;
 
   public StartScene(Stage stage) throws Exception {
     super(stage);
     this.menuBarComponent = new MenuBarComponent(this.stage, this.root);
-    this.startPaneComponent = new StartPaneComponent(this.root);
+    this.startImageComponent = new StartImageComponent(this.root);
+    this.startControlsComponent = new StartControlsComponent(menuBarComponent);
   }
 
   @Override
   protected void build() {
-    this.showTop(this.menuBarComponent).showCenter(this.startPaneComponent);
+    this.showTop(this.menuBarComponent)
+        .showCenter(this.startImageComponent)
+        .showRight(this.startControlsComponent);
   }
 
   @Override

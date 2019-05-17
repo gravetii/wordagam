@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.layout.VBox?>
+
+<VBox id="vbox" alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="250.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Button id="playBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onPlayBtnClick" prefHeight="60.0" prefWidth="170.0" styleClass="custom-button" text="Play">
+         <VBox.margin>
+            <Insets top="50.0" />
+         </VBox.margin>
+      </Button>
+      <Button id="changeThemeBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onChangeThemeBtnClick" prefHeight="60.0" prefWidth="170.0" styleClass="custom-button" text="Change Theme">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin></Button>
+      <Button id="WhatIsItBtn" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onWhatIsItBtnClick" prefHeight="60.0" prefWidth="170.0" styleClass="custom-button" text="What is it?">
+         <VBox.margin>
+            <Insets top="30.0" />
+         </VBox.margin></Button>
+   </children>
+</VBox>
