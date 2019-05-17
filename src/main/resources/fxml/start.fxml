@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.Pane?>
-<Pane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172-ea">
-    <children>
-        <ImageView cache="true" fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" smooth="false"/>
-    </children>
-</Pane>
