@@ -12,7 +12,6 @@ public class GameTimeScene extends FxScene {
 
   public GameTimeScene(Stage stage) throws Exception {
     super(stage);
-
     this.component = new GameTimeComponent(stage);
   }
 
