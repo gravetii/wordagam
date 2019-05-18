@@ -9,7 +9,7 @@
 
 <AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <TextField fx:id="minutesTxtField" alignment="CENTER" layoutX="183.0" layoutY="88.0" prefHeight="34.0" prefWidth="47.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="20.0">
+        <TextField fx:id="minutesTxtField" alignment="CENTER" layoutX="183.0" layoutY="88.0" prefHeight="34.0" prefWidth="47.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="32.0">
             <font>
                 <Font name="Avenir Medium" size="15.0" />
             </font>
@@ -17,17 +17,17 @@
                 <Reflection />
             </effect>
         </TextField>
-        <Label layoutX="208.0" layoutY="37.0" text="minutes" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="37.0">
+        <Label layoutX="208.0" layoutY="37.0" text="minutes" AnchorPane.leftAnchor="208.0" AnchorPane.topAnchor="49.0">
             <font>
                 <Font name="Avenir Medium" size="14.0" />
             </font>
         </Label>
-        <Label layoutX="264.0" layoutY="37.0" prefHeight="20.0" prefWidth="3.0" text="," textAlignment="CENTER">
+        <Label layoutX="264.0" layoutY="37.0" prefHeight="20.0" prefWidth="3.0" text="," textAlignment="CENTER" AnchorPane.topAnchor="49.0">
             <font>
                 <Font name="Avenir Medium" size="14.0" />
             </font>
         </Label>
-        <TextField fx:id="secondsTxtField" alignment="CENTER" focusTraversable="false" layoutX="277.0" layoutY="20.0" prefHeight="34.0" prefWidth="47.0" AnchorPane.topAnchor="20.0">
+        <TextField fx:id="secondsTxtField" alignment="CENTER" focusTraversable="false" layoutX="277.0" layoutY="20.0" prefHeight="34.0" prefWidth="47.0" AnchorPane.topAnchor="32.0">
             <font>
                 <Font name="Avenir Medium" size="15.0" />
             </font>
@@ -35,17 +35,17 @@
                 <Reflection />
             </effect>
         </TextField>
-        <Label layoutX="333.0" layoutY="37.0" text="seconds" AnchorPane.topAnchor="37.0">
+        <Label layoutX="333.0" layoutY="37.0" text="seconds" AnchorPane.topAnchor="49.0">
             <font>
                 <Font name="Avenir Medium" size="14.0" />
             </font>
         </Label>
-        <Label fx:id="validationLbl" layoutX="207.0" layoutY="125.0" prefHeight="17.0" prefWidth="89.0" textAlignment="CENTER" textFill="#f53535">
+        <Label fx:id="validationLbl" layoutX="208.0" layoutY="133.0" prefHeight="17.0" prefWidth="89.0" textAlignment="CENTER" textFill="#f53535" AnchorPane.topAnchor="133.0">
             <font>
                 <Font name="Avenir Medium" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="okBtn" defaultButton="true" layoutX="137.0" layoutY="76.0" mnemonicParsing="false" onAction="#ok" prefHeight="34.0" prefWidth="79.0" styleClass="custom-button" text="OK" AnchorPane.topAnchor="76.0" />
-        <Button fx:id="cancelBtn" cancelButton="true" layoutX="270.0" layoutY="76.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="104.0" styleClass="custom-button" text="Cancel" AnchorPane.topAnchor="76.0" />
+        <Button fx:id="okBtn" defaultButton="true" layoutX="137.0" layoutY="76.0" mnemonicParsing="false" onAction="#ok" prefHeight="34.0" prefWidth="79.0" styleClass="custom-button" text="OK" AnchorPane.topAnchor="90.0" />
+        <Button fx:id="cancelBtn" cancelButton="true" layoutX="270.0" layoutY="76.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="104.0" styleClass="custom-button" text="Cancel" AnchorPane.topAnchor="90.0" />
     </children>
 </AnchorPane>
