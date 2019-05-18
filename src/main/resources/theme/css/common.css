@@ -5,8 +5,8 @@
 }
 
 .custom-img-view-click {
-    -fx-scale-x: 0.92;
-    -fx-scale-y: 0.92;
+    -fx-scale-x: 0.88;
+    -fx-scale-y: 0.88;
     -fx-blend-mode: HARD_LIGHT;
 }
 
@@ -15,10 +15,13 @@
 }
 
 .custom-button {
-    -fx-font-family: "Futura";
-    -fx-font-size: 20px;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 16px;
     -fx-text-alignment: center;
-    -fx-alignment: center;
+}
+
+#goBtn {
+    -fx-font-size: 19px;
 }
 
 .table-view {
