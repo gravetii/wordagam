@@ -22,8 +22,8 @@ This is a maven project. In the root folder of the project, run `mvn clean compi
 
 ## Game play video
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=dIdsylbVcuA
-" target="_blank"><img src="http://img.youtube.com/vi/dIdsylbVcuA/0.jpg" alt="Wordagam game play video" width="240" height="180" /></a>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=fXqfaqLZ2zw
+"><img src="http://img.youtube.com/vi/fXqfaqLZ2zw/2.jpg" alt="Wordagam game play video" width="240" height="180" /></a>
 
 ## Screenshots
 
