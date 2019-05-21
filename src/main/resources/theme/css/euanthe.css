@@ -11,7 +11,7 @@
 }
 
 .custom-button:pressed {
-    -fx-background-color: #8eae48;
+    -fx-background-color: #8EAE48;
 }
 
 #gamePane {
@@ -27,5 +27,9 @@
 .text-field {
     -fx-background-color: #B5CA7B;
     -fx-text-fill: #000000;
+}
+
+.text-area {
+    -fx-text-fill: #A2261A;
 }
 

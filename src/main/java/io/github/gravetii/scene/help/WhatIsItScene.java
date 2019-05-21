@@ -27,7 +27,7 @@ public class WhatIsItScene extends FxScene {
 
   @Override
   protected Optional<FxDimensions> preferredDimensions() {
-    FxDimensions dimensions = new FxDimensions(new Dimension2D(550, 400));
+    FxDimensions dimensions = new FxDimensions(new Dimension2D(550, 350));
     return Optional.of(dimensions);
   }
 }

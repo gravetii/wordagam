@@ -74,15 +74,6 @@
     -fx-effect: innershadow(gaussian, #164993, 15, 0.5, 0, 0);
 }
 
-.text-area {
-    -fx-focus-color: #D3D3D3;
-    -fx-text-fill: #000000;
-}
-
-.text-area .content {
-    -fx-background-color: #D3D3D3;
-}
-
 .text-area .content .text {
     -fx-text-alignment: center;
 }
@@ -94,3 +85,23 @@
 .user-table-row-cell .table-cell {
     -fx-text-fill: #3EC148 ;
 }
+
+.text-area {
+    -fx-focus-color: #FFFFFF;
+    -fx-font-family: "Helvetica";
+    -fx-font-size: 16px;
+}
+
+.text-area .content {
+    -fx-background-color: #FFFFFF;
+}
+
+#resultBox {
+    -fx-focus-color: #D3D3D3;
+    -fx-font-size: 15px;
+}
+
+#resultBox .content {
+    -fx-background-color: #D3D3D3;
+}
+
