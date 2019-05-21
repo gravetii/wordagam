@@ -1,7 +1,7 @@
 @import url("common.css");
 
 .custom-button {
-    -fx-text-fill: #FFFFFF;
+    -fx-text-fill: #000000;
     -fx-background-color: #7FDBFF;
 }
 
@@ -27,4 +27,8 @@
 .text-field {
     -fx-background-color: #7FDBFF;
     -fx-text-fill: #FFFFFF;
+}
+
+.text-area {
+    -fx-text-fill: #4095C6;
 }

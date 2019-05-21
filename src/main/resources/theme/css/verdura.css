@@ -28,3 +28,7 @@
     -fx-background-color: #5AAE29;
     -fx-text-fill: #000000;
 }
+
+.text-area {
+    -fx-text-fill: #4CA120;
+}
