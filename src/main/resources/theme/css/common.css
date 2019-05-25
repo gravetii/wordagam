@@ -20,6 +20,10 @@
     -fx-text-alignment: center;
 }
 
+.custom-button:hover {
+    -fx-cursor: HAND;
+}
+
 #goBtn {
     -fx-font-size: 19px;
 }
@@ -43,6 +47,7 @@
 
 .table-view .table-cell {
     -fx-text-fill: #FFFFFF;
+    -fx-cursor: HAND;
 }
 
 .table-view .table-column {
