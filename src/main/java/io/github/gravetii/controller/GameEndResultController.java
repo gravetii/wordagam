@@ -1,10 +1,11 @@
 package io.github.gravetii.controller;
 
 import javafx.fxml.FXML;
+import javafx.geometry.Pos;
+import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableRow;
 import javafx.scene.control.TableView;
-import javafx.scene.control.TextArea;
 import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.util.Comparator;
@@ -13,7 +14,7 @@ public class GameEndResultController implements FxController {
   private final GameGridController ref;
   private GameResultDisplayer displayer;
 
-  @FXML private TextArea resultBox;
+  @FXML private Label resultBox;
   @FXML private TableView<GameResultDisplayer.TableResult> tblDisplay;
   @FXML private TableColumn<GameResultDisplayer.TableResult, String> wordTblCol;
   @FXML private TableColumn<GameResultDisplayer.TableResult, Integer> pointsTblCol;
@@ -87,6 +88,7 @@ public class GameEndResultController implements FxController {
   }
 
   public void updateText(String text) {
-    this.resultBox.setText("\n" + text + "\n");
+    this.resultBox.setText(text);
+    this.resultBox.setAlignment(Pos.CENTER);
   }
 }

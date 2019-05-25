@@ -32,3 +32,8 @@
 .text-area {
     -fx-text-fill: #4095C6;
 }
+
+#resultBox {
+    -fx-text-fill: #4095C6;
+}
+
