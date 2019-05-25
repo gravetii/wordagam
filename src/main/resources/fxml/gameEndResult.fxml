@@ -4,8 +4,6 @@
 <?import javafx.scene.control.Separator?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.effect.Blend?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.Light.Distant?>
 <?import javafx.scene.effect.Lighting?>
@@ -14,11 +12,8 @@
 
 <VBox prefHeight="520.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
     <children>
-        <TextArea id="resultBox" fx:id="resultBox" editable="false" prefHeight="150.0" prefWidth="300.0" wrapText="true">
-         <effect>
-            <Blend />
-         </effect></TextArea>
-        <Separator prefWidth="200.0">
+      <Label id="resultBox" fx:id="resultBox" alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="109.0" prefWidth="300.0" textAlignment="CENTER" />
+        <Separator prefHeight="0.0" prefWidth="300.0">
             <effect>
                 <Lighting bumpInput="$null">
                     <light>

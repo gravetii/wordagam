@@ -87,21 +87,16 @@
 }
 
 .text-area {
-    -fx-focus-color: #FFFFFF;
-    -fx-font-family: "Helvetica";
-    -fx-font-size: 16px;
+    -fx-focus-color: #D3D3D3;
 }
 
 .text-area .content {
     -fx-background-color: #FFFFFF;
+    -fx-font-size: 17px;
 }
 
 #resultBox {
-    -fx-focus-color: #D3D3D3;
-    -fx-font-size: 15px;
-}
-
-#resultBox .content {
+    -fx-font-size: 14px;
     -fx-background-color: #D3D3D3;
 }
 
