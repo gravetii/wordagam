@@ -13,8 +13,7 @@ public class GameEndResultController implements FxController {
   private final GameGridController ref;
   private GameResultDisplayer displayer;
 
-  @FXML private TextArea txtArea;
-
+  @FXML private TextArea resultBox;
   @FXML private TableView<GameResultDisplayer.TableResult> tblDisplay;
   @FXML private TableColumn<GameResultDisplayer.TableResult, String> wordTblCol;
   @FXML private TableColumn<GameResultDisplayer.TableResult, Integer> pointsTblCol;
@@ -88,7 +87,6 @@ public class GameEndResultController implements FxController {
   }
 
   public void updateText(String text) {
-
-    this.txtArea.setText("\n" + text + "\n");
+    this.resultBox.setText("\n" + text + "\n");
   }
 }
