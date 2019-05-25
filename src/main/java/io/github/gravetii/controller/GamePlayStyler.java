@@ -149,7 +149,7 @@ public class GamePlayStyler {
     this.revisitTimeline =
         new Timeline(
             new KeyFrame(
-                Duration.millis(200),
+                Duration.millis(300),
                 (event) -> {
                   ImageView imgView = itr.next();
                   this.forValidClick(imgView);

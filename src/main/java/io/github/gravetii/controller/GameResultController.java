@@ -33,7 +33,7 @@ public class GameResultController implements FxController {
           TableRow<TableResult> row = new TableRow<>();
           row.setOnMouseClicked(
               event -> {
-                if (event.getClickCount() == 2 && !row.isEmpty()) {
+                if (!row.isEmpty()) {
                   TableResult result = row.getItem();
                   String word = result.getWord();
                   if (result.isByUser()) {

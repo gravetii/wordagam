@@ -7,7 +7,6 @@
 
 .custom-button:hover {
     -fx-background-color: #3C7A79;
-    -fx-cursor: HAND;
 }
 
 .custom-button:pressed {
