@@ -35,7 +35,7 @@ public class GameScene extends FxScene {
   private void endGame() {
     this.gridComponent.endGame();
     this.showGameEndScene();
-    PreferenceStore.setGameRunning(false);
+    Game.setRunning(false);
   }
 
   @Override

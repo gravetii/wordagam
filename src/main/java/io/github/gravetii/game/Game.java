@@ -8,6 +8,9 @@ import javafx.event.Event;
 import javafx.event.EventType;
 
 public class Game {
+  // Is an instance of the game running right now?
+  private static boolean IS_INSTANCE_RUNNING = false;
+
   private final GridUnit[][] grid;
   private final GameResult result;
 
@@ -54,5 +57,13 @@ public class Game {
     public EndEvent() {
       super(GAME_END_EVENT_EVENT_TYPE);
     }
+  }
+
+  public static void setRunning(boolean value) {
+    IS_INSTANCE_RUNNING = value;
+  }
+
+  public static boolean isRunning() {
+    return IS_INSTANCE_RUNNING;
   }
 }

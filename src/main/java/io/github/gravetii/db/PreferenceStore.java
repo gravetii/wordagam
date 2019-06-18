@@ -10,7 +10,6 @@ import java.util.prefs.Preferences;
 public class PreferenceStore {
   private static final String CURRENT_THEME_KEY = "theme";
   private static final String GAME_TIME_KEY = "time";
-  private static final String GAME_RUNNING_KEY = "game_r";
   private static final String GAME_ID_KEY = "game_id";
 
   private static final String DEFAULT_GAME_TIME = "5$0";
@@ -48,18 +47,6 @@ public class PreferenceStore {
   public static void setGameTime(GameTime value) {
     preferences.put(GAME_TIME_KEY, value.to());
     store.put(GAME_TIME_KEY, value.to());
-  }
-
-  public static boolean isGameRunning() {
-    return store.containsKey(GAME_RUNNING_KEY);
-  }
-
-  public static void setGameRunning(boolean value) {
-    if (value) {
-      store.put(GAME_RUNNING_KEY, true);
-    } else {
-      store.remove(GAME_RUNNING_KEY);
-    }
   }
 
   public static int getGameId() {

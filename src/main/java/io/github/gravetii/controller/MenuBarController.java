@@ -2,6 +2,7 @@ package io.github.gravetii.controller;
 
 import io.github.gravetii.App;
 import io.github.gravetii.db.PreferenceStore;
+import io.github.gravetii.game.Game;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.game.GameScene;
 import io.github.gravetii.scene.help.AboutScene;
@@ -43,7 +44,7 @@ public class MenuBarController implements FxController {
   }
 
   private boolean currentGameCheck() {
-    return !PreferenceStore.isGameRunning() || this.showQuitGameAlert();
+    return !Game.isRunning() || this.showQuitGameAlert();
   }
 
   @FXML
@@ -51,7 +52,7 @@ public class MenuBarController implements FxController {
     if (this.currentGameCheck()) {
       FxScene scene = new GameScene(this.stage);
       scene.show();
-      PreferenceStore.setGameRunning(true);
+      Game.setRunning(true);
     }
   }
 
