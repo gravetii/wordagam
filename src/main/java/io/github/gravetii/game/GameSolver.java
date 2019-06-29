@@ -56,6 +56,7 @@ public class GameSolver {
       if (score > 0) {
         this.result.put(word, score, seq);
       }
+
       for (GridPoint n : point.getNeighbors()) {
         if (!visited[n.x][n.y]) {
           boolean[][] v = Utils.arrCopy(visited);
