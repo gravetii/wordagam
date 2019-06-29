@@ -42,12 +42,12 @@ public class GamePlayRotater {
 
   private void rearrange() {
     for (int x = 0; x < 2; x++) {
-      for (int y = x; y < 3 - x; y++) {
-        Pane temp = this.panes[y][3 - x];
-        this.panes[y][3 - x] = this.panes[x][y];
-        this.panes[x][y] = this.panes[3 - y][x];
-        this.panes[3 - y][x] = this.panes[3 - x][3 - y];
-        this.panes[3 - x][3 - y] = temp;
+      for (int y = x; y < 3-x; y++) {
+        Pane temp = this.panes[y][3-x];
+        this.panes[y][3-x] = this.panes[x][y];
+        this.panes[x][y] = this.panes[3-y][x];
+        this.panes[3-y][x] = this.panes[3-x][3-y];
+        this.panes[3-x][3-y] = temp;
       }
     }
 

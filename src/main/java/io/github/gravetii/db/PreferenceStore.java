@@ -58,7 +58,7 @@ public class PreferenceStore {
     }
 
     int id = Integer.parseInt(value);
-    String incrValue = Integer.toString(id + 1);
+    String incrValue = Integer.toString(id+1);
     preferences.put(GAME_ID_KEY, incrValue);
     store.put(GAME_ID_KEY, incrValue);
     return id;
