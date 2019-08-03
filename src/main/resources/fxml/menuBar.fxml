@@ -6,7 +6,7 @@
 <?import javafx.scene.control.SeparatorMenuItem?>
 <?import javafx.scene.input.KeyCodeCombination?>
 
-<MenuBar xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<MenuBar xmlns="http://javafx.com/javafx/8.0.999-ea" xmlns:fx="http://javafx.com/fxml/1">
     <menus>
         <Menu mnemonicParsing="false" text="File">
             <items>
@@ -15,10 +15,7 @@
                   <KeyCodeCombination alt="UP" code="N" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
                </accelerator></MenuItem>
                 <SeparatorMenuItem mnemonicParsing="false" />
-                <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exit" text="Exit">
-               <accelerator>
-                  <KeyCodeCombination alt="UP" code="Q" control="UP" meta="UP" shift="UP" shortcut="DOWN" />
-               </accelerator></MenuItem>
+                <MenuItem fx:id="exitMenuItem" mnemonicParsing="false" onAction="#exit" text="Exit" />
             </items>
         </Menu>
           <Menu mnemonicParsing="false" text="Settings">
