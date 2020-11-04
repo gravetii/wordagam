@@ -17,7 +17,7 @@ Download the latest JAR [here](https://github.com/gravetii/wordagam/releases/dow
 
 ## Prerequisites
 
-Wordagam requires Java 10 to be installed to run the JAR.
+Wordagam requires Java 8 to be installed to run the JAR.
 
 ## Building the project
 
