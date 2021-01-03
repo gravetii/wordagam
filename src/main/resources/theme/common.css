@@ -63,14 +63,11 @@
 .table-row-cell:odd {
     -fx-background-color: -fx-table-cell-border-color, #424242;
     -fx-background-insets: 0, 0 0 1 0;
+    -fx-padding: 0.0em;
 }
 
 .table-row-cell:selected {
     -fx-table-cell-border-color: #FFFFFF;
-}
-
-.table-row-cell:empty {
-    -fx-background-color: transparent;
 }
 
 .theme-img-view-click {
