@@ -78,11 +78,8 @@ public class GameFactory {
 
   private void pushToQueue(Game game) {
     GameQuality q = game.getQuality();
-    if (q == GameQuality.HIGH) {
-      queue.offerFirst(game);
-    } else if (q == GameQuality.MEDIUM) {
-      queue.offerLast(game);
-    }
+    if (q == GameQuality.HIGH) queue.offerFirst(game);
+    else if (q == GameQuality.MEDIUM) queue.offerLast(game);
   }
 
   public void shutdown() {

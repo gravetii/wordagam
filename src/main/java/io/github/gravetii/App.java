@@ -5,6 +5,7 @@ import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.start.StartScene;
 import io.github.gravetii.util.AppLogger;
+
 import javafx.application.Application;
 import javafx.application.Platform;
 import javafx.scene.control.Alert;
@@ -19,8 +20,8 @@ public class App extends Application {
   }
 
   private static boolean exitCheck(Stage stage) {
-    Alert alert =
-        new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.NO, ButtonType.YES);
+    ButtonType[] buttons = {ButtonType.NO, ButtonType.YES};
+    Alert alert = new Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", buttons);
     alert.setHeaderText("");
     alert.setTitle("Really Exit?");
     alert.initOwner(stage);
@@ -42,9 +43,7 @@ public class App extends Application {
     AppLogger.info(getClass().getCanonicalName(), "Starting application...");
     stage.setOnCloseRequest(
         event -> {
-          if (!close(stage)) {
-            event.consume();
-          }
+          if (!close(stage)) event.consume();
         });
 
     FxScene scene = new StartScene(stage);

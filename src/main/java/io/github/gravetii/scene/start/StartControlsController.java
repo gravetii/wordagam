@@ -2,6 +2,7 @@ package io.github.gravetii.scene.start;
 
 import io.github.gravetii.controller.FxController;
 import io.github.gravetii.controller.MenuBarController;
+
 import javafx.fxml.FXML;
 
 public class StartControlsController implements FxController {

@@ -2,6 +2,7 @@ package io.github.gravetii.scene.theme;
 
 import io.github.gravetii.controller.ChangeThemeFooterController;
 import io.github.gravetii.scene.FxComponent;
+
 import javafx.scene.control.ToolBar;
 
 public class ChangeThemeFooterComponent extends FxComponent<ChangeThemeFooterController, ToolBar> {

@@ -6,14 +6,12 @@ import javafx.scene.image.Image;
 
 public class Theme {
   private final ThemeType type;
-  private final String imgPath;
 
-  private Image img;
+  private Image image;
   private String styleSheet;
 
-  public Theme(ThemeType type, String imgPath) {
+  public Theme(ThemeType type) {
     this.type = type;
-    this.imgPath = imgPath;
   }
 
   public ThemeType getType() {
@@ -21,17 +19,17 @@ public class Theme {
   }
 
   public Image getImage() {
-    if (this.img == null) {
-      String path = getClass().getResource(this.imgPath).toExternalForm();
-      this.img = new Image(path);
+    if (this.image == null) {
+      String path = getClass().getResource(this.type.getImgPath()).toExternalForm();
+      this.image = new Image(path);
     }
 
-    return this.img;
+    return this.image;
   }
 
   public String getStyleSheet() {
     if (this.styleSheet == null) {
-      this.styleSheet = getClass().getResource(type.getCssPath()).toExternalForm();
+      this.styleSheet = getClass().getResource(type.getStyleSheetPath()).toExternalForm();
     }
 
     return this.styleSheet;

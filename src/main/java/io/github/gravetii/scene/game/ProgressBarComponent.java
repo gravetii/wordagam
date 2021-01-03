@@ -2,6 +2,7 @@ package io.github.gravetii.scene.game;
 
 import io.github.gravetii.controller.ProgressBarController;
 import io.github.gravetii.scene.FxComponent;
+
 import javafx.scene.control.ProgressBar;
 import javafx.scene.layout.BorderPane;
 

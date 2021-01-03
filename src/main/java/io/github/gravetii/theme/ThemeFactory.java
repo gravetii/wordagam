@@ -12,14 +12,13 @@ import java.util.concurrent.ThreadLocalRandom;
 public class ThemeFactory {
   private static volatile ThemeFactory INSTANCE;
 
+  private final Map<ThemeType, Theme> themeMap = new ConcurrentHashMap<>();
+
   private ThemeType current;
   private Theme currentRandomTheme;
 
-  private final Map<ThemeType, Theme> themeMap;
-
   private ThemeFactory() {
-    this.themeMap = new ConcurrentHashMap<>();
-    this.initAllThemes();
+    for (ThemeType type: ThemeType.values()) this.themeMap.put(type, new Theme(type));
     this.current = PreferenceStore.getTheme();
     this.currentRandomTheme = null;
   }
@@ -37,12 +36,6 @@ public class ThemeFactory {
     return INSTANCE;
   }
 
-  private void initAllThemes() {
-    for (ThemeType type : ThemeType.values()) {
-      this.themeMap.put(type, new Theme(type, type.getImgPath()));
-    }
-  }
-
   public Theme get(ThemeType type) {
     return this.themeMap.get(type);
   }
@@ -56,28 +49,19 @@ public class ThemeFactory {
     PreferenceStore.saveTheme(current);
   }
 
-  public Theme loadCurrentTheme() {
+  public Theme loadCurrentTheme(boolean newIfRandom) {
     if (this.current == ThemeType.RANDOM) {
-      if (this.currentRandomTheme == null) this.currentRandomTheme = this.newRandom();
+      if (this.currentRandomTheme == null || newIfRandom) this.currentRandomTheme = newRandom();
       return this.currentRandomTheme;
     }
 
-    return this.get(this.current);
-  }
-
-  public Theme loadNewCurrentTheme() {
-    if (this.current == ThemeType.RANDOM) {
-      this.currentRandomTheme = this.newRandom();
-      return this.currentRandomTheme;
-    }
-
-    return this.get(this.current);
+    return this.themeMap.get(this.current);
   }
 
   private Theme newRandom() {
     int r = ThreadLocalRandom.current().nextInt(1, ThemeType.values().length);
     ThemeType type = ThemeType.values()[r];
-    return this.get(type);
+    return this.themeMap.get(type);
   }
 
   public List<ThemeType> getAll() {

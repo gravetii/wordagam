@@ -1,6 +1,7 @@
 package io.github.gravetii.scene;
 
 import io.github.gravetii.controller.FxController;
+
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 

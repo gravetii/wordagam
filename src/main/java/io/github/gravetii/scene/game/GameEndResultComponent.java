@@ -3,6 +3,7 @@ package io.github.gravetii.scene.game;
 import io.github.gravetii.controller.GameEndResultController;
 import io.github.gravetii.model.GameStats;
 import io.github.gravetii.scene.FxComponent;
+
 import javafx.scene.layout.VBox;
 
 public class GameEndResultComponent extends FxComponent<GameEndResultController, VBox> {

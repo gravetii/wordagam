@@ -7,7 +7,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
         <TextField fx:id="minutesTxtField" alignment="CENTER" layoutX="183.0" layoutY="88.0" prefHeight="34.0" prefWidth="47.0" AnchorPane.leftAnchor="150.0" AnchorPane.topAnchor="32.0">
             <font>
@@ -45,7 +45,7 @@
                 <Font name="Avenir Medium" size="14.0" />
             </font>
         </Label>
-        <Button fx:id="okBtn" defaultButton="true" layoutX="137.0" layoutY="76.0" mnemonicParsing="false" onAction="#ok" prefHeight="34.0" prefWidth="79.0" styleClass="custom-button" text="OK" AnchorPane.topAnchor="90.0" />
-        <Button fx:id="cancelBtn" cancelButton="true" layoutX="270.0" layoutY="76.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="104.0" styleClass="custom-button" text="Cancel" AnchorPane.topAnchor="90.0" />
+        <Button fx:id="okBtn" defaultButton="true" layoutX="139.0" layoutY="90.0" mnemonicParsing="false" onAction="#ok" prefHeight="34.0" prefWidth="79.0" styleClass="custom-button" text="OK" AnchorPane.topAnchor="90.0" />
+        <Button fx:id="cancelBtn" cancelButton="true" layoutX="265.0" layoutY="90.0" mnemonicParsing="false" onAction="#cancel" prefHeight="34.0" prefWidth="104.0" styleClass="custom-button" text="Cancel" AnchorPane.topAnchor="90.0" />
     </children>
 </AnchorPane>

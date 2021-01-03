@@ -5,6 +5,7 @@ import io.github.gravetii.game.Game;
 import io.github.gravetii.model.GameStats;
 import io.github.gravetii.model.GridUnit;
 import io.github.gravetii.scene.FxComponent;
+
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;

@@ -5,6 +5,7 @@ import io.github.gravetii.scene.FxComponent;
 import io.github.gravetii.theme.Theme;
 import io.github.gravetii.theme.ThemeService;
 import io.github.gravetii.theme.ThemeType;
+
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
@@ -12,11 +13,10 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 
-import java.util.List;
-
 public class ChangeThemeComponent extends FxComponent<ChangeThemeController, GridPane> {
   private final Stage stage;
   private final ChangeThemeFooterComponent ref;
+  private final ThemeService service = new ThemeService();
 
   public ChangeThemeComponent(Stage stage, ChangeThemeFooterComponent ref) throws Exception {
     super("changeTheme.fxml");
@@ -32,13 +32,11 @@ public class ChangeThemeComponent extends FxComponent<ChangeThemeController, Gri
 
   @Override
   protected GridPane createNode() throws Exception {
-    ThemeService themes = new ThemeService();
     GridPane gridPane = this.loadNode();
 
-    List<ThemeType> allThemes = themes.getAll();
-    for (int c = 0; c < allThemes.size(); ++c) {
-      ThemeType type = allThemes.get(c);
-      Theme theme = themes.loadTheme(type);
+    for (int c = 0; c < service.getAll().size(); ++c) {
+      ThemeType type = service.getAll().get(c);
+      Theme theme = service.loadTheme(type);
       BorderPane borderPane = (BorderPane) gridPane.getChildren().get(c);
       Pane pane = (Pane) borderPane.getCenter();
       ImageView imgView = (ImageView) pane.getChildren().get(0);

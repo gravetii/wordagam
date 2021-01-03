@@ -23,7 +23,7 @@ public enum ThemeType {
     return "/theme/" + this.name().toLowerCase() + ".jpg";
   }
 
-  public String getCssPath() {
+  public String getStyleSheetPath() {
     return "/theme/" + this.name().toLowerCase() + ".css";
   }
 }

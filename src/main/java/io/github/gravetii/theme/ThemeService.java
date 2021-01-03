@@ -15,12 +15,8 @@ public class ThemeService {
     return this.factory.get(type);
   }
 
-  public Theme loadCurrentTheme() {
-    return this.factory.loadCurrentTheme();
-  }
-
-  public Theme loadNewCurrentTheme() {
-    return this.factory.loadNewCurrentTheme();
+  public Theme loadCurrentTheme(boolean newIfRandom) {
+    return this.factory.loadCurrentTheme(newIfRandom);
   }
 
   public List<ThemeType> getAll() {
@@ -31,14 +27,13 @@ public class ThemeService {
     return this.factory.getCurrent();
   }
 
-  private void setCurrent(ThemeType type) {
-    this.factory.setCurrent(type);
-  }
-
   public boolean changeTheme(ThemeType type) {
-    boolean changed = type != this.getCurrent();
-    if (changed) this.setCurrent(type);
-    return changed;
+    if (type != this.factory.getCurrent()) {
+      this.factory.setCurrent(type);
+      return true;
+    }
+
+    return false;
   }
 
   public void dispatch(Window window) {

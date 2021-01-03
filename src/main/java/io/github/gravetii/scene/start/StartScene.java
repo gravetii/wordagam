@@ -3,6 +3,7 @@ package io.github.gravetii.scene.start;
 import io.github.gravetii.scene.FxDimensions;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.menu.MenuBarComponent;
+
 import javafx.geometry.Dimension2D;
 import javafx.stage.Stage;
 

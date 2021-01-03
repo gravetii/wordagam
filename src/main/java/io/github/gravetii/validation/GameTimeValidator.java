@@ -1,4 +1,4 @@
-package io.github.gravetii.controller;
+package io.github.gravetii.validation;
 
 import io.github.gravetii.model.GameTime;
 import io.github.gravetii.util.Pair;

@@ -2,6 +2,7 @@ package io.github.gravetii.scene.game;
 
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.menu.MenuBarComponent;
+
 import javafx.stage.Stage;
 
 public class GameEndScene extends FxScene {

@@ -2,6 +2,7 @@ package io.github.gravetii.scene.start;
 
 import io.github.gravetii.controller.BaseController;
 import io.github.gravetii.scene.FxComponent;
+
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;

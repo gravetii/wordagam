@@ -2,6 +2,7 @@ package io.github.gravetii.scene.help;
 
 import io.github.gravetii.scene.FxDimensions;
 import io.github.gravetii.scene.FxScene;
+
 import javafx.geometry.Dimension2D;
 import javafx.stage.Stage;
 

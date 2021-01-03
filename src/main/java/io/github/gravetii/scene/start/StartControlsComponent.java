@@ -2,6 +2,7 @@ package io.github.gravetii.scene.start;
 
 import io.github.gravetii.scene.FxComponent;
 import io.github.gravetii.scene.menu.MenuBarComponent;
+
 import javafx.scene.layout.VBox;
 
 public class StartControlsComponent extends FxComponent<StartControlsController, VBox> {

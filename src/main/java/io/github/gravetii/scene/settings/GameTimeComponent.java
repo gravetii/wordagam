@@ -2,6 +2,7 @@ package io.github.gravetii.scene.settings;
 
 import io.github.gravetii.controller.GameTimeController;
 import io.github.gravetii.scene.FxComponent;
+
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 

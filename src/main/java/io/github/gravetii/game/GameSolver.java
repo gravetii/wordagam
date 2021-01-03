@@ -27,8 +27,8 @@ public class GameSolver {
   }
 
   public GameResult solve() {
-    for (int i = 0; i < 4; ++i) {
-      for (int j = 0; j < 4; ++j) {
+    for (int i=0;i<4;++i) {
+      for (int j=0;j<4;++j) {
         boolean[][] visited = new boolean[4][4];
         for (boolean[] row : visited) Arrays.fill(row, false);
         GridPoint point = grid[i][j].getPoint();
@@ -48,7 +48,7 @@ public class GameSolver {
       seq.add(point);
       int score = this.validate(word);
       if (score > 0) this.result.put(word, score, seq);
-      for (GridPoint n : point.getNeighbors()) {
+      for (GridPoint n: point.getNeighbors()) {
         if (!visited[n.x][n.y]) {
           boolean[][] v = Utils.arrCopy(visited);
           this.crawl(n, word, new LinkedList<>(seq), v);
