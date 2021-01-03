@@ -92,6 +92,7 @@
 }
 
 .text-area {
+    -fx-text-fill: #000000;
     -fx-focus-color: #D3D3D3;
 }
 

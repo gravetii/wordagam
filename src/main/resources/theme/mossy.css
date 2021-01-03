@@ -28,10 +28,6 @@
     -fx-text-fill: #FFFFFF;
 }
 
-.text-area {
-    -fx-text-fill: #006400;
-}
-
 #resultBox {
     -fx-text-fill: #006400;
 }
