@@ -10,6 +10,7 @@ import java.util.Collection;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class GamePlayStyler {
 
@@ -17,7 +18,6 @@ public class GamePlayStyler {
   private final Collection<ImageView> imgViews;
   private final LinkedList<ImageView> seq;
   private final PauseTransition pauser;
-  private final SequentialTransition sequencer;
 
   private Timeline timeline;
   private int gridRotationCount = 0;
@@ -29,7 +29,6 @@ public class GamePlayStyler {
     this.timeline = new Timeline();
     this.pauser = new PauseTransition(Duration.millis(200));
     this.pauser.setOnFinished((e) -> this.invalidate());
-    this.sequencer = new SequentialTransition();
   }
 
   public void invalidate() {
@@ -82,58 +81,79 @@ public class GamePlayStyler {
     while (this.gridRotationCount != 0) this.rotateGrid();
   }
 
-  private void rotate(ImageView imgView) {
-    RotateTransition transition = new RotateTransition(Duration.millis(65), imgView);
-    transition.setByAngle(360);
-    transition.setCycleCount(4);
-    transition.play();
-  }
-
   private void applyRotateTransition() {
-    this.seq.forEach(this::rotate);
-  }
-
-  private void fade(ImageView imgView) {
-    FadeTransition transition = new FadeTransition(Duration.millis(50), imgView);
-    transition.setFromValue(1.0);
-    transition.setToValue(0.3);
-    transition.setCycleCount(6);
-    transition.setAutoReverse(true);
+    ParallelTransition transition = new ParallelTransition();
+    List<RotateTransition> children =
+        this.seq.stream()
+            .map(
+                x -> {
+                  RotateTransition rotate = new RotateTransition(Duration.millis(65), x);
+                  rotate.setByAngle(360);
+                  rotate.setCycleCount(4);
+                  return rotate;
+                })
+            .collect(Collectors.toList());
+    transition.getChildren().addAll(children);
     transition.play();
   }
 
   private void applyFadeTransition() {
-    this.seq.forEach(this::fade);
-  }
-
-  private void scale(ImageView imgView) {
-    ScaleTransition transition = new ScaleTransition(Duration.millis(50), imgView);
-    transition.setByX(0.2);
-    transition.setByY(0.2);
-    transition.setCycleCount(6);
-    transition.setAutoReverse(true);
+    ParallelTransition transition = new ParallelTransition();
+    List<FadeTransition> children =
+        this.seq.stream()
+            .map(
+                x -> {
+                  FadeTransition fade = new FadeTransition(Duration.millis(50), x);
+                  fade.setFromValue(1.0);
+                  fade.setToValue(0.3);
+                  fade.setCycleCount(6);
+                  fade.setAutoReverse(true);
+                  return fade;
+                })
+            .collect(Collectors.toList());
+    transition.getChildren().addAll(children);
     transition.play();
   }
 
   private void applyScaleTransition() {
-    this.seq.forEach(this::scale);
-  }
-
-  private void endTransition(ImageView imgView) {
-    ScaleTransition scale = new ScaleTransition(Duration.millis(200));
-    scale.setByX(0.5);
-    scale.setByY(0.5);
-    scale.setCycleCount(2);
-    scale.setAutoReverse(true);
-    RotateTransition rotate = new RotateTransition(Duration.millis(200));
-    rotate.setByAngle(360);
-    rotate.setCycleCount(2);
-    ParallelTransition transition = new ParallelTransition(imgView, rotate, scale);
+    ParallelTransition transition = new ParallelTransition();
+    List<ScaleTransition> children =
+        this.seq.stream()
+            .map(
+                x -> {
+                  ScaleTransition scale = new ScaleTransition(Duration.millis(50), x);
+                  scale.setByX(0.2);
+                  scale.setByY(0.2);
+                  scale.setCycleCount(6);
+                  scale.setAutoReverse(true);
+                  return scale;
+                })
+            .collect(Collectors.toList());
+    transition.getChildren().addAll(children);
     transition.play();
   }
 
   public void applyEndTransition() {
-    this.imgViews.forEach(this::endTransition);
+    ParallelTransition transition = new ParallelTransition();
+    List<ParallelTransition> children =
+        this.imgViews.stream()
+            .map(
+                x -> {
+                  ScaleTransition scale = new ScaleTransition(Duration.millis(100));
+                  scale.setByX(0.5);
+                  scale.setByY(0.5);
+                  scale.setCycleCount(4);
+                  scale.setAutoReverse(true);
+                  TranslateTransition translate = new TranslateTransition(Duration.millis(100));
+                  translate.setByX(0.5);
+                  translate.setByY(0.5);
+                  translate.setCycleCount(4);
+                  translate.setAutoReverse(true);
+                  return new ParallelTransition(x, scale, translate);
+                })
+            .collect(Collectors.toList());
+    transition.getChildren().addAll(children);
+    transition.play();
   }
 
   private void truncate() {
@@ -169,18 +189,18 @@ public class GamePlayStyler {
 
   private void rearrange() {
     Pane[][] panes = this.fetchPanes();
-    for (int x = 0; x < 2; x++) {
-      for (int y = x; y < 3 - x; y++) {
-        Pane temp = panes[y][3 - x];
-        panes[y][3 - x] = panes[x][y];
-        panes[x][y] = panes[3 - y][x];
-        panes[3 - y][x] = panes[3 - x][3 - y];
-        panes[3 - x][3 - y] = temp;
+    for (int x=0;x<2;x++) {
+      for (int y=x;y<3-x;y++) {
+        Pane temp = panes[y][3-x];
+        panes[y][3-x] = panes[x][y];
+        panes[x][y] = panes[3-y][x];
+        panes[3-y][x] = panes[3-x][3-y];
+        panes[3-x][3-y] = temp;
       }
     }
 
-    for (int i = 0; i < 4; ++i) {
-      for (int j = 0; j < 4; ++j) {
+    for (int i=0;i<4;++i) {
+      for (int j=0;j<4;++j) {
         Pane pane = panes[i][j];
         GridPane.setRowIndex(pane, i);
         GridPane.setColumnIndex(pane, j);
@@ -194,24 +214,21 @@ public class GamePlayStyler {
   }
 
   private void rotateGamePane() {
+    SequentialTransition sequencer = new SequentialTransition();
     RotateTransition gridTransition = new RotateTransition(Duration.millis(200), this.gamePane);
     gridTransition.setByAngle(360);
     gridTransition.setCycleCount(1);
-    this.sequencer.getChildren().add(gridTransition);
+    sequencer.getChildren().add(gridTransition);
     imgViews.forEach(
         imgView -> {
           RotateTransition imgViewTransition = new RotateTransition(Duration.millis(20), imgView);
           imgViewTransition.setByAngle(90);
           imgViewTransition.setCycleCount(2);
           imgViewTransition.setAutoReverse(true);
-          this.sequencer.getChildren().add(imgViewTransition);
+          sequencer.getChildren().add(imgViewTransition);
         });
 
-    this.sequencer.play();
-    this.sequencer.setOnFinished((e) -> this.sequencer.getChildren().clear());
-  }
-
-  public void applyOnEnd() {
-    while (this.gridRotationCount != 0) this.rotateGrid();
+    sequencer.play();
+    sequencer.setOnFinished((e) -> sequencer.getChildren().clear());
   }
 }
