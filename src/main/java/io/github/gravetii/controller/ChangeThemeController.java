@@ -3,8 +3,10 @@ package io.github.gravetii.controller;
 import io.github.gravetii.theme.ThemeService;
 import io.github.gravetii.theme.ThemeType;
 import io.github.gravetii.util.Utils;
+import javafx.event.EventType;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
@@ -64,16 +66,18 @@ public class ChangeThemeController implements FxController {
 
   @FXML
   public void onImgViewClick(MouseEvent event) {
+    if (!event.getButton().equals(MouseButton.PRIMARY)) return;
     ImageView imgView = (ImageView) event.getSource();
     int idx = Utils.getImageViewIndexFromLabel(imgView.getId());
     if (idx >= this.service.getAll().size()) return;
     ThemeType type = this.service.getAll().get(idx);
     this.styler.applySelectStyle(imgView);
-    boolean changed = this.service.changeTheme(type);
-    if (changed) {
+    if (this.service.changeTheme(type)) {
       this.service.dispatch(this.stage.getOwner());
       this.ref.updateThemeChange(type);
     }
+
+    if (event.getClickCount() == 2) stage.close();
   }
 
   private void initStyle() {
