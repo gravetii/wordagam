@@ -36,11 +36,8 @@ public class GameResultController implements FxController {
                 if (!row.isEmpty()) {
                   TableResult result = row.getItem();
                   String word = result.getWord();
-                  if (result.isByUser()) {
-                    this.ref.revisitUserWord(word);
-                  } else {
-                    this.ref.revisitGameWord(word);
-                  }
+                  if (result.isByUser()) this.ref.revisitUserWord(word);
+                  else this.ref.revisitGameWord(word);
                 }
               });
 

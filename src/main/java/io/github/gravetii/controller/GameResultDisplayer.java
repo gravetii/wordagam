@@ -1,27 +1,20 @@
 package io.github.gravetii.controller;
 
-import io.github.gravetii.pojo.WordResult;
+import io.github.gravetii.model.WordResult;
 import javafx.scene.control.TableView;
 
 import java.util.HashSet;
 import java.util.Set;
 
 public class GameResultDisplayer {
+  private final TableView<TableResult> table;
+  private final Set<String> displayedWords;
+
   private int counter = 0;
-  private TableView<TableResult> table;
-  private Set<String> displayedWords;
 
   public GameResultDisplayer(TableView<TableResult> table) {
     this.table = table;
     this.displayedWords = new HashSet<>();
-  }
-
-  private boolean notAlreadyDisplayed(String word) {
-    return !displayedWords.contains(word);
-  }
-
-  private void markDisplayed(String word) {
-    this.displayedWords.add(word);
   }
 
   public void showGameWord(WordResult result) {
@@ -38,18 +31,18 @@ public class GameResultDisplayer {
 
   private void show(WordResult result, boolean byUser) {
     String word = result.getWord();
-    if (this.notAlreadyDisplayed(word)) {
+    if (!this.displayedWords.contains(word)) {
       TableResult tableResult = new TableResult(++this.counter, word, result.getScore(), byUser);
       this.table.getItems().add(tableResult);
-      this.markDisplayed(word);
+      this.displayedWords.add(word);
     }
   }
 
   public static class TableResult {
-    private Integer id;
-    private String word;
-    private Integer score;
-    private boolean byUser;
+    private final Integer id;
+    private final String word;
+    private final Integer score;
+    private final boolean byUser;
 
     private TableResult(Integer id, String word, Integer score, boolean byUser) {
       this.id = id;

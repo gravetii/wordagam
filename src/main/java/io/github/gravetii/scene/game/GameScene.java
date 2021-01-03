@@ -10,10 +10,10 @@ import javafx.application.Platform;
 import javafx.stage.Stage;
 
 public class GameScene extends FxScene {
-  private GameGridComponent gridComponent;
-  private GameResultComponent resultComponent;
-  private ProgressBarComponent progressBarComponent;
-  private MenuBarComponent menuBarComponent;
+  private final GameGridComponent gridComponent;
+  private final GameResultComponent resultComponent;
+  private final ProgressBarComponent progressBarComponent;
+  private final MenuBarComponent menuBarComponent;
 
   public GameScene(Stage stage) throws Exception {
     super(stage);

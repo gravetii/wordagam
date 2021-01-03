@@ -12,9 +12,9 @@ public class GameFactory {
   private static final int MAX_GAMES_IN_QUEUE = 5;
   private static volatile GameFactory instance;
 
-  private Dictionary dictionary;
-  private LinkedBlockingDeque<Game> queue;
-  private ExecutorService executor;
+  private final Dictionary dictionary;
+  private final LinkedBlockingDeque<Game> queue;
+  private final ExecutorService executor;
 
   private GameFactory() {
     this.dictionary = new Dictionary();
@@ -45,8 +45,8 @@ public class GameFactory {
 
   private Game create() {
     Game game = null;
-    Quality q = Quality.LOW;
-    while (q == Quality.LOW) {
+    GameQuality q = GameQuality.LOW;
+    while (q == GameQuality.LOW) {
       game = new Game(this.dictionary);
       q = game.getQuality();
     }
@@ -56,10 +56,7 @@ public class GameFactory {
 
   public synchronized Game fetch() {
     Game game = this.queue.poll();
-    if (game == null) {
-      game = this.create();
-    }
-
+    if (game == null) game = this.create();
     this.backFill();
     AppLogger.fine(getClass().getCanonicalName(), "Fetched new game: " + game);
     return game;
@@ -80,10 +77,10 @@ public class GameFactory {
   }
 
   private void pushToQueue(Game game) {
-    Quality q = game.getQuality();
-    if (q == Quality.HIGH) {
+    GameQuality q = game.getQuality();
+    if (q == GameQuality.HIGH) {
       queue.offerFirst(game);
-    } else if (q == Quality.MEDIUM) {
+    } else if (q == GameQuality.MEDIUM) {
       queue.offerLast(game);
     }
   }
@@ -92,10 +89,7 @@ public class GameFactory {
     try {
       this.executor.shutdown();
       boolean terminated = this.executor.awaitTermination(5, TimeUnit.SECONDS);
-      if (!terminated) {
-        this.executor.shutdownNow();
-      }
-
+      if (!terminated) this.executor.shutdownNow();
       this.queue.clear();
     } catch (Exception e) {
       AppLogger.severe(getClass().getCanonicalName(), "Error while closing GameFactory: " + e);

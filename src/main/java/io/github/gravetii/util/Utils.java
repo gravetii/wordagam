@@ -1,5 +1,7 @@
 package io.github.gravetii.util;
 
+import io.github.gravetii.model.GridPoint;
+
 public class Utils {
   public static GridPoint getGridPointFromImageViewLabel(String label) {
     String[] tokens = label.split("\\$")[1].split("_");

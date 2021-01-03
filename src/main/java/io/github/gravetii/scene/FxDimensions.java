@@ -4,9 +4,9 @@ import javafx.geometry.Dimension2D;
 import javafx.stage.Stage;
 
 public class FxDimensions {
-  private Dimension2D min;
-  private Dimension2D max;
-  private Dimension2D def;
+  private final Dimension2D min;
+  private final Dimension2D max;
+  private final Dimension2D def;
 
   public FxDimensions(Dimension2D def) {
     this(def, null, null);

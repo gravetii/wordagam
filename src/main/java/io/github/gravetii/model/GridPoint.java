@@ -1,4 +1,4 @@
-package io.github.gravetii.util;
+package io.github.gravetii.model;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,23 +21,18 @@ public class GridPoint {
     List<GridPoint> neighbors = new ArrayList<>(8);
     for (int i = 0; i < dx.length; ++i) {
       GridPoint n = new GridPoint(this.x + dx[i], this.y + dy[i]);
-      if (n.isValid()) {
-        neighbors.add(n);
-      }
+      if (n.isValid()) neighbors.add(n);
     }
 
     return neighbors;
   }
 
   private boolean isValid() {
-    return !(x < 0 || x > 3 || y < 0 || y > 3);
+    return x >= 0 && x <= 3 && y >= 0 && y <= 3;
   }
 
   public List<GridPoint> getNeighbors() {
-    if (this.neighbors == null) {
-      this.neighbors = this.computeNeighbors();
-    }
-
+    if (this.neighbors == null) this.neighbors = this.computeNeighbors();
     return this.neighbors;
   }
 

@@ -5,7 +5,7 @@ import javafx.stage.Window;
 import java.util.List;
 
 public class ThemeService {
-  private ThemeFactory factory;
+  private final ThemeFactory factory;
 
   public ThemeService() {
     this.factory = ThemeFactory.get();
@@ -27,10 +27,6 @@ public class ThemeService {
     return this.factory.getAll();
   }
 
-  public int count() {
-    return this.getAll().size();
-  }
-
   public ThemeType getCurrent() {
     return this.factory.getCurrent();
   }
@@ -41,12 +37,8 @@ public class ThemeService {
 
   public boolean changeTheme(ThemeType type) {
     boolean changed = type != this.getCurrent();
-    if (changed) {
-      this.setCurrent(type);
-      return true;
-    } else {
-      return false;
-    }
+    if (changed) this.setCurrent(type);
+    return changed;
   }
 
   public void dispatch(Window window) {

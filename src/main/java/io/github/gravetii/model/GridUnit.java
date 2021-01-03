@@ -1,19 +1,20 @@
-package io.github.gravetii.util;
+package io.github.gravetii.model;
 
+import io.github.gravetii.util.Alphabet;
 import javafx.scene.image.Image;
 
 import java.util.Objects;
 
 public class GridUnit {
-  private Alphabet alphabet;
-  private GridPoint gridPoint;
-  private String imgPath;
+  private final Alphabet alphabet;
+  private final GridPoint gridPoint;
+  private final String imgPath;
   private Image img;
 
   public GridUnit(Alphabet alphabet, GridPoint gridPoint) {
     this.alphabet = alphabet;
     this.gridPoint = gridPoint;
-    this.imgPath = "images/alphabet/" + this.alphabet.get() + ".png";
+    this.imgPath = "/images/" + this.alphabet.get() + ".png";
   }
 
   public String getLetter() {
@@ -34,7 +35,8 @@ public class GridUnit {
 
   public Image getImage() {
     if (this.img == null) {
-      this.img = new Image(this.imgPath);
+      String path = getClass().getResource(this.imgPath).toExternalForm();
+      this.img = new Image(path);
     }
 
     return this.img;

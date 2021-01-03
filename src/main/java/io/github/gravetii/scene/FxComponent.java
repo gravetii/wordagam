@@ -5,9 +5,10 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 
 public abstract class FxComponent<C extends FxController, N extends Node> {
+  private final String fxml;
+
   private C controller;
   private N node;
-  private String fxml;
 
   protected FxComponent(String fxml) {
     this.fxml = fxml;
@@ -23,7 +24,7 @@ public abstract class FxComponent<C extends FxController, N extends Node> {
   }
 
   protected N loadNode() throws Exception {
-    FXMLLoader loader = new FXMLLoader(ClassLoader.getSystemResource("fxml/" + this.fxml));
+    FXMLLoader loader = new FXMLLoader(getClass().getResource("/fxml/" + this.fxml));
     loader.setController(this.controller);
     return loader.load();
   }

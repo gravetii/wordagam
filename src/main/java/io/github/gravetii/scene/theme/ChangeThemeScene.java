@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public class ChangeThemeScene extends FxScene {
-  private ChangeThemeFooterComponent footerComponent;
-  private ChangeThemeComponent themeComponent;
+  private final ChangeThemeFooterComponent footerComponent;
+  private final ChangeThemeComponent themeComponent;
 
   public ChangeThemeScene(Stage stage) throws Exception {
     super(stage);
@@ -29,9 +29,9 @@ public class ChangeThemeScene extends FxScene {
 
   @Override
   protected Optional<FxDimensions> preferredDimensions() {
-    FxDimensions dimensions =
-        new FxDimensions(
-            new Dimension2D(800, 550), new Dimension2D(800, 550), new Dimension2D(800, 550));
-    return Optional.of(dimensions);
+    Dimension2D def = new Dimension2D(800, 550);
+    Dimension2D min = new Dimension2D(800, 550);
+    Dimension2D max = new Dimension2D(800, 550);
+    return Optional.of(new FxDimensions(def, min, max));
   }
 }

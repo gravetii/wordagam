@@ -1,18 +1,19 @@
-package io.github.gravetii.pojo;
+package io.github.gravetii.model;
 
 import io.github.gravetii.game.GameResult;
 import io.github.gravetii.game.UserResult;
 
 public class GameStats {
-  private GameResult gameResult;
-  private UserResult userResult;
+  private final GameResult gameResult;
+  private final UserResult userResult;
 
   public GameStats(GameResult gameResult, UserResult userResult) {
     this.gameResult = gameResult;
     this.userResult = userResult;
   }
 
-  public String to() {
+  @Override
+  public String toString() {
     String result =
         "Words - %d/%d\n"
             + "Words percentage - %.2f\n\n"

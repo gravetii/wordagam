@@ -21,7 +21,7 @@
                 <Insets left="10.0" top="10.0" />
             </VBox.margin>
             <image>
-                <Image url="@../images/icon/rotate.png" />
+                <Image url="@../images/rotate.png" />
             </image>
         </ImageView>
         <Button id="goBtn" fx:id="goBtn" alignment="CENTER" contentDisplay="CENTER" mnemonicParsing="false" onAction="#onGoBtnClick" prefHeight="65.0" prefWidth="200.0" styleClass="custom-button" text="GO!" VBox.vgrow="ALWAYS">

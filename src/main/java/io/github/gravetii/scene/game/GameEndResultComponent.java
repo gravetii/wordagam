@@ -1,12 +1,12 @@
 package io.github.gravetii.scene.game;
 
 import io.github.gravetii.controller.GameEndResultController;
-import io.github.gravetii.pojo.GameStats;
+import io.github.gravetii.model.GameStats;
 import io.github.gravetii.scene.FxComponent;
 import javafx.scene.layout.VBox;
 
 public class GameEndResultComponent extends FxComponent<GameEndResultController, VBox> {
-  private GameGridComponent ref;
+  private final GameGridComponent ref;
 
   public GameEndResultComponent(GameGridComponent ref) throws Exception {
     super("gameEndResult.fxml");
@@ -27,6 +27,6 @@ public class GameEndResultComponent extends FxComponent<GameEndResultController,
 
   private void updateStats() {
     GameStats stats = this.ref.computeStats();
-    this.getController().updateText(stats.to());
+    this.getController().updateText(stats.toString());
   }
 }

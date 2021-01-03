@@ -1,9 +1,9 @@
 package io.github.gravetii.game;
 
 import io.github.gravetii.dictionary.Dictionary;
+import io.github.gravetii.model.GridPoint;
+import io.github.gravetii.model.GridUnit;
 import io.github.gravetii.util.Alphabet;
-import io.github.gravetii.util.GridPoint;
-import io.github.gravetii.util.GridUnit;
 import javafx.event.Event;
 import javafx.event.EventType;
 
@@ -37,7 +37,7 @@ public class Game {
     }
   }
 
-  public Quality getQuality() {
+  public GameQuality getQuality() {
     return this.result.getQuality();
   }
 

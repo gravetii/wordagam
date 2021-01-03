@@ -11,11 +11,12 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class GamePlayStyler {
-  private Collection<ImageView> imgViews;
-  private GamePlayRotater rotater;
-  private LinkedList<ImageView> seq;
+  private final Collection<ImageView> imgViews;
+  private final GamePlayRotater rotater;
+  private final LinkedList<ImageView> seq;
+  private final PauseTransition revisitPauser;
+
   private Timeline revisitTimeline;
-  private PauseTransition revisitPauser;
 
   public GamePlayStyler(GridPane gamePane, Collection<ImageView> imgViews) {
     this.imgViews = imgViews;
@@ -23,10 +24,7 @@ public class GamePlayStyler {
     this.seq = new LinkedList<>();
     this.revisitTimeline = new Timeline();
     this.revisitPauser = new PauseTransition(Duration.millis(200));
-    this.revisitPauser.setOnFinished(
-        (event) -> {
-          this.invalidate();
-        });
+    this.revisitPauser.setOnFinished((e) -> this.invalidate());
   }
 
   public void invalidate() {
@@ -116,17 +114,17 @@ public class GamePlayStyler {
   }
 
   private void endTransition(ImageView imgView) {
-    TranslateTransition tt = new TranslateTransition(Duration.millis(100));
-    tt.setByX(50);
-    tt.setByY(50);
-    tt.setCycleCount(4);
-    tt.setAutoReverse(true);
-    ScaleTransition st = new ScaleTransition(Duration.millis(100));
-    st.setByX(0.4);
-    st.setByY(0.4);
-    st.setCycleCount(4);
-    st.setAutoReverse(true);
-    ParallelTransition transition = new ParallelTransition(imgView, tt, st);
+    TranslateTransition translate = new TranslateTransition(Duration.millis(100));
+    translate.setByX(50);
+    translate.setByY(50);
+    translate.setCycleCount(4);
+    translate.setAutoReverse(true);
+    ScaleTransition scale = new ScaleTransition(Duration.millis(100));
+    scale.setByX(0.4);
+    scale.setByY(0.4);
+    scale.setCycleCount(4);
+    scale.setAutoReverse(true);
+    ParallelTransition transition = new ParallelTransition(imgView, translate, scale);
     transition.play();
   }
 
@@ -146,20 +144,9 @@ public class GamePlayStyler {
     this.revisitTimeline.stop();
     this.invalidate();
     Iterator<ImageView> itr = imgViews.iterator();
-    this.revisitTimeline =
-        new Timeline(
-            new KeyFrame(
-                Duration.millis(300),
-                (event) -> {
-                  ImageView imgView = itr.next();
-                  this.forValidClick(imgView);
-                }));
-
-    this.revisitTimeline.setOnFinished(
-        (event) -> {
-          this.revisitPauser.play();
-        });
-
+    KeyFrame keyframe = new KeyFrame(Duration.millis(300), (e) -> this.forValidClick(itr.next()));
+    this.revisitTimeline = new Timeline(keyframe);
+    this.revisitTimeline.setOnFinished((e) -> this.revisitPauser.play());
     this.revisitTimeline.setCycleCount(imgViews.size());
     this.revisitTimeline.play();
   }

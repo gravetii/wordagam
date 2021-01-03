@@ -3,7 +3,7 @@ package io.github.gravetii.dictionary;
 import io.github.gravetii.util.Alphabet;
 
 public class Trie {
-  private TrieNode root;
+  private final TrieNode root;
 
   Trie() {
     this.root = new TrieNode();
@@ -23,10 +23,7 @@ public class Trie {
       int idx = c - 'a';
       Alphabet alphabet = Alphabet.values()[idx];
       TrieNode[] children = node.getChildren();
-      if (children[idx] == null) {
-        children[idx] = new TrieNode();
-      }
-
+      if (children[idx] == null) children[idx] = new TrieNode();
       node = children[idx];
       score += alphabet.getScore();
     }
@@ -43,13 +40,11 @@ public class Trie {
   public int search(String word) {
     TrieNode node = root;
     char[] arr = word.toCharArray();
+
     for (char c : arr) {
       int idx = c - 'a';
       TrieNode[] children = node.getChildren();
-      if (children[idx] == null) {
-        return 0;
-      }
-
+      if (children[idx] == null) return 0;
       node = children[idx];
     }
 
@@ -65,13 +60,11 @@ public class Trie {
   public boolean prefix(String word) {
     TrieNode node = root;
     char[] arr = word.toCharArray();
+
     for (char c : arr) {
       int idx = c - 'a';
       TrieNode[] children = node.getChildren();
-      if (children[idx] == null) {
-        return false;
-      }
-
+      if (children[idx] == null) return false;
       node = children[idx];
     }
 

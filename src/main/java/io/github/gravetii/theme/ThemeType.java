@@ -20,10 +20,10 @@ public enum ThemeType {
   }
 
   public String getImgPath() {
-    return "theme/files/" + this.name().toLowerCase() + ".jpg";
+    return "/theme/" + this.name().toLowerCase() + ".jpg";
   }
 
   public String getCssPath() {
-    return "theme/css/" + this.name().toLowerCase() + ".css";
+    return "/theme/" + this.name().toLowerCase() + ".css";
   }
 }

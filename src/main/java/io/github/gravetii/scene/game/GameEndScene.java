@@ -5,14 +5,14 @@ import io.github.gravetii.scene.menu.MenuBarComponent;
 import javafx.stage.Stage;
 
 public class GameEndScene extends FxScene {
-  private MenuBarComponent menuBarComponent;
-  private GameGridComponent gameGridComponent;
-  private GameEndResultComponent gameEndResultComponent;
+  private final MenuBarComponent menuBarComponent;
+  private final GameGridComponent gameGridComponent;
+  private final GameEndResultComponent gameEndResultComponent;
 
   protected GameEndScene(Stage stage, GameGridComponent gameGridComponent) throws Exception {
     super(stage);
-    this.menuBarComponent = new MenuBarComponent(stage, this.root);
     this.gameGridComponent = gameGridComponent;
+    this.menuBarComponent = new MenuBarComponent(stage, this.root);
     this.gameEndResultComponent = new GameEndResultComponent(this.gameGridComponent);
   }
 

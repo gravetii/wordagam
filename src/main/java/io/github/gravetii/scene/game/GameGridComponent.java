@@ -2,15 +2,15 @@ package io.github.gravetii.scene.game;
 
 import io.github.gravetii.controller.GameGridController;
 import io.github.gravetii.game.Game;
-import io.github.gravetii.pojo.GameStats;
+import io.github.gravetii.model.GameStats;
+import io.github.gravetii.model.GridUnit;
 import io.github.gravetii.scene.FxComponent;
-import io.github.gravetii.util.GridUnit;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 
 public class GameGridComponent extends FxComponent<GameGridController, GridPane> {
-  private Game game;
+  private final Game game;
 
   public GameGridComponent(Game game) throws Exception {
     super("gameGrid.fxml");

@@ -1,7 +1,7 @@
 package io.github.gravetii.game;
 
 public class GameService {
-  private GameFactory factory;
+  private final GameFactory factory;
 
   public GameService() {
     this.factory = GameFactory.get();

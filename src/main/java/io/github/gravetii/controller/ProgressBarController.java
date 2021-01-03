@@ -20,7 +20,8 @@ public class ProgressBarController implements FxController {
             thread.setDaemon(true);
             return thread;
           });
-  private static Future currentTask;
+
+  private static Future<?> currentTask;
   private final GameTimerTask task;
   @FXML private ProgressBar bar;
 
@@ -31,10 +32,7 @@ public class ProgressBarController implements FxController {
   }
 
   private void submit() {
-    if (currentTask != null) {
-      currentTask.cancel(true);
-    }
-
+    if (currentTask != null) currentTask.cancel(true);
     currentTask = EXECUTOR.submit(this.task);
   }
 
@@ -44,8 +42,8 @@ public class ProgressBarController implements FxController {
   }
 
   public static class GameTimerTask extends Task<Void> {
-    private BorderPane root;
-    private int time;
+    private final BorderPane root;
+    private final int time;
 
     public GameTimerTask(BorderPane root, int time) {
       this.root = root;

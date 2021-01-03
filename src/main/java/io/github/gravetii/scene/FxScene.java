@@ -18,27 +18,27 @@ public abstract class FxScene {
     this.root = new BorderPane();
   }
 
-  public FxScene showTop(FxComponent component) {
+  public FxScene showTop(FxComponent<?, ?> component) {
     this.root.setTop(component.getNode());
     return this;
   }
 
-  public FxScene showLeft(FxComponent component) {
+  public FxScene showLeft(FxComponent<?, ?> component) {
     this.root.setLeft(component.getNode());
     return this;
   }
 
-  public FxScene showCenter(FxComponent component) {
+  public FxScene showCenter(FxComponent<?, ?> component) {
     this.root.setCenter(component.getNode());
     return this;
   }
 
-  public FxScene showRight(FxComponent component) {
+  public FxScene showRight(FxComponent<?, ?> component) {
     this.root.setRight(component.getNode());
     return this;
   }
 
-  public FxScene showBottom(FxComponent component) {
+  public FxScene showBottom(FxComponent<?, ?> component) {
     this.root.setBottom(component.getNode());
     return this;
   }

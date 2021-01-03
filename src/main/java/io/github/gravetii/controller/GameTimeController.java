@@ -1,7 +1,7 @@
 package io.github.gravetii.controller;
 
 import io.github.gravetii.db.PreferenceStore;
-import io.github.gravetii.pojo.GameTime;
+import io.github.gravetii.model.GameTime;
 import io.github.gravetii.util.Pair;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -10,8 +10,8 @@ import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class GameTimeController implements FxController {
-  private Stage stage;
-  private GameTimeValidator validator;
+  private final Stage stage;
+  private final GameTimeValidator validator;
 
   @FXML private TextField minutesTxtField;
   @FXML private TextField secondsTxtField;

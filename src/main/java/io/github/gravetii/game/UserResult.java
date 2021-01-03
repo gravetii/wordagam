@@ -1,17 +1,13 @@
 package io.github.gravetii.game;
 
-import io.github.gravetii.pojo.WordResult;
+import io.github.gravetii.model.WordResult;
 
 import java.util.LinkedHashMap;
 import java.util.Map;
 
 public class UserResult {
-  private final Map<String, WordResult> wordToResultMap;
+  private final Map<String, WordResult> wordToResultMap = new LinkedHashMap<>();
   private int totalScore = 0;
-
-  public UserResult() {
-    this.wordToResultMap = new LinkedHashMap<>();
-  }
 
   public void add(String word, WordResult result) {
     this.wordToResultMap.put(word, result);

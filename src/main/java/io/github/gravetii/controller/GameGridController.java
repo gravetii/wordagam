@@ -2,11 +2,12 @@ package io.github.gravetii.controller;
 
 import io.github.gravetii.game.Game;
 import io.github.gravetii.game.UserResult;
-import io.github.gravetii.pojo.GameStats;
-import io.github.gravetii.pojo.WordResult;
-import io.github.gravetii.util.GridPoint;
-import io.github.gravetii.util.GridUnit;
+import io.github.gravetii.model.GameStats;
+import io.github.gravetii.model.GridPoint;
+import io.github.gravetii.model.GridUnit;
+import io.github.gravetii.model.WordResult;
 import io.github.gravetii.util.Utils;
+import io.github.gravetii.validation.ValidationResult;
 import javafx.fxml.FXML;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
@@ -19,12 +20,13 @@ import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class GameGridController implements FxController {
-  private Game game;
 
-  private Map<String, ImageView> imgViewMap;
-  private GamePlayValidator validator;
+  private final Game game;
+  private final Map<String, ImageView> imgViewMap;
+  private final GamePlayValidator validator;
+  private final UserResult userResult;
+
   private GamePlayStyler styler;
-  private UserResult userResult;
 
   @FXML private GridPane gamePane;
 
@@ -87,39 +89,32 @@ public class GameGridController implements FxController {
   }
 
   private void applyStyleAfterValidation(ImageView imgView, ValidationResult result) {
-    switch (result) {
-      case ALL_INVALID:
-        this.styler.invalidate();
-        break;
-      case LAST_INVALID:
-        this.styler.forLastInvalidClick(imgView);
-        break;
-      case ALL_VALID:
-        this.styler.forValidClick(imgView);
-        break;
-      default:
-        break;
-    }
+    if (result == ValidationResult.ALL_INVALID) this.styler.invalidate();
+    else if (result == ValidationResult.LAST_INVALID) this.styler.forLastInvalidClick(imgView);
+    else this.styler.forValidClick(imgView);
   }
 
   public Optional<WordResult> validateWordOnBtnClick() {
-    WordResult result = null;
-    String word = this.validator.validate();
-
-    if (word == null) {
-      this.styler.forIncorrectWord();
-    } else if (this.userResult.exists(word)) {
-      this.styler.forRepeatedWord();
-    } else {
-      int points = this.game.result().getPoints(word);
-      List<GridPoint> seq = this.validator.getSeq();
-      result = new WordResult(word, points, seq);
-      this.userResult.add(word, result);
-      this.styler.forCorrectWord();
-    }
+    Optional<String> word = this.validator.validate();
+    if (word.isEmpty()) this.styler.forIncorrectWord();
+    Optional<WordResult> result =
+        word.flatMap(
+            x -> {
+              if (this.userResult.exists(x)) {
+                this.styler.forRepeatedWord();
+                return Optional.empty();
+              } else {
+                int points = this.game.result().getPoints(x);
+                List<GridPoint> seq = this.validator.getSeq();
+                WordResult wordResult = new WordResult(x, points, seq);
+                this.userResult.add(x, wordResult);
+                this.styler.forCorrectWord();
+                return Optional.of(wordResult);
+              }
+            });
 
     this.validator.reset();
-    return result == null ? Optional.empty() : Optional.of(result);
+    return result;
   }
 
   public void revisitUserWord(String word) {
@@ -128,7 +123,7 @@ public class GameGridController implements FxController {
   }
 
   public void revisitGameWord(String word) {
-    WordResult result = this.game.result().getWordResult(word);
+    WordResult result = this.game.result().get(word);
     this.revisit(result);
   }
 
@@ -155,15 +150,11 @@ public class GameGridController implements FxController {
   }
 
   public void endGame() {
-    this.imgViewMap.forEach(
-        (label, imgView) -> {
-          imgView.setDisable(true);
-        });
-
+    this.styler.applyEndTransition();
+    this.imgViewMap.values().forEach(x -> x.setDisable(true));
     this.validator.reset();
     this.styler.invalidate();
     this.styler.rotateOnEnd();
-    this.styler.applyEndTransition();
   }
 
   public GameStats computeStats() {

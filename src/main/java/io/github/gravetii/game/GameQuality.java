@@ -1,13 +1,13 @@
 package io.github.gravetii.game;
 
-public enum Quality {
+public enum GameQuality {
   HIGH(500),
   MEDIUM(450),
   LOW(0);
 
-  private int minCount;
+  private final int minCount;
 
-  Quality(int minCount) {
+  GameQuality(int minCount) {
     this.minCount = minCount;
   }
 

@@ -15,8 +15,8 @@ import javafx.stage.Stage;
 import java.util.List;
 
 public class ChangeThemeComponent extends FxComponent<ChangeThemeController, GridPane> {
-  private Stage stage;
-  private ChangeThemeFooterComponent ref;
+  private final Stage stage;
+  private final ChangeThemeFooterComponent ref;
 
   public ChangeThemeComponent(Stage stage, ChangeThemeFooterComponent ref) throws Exception {
     super("changeTheme.fxml");

@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public class GameTimeScene extends FxScene {
-  private GameTimeComponent component;
+  private final GameTimeComponent component;
 
   public GameTimeScene(Stage stage) throws Exception {
     super(stage);

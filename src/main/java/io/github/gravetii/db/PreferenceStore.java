@@ -1,6 +1,6 @@
 package io.github.gravetii.db;
 
-import io.github.gravetii.pojo.GameTime;
+import io.github.gravetii.model.GameTime;
 import io.github.gravetii.theme.ThemeType;
 
 import java.util.HashMap;
@@ -17,7 +17,8 @@ public class PreferenceStore {
 
   private static final Map<String, Object> store = new HashMap<>();
 
-  private static Preferences preferences = Preferences.userNodeForPackage(PreferenceStore.class);
+  private static final Preferences preferences =
+      Preferences.userNodeForPackage(PreferenceStore.class);
 
   public static void saveTheme(ThemeType type) {
     preferences.put(CURRENT_THEME_KEY, type.name());
@@ -45,8 +46,8 @@ public class PreferenceStore {
   }
 
   public static void setGameTime(GameTime value) {
-    preferences.put(GAME_TIME_KEY, value.to());
-    store.put(GAME_TIME_KEY, value.to());
+    preferences.put(GAME_TIME_KEY, value.toString());
+    store.put(GAME_TIME_KEY, value.toString());
   }
 
   public static int getGameId() {
@@ -58,7 +59,7 @@ public class PreferenceStore {
     }
 
     int id = Integer.parseInt(value);
-    String incrValue = Integer.toString(id+1);
+    String incrValue = Integer.toString(id + 1);
     preferences.put(GAME_ID_KEY, incrValue);
     store.put(GAME_ID_KEY, incrValue);
     return id;

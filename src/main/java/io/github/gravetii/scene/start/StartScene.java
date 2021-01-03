@@ -9,9 +9,9 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public class StartScene extends FxScene {
-  private MenuBarComponent menuBarComponent;
-  private StartImageComponent startImageComponent;
-  private StartControlsComponent startControlsComponent;
+  private final MenuBarComponent menuBarComponent;
+  private final StartImageComponent startImageComponent;
+  private final StartControlsComponent startControlsComponent;
 
   public StartScene(Stage stage) throws Exception {
     super(stage);
@@ -34,9 +34,9 @@ public class StartScene extends FxScene {
 
   @Override
   protected Optional<FxDimensions> preferredDimensions() {
-    FxDimensions dimensions =
-        new FxDimensions(
-            new Dimension2D(960, 630), new Dimension2D(960, 630), new Dimension2D(1100, 732));
-    return Optional.of(dimensions);
+    Dimension2D def = new Dimension2D(960, 630);
+    Dimension2D min = new Dimension2D(960, 630);
+    Dimension2D max = new Dimension2D(1100, 732);
+    return Optional.of(new FxDimensions(def, min, max));
   }
 }

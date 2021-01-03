@@ -1,8 +1,8 @@
-package io.github.gravetii.pojo;
+package io.github.gravetii.model;
 
 public class GameTime {
-  private int minutes;
-  private int seconds;
+  private final int minutes;
+  private final int seconds;
 
   public GameTime(int minutes, int seconds) {
     this.minutes = minutes;
@@ -24,7 +24,8 @@ public class GameTime {
     return seconds;
   }
 
-  public String to() {
+  @Override
+  public String toString() {
     return this.minutes + "$" + this.seconds;
   }
 

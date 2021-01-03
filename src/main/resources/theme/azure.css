@@ -14,7 +14,7 @@
 }
 
 #gamePane {
-    -fx-background-image: url("../files/azure.jpg");
+    -fx-background-image: url("./azure.jpg");
 }
 
 .progress-bar .bar {
@@ -36,3 +36,26 @@
     -fx-text-fill: #4095C6;
 }
 
+.menu-button:focused {
+    -fx-background: #7FDBFF;
+}
+
+.menu-button:hover {
+    -fx-background: #7FDBFF;
+}
+
+.menu-button:showing {
+    -fx-background: #7FDBFF;
+}
+
+.menu-item:focused {
+    -fx-background: #7FDBFF;
+}
+
+.menu-button .label {
+    -fx-text-fill: #000000
+}
+
+.menu-item .label {
+    -fx-text-fill: #000000;
+}

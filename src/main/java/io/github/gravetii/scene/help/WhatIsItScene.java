@@ -8,7 +8,7 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public class WhatIsItScene extends FxScene {
-  private WhatIsItComponent component;
+  private final WhatIsItComponent component;
 
   public WhatIsItScene(Stage stage) throws Exception {
     super(stage);

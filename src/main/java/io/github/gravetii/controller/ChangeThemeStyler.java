@@ -6,10 +6,7 @@ public class ChangeThemeStyler {
   private ImageView current;
 
   public void applySelectStyle(ImageView imgView) {
-    if (this.current != null) {
-      this.revert();
-    }
-
+    if (this.current != null) this.remove();
     this.current = imgView;
     this.apply();
   }
@@ -18,7 +15,7 @@ public class ChangeThemeStyler {
     this.current.getParent().getStyleClass().add("theme-img-view-click");
   }
 
-  private void revert() {
+  private void remove() {
     this.current.getParent().getStyleClass().remove("theme-img-view-click");
   }
 }

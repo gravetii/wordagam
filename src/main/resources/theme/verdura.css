@@ -14,7 +14,7 @@
 }
 
 #gamePane {
-    -fx-background-image: url("../files/verdura.jpg");
+    -fx-background-image: url("./verdura.jpg");
 }
 
 .progress-bar .bar {
@@ -34,4 +34,28 @@
 
 #resultBox {
     -fx-text-fill: #4CA120;
+}
+
+.menu-button:focused {
+    -fx-background: #5AAE29;
+}
+
+.menu-button:hover {
+    -fx-background: #5AAE29;
+}
+
+.menu-button:showing {
+    -fx-background: #5AAE29;
+}
+
+.menu-item:focused {
+    -fx-background: #5AAE29;
+}
+
+.menu-button .label {
+    -fx-text-fill: #000000
+}
+
+.menu-item .label {
+    -fx-text-fill: #000000;
 }

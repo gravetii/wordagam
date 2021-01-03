@@ -14,7 +14,7 @@
 }
 
 #gamePane {
-    -fx-background-image: url("../files/bluezy.jpg");
+    -fx-background-image: url("./bluezy.jpg");
 }
 
 .progress-bar .bar {
@@ -34,4 +34,28 @@
 
 #resultBox {
     -fx-text-fill: #5C5D63;
+}
+
+.menu-button:focused {
+    -fx-background: #3FA7A6;
+}
+
+.menu-button:hover {
+    -fx-background: #3FA7A6;
+}
+
+.menu-button:showing {
+    -fx-background: #3FA7A6;
+}
+
+.menu-item:focused {
+    -fx-background: #3FA7A6;
+}
+
+.menu-button .label {
+    -fx-text-fill: #000000
+}
+
+.menu-item .label {
+    -fx-text-fill: #000000;
 }

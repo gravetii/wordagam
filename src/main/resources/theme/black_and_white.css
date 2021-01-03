@@ -14,7 +14,7 @@
 }
 
 #gamePane {
-    -fx-background-image: url("../files/black_and_white.jpg");
+    -fx-background-image: url("./black_and_white.jpg");
 }
 
 .progress-bar .bar {
@@ -33,5 +33,29 @@
 }
 
 #resultBox {
+    -fx-text-fill: #000000;
+}
+
+.menu-button:focused {
+    -fx-background: #A9A5A2;
+}
+
+.menu-button:hover {
+    -fx-background: #A9A5A2;
+}
+
+.menu-button:showing {
+    -fx-background: #A9A5A2;
+}
+
+.menu-item:focused {
+    -fx-background: #A9A5A2;
+}
+
+.menu-button .label {
+    -fx-text-fill: #000000
+}
+
+.menu-item .label {
     -fx-text-fill: #000000;
 }

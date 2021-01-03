@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.text.Font?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.text.*?>
 
-<TextArea editable="false" prefHeight="200.0" prefWidth="200.0" text="WORDAGAM is just another word game.&#10;&#10;You are given a 4x4 grid of random letters. The goal is to form as many words as you can from those letters by selecting the neighbors of each letter successively. &#10;&#10;You can define the pace of each game by configuring the game time via the Settings menu. A progress bar at the bottom of the game window depicts the time left/elapsed in the game.&#10;&#10;After the game is over, you will see all the possible list of words in the game. If you want to check out how a particular word is formed, just click on the cell containing the word and you will see the word formation in the grid.&#10;&#10;Hope you enjoy playing this game!" wrapText="true" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1">
+<TextArea editable="false" mouseTransparent="true" prefHeight="200.0" prefWidth="200.0" text="WORDAGAM is just another word game.&#10;&#10;You are given a 4x4 grid of random letters. The goal is to form as many words as you can from those letters by selecting the neighbors of each letter successively. &#10;&#10;You can define the pace of each game by configuring the game time via the Settings menu. A progress bar at the bottom of the game window depicts the time left/elapsed in the game.&#10;&#10;After the game is over, you will see all the possible list of words in the game. If you want to check out how a particular word is formed, just click on the cell containing the word and you will see the word formation in the grid.&#10;&#10;Hope you enjoy playing this game!" wrapText="true" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <font>
         <Font name="Avenir Medium" size="15.0" />
     </font>

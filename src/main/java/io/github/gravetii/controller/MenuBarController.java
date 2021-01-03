@@ -18,7 +18,7 @@ import javafx.stage.Stage;
 import java.util.Optional;
 
 public class MenuBarController implements FxController {
-  private Stage stage;
+  private final Stage stage;
 
   public MenuBarController(Stage stage) {
     this.stage = stage;
@@ -43,13 +43,9 @@ public class MenuBarController implements FxController {
     return type.isPresent() && type.get() == ButtonType.YES;
   }
 
-  private boolean currentGameCheck() {
-    return !Game.isRunning() || this.showQuitGameAlert();
-  }
-
   @FXML
   public void newGame() throws Exception {
-    if (this.currentGameCheck()) {
+    if (!Game.isRunning() || this.showQuitGameAlert()) {
       FxScene scene = new GameScene(this.stage);
       scene.show();
       Game.setRunning(true);
@@ -64,12 +60,12 @@ public class MenuBarController implements FxController {
   }
 
   @FXML
-  public void resetGameCounter() throws Exception {
+  public void resetGameCounter() {
     PreferenceStore.resetGameId();
   }
 
   @FXML
-  public void exit() throws Exception {
+  public void exit() {
     App.close(this.stage);
   }
 

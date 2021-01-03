@@ -14,7 +14,7 @@
 }
 
 #gamePane {
-    -fx-background-image: url("../files/mossy.jpg");
+    -fx-background-image: url("./mossy.jpg");
 }
 
 .progress-bar .bar {
@@ -34,4 +34,28 @@
 
 #resultBox {
     -fx-text-fill: #006400;
+}
+
+.menu-button:focused {
+    -fx-background: #B4CE73;
+}
+
+.menu-button:hover {
+    -fx-background: #B4CE73;
+}
+
+.menu-button:showing {
+    -fx-background: #B4CE73;
+}
+
+.menu-item:focused {
+    -fx-background: #B4CE73;
+}
+
+.menu-button .label {
+    -fx-text-fill: #000000
+}
+
+.menu-item .label {
+    -fx-text-fill: #000000;
 }

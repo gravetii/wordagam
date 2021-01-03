@@ -14,7 +14,7 @@
 }
 
 #gamePane {
-    -fx-background-image: url("../files/euanthe.jpg");
+    -fx-background-image: url("./euanthe.jpg");
 }
 
 .progress-bar .bar {
@@ -34,4 +34,28 @@
 
 #resultBox {
     -fx-text-fill: #A2261A;
+}
+
+.menu-button:focused {
+    -fx-background: #B5CA7B;
+}
+
+.menu-button:hover {
+    -fx-background: #B5CA7B;
+}
+
+.menu-button:showing {
+    -fx-background: #B5CA7B;
+}
+
+.menu-item:focused {
+    -fx-background: #B5CA7B;
+}
+
+.menu-button .label {
+    -fx-text-fill: #000000
+}
+
+.menu-item .label {
+    -fx-text-fill: #000000;
 }

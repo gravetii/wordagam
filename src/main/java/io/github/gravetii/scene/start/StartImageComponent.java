@@ -1,16 +1,16 @@
 package io.github.gravetii.scene.start;
 
-import io.github.gravetii.controller.BasicController;
+import io.github.gravetii.controller.BaseController;
 import io.github.gravetii.scene.FxComponent;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 
-public class StartImageComponent extends FxComponent<BasicController, Pane> {
-  private static final String SKINS_PATH = "images/skin/1.gif";
+public class StartImageComponent extends FxComponent<BaseController, Pane> {
+  private static final String SKIN_PATH = "/images/1.gif";
 
-  private BorderPane root;
+  private final BorderPane root;
 
   public StartImageComponent(BorderPane root) throws Exception {
     super("startImage.fxml");
@@ -19,8 +19,8 @@ public class StartImageComponent extends FxComponent<BasicController, Pane> {
   }
 
   @Override
-  protected BasicController createController() {
-    return new BasicController();
+  protected BaseController createController() {
+    return new BaseController();
   }
 
   @Override
@@ -29,7 +29,7 @@ public class StartImageComponent extends FxComponent<BasicController, Pane> {
     pane.prefHeightProperty().bind(root.heightProperty());
     pane.prefWidthProperty().bind(root.widthProperty());
     ImageView imgView = (ImageView) pane.getChildren().get(0);
-    Image img = new Image(SKINS_PATH);
+    Image img = new Image(getClass().getResource(SKIN_PATH).toExternalForm());
     imgView.setImage(img);
     imgView.fitHeightProperty().bind(pane.heightProperty());
     imgView.fitWidthProperty().bind(pane.widthProperty());

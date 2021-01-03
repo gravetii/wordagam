@@ -10,11 +10,12 @@ import javafx.util.Duration;
 import java.util.Collection;
 
 public class GamePlayRotater {
-  private GridPane gamePane;
-  private Pane[][] panes;
-  private Collection<ImageView> imgViews;
+  private final GridPane gamePane;
+  private final Pane[][] panes;
+  private final Collection<ImageView> imgViews;
+  private final SequentialTransition sequencer;
+
   private int count = 0;
-  private SequentialTransition sequencer;
 
   public GamePlayRotater(GridPane gamePane, Collection<ImageView> imgViews) {
     this.gamePane = gamePane;
@@ -42,12 +43,12 @@ public class GamePlayRotater {
 
   private void rearrange() {
     for (int x = 0; x < 2; x++) {
-      for (int y = x; y < 3-x; y++) {
-        Pane temp = this.panes[y][3-x];
-        this.panes[y][3-x] = this.panes[x][y];
-        this.panes[x][y] = this.panes[3-y][x];
-        this.panes[3-y][x] = this.panes[3-x][3-y];
-        this.panes[3-x][3-y] = temp;
+      for (int y = x; y < 3 - x; y++) {
+        Pane temp = this.panes[y][3 - x];
+        this.panes[y][3 - x] = this.panes[x][y];
+        this.panes[x][y] = this.panes[3 - y][x];
+        this.panes[3 - y][x] = this.panes[3 - x][3 - y];
+        this.panes[3 - x][3 - y] = temp;
       }
     }
 
@@ -62,13 +63,11 @@ public class GamePlayRotater {
 
   private void rotateGrid() {
     this.rearrange();
-    if (++this.count % 4 == 0) {
-      this.count = 0;
-    }
+    if (++this.count % 4 == 0) this.count = 0;
   }
 
   private void rotateGamePane() {
-    RotateTransition gridTransition = new RotateTransition(Duration.millis(75), this.gamePane);
+    RotateTransition gridTransition = new RotateTransition(Duration.millis(200), this.gamePane);
     gridTransition.setByAngle(360);
     gridTransition.setCycleCount(1);
     this.sequencer.getChildren().add(gridTransition);
@@ -82,15 +81,10 @@ public class GamePlayRotater {
         });
 
     this.sequencer.play();
-    this.sequencer.setOnFinished(
-        event -> {
-          this.sequencer.getChildren().clear();
-        });
+    this.sequencer.setOnFinished(event -> this.sequencer.getChildren().clear());
   }
 
   public void applyOnEnd() {
-    while (this.count != 0) {
-      this.rotateGrid();
-    }
+    while (this.count != 0) this.rotateGrid();
   }
 }

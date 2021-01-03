@@ -1,16 +1,17 @@
 package io.github.gravetii.game;
 
-import io.github.gravetii.pojo.WordResult;
-import io.github.gravetii.util.GridPoint;
+import io.github.gravetii.model.GridPoint;
+import io.github.gravetii.model.WordResult;
 
+import java.util.Arrays;
 import java.util.LinkedHashMap;
 import java.util.List;
 import java.util.Map;
 
 public class GameResult {
-  private Map<String, WordResult> wordToResultMap = new LinkedHashMap<>();
+  private final Map<String, WordResult> wordToResultMap = new LinkedHashMap<>();
   private int totalScore = 0;
-  private Quality quality;
+  private GameQuality quality;
 
   public void put(String word, int score, List<GridPoint> seq) {
     if (!this.wordToResultMap.containsKey(word)) {
@@ -35,20 +36,19 @@ public class GameResult {
     return this.wordToResultMap;
   }
 
-  public WordResult getWordResult(String word) {
+  public WordResult get(String word) {
     return this.wordToResultMap.get(word);
   }
 
   public void defineQuality() {
-    for (Quality q : Quality.values()) {
-      if (this.wordToResultMap.size() > q.getMinCount()) {
-        this.quality = q;
-        break;
-      }
-    }
+    this.quality =
+        Arrays.stream(GameQuality.values())
+            .dropWhile(x -> this.wordToResultMap.size() <= x.getMinCount())
+            .findFirst()
+            .orElse(GameQuality.LOW);
   }
 
-  public Quality getQuality() {
+  public GameQuality getQuality() {
     return this.quality;
   }
 

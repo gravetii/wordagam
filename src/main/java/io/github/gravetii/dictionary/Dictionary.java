@@ -10,16 +10,14 @@ import java.io.InputStreamReader;
 public class Dictionary {
   private static final String WORDS_FILE = "words.txt";
 
-  private Trie trie;
+  private final Trie trie;
 
   public Dictionary() {
     BufferedReader reader = null;
     try {
       this.trie = new Trie();
       InputStream inputStream = ClassLoader.getSystemResourceAsStream(WORDS_FILE);
-      if (inputStream == null) {
-        throw new IOException("Invalid URL specified");
-      }
+      if (inputStream == null) throw new IOException("Invalid URL specified");
       reader = new BufferedReader(new InputStreamReader(inputStream));
       String word;
       while ((word = reader.readLine()) != null) {
@@ -33,9 +31,7 @@ public class Dictionary {
       throw new RuntimeException(e);
     } finally {
       try {
-        if (reader != null) {
-          reader.close();
-        }
+        if (reader != null) reader.close();
       } catch (IOException e) {
         AppLogger.severe(getClass().getCanonicalName(), "Could not successfully close reader.");
       }

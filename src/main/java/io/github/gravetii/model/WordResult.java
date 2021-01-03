@@ -1,13 +1,11 @@
-package io.github.gravetii.pojo;
-
-import io.github.gravetii.util.GridPoint;
+package io.github.gravetii.model;
 
 import java.util.List;
 
 public class WordResult {
-  private String word;
-  private int score;
-  private List<GridPoint> seq;
+  private final String word;
+  private final int score;
+  private final List<GridPoint> seq;
 
   public WordResult(String word, int score, List<GridPoint> seq) {
     this.word = word;

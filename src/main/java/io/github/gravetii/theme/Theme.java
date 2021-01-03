@@ -5,8 +5,9 @@ import javafx.event.EventType;
 import javafx.scene.image.Image;
 
 public class Theme {
-  private ThemeType type;
-  private String imgPath;
+  private final ThemeType type;
+  private final String imgPath;
+
   private Image img;
   private String styleSheet;
 
@@ -21,7 +22,8 @@ public class Theme {
 
   public Image getImage() {
     if (this.img == null) {
-      this.img = new Image(this.imgPath);
+      String path = getClass().getResource(this.imgPath).toExternalForm();
+      this.img = new Image(path);
     }
 
     return this.img;
@@ -29,7 +31,7 @@ public class Theme {
 
   public String getStyleSheet() {
     if (this.styleSheet == null) {
-      this.styleSheet = ClassLoader.getSystemResource(this.type.getCssPath()).toExternalForm();
+      this.styleSheet = getClass().getResource(type.getCssPath()).toExternalForm();
     }
 
     return this.styleSheet;

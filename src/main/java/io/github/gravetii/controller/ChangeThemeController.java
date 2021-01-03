@@ -12,11 +12,11 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class ChangeThemeController implements FxController {
-  private Stage stage;
-  private ChangeThemeFooterController ref;
-  private Map<Integer, ImageView> imgViewMap;
-  private ThemeService themes;
-  private ChangeThemeStyler styler;
+  private final Stage stage;
+  private final ChangeThemeFooterController ref;
+  private final Map<Integer, ImageView> imgViewMap;
+  private final ThemeService service;
+  private final ChangeThemeStyler styler;
 
   @FXML private ImageView imgView_0;
   @FXML private ImageView imgView_1;
@@ -38,7 +38,7 @@ public class ChangeThemeController implements FxController {
     this.stage = stage;
     this.ref = ref;
     this.imgViewMap = new HashMap<>();
-    this.themes = new ThemeService();
+    this.service = new ThemeService();
     this.styler = new ChangeThemeStyler();
   }
 
@@ -66,23 +66,19 @@ public class ChangeThemeController implements FxController {
   public void onImgViewClick(MouseEvent event) {
     ImageView imgView = (ImageView) event.getSource();
     int idx = Utils.getImageViewIndexFromLabel(imgView.getId());
-    if (idx >= this.themes.count()) {
-      return;
-    }
-
-    ThemeType type = this.themes.getAll().get(idx);
+    if (idx >= this.service.getAll().size()) return;
+    ThemeType type = this.service.getAll().get(idx);
     this.styler.applySelectStyle(imgView);
-
-    boolean changed = this.themes.changeTheme(type);
+    boolean changed = this.service.changeTheme(type);
     if (changed) {
-      this.themes.dispatch(this.stage.getOwner());
+      this.service.dispatch(this.stage.getOwner());
       this.ref.updateThemeChange(type);
     }
   }
 
   private void initStyle() {
-    ThemeType current = this.themes.getCurrent();
-    int idx = this.themes.getAll().indexOf(current);
+    ThemeType current = this.service.getCurrent();
+    int idx = this.service.getAll().indexOf(current);
     ImageView imgView = this.imgViewMap.get(idx);
     this.styler.applySelectStyle(imgView);
   }

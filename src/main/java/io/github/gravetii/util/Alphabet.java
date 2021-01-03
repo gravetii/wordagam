@@ -38,8 +38,8 @@ public enum Alphabet {
     }
   }
 
-  private int weight;
-  private int score;
+  private final int weight;
+  private final int score;
 
   Alphabet(int weight, int score) {
     this.weight = weight;

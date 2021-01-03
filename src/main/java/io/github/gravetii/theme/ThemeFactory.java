@@ -15,7 +15,7 @@ public class ThemeFactory {
   private ThemeType current;
   private Theme currentRandomTheme;
 
-  private Map<ThemeType, Theme> themeMap;
+  private final Map<ThemeType, Theme> themeMap;
 
   private ThemeFactory() {
     this.themeMap = new ConcurrentHashMap<>();
@@ -58,9 +58,7 @@ public class ThemeFactory {
 
   public Theme loadCurrentTheme() {
     if (this.current == ThemeType.RANDOM) {
-      if (this.currentRandomTheme == null) {
-        this.currentRandomTheme = this.random();
-      }
+      if (this.currentRandomTheme == null) this.currentRandomTheme = this.newRandom();
       return this.currentRandomTheme;
     }
 
@@ -69,18 +67,16 @@ public class ThemeFactory {
 
   public Theme loadNewCurrentTheme() {
     if (this.current == ThemeType.RANDOM) {
-      this.currentRandomTheme = this.random();
+      this.currentRandomTheme = this.newRandom();
       return this.currentRandomTheme;
-    } else {
-      return this.get(this.current);
     }
+
+    return this.get(this.current);
   }
 
-  private Theme random() {
-    ThemeType[] allThemeTypes = ThemeType.values();
-    int count = ThemeType.values().length;
-    int r = ThreadLocalRandom.current().nextInt(1, count);
-    ThemeType type = allThemeTypes[r];
+  private Theme newRandom() {
+    int r = ThreadLocalRandom.current().nextInt(1, ThemeType.values().length);
+    ThemeType type = ThemeType.values()[r];
     return this.get(type);
   }
 
