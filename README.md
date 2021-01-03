@@ -1,9 +1,7 @@
 # Wordagam
 
 <p align="center">
-<a href="https://app.codacy.com/app/gravetii/wordagam?utm_source=github.com&utm_medium=referral&utm_content=gravetii/wordagam&utm_campaign=Badge_Grade_Dashboard"><img src="https://api.codacy.com/project/badge/Grade/f7b9f7655b3f4ff795775ab49a39fc52" alt="Codacy Badge"></a>
 <a href="https://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/License-MIT-yellow.svg" alt="License: MIT" /></a>
-<a href="https://www.paypal.me/sandeepdasika"><img src="https://img.shields.io/badge/Donate-PayPal-green.svg" alt="Donate" /></a>
 <a href="https://github.com/gravetii/wordagam/releases/latest"><img src="https://img.shields.io/github/release/gravetii/wordagam.svg?style=flat-square" alt="GitHub release" /></a>
 <a href="https://github.com/gravetii/wordagam/releases"><img src="https://img.shields.io/github/downloads/gravetii/wordagam/total.svg?style=flat-square" alt="Github All Releases" /></a>
 <a href="https://saythanks.io/to/gravetii"><img src="https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg" alt="Say Thanks!" /></a>
