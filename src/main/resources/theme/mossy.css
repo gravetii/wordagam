@@ -28,10 +28,6 @@
     -fx-text-fill: #FFFFFF;
 }
 
-#resultBox {
-    -fx-text-fill: #006400;
-}
-
 .menu-button:focused {
     -fx-background: #B4CE73;
 }

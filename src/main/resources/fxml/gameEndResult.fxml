@@ -7,6 +7,15 @@
 <VBox prefHeight="520.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
     <children>
       <Label id="resultBox" fx:id="resultBox" alignment="TOP_LEFT" contentDisplay="TOP" prefHeight="109.0" prefWidth="300.0" textAlignment="CENTER" />
+        <Separator prefWidth="200.0">
+            <effect>
+                <Lighting bumpInput="$null">
+                    <light>
+                        <Light.Distant />
+                    </light>
+                </Lighting>
+            </effect>
+        </Separator>
         <AnchorPane VBox.vgrow="ALWAYS">
             <children>
                 <TableView fx:id="tblDisplay" AnchorPane.bottomAnchor="10.0" AnchorPane.leftAnchor="10.0" AnchorPane.rightAnchor="10.0" AnchorPane.topAnchor="10.0">
