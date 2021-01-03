@@ -3,6 +3,7 @@ package io.github.gravetii.controller;
 import javafx.animation.*;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 
 import java.util.Collection;
@@ -11,20 +12,24 @@ import java.util.LinkedList;
 import java.util.List;
 
 public class GamePlayStyler {
-  private final Collection<ImageView> imgViews;
-  private final GamePlayRotater rotater;
-  private final LinkedList<ImageView> seq;
-  private final PauseTransition revisitPauser;
 
-  private Timeline revisitTimeline;
+  private final GridPane gamePane;
+  private final Collection<ImageView> imgViews;
+  private final LinkedList<ImageView> seq;
+  private final PauseTransition pauser;
+  private final SequentialTransition sequencer;
+
+  private Timeline timeline;
+  private int gridRotationCount = 0;
 
   public GamePlayStyler(GridPane gamePane, Collection<ImageView> imgViews) {
+    this.gamePane = gamePane;
     this.imgViews = imgViews;
-    this.rotater = new GamePlayRotater(gamePane, imgViews);
     this.seq = new LinkedList<>();
-    this.revisitTimeline = new Timeline();
-    this.revisitPauser = new PauseTransition(Duration.millis(200));
-    this.revisitPauser.setOnFinished((e) -> this.invalidate());
+    this.timeline = new Timeline();
+    this.pauser = new PauseTransition(Duration.millis(200));
+    this.pauser.setOnFinished((e) -> this.invalidate());
+    this.sequencer = new SequentialTransition();
   }
 
   public void invalidate() {
@@ -69,11 +74,12 @@ public class GamePlayStyler {
   }
 
   public void rotate() {
-    this.rotater.apply();
+    this.rotateGamePane();
+    this.rotateGrid();
   }
 
   public void rotateOnEnd() {
-    this.rotater.applyOnEnd();
+    while (this.gridRotationCount != 0) this.rotateGrid();
   }
 
   private void rotate(ImageView imgView) {
@@ -114,17 +120,15 @@ public class GamePlayStyler {
   }
 
   private void endTransition(ImageView imgView) {
-    TranslateTransition translate = new TranslateTransition(Duration.millis(100));
-    translate.setByX(50);
-    translate.setByY(50);
-    translate.setCycleCount(4);
-    translate.setAutoReverse(true);
-    ScaleTransition scale = new ScaleTransition(Duration.millis(100));
-    scale.setByX(0.4);
-    scale.setByY(0.4);
-    scale.setCycleCount(4);
+    ScaleTransition scale = new ScaleTransition(Duration.millis(200));
+    scale.setByX(0.5);
+    scale.setByY(0.5);
+    scale.setCycleCount(2);
     scale.setAutoReverse(true);
-    ParallelTransition transition = new ParallelTransition(imgView, translate, scale);
+    RotateTransition rotate = new RotateTransition(Duration.millis(200));
+    rotate.setByAngle(360);
+    rotate.setCycleCount(2);
+    ParallelTransition transition = new ParallelTransition(imgView, rotate, scale);
     transition.play();
   }
 
@@ -141,13 +145,73 @@ public class GamePlayStyler {
   }
 
   public void revisit(List<ImageView> imgViews) {
-    this.revisitTimeline.stop();
+    this.timeline.stop();
     this.invalidate();
     Iterator<ImageView> itr = imgViews.iterator();
     KeyFrame keyframe = new KeyFrame(Duration.millis(300), (e) -> this.forValidClick(itr.next()));
-    this.revisitTimeline = new Timeline(keyframe);
-    this.revisitTimeline.setOnFinished((e) -> this.revisitPauser.play());
-    this.revisitTimeline.setCycleCount(imgViews.size());
-    this.revisitTimeline.play();
+    this.timeline = new Timeline(keyframe);
+    this.timeline.setOnFinished((e) -> this.pauser.play());
+    this.timeline.setCycleCount(imgViews.size());
+    this.timeline.play();
+  }
+
+  private Pane[][] fetchPanes() {
+    int c = 0;
+    Pane[][] panes = new Pane[4][4];
+    for (int i = 0; i < 4; ++i) {
+      for (int j = 0; j < 4; ++j) {
+        panes[i][j] = (Pane) this.gamePane.getChildren().get(c++);
+      }
+    }
+
+    return panes;
+  }
+
+  private void rearrange() {
+    Pane[][] panes = this.fetchPanes();
+    for (int x = 0; x < 2; x++) {
+      for (int y = x; y < 3 - x; y++) {
+        Pane temp = panes[y][3 - x];
+        panes[y][3 - x] = panes[x][y];
+        panes[x][y] = panes[3 - y][x];
+        panes[3 - y][x] = panes[3 - x][3 - y];
+        panes[3 - x][3 - y] = temp;
+      }
+    }
+
+    for (int i = 0; i < 4; ++i) {
+      for (int j = 0; j < 4; ++j) {
+        Pane pane = panes[i][j];
+        GridPane.setRowIndex(pane, i);
+        GridPane.setColumnIndex(pane, j);
+      }
+    }
+  }
+
+  private void rotateGrid() {
+    this.rearrange();
+    if (++this.gridRotationCount % 4 == 0) this.gridRotationCount = 0;
+  }
+
+  private void rotateGamePane() {
+    RotateTransition gridTransition = new RotateTransition(Duration.millis(200), this.gamePane);
+    gridTransition.setByAngle(360);
+    gridTransition.setCycleCount(1);
+    this.sequencer.getChildren().add(gridTransition);
+    imgViews.forEach(
+        imgView -> {
+          RotateTransition imgViewTransition = new RotateTransition(Duration.millis(20), imgView);
+          imgViewTransition.setByAngle(90);
+          imgViewTransition.setCycleCount(2);
+          imgViewTransition.setAutoReverse(true);
+          this.sequencer.getChildren().add(imgViewTransition);
+        });
+
+    this.sequencer.play();
+    this.sequencer.setOnFinished((e) -> this.sequencer.getChildren().clear());
+  }
+
+  public void applyOnEnd() {
+    while (this.gridRotationCount != 0) this.rotateGrid();
   }
 }

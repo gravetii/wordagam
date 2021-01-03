@@ -6,11 +6,11 @@ import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.menu.MenuBarComponent;
 import io.github.gravetii.theme.Theme;
-
 import javafx.application.Platform;
 import javafx.stage.Stage;
 
 public class GameScene extends FxScene {
+
   private final GameGridComponent gridComponent;
   private final GameResultComponent resultComponent;
   private final ProgressBarComponent progressBarComponent;
@@ -71,4 +71,5 @@ public class GameScene extends FxScene {
   public String title() {
     return "Game #" + PreferenceStore.getGameId();
   }
+
 }

@@ -8,7 +8,7 @@ import javafx.event.Event;
 import javafx.event.EventType;
 
 public class Game {
-  // Is an instance of the game running right now?
+  // is an instance of the game running right now?
   private static boolean IS_INSTANCE_RUNNING = false;
 
   private final GridUnit[][] grid;
