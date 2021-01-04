@@ -7,7 +7,7 @@
 <a href="https://saythanks.io/to/gravetii"><img src="https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg" alt="Say Thanks!" /></a>
 </p>
 
-A fun & interactive word game. Check out the screenshots and the game play video.
+A fun & interactive word game. Check out the screenshots and the gameplay video.
 
 ## Download & Play
 
@@ -23,8 +23,8 @@ This is a maven project. In the root folder of the project, run `mvn clean compi
 
 ## Game play video
 
-<a href="http://www.youtube.com/watch?feature=player_embedded&v=fXqfaqLZ2zw
-"><img src="http://img.youtube.com/vi/fXqfaqLZ2zw/2.jpg" alt="Wordagam game play video" width="240" height="180" /></a>
+<a href="http://www.youtube.com/watch?feature=player_embedded&v=EuWyjQGn0H0
+"><img src="http://img.youtube.com/vi/EuWyjQGn0H0/2.jpg" alt="Wordagam game play video" width="240" height="180" /></a>
 
 ## Screenshots
 
@@ -38,6 +38,8 @@ This is a maven project. In the root folder of the project, run `mvn clean compi
 ![Screenshot 8](screenshots/8.png)
 ![Screenshot 9](screenshots/9.png)
 ![Screenshot 10](screenshots/10.png)
+![Screenshot 11](screenshots/11.png)
+![Screenshot 12](screenshots/12.png)
 
 ---
 
