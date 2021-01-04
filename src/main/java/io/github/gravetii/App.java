@@ -4,7 +4,6 @@ import io.github.gravetii.db.PreferenceStore;
 import io.github.gravetii.game.GameService;
 import io.github.gravetii.scene.FxScene;
 import io.github.gravetii.scene.start.StartScene;
-import io.github.gravetii.util.AppLogger;
 
 import javafx.application.Application;
 import javafx.application.Platform;
@@ -13,8 +12,12 @@ import javafx.scene.control.ButtonType;
 import javafx.stage.Stage;
 
 import java.util.Optional;
+import java.util.logging.Logger;
 
 public class App extends Application {
+
+  private static final Logger logger = Logger.getLogger(App.class.getCanonicalName());
+
   public static void main(String[] args) {
     launch(args);
   }
@@ -40,7 +43,7 @@ public class App extends Application {
 
   @Override
   public void start(Stage stage) throws Exception {
-    AppLogger.info(getClass().getCanonicalName(), "Starting application...");
+    logger.info("Starting application...");
     stage.setOnCloseRequest(
         event -> {
           if (!close(stage)) event.consume();
@@ -59,6 +62,6 @@ public class App extends Application {
   public void stop() throws Exception {
     GameService.close();
     PreferenceStore.close();
-    AppLogger.info(getClass().getCanonicalName(), "Stopped application...");
+    logger.info("Stopped application...");
   }
 }

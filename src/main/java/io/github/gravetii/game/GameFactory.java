@@ -1,14 +1,17 @@
 package io.github.gravetii.game;
 
 import io.github.gravetii.dictionary.Dictionary;
-import io.github.gravetii.util.AppLogger;
 
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.TimeUnit;
+import java.util.logging.Logger;
 
 public class GameFactory {
+
+  private static final Logger logger = Logger.getLogger(GameFactory.class.getCanonicalName());
+
   private static final int MAX_GAMES_IN_QUEUE = 5;
   private static volatile GameFactory instance;
 
@@ -28,7 +31,7 @@ public class GameFactory {
       synchronized (GameFactory.class) {
         if (instance == null) {
           instance = new GameFactory();
-          AppLogger.fine(GameFactory.class.getCanonicalName(), "Created instance of GameFactory");
+          logger.fine("Created instance of GameFactory");
         }
       }
     }
@@ -58,7 +61,6 @@ public class GameFactory {
     Game game = this.queue.poll();
     if (game == null) game = this.create();
     this.backFill();
-    AppLogger.fine(getClass().getCanonicalName(), "Fetched new game: " + game);
     return game;
   }
 
@@ -89,7 +91,7 @@ public class GameFactory {
       if (!terminated) this.executor.shutdownNow();
       this.queue.clear();
     } catch (Exception e) {
-      AppLogger.severe(getClass().getCanonicalName(), "Error while closing GameFactory: " + e);
+      logger.severe("Error while shutting down GameFactory - " + e.getMessage());
     }
   }
 }

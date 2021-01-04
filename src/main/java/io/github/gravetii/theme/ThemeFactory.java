@@ -1,15 +1,18 @@
 package io.github.gravetii.theme;
 
 import io.github.gravetii.db.PreferenceStore;
-import io.github.gravetii.util.AppLogger;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 import java.util.concurrent.ThreadLocalRandom;
+import java.util.logging.Logger;
 
 public class ThemeFactory {
+
+  private static final Logger logger = Logger.getLogger(ThemeFactory.class.getCanonicalName());
+
   private static volatile ThemeFactory INSTANCE;
 
   private final Map<ThemeType, Theme> themeMap = new ConcurrentHashMap<>();
@@ -28,7 +31,7 @@ public class ThemeFactory {
       synchronized (ThemeFactory.class) {
         if (INSTANCE == null) {
           INSTANCE = new ThemeFactory();
-          AppLogger.fine(ThemeFactory.class.getCanonicalName(), "Created instance of ThemeFactory");
+          logger.fine("Created instance of ThemeFactory");
         }
       }
     }

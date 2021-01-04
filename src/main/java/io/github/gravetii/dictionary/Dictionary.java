@@ -1,13 +1,15 @@
 package io.github.gravetii.dictionary;
 
-import io.github.gravetii.util.AppLogger;
-
 import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.logging.Logger;
 
 public class Dictionary {
+
+  private static final Logger logger = Logger.getLogger(Dictionary.class.getCanonicalName());
+
   private static final String WORDS_FILE = "words.txt";
 
   private final Trie trie;
@@ -25,15 +27,15 @@ public class Dictionary {
         trie.insert(word);
       }
 
-      AppLogger.fine(getClass().getCanonicalName(), "Completed loading all words into the trie.");
+      logger.fine("Loaded all words into the trie");
     } catch (IOException e) {
-      AppLogger.severe(getClass().getCanonicalName(), "Could not load all words into the trie.");
+      logger.severe("Error while loading words into the trie - " + e.getMessage());
       throw new RuntimeException(e);
     } finally {
       try {
         if (reader != null) reader.close();
       } catch (IOException e) {
-        AppLogger.severe(getClass().getCanonicalName(), "Could not successfully close reader.");
+        logger.severe("Error while closing reader - " + e.getMessage());
       }
     }
   }
