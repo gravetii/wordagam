@@ -2,15 +2,15 @@
 
 .custom-button {
     -fx-text-fill: #000000;
-    -fx-background-color: #CE6E2A;
+    -fx-background-color: #E2ACAC;
 }
 
 .custom-button:hover {
-    -fx-background-color: #E26052;
+    -fx-background-color: #DA9B9B;
 }
 
 .custom-button:pressed {
-    -fx-background-color: #DD5B1D;
+    -fx-background-color: #CC7F7F;
 }
 
 #gamePane {
@@ -18,30 +18,30 @@
 }
 
 .progress-bar .bar {
-    -fx-background-color: #496674;
+    -fx-background-color: #FBA57A;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
 }
 
 .text-field {
-    -fx-background-color: #CE6E2A;
+    -fx-background-color: #E2ACAC;
     -fx-text-fill: #000000;
 }
 
 .menu-button:focused {
-    -fx-background: #CE6E2A;
+    -fx-background: #E2ACAC;
 }
 
 .menu-button:hover {
-    -fx-background: #CE6E2A;
+    -fx-background: #E2ACAC;
 }
 
 .menu-button:showing {
-    -fx-background: #CE6E2A;
+    -fx-background: #E2ACAC;
 }
 
 .menu-item:focused {
-    -fx-background: #CE6E2A;
+    -fx-background: #E2ACAC;
 }
 
 .menu-button .label {

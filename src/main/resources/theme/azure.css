@@ -1,16 +1,16 @@
 @import url("common.css");
 
 .custom-button {
-    -fx-text-fill: #000000;
-    -fx-background-color: #7FDBFF;
+    -fx-text-fill: #FFFFFF;
+    -fx-background-color: #2589A1;
 }
 
 .custom-button:hover {
-    -fx-background-color: #4095C6;
+    -fx-background-color: #03738E;
 }
 
 .custom-button:pressed {
-    -fx-background-color: #3487BA;
+    -fx-background-color: #06586C;
 }
 
 #gamePane {
@@ -18,30 +18,30 @@
 }
 
 .progress-bar .bar {
-    -fx-background-color: #7FDBFF;
+    -fx-background-color: #63D8F5;
     -fx-background-insets: 0, 1, 2;
     -fx-padding: 0.416667em;
 }
 
 .text-field {
-    -fx-background-color: #7FDBFF;
+    -fx-background-color: #2589A1;
     -fx-text-fill: #FFFFFF;
 }
 
 .menu-button:focused {
-    -fx-background: #7FDBFF;
+    -fx-background: #29A8C6;
 }
 
 .menu-button:hover {
-    -fx-background: #7FDBFF;
+    -fx-background: #29A8C6;
 }
 
 .menu-button:showing {
-    -fx-background: #7FDBFF;
+    -fx-background: #29A8C6;
 }
 
 .menu-item:focused {
-    -fx-background: #7FDBFF;
+    -fx-background: #29A8C6;
 }
 
 .menu-button .label {
