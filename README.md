@@ -11,15 +11,31 @@ A fun & interactive word game. Check out the screenshots and the gameplay video.
 
 ## Download & Play
 
-Download the latest JAR [here](https://github.com/gravetii/wordagam/releases/download/v1.6/wordagam-1.6.jar) to play the game.
+Download the latest artefacts [here](https://github.com/gravetii/wordagam/releases/tag/v2.0). You can download the MacOS artifact [here](https://github.com/gravetii/wordagam/releases/download/v2.0/wordagam-mac.zip), but artefacts for other platforms can also be built as easily. Check the `Building from source` section below.
+
+After downloading the zip file, extract it and run `play-wordagam` -  
+
+```
+wordagam-mac/bin/play-wordagam
+```
+
+You can download an older version of the game as a JAR file [here](https://github.com/gravetii/wordagam/releases/download/v1.6/wordagam-1.6.jar).
 
 ## Prerequisites
 
-Wordagam requires Java 8 to be installed to run the JAR.
+The latest version of the artifact doesn't require a pre-existing Java runtime. This is possible because the project makes use of `jlink` to create a custom runtime image which comes bundled with the Java runtime.
 
-## Building the project
+## Building from source
 
-This is a maven project. In the root folder of the project, run `mvn clean compile assembly:single` which outputs the JAR file in the `target/` folder.
+The project is built as a modular Java application using maven. You can build the project and create a custom runtime image for your platform using `jlink`. Run this in the root folder of the project - 
+```
+mvn clean javafx:jlink
+```
+
+Running this command creates the runtime image which you can run to play the game - 
+```
+target/wordagam/bin/play-wordagam
+```
 
 ## Game play video
 
