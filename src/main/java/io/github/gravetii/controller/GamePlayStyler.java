@@ -228,7 +228,7 @@ public class GamePlayStyler {
           sequencer.getChildren().add(imgViewTransition);
         });
 
-    sequencer.play();
     sequencer.setOnFinished((e) -> sequencer.getChildren().clear());
+    sequencer.play();
   }
 }
