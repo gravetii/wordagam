@@ -3,7 +3,6 @@ package io.github.gravetii.game;
 import io.github.gravetii.dictionary.Dictionary;
 import io.github.gravetii.model.GridPoint;
 import io.github.gravetii.model.GridUnit;
-import io.github.gravetii.util.Utils;
 
 import java.util.Arrays;
 import java.util.LinkedList;
@@ -19,11 +18,6 @@ public class GameSolver {
   public GameSolver(GridUnit[][] grid, Dictionary dictionary) {
     this.grid = grid;
     this.dictionary = dictionary;
-  }
-
-  private int validate(String word) {
-    if (word.length() < MIN_WORD_LENGTH) return 0;
-    return this.dictionary.search(word);
   }
 
   public GameResult solve() {
@@ -44,15 +38,14 @@ public class GameSolver {
     GridUnit unit = grid[point.x][point.y];
     visited[point.x][point.y] = true;
     String word = prefix + unit.getLetter();
-    if (this.dictionary.prefix(word)) {
-      seq.add(point);
-      int score = this.validate(word);
-      if (score > 0) this.result.put(word, score, seq);
-      for (GridPoint n: point.getNeighbors()) {
-        if (!visited[n.x][n.y]) {
-          this.crawl(n, word, new LinkedList<>(seq), visited);
-          visited[n.x][n.y] = false;
-        }
+    int score = this.dictionary.search(word);
+    if (score < 0) return;
+    seq.add(point);
+    if (score > 0 && word.length() >= MIN_WORD_LENGTH) this.result.put(word, score, seq);
+    for (GridPoint n: point.getNeighbors()) {
+      if (!visited[n.x][n.y]) {
+        this.crawl(n, word, new LinkedList<>(seq), visited);
+        visited[n.x][n.y] = false;
       }
     }
   }

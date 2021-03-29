@@ -44,14 +44,11 @@ public class Dictionary {
     Dictionary dictionary = new Dictionary();
     System.out.println(dictionary.search("mask"));
     System.out.println(dictionary.search("silhouette"));
-    System.out.println(dictionary.prefix("silhou"));
+    System.out.println(dictionary.search("silhou"));
+    System.out.println(dictionary.search("ioklgmm"));
   }
 
   public int search(String word) {
     return this.trie.search(word);
-  }
-
-  public boolean prefix(String word) {
-    return this.trie.prefix(word);
   }
 }

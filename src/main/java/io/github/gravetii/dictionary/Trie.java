@@ -10,9 +10,9 @@ public class Trie {
   }
 
   /**
-   * Add a new word from the English dictionary to this trie.
+   * Add a new word to this trie.
    *
-   * @param word the word to add.
+   * @param word the word to add
    */
   public void insert(String word) {
     TrieNode node = root;
@@ -30,38 +30,21 @@ public class Trie {
   }
 
   /**
-   * Find if the given word belongs in the trie by returning its score.
+   * Search for the given word in the trie and return its score.
    *
-   * @param word the input word.
-   * @return the score of the word if it's valid, 0 otherwise.
+   * @param word the input word
+   * @return the score of the word: > 0 if the word exists, = 0 if the word exists as a prefix, < 0
+   *     if the word doesn't exist
    */
   public int search(String word) {
     TrieNode node = root;
     for (char ch : word.toCharArray()) {
       int idx = ch - 'a';
       TrieNode[] children = node.getChildren();
-      if (children[idx] == null) return 0;
+      if (children[idx] == null) return -1;
       node = children[idx];
     }
 
-    return node != null ? node.getScore() : 0;
-  }
-
-  /**
-   * Find if the given word is a prefix of some other word in the trie.
-   *
-   * @param word the input word.
-   * @return true if the word is a prefix of some other word, false otherwise.
-   */
-  public boolean prefix(String word) {
-    TrieNode node = root;
-    for (char ch : word.toCharArray()) {
-      int idx = ch - 'a';
-      TrieNode[] children = node.getChildren();
-      if (children[idx] == null) return false;
-      node = children[idx];
-    }
-
-    return node != null;
+    return node != null ? node.getScore() : -1;
   }
 }
