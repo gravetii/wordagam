@@ -15,12 +15,10 @@ public class Trie {
    * @param word the word to add.
    */
   public void insert(String word) {
-    char[] arr = word.toCharArray();
     TrieNode node = root;
     int score = 0;
-
-    for (char c : arr) {
-      int idx = c - 'a';
+    for (char ch : word.toCharArray()) {
+      int idx = ch - 'a';
       Alphabet alphabet = Alphabet.values()[idx];
       TrieNode[] children = node.getChildren();
       if (children[idx] == null) children[idx] = new TrieNode();
@@ -39,10 +37,8 @@ public class Trie {
    */
   public int search(String word) {
     TrieNode node = root;
-    char[] arr = word.toCharArray();
-
-    for (char c : arr) {
-      int idx = c - 'a';
+    for (char ch : word.toCharArray()) {
+      int idx = ch - 'a';
       TrieNode[] children = node.getChildren();
       if (children[idx] == null) return 0;
       node = children[idx];
@@ -59,10 +55,8 @@ public class Trie {
    */
   public boolean prefix(String word) {
     TrieNode node = root;
-    char[] arr = word.toCharArray();
-
-    for (char c : arr) {
-      int idx = c - 'a';
+    for (char ch : word.toCharArray()) {
+      int idx = ch - 'a';
       TrieNode[] children = node.getChildren();
       if (children[idx] == null) return false;
       node = children[idx];
