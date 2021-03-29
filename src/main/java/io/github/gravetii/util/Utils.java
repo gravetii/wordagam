@@ -16,14 +16,4 @@ public class Utils {
     String[] tokens = label.split("_");
     return Integer.parseInt(tokens[1]);
   }
-
-  public static boolean[][] arrCopy(boolean[][] arr) {
-    int len = arr.length;
-    boolean[][] result = new boolean[len][arr[0].length];
-    for (int i = 0; i < len; ++i) {
-      System.arraycopy(arr[i], 0, result[i], 0, arr[i].length);
-    }
-
-    return result;
-  }
 }
