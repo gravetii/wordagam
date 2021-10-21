@@ -1,4 +1,4 @@
-module kotlin_gradle_test {
+module wordagam {
     requires javafx.base;
     requires javafx.controls;
     requires javafx.fxml;

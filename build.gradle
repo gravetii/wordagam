@@ -23,7 +23,7 @@ dependencies {
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.8.1'
 }
 
-application.mainModule = "kotlin_gradle_test"
+application.mainModule = "wordagam"
 mainClassName = "io.github.gravetii.App"
 
 jlink {
