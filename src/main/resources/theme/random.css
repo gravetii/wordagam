@@ -1,0 +1,53 @@
+@import url("common.css");
+
+.custom-button {
+    -fx-text-fill: #000000;
+    -fx-background-color: #94CC3A;
+}
+
+.custom-button:hover {
+    -fx-background-color: #78BD3E;
+}
+
+.custom-button:pressed {
+    -fx-background-color: #4CA120;
+}
+
+#gamePane {
+    -fx-background-image: url("./verdura.jpg");
+}
+
+.progress-bar .bar {
+    -fx-background-color: #6DB838;
+    -fx-background-insets: 0, 1, 2;
+    -fx-padding: 0.416667em;
+}
+
+.text-field {
+    -fx-background-color: #5AAE29;
+    -fx-text-fill: #000000;
+}
+
+.menu-button:focused {
+    -fx-background: #5AAE29;
+}
+
+.menu-button:hover {
+    -fx-background: #5AAE29;
+}
+
+.menu-button:showing {
+    -fx-background: #5AAE29;
+}
+
+.menu-item:focused {
+    -fx-background: #5AAE29;
+}
+
+.menu-button .label {
+    -fx-text-fill: #000000
+}
+
+.menu-item .label {
+    -fx-text-fill: #000000;
+}
