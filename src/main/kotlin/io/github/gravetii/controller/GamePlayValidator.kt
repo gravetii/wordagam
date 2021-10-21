@@ -8,10 +8,10 @@ import io.github.gravetii.validation.ValidationResult
 class GamePlayValidator(private val result: GameResult) {
 
     private val seq: ArrayList<GridPoint> = arrayListOf()
-    private var builder = StringBuilder()
+    private val builder = StringBuilder()
 
     fun reset() {
-        builder = StringBuilder()
+        builder.clear()
         seq.clear()
     }
 
@@ -54,8 +54,6 @@ class GamePlayValidator(private val result: GameResult) {
         else word
     }
 
-    fun getSeq(): List<GridPoint> {
-        return ArrayList(seq)
-    }
+    fun getSeq(): List<GridPoint> = ArrayList(seq)
 
 }

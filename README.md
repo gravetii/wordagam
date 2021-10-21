@@ -27,7 +27,7 @@ The latest version of the artifact doesn't require a pre-existing Java runtime. 
 
 ## Building from source
 
-The project is built as a modular Java application using maven. You can build the project and create a custom runtime image for your platform using `jlink`. Run this in the root folder of the project - 
+The project is built as a modular Java application using gradle. You can build the project and create a custom runtime image for your platform using `jlink`. Run this in the root folder of the project - 
 ```
 ./gradlew clean jlink
 ```

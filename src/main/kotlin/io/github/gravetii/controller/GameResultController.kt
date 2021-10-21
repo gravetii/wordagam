@@ -1,13 +1,11 @@
 package io.github.gravetii.controller
 
 import io.github.gravetii.model.TableResult
-import javafx.event.ActionEvent
 import javafx.fxml.FXML
 import javafx.scene.control.TableColumn
 import javafx.scene.control.TableRow
 import javafx.scene.control.TableView
 import javafx.scene.control.cell.PropertyValueFactory
-import javafx.scene.input.MouseEvent
 
 class GameResultController(private val ref: GameGridController) : FxController {
 
@@ -47,7 +45,7 @@ class GameResultController(private val ref: GameGridController) : FxController {
     }
 
     @FXML
-    fun rotate(event: MouseEvent) = ref.rotate()
+    fun rotate() = ref.rotate()
 
     @FXML
     fun onGoBtnClick() {
