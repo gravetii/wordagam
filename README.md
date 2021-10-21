@@ -29,12 +29,12 @@ The latest version of the artifact doesn't require a pre-existing Java runtime. 
 
 The project is built as a modular Java application using maven. You can build the project and create a custom runtime image for your platform using `jlink`. Run this in the root folder of the project - 
 ```
-mvn clean javafx:jlink
+./gradlew clean jlink
 ```
 
 Running this command creates the runtime image which you can run to play the game - 
 ```
-target/wordagam/bin/play-wordagam
+build/image/bin/wordagam
 ```
 
 ## Game play video

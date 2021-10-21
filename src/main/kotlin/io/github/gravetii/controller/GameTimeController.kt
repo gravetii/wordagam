@@ -27,7 +27,7 @@ class GameTimeController(private val stage: Stage) : FxController {
     }
 
     @FXML
-    fun ok(event: ActionEvent) {
+    fun ok() {
         val pair = Pair(minutesTxtField.text, secondsTxtField.text)
         val gameTime = GameTimeValidator.validate(pair)
         if (gameTime != null) {
@@ -40,6 +40,6 @@ class GameTimeController(private val stage: Stage) : FxController {
     }
 
     @FXML
-    fun cancel(event: ActionEvent) = stage.close()
+    fun cancel() = stage.close()
 
 }

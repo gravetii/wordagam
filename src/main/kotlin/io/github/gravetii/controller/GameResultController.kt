@@ -50,7 +50,7 @@ class GameResultController(private val ref: GameGridController) : FxController {
     fun rotate(event: MouseEvent) = ref.rotate()
 
     @FXML
-    fun onGoBtnClick(event: ActionEvent) {
+    fun onGoBtnClick() {
         val word = ref.validateWordOnBtnClick()
         if (word != null) {
             displayer.showUserWord(word)
