@@ -11,12 +11,12 @@ A fun & interactive word game. Check out the screenshots and the gameplay video.
 
 ## Download & Play
 
-Download the latest artefacts [here](https://github.com/gravetii/wordagam/releases/tag/v2.0). You can download the MacOS artifact [here](https://github.com/gravetii/wordagam/releases/download/v2.0/wordagam-mac.zip), but artefacts for other platforms can also be built as easily. Check the `Building from source` section below.
+Download the latest artefacts [here](https://github.com/gravetii/wordagam/releases/tag/v3.0). You can download the MacOS artifact [here](https://github.com/gravetii/wordagam/releases/download/v3.0/wordagam-mac.zip), but artefacts for other platforms can also be built as easily. Check the `Building from source` section below.
 
-After downloading the zip file, extract it and run `play-wordagam` -  
+After downloading the zip file, extract it and run `wordagam` -  
 
 ```
-wordagam-mac/bin/play-wordagam
+./wordagam-mac/bin/wordagam
 ```
 
 You can download an older version of the game as a JAR file [here](https://github.com/gravetii/wordagam/releases/download/v1.6/wordagam-1.6.jar).
