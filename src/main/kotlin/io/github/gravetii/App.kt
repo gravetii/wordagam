@@ -29,7 +29,7 @@ class App : Application() {
     }
 
     override fun start(stage: Stage?) {
-        stage?.setOnCloseRequest { e -> run { if (!close(stage)) e.consume() } }
+        stage?.setOnCloseRequest { e -> if (!close(stage)) e.consume() }
         val scene = StartScene(stage!!)
         scene.show()
     }

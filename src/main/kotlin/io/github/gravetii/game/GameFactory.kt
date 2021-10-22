@@ -15,18 +15,17 @@ object GameFactory {
     private val executor = Executors.newFixedThreadPool(2)
 
     private fun create(): Game {
-        var game = Game()
-        while (game.getQuality() == GameQuality.LOW) game = Game()
-        return game
+        return generateSequence(Game()) {
+            if (it.getQuality() != GameQuality.LOW) null else Game()
+        }.last()
     }
 
     private fun backFill(n: Int) {
         (1..n).forEach { _ ->
             executor.submit {
                 val game = create()
-                val q = game.getQuality()
-                if (q == GameQuality.HIGH) queue.offerFirst(game)
-                else if (q == GameQuality.MEDIUM) queue.offerLast(game)
+                if (game.getQuality() == GameQuality.HIGH) queue.offerFirst(game)
+                else if (game.getQuality() == GameQuality.MEDIUM) queue.offerLast(game)
             }
         }
     }

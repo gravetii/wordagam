@@ -12,11 +12,11 @@ object Dictionary {
     fun loadWords() {
         var reader: BufferedReader? = null
         try {
-            val inputStream = ClassLoader.getSystemResourceAsStream(WORDS_FILE) ?: throw Exception()
-            reader = BufferedReader(InputStreamReader(inputStream))
+            val stream = ClassLoader.getSystemResourceAsStream(WORDS_FILE)
+            reader = BufferedReader(InputStreamReader(stream ?: throw Exception("Error while loading words file")))
             while (true) {
                 val word = reader.readLine() ?: break
-                trie.insert(word.trim().lowercase())
+                trie.insert(word)
             }
         } finally {
             reader?.close()
