@@ -55,6 +55,6 @@ object PreferenceStore {
     fun resetGameId() {
         preferences.put(GAME_ID_KEY, DEFAULT_GAME_TIME)
         store[GAME_ID_KEY] = DEFAULT_GAME_ID
-        }
+    }
 
 }

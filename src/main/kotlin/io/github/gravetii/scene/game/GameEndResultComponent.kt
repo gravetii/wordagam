@@ -12,10 +12,6 @@ class GameEndResultComponent(private val ref: GameGridComponent) :
     override val node: VBox = loadNode()
 
     init {
-        updateStats()
-    }
-
-    private fun updateStats() {
         val stats = ref.computeStats()
         controller.updateText(stats.toString())
     }
