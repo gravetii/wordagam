@@ -42,14 +42,12 @@ abstract class FxScene(val stage: Stage) {
 
     private fun applyCurrentTheme() {
         root.stylesheets.clear()
-        val styleSheet = ThemeFactory.loadCurrentTheme(false).styleSheet
+        val styleSheet = ThemeFactory.loadCurrentTheme(false).stylesheet
         root.stylesheets.add(styleSheet)
     }
 
     open fun setEventHandlers() {
-        root.addEventHandler(
-            Theme.THEME_CHANGE_EVENT_TYPE
-        ) {
+        root.addEventHandler(Theme.THEME_CHANGE_EVENT_TYPE) {
             applyCurrentTheme()
             it.consume()
         }

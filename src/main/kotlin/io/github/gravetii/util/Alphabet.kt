@@ -47,6 +47,6 @@ enum class Alphabet(val weight: Int, val score: Int) {
 
     }
 
-    fun get(): String = toString().lowercase(Locale.getDefault())
+    fun get(): String = toString().lowercase()
 
 }

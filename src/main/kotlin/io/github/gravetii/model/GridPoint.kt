@@ -17,22 +17,16 @@ data class GridPoint(val x: Int, val y: Int) {
 
     }
 
-    private var _neighbors: Set<GridPoint>? = null
-
-    fun getNeighbors(): Set<GridPoint> {
-        if (_neighbors == null) {
-            _neighbors = points.mapNotNull {
-                val point = Pair(x + it.first, y + it.second)
-                if (point.first in 0..3 && point.second in 0..3) {
-                    GridPoint(point.first, point.second)
-                } else null
-            }.toHashSet()
-        }
-
-        return _neighbors!!
+    val neighbors: Set<GridPoint> by lazy {
+        points.mapNotNull {
+            val point = Pair(x + it.first, y + it.second)
+            if (point.first in 0..3 && point.second in 0..3) {
+                GridPoint(point.first, point.second)
+            } else null
+        }.toHashSet()
     }
 
-    fun isNeighbor(point: GridPoint) = getNeighbors().contains(point)
+    fun isNeighbor(point: GridPoint): Boolean = neighbors.contains(point)
 
 }
 

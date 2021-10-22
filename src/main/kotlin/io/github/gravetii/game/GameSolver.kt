@@ -20,7 +20,7 @@ class GameSolver(private val grid: List<List<GridUnit>>) {
         if (score >= 0) {
             seq.add(point)
             if (score > 0 && word.length >= MIN_WORD_LENGTH) result.put(word, score, seq)
-            point.getNeighbors().forEach {
+            point.neighbors.forEach {
                 if (!visited[it.x][it.y]) {
                     crawl(it, word, ArrayList(seq), visited)
                     visited[it.x][it.y] = false

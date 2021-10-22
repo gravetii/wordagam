@@ -16,11 +16,11 @@ class GameGridComponent(private val game: Game) :
 
     private fun createNode(): GridPane {
         val gridPane = loadNode()
-        var c = 0
-        for (i in 0..3) {
-            for (j in 0..3) {
+        val panes = gridPane.children.iterator()
+        for (i in 0 until 4) {
+            for (j in 0 until 4) {
                 val unit = game.grid[i][j]
-                val pane = gridPane.children[c++] as Pane
+                val pane = panes.next() as Pane
                 val imgView = pane.children[0] as ImageView
                 imgView.image = unit.image
                 imgView.fitWidthProperty().bind(pane.widthProperty())
