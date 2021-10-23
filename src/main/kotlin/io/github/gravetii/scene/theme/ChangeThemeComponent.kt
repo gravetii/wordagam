@@ -25,7 +25,7 @@ class ChangeThemeComponent(stage: Stage) :
             val theme = ThemeFactory.get(type)
             val borderPane = gridPane.children[c] as BorderPane
             val pane = borderPane.center as Pane
-            val imgView = pane.children[0] as ImageView
+            val imgView = pane.children.first() as ImageView
             imgView.fitWidthProperty().bind(pane.widthProperty())
             imgView.fitHeightProperty().bind(pane.heightProperty())
             imgView.image = theme.image

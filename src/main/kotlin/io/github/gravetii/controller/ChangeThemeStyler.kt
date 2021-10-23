@@ -11,7 +11,7 @@ class ChangeThemeStyler {
     private fun remove() = current?.parent?.styleClass?.remove("theme-img-view-click")
 
     fun applySelectStyle(imgView: ImageView) {
-        if (current != null) remove()
+        current?.let { remove() }
         current = imgView
         apply()
     }

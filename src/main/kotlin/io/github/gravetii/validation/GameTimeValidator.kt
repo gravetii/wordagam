@@ -1,41 +1,39 @@
 package io.github.gravetii.validation
 
 import io.github.gravetii.model.GameTime
-import java.lang.NumberFormatException
+import kotlin.NumberFormatException
 
 object GameTimeValidator {
 
     private fun nonEmpty(obj: Pair<String, String>?): Pair<String, String>? {
-        return if (obj == null) null
-        else Pair(obj.first.ifEmpty { "0" }, obj.second.ifEmpty { "0" })
-    }
-
-    private fun isNumber(obj: Pair<String, String>?): Pair<String, String>? {
-        return if (obj == null) null
-        else {
-            val r = Regex("[0-9]+")
-            if (obj.first.matches(r) && obj.second.matches(r)) obj else null
+        return obj?.let {
+            Pair(it.first.ifEmpty { "0" }, it.second.ifEmpty { "0" })
         }
     }
 
-    private fun integerParser(obj: Pair<String, String>?): Pair<Int, Int>? {
-        if (obj == null) return null
-        return try {
-            Pair(obj.first.toInt(), obj.second.toInt())
-        } catch (e: NumberFormatException) {
-            null
+    private fun isNumber(obj: Pair<String, String>?): Pair<Int, Int>? {
+        return obj?.let {
+            val r = Regex("[0-9]+")
+            return if (it.first.matches(r) && it.second.matches(r)) {
+                try {
+                    Pair(it.first.toInt(), it.second.toInt())
+                } catch (e: NumberFormatException) {
+                    null
+                }
+            } else null
         }
     }
 
     private fun gameTimeParser(obj: Pair<Int, Int>?): GameTime? {
-        if (obj == null) return null
-        if (obj.first == 0 && obj.second == 0) return null
-        if (obj.second < 0 || obj.second > 60) return null
-        return GameTime(obj.first, obj.second)
+        return obj?.let {
+            return if (it.first == 0 && it.second == 0) null
+            else if (it.first < 0 || it.second > 60) null
+            else GameTime(it.first, it.second)
+        }
     }
 
     fun validate(obj: Pair<String, String>?): GameTime? {
-        return gameTimeParser(integerParser(isNumber(nonEmpty(obj))))
+        return gameTimeParser(isNumber(nonEmpty(obj)))
     }
 
 }

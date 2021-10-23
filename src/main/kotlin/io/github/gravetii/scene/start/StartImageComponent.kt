@@ -21,9 +21,8 @@ class StartImageComponent(private val root: BorderPane) : FxComponent<BaseContro
         val pane = loadNode()
         pane.prefHeightProperty().bind(root.heightProperty())
         pane.prefWidthProperty().bind(root.widthProperty())
-        val imgView: ImageView = pane.children[0] as ImageView
-        val img = Image(javaClass.getResource(SKIN_PATH)!!.toExternalForm())
-        imgView.image = img
+        val imgView = pane.children.first() as ImageView
+        imgView.image = Image(javaClass.getResource(SKIN_PATH)!!.toExternalForm())
         imgView.fitHeightProperty().bind(pane.heightProperty())
         imgView.fitWidthProperty().bind(pane.widthProperty())
         return pane
