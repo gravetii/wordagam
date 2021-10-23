@@ -11,7 +11,6 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 
-
 <BorderPane xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1">
    <top>
       <GridPane alignment="CENTER" hgap="15.0" prefHeight="400.0" prefWidth="500.0" vgap="15.0" BorderPane.alignment="CENTER">
@@ -41,7 +40,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="RANDOM" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -61,7 +60,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="AZURE" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -81,7 +80,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="BLACK AND WHITE" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -101,7 +100,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="BLUEZY" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -121,7 +120,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="EUANTHE" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -141,7 +140,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="CONTRA" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -161,7 +160,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="MOTLEY" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -181,7 +180,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="MOSSY" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -201,7 +200,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="SUNSET" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -221,7 +220,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="TERRA" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -241,7 +240,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="VERDURA" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
@@ -261,7 +260,7 @@
                       </Pane>
                   </center>
                   <bottom>
-                      <Label alignment="CENTER" BorderPane.alignment="CENTER">
+                      <Label alignment="CENTER" text="PATCHY" BorderPane.alignment="CENTER">
                           <padding>
                               <Insets top="5.0" />
                           </padding>
