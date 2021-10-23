@@ -5,8 +5,8 @@ data class GameTime(val minutes: Int, val seconds: Int) {
     companion object {
         fun from(value: String): GameTime {
             val tokens = value.split("_")
-            val minutes = tokens[0].toInt()
-            val seconds = tokens[1].toInt()
+            val minutes = tokens.first().toInt()
+            val seconds = tokens.last().toInt()
             return GameTime(minutes, seconds)
         }
     }
