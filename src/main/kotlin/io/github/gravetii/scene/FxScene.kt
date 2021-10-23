@@ -42,7 +42,7 @@ abstract class FxScene(val stage: Stage) {
 
     private fun applyCurrentTheme() {
         root.stylesheets.clear()
-        val styleSheet = ThemeFactory.loadCurrentTheme(false).stylesheet
+        val styleSheet = loadTheme().stylesheet
         root.stylesheets.add(styleSheet)
     }
 

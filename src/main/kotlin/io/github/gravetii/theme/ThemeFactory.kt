@@ -35,7 +35,7 @@ object ThemeFactory {
         } else themeMap[current]!!
     }
 
-    fun getAll(): List<ThemeType> = ThemeType.values().toList()
+    fun getAll(): Array<ThemeType> = ThemeType.values()
 
     fun changeTheme(type: ThemeType): Boolean {
         return if (type != current) {
