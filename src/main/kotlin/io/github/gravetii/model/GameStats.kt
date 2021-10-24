@@ -6,9 +6,9 @@ import io.github.gravetii.game.UserResult
 data class GameStats(val gameResult: GameResult, val userResult: UserResult) {
 
     override fun toString(): String {
-        val result = "Words - %d/%d\n" +
+        val result = "Words - %d out of %d\n" +
                 "Words percentage - %.2f\n\n" +
-                "Score - %d/%d\n" +
+                "Score - %d out of %d\n" +
                 "Score percentage - %.2f"
 
         val userWordsCount = userResult.getWordCount()

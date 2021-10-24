@@ -95,11 +95,11 @@ class GamePlayStyler(private val gamePane: GridPane, private val imgViews: Mutab
     private fun rearrange() {
         for (i in 0 until 2) {
             for (j in i until 3 - i) {
-                val temp = panes[i][j]
+                val pane = panes[i][j]
                 panes[i][j] = panes[3 - j][i]
                 panes[3 - j][i] = panes[3 - i][3 - j]
                 panes[3 - i][3 - j] = panes[j][3 - i]
-                panes[j][3 - i] = temp
+                panes[j][3 - i] = pane
             }
         }
 
