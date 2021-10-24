@@ -12,27 +12,26 @@ class Trie {
     private val root = TrieNode()
 
     fun insert(word: String) {
-        var node = root
-        var score = 0
-        word.forEach {
-            val idx = it - 'a'
+        fun insertInternal(itr: CharIterator, root: TrieNode, score: Int) {
+            val idx = itr.nextChar() - 'a'
             val alphabet = Alphabet.values()[idx]
-            node = node.children.getOrPut(idx) { TrieNode() }
-            score += alphabet.score
+            val node = root.children.getOrPut(idx) { TrieNode() }
+            if (itr.hasNext()) insertInternal(itr, node, score + alphabet.score)
+            else node.score = score + alphabet.score
         }
 
-        node.score = score
+        insertInternal(word.iterator(), root, 0)
     }
 
     fun search(word: String): Int? {
-        var node: TrieNode? = root
-        word.forEach {
-            val idx = it - 'a'
-            node = node?.children?.get(idx)
-            if (node == null) return null
+        fun searchInternal(itr: CharIterator, root: TrieNode): Int? {
+            val idx = itr.nextChar() - 'a'
+            val node = root.children[idx]
+            return if (itr.hasNext()) node?.let { searchInternal(itr, it) }
+            else node?.score
         }
 
-        return node?.score
+        return searchInternal(word.iterator(), root)
     }
 
 }
