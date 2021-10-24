@@ -15,7 +15,6 @@ import javafx.scene.control.TableView
 import javafx.scene.control.cell.PropertyValueFactory
 import javafx.util.Duration
 
-
 class GameEndResultController(private val ref: GameGridController) : FxController {
 
     companion object {
@@ -105,7 +104,7 @@ class GameEndResultController(private val ref: GameGridController) : FxControlle
                 KeyValue(node.translateYProperty(), 5, interpolator)
             ),
             KeyFrame(
-                Duration.millis(900.0),
+                Duration.millis(1000.0),
                 KeyValue(node.translateYProperty(), 0, interpolator)
             ),
         )
