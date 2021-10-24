@@ -13,7 +13,6 @@ import javafx.stage.Stage
 class ChangeThemeController(private val stage: Stage) : FxController {
 
     private val imgViewMap: MutableMap<Int, ImageView> = mutableMapOf()
-    private val styler = ChangeThemeStyler()
 
     @FXML
     private lateinit var footerLabel: Label
@@ -91,7 +90,7 @@ class ChangeThemeController(private val stage: Stage) : FxController {
             val idx = Utils.getImageViewIndexFromLabel(imgView.id)
             if (idx < ThemeFactory.getAll().size) {
                 val type = ThemeFactory.getAll()[idx]
-                styler.applySelectStyle(imgView)
+                ChangeThemeStyler.applySelectStyle(imgView)
                 if (ThemeFactory.changeTheme(type)) {
                     ThemeFactory.dispatch(stage.owner)
                     updateThemeChange(type)
@@ -104,7 +103,7 @@ class ChangeThemeController(private val stage: Stage) : FxController {
 
     private fun initStyle() {
         val idx = ThemeFactory.getAll().indexOf(ThemeFactory.current)
-        imgViewMap[idx]?.let { styler.applySelectStyle(it) }
+        imgViewMap[idx]?.let { ChangeThemeStyler.applySelectStyle(it) }
     }
 
     private fun updateThemeChange(type: ThemeType) {
