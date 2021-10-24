@@ -4,7 +4,7 @@ import io.github.gravetii.controller.GameEndResultController
 import io.github.gravetii.scene.FxComponent
 import javafx.scene.layout.VBox
 
-class GameEndResultComponent(private val ref: GameGridComponent) :
+class GameEndResultComponent(ref: GameGridComponent) :
     FxComponent<GameEndResultController, VBox>("gameEndResult.fxml") {
 
     override val controller: GameEndResultController = GameEndResultController(ref.controller)

@@ -9,9 +9,7 @@ class ChangeThemeScene(stage: Stage) : FxScene(stage) {
 
     private val component = ChangeThemeComponent(stage)
 
-    override fun build() {
-        showCenter(component)
-    }
+    override fun build() = showCenter(component)
 
     override fun title() = "Change theme"
 

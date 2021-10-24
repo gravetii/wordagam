@@ -9,9 +9,7 @@ class WhatIsItScene(stage: Stage) : FxScene(stage) {
 
     private val component = WhatIsItComponent()
 
-    override fun build() {
-        showCenter(component)
-    }
+    override fun build() = showCenter(component)
 
     override fun title() = "What is it?"
 

@@ -37,8 +37,7 @@ class GameSolver(private val grid: List<List<GridUnit>>) {
             }
         }
 
-        result.defineQuality()
-        return result
+        return result.defineQuality()
     }
 
 }

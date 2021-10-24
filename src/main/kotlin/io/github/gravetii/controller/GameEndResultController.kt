@@ -55,9 +55,10 @@ class GameEndResultController(private val ref: GameGridController) : FxControlle
                 if (!row.isEmpty) {
                     val result = row.item
                     if (result.nonEmpty()) {
-                        val word = result.word
-                        if (result.byUser) ref.revisitUserWord(word!!)
-                        else ref.revisitGameWord(word!!)
+                        result.word?.let {
+                            if (result.byUser) ref.revisitUserWord(it)
+                            else ref.revisitGameWord(it)
+                        }
                     }
                 }
             }
@@ -70,17 +71,11 @@ class GameEndResultController(private val ref: GameGridController) : FxControlle
         showAllWords()
     }
 
-    private fun showUserWords() {
-        ref.getAllUserWords().values.forEach { displayer.showUserWord(it) }
-    }
-
-    private fun showGameWords() {
-        ref.getAllGameWords().values.forEach { displayer.showGameWord(it) }
-    }
-
     private fun showAllWords() {
-        showUserWords()
-        showGameWords()
+        with(displayer) {
+            ref.getAllUserWords().values.forEach(::showUserWord)
+            ref.getAllGameWords().values.forEach(::showGameWord)
+        }
     }
 
     private fun applyAnimation(node: Node) {

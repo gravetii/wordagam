@@ -8,7 +8,6 @@ import io.github.gravetii.scene.menu.MenuBarComponent
 import io.github.gravetii.theme.ThemeFactory
 import javafx.application.Platform
 import javafx.stage.Stage
-import java.lang.RuntimeException
 
 class GameScene(stage: Stage) : FxScene(stage) {
 

@@ -103,7 +103,7 @@ class ChangeThemeController(private val stage: Stage) : FxController {
 
     private fun initStyle() {
         val idx = ThemeFactory.getAll().indexOf(ThemeFactory.current)
-        imgViewMap[idx]?.let { ChangeThemeStyler.applySelectStyle(it) }
+        imgViewMap[idx]?.let(ChangeThemeStyler::applySelectStyle)
     }
 
     private fun updateThemeChange(type: ThemeType) {

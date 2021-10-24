@@ -50,8 +50,7 @@ class GamePlayValidator(private val result: GameResult) {
 
     fun validate(): String? {
         val word = builder.toString()
-        return if (word.isEmpty() || !result.exists(word)) null
-        else word
+        return if (word.isNotEmpty() && result.exists(word)) word else null
     }
 
     fun getSeq(): List<GridPoint> = ArrayList(seq)

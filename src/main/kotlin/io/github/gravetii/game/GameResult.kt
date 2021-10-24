@@ -24,10 +24,11 @@ class GameResult {
 
     fun get(word: String): WordResult = wordToResultMap[word]!!
 
-    fun defineQuality() {
+    fun defineQuality(): GameResult {
         quality = GameQuality.values()
             .dropWhile { wordToResultMap.size < it.minCount }
             .firstOrNull() ?: GameQuality.LOW
+        return this
     }
 
 }

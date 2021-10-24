@@ -10,6 +10,29 @@ abstract class FxScene(val stage: Stage) {
 
     protected val root = BorderPane()
 
+    private fun setDimensions() = preferredDimensions()?.setFor(stage)
+
+    private fun applyCurrentTheme() {
+        root.stylesheets.clear()
+        val styleSheet = loadTheme().stylesheet
+        root.stylesheets.add(styleSheet)
+    }
+
+    abstract fun build()
+
+    abstract fun title(): String
+
+    open fun preferredDimensions(): FxDimensions? = null
+
+    open fun loadTheme(): Theme = ThemeFactory.loadCurrentTheme(false)
+
+    open fun setEventHandlers() {
+        root.addEventHandler(Theme.THEME_CHANGE_EVENT_TYPE) {
+            applyCurrentTheme()
+            it.consume()
+        }
+    }
+
     fun showTop(component: FxComponent<*, *>) {
         root.top = component.node
     }
@@ -28,29 +51,6 @@ abstract class FxScene(val stage: Stage) {
 
     fun showCenter(component: FxComponent<*, *>) {
         root.center = component.node
-    }
-
-    abstract fun build()
-
-    abstract fun title(): String
-
-    open fun preferredDimensions(): FxDimensions? = null
-
-    private fun setDimensions() = preferredDimensions()?.setFor(stage)
-
-    open fun loadTheme(): Theme = ThemeFactory.loadCurrentTheme(false)
-
-    private fun applyCurrentTheme() {
-        root.stylesheets.clear()
-        val styleSheet = loadTheme().stylesheet
-        root.stylesheets.add(styleSheet)
-    }
-
-    open fun setEventHandlers() {
-        root.addEventHandler(Theme.THEME_CHANGE_EVENT_TYPE) {
-            applyCurrentTheme()
-            it.consume()
-        }
     }
 
     fun show() {

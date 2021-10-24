@@ -33,9 +33,10 @@ class GameResultController(private val ref: GameGridController) : FxController {
             row.setOnMouseClicked {
                 if (!row.isEmpty) {
                     val result = row.item
-                    val word = result.word
-                    if (result.byUser) ref.revisitUserWord(word!!)
-                    else ref.revisitGameWord(word!!)
+                    result.word?.let {
+                        if (result.byUser) ref.revisitUserWord(it)
+                        else ref.revisitGameWord(it)
+                    }
                 }
             }
             row
@@ -51,8 +52,10 @@ class GameResultController(private val ref: GameGridController) : FxController {
     fun onGoBtnClick() {
         val word = ref.validateWordOnBtnClick()
         if (word != null) {
-            displayer.showUserWord(word)
-            displayer.setMarker()
+            with(displayer) {
+                showUserWord(word)
+                setMarker()
+            }
         }
     }
 

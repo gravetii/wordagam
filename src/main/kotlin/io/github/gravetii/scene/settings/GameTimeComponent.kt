@@ -5,7 +5,7 @@ import io.github.gravetii.scene.FxComponent
 import javafx.scene.layout.AnchorPane
 import javafx.stage.Stage
 
-class GameTimeComponent(val stage: Stage) : FxComponent<GameTimeController, AnchorPane>("gameTime.fxml") {
+class GameTimeComponent(stage: Stage) : FxComponent<GameTimeController, AnchorPane>("gameTime.fxml") {
 
     override val controller: GameTimeController = GameTimeController(stage)
 

@@ -9,9 +9,7 @@ class GameTimeScene(stage: Stage) : FxScene(stage) {
 
     private val component = GameTimeComponent(stage)
 
-    override fun build() {
-        showCenter(component)
-    }
+    override fun build() = showCenter(component)
 
     override fun title() = "Configure game time"
 

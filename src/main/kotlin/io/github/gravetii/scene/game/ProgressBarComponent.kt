@@ -5,7 +5,7 @@ import io.github.gravetii.scene.FxComponent
 import javafx.scene.control.ProgressBar
 import javafx.scene.layout.BorderPane
 
-class ProgressBarComponent(private val root: BorderPane) :
+class ProgressBarComponent(root: BorderPane) :
     FxComponent<ProgressBarController, ProgressBar>("progressBar.fxml") {
 
     override val controller: ProgressBarController = ProgressBarController(root)

@@ -9,9 +9,7 @@ class AboutScene(stage: Stage) : FxScene(stage) {
 
     private val component = AboutComponent()
 
-    override fun build() {
-        showCenter(component)
-    }
+    override fun build() = showCenter(component)
 
     override fun title() = "About"
 
