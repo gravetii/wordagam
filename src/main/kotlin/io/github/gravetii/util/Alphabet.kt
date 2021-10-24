@@ -1,6 +1,5 @@
 package io.github.gravetii.util
 
-import java.util.*
 import java.util.concurrent.ThreadLocalRandom
 
 enum class Alphabet(val weight: Int, val score: Int) {
@@ -36,13 +35,12 @@ enum class Alphabet(val weight: Int, val score: Int) {
         private val totalWeight = values().sumOf { it.weight }
 
         fun newRandom(): Alphabet {
-            var value = 1 + ThreadLocalRandom.current().nextInt(totalWeight)
-            for (alphabet in values()) {
-                value -= alphabet.weight
-                if (value <= 0) return alphabet
+            val value = 1 + ThreadLocalRandom.current().nextInt(totalWeight)
+            var score = 0
+            return values().first {
+                score += it.weight
+                score >= value
             }
-
-            return A
         }
 
     }

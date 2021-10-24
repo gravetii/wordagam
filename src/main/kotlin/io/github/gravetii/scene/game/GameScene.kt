@@ -43,12 +43,8 @@ class GameScene(stage: Stage) : FxScene(stage) {
 
     private fun showEndGameScene() {
         Platform.runLater {
-            try {
-                val scene = GameEndScene(stage, gridComponent)
-                scene.show()
-            } catch (e: Exception) {
-                throw RuntimeException(e)
-            }
+            val scene = GameEndScene(stage, gridComponent)
+            scene.show()
         }
     }
 

@@ -107,13 +107,11 @@ class ChangeThemeController(private val stage: Stage) : FxController {
     }
 
     private fun updateThemeChange(type: ThemeType) {
-        val text = if (ThemeType.RANDOM == type) {
+        footerLabel.text = if (ThemeType.RANDOM == type) {
             "You have changed the theme to be random, you will see a new theme each time"
         } else {
             "Theme changed to ${type.getDisplayName()}"
         }
-
-        footerLabel.text = text
     }
 
 }
