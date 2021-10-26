@@ -37,7 +37,7 @@ class MenuBarController(private val stage: Stage) : FxController {
         if (!Game.isRunning() || showQuitGameAlert()) {
             val scene = GameScene(stage)
             scene.show()
-            Game.isInstanceRunning = true
+            Game.setRunning(true)
         }
     }
 

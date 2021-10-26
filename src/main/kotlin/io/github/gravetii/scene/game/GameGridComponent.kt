@@ -7,8 +7,7 @@ import javafx.scene.image.ImageView
 import javafx.scene.layout.GridPane
 import javafx.scene.layout.Pane
 
-class GameGridComponent(private val game: Game) :
-    FxComponent<GameGridController, GridPane>("gameGrid.fxml") {
+class GameGridComponent(private val game: Game) : FxComponent<GameGridController, GridPane>("gameGrid.fxml") {
 
     override val controller: GameGridController = GameGridController(game)
 

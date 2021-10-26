@@ -17,17 +17,17 @@ class GameScene(stage: Stage) : FxScene(stage) {
     private val progressBarComponent = ProgressBarComponent(root)
     private val menuBarComponent = MenuBarComponent(stage, root)
 
+    private fun endGame() {
+        gridComponent.endGame()
+        showEndGameScene()
+        Game.setRunning(false)
+    }
+
     override fun build() {
         showTop(menuBarComponent)
         showCenter(gridComponent)
         showRight(resultComponent)
         showBottom(progressBarComponent)
-    }
-
-    private fun endGame() {
-        gridComponent.endGame()
-        showEndGameScene()
-        Game.isInstanceRunning = false
     }
 
     override fun loadTheme() = ThemeFactory.loadCurrentTheme(true)
