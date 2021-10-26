@@ -13,6 +13,6 @@ class AboutScene(stage: Stage) : FxScene(stage) {
 
     override fun title() = "About"
 
-    override fun preferredDimensions(): FxDimensions = FxDimensions(Dimension2D(500.0, 200.0))
+    override fun preferredDimensions(): FxDimensions = FxDimensions(Dimension2D(500.0, 210.0))
 
 }
