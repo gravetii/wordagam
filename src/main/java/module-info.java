@@ -34,5 +34,4 @@ module wordagam {
     exports io.github.gravetii.model;
     exports io.github.gravetii.theme;
     exports io.github.gravetii.validation;
-    exports io.github.gravetii.util;
 }

@@ -1,6 +1,6 @@
 package io.github.gravetii.dictionary
 
-import io.github.gravetii.util.Alphabet
+import io.github.gravetii.model.Alphabet
 
 class TrieNode {
     val children: MutableMap<Int, TrieNode> = mutableMapOf()

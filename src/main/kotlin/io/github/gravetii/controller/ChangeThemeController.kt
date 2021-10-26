@@ -2,7 +2,6 @@ package io.github.gravetii.controller
 
 import io.github.gravetii.theme.ThemeFactory
 import io.github.gravetii.theme.ThemeType
-import io.github.gravetii.util.Utils
 import javafx.fxml.FXML
 import javafx.scene.control.Label
 import javafx.scene.image.ImageView
@@ -83,23 +82,7 @@ class ChangeThemeController(private val stage: Stage) : FxController {
         footerLabel.text = "Your current theme is set to ${ThemeFactory.current.getDisplayName()}"
     }
 
-    @FXML
-    fun onImgViewClick(event: MouseEvent) {
-        if (event.button.equals(MouseButton.PRIMARY)) {
-            val imgView = event.source as ImageView
-            val idx = Utils.getImageViewIndexFromLabel(imgView.id)
-            if (idx < ThemeFactory.getAll().size) {
-                val type = ThemeFactory.getAll()[idx]
-                ChangeThemeStyler.applySelectStyle(imgView)
-                if (ThemeFactory.changeTheme(type)) {
-                    ThemeFactory.dispatch(stage.owner)
-                    updateThemeChange(type)
-                }
-            }
-
-            if (event.clickCount == 2) stage.close()
-        }
-    }
+    private fun String.getImageViewIndex(): Int = split("_")[1].toInt()
 
     private fun initStyle() {
         val idx = ThemeFactory.getAll().indexOf(ThemeFactory.current)
@@ -111,6 +94,24 @@ class ChangeThemeController(private val stage: Stage) : FxController {
             "You have changed the theme to be random, you will see a new theme each time"
         } else {
             "Theme changed to ${type.getDisplayName()}"
+        }
+    }
+
+    @FXML
+    fun onImgViewClick(event: MouseEvent) {
+        if (event.button.equals(MouseButton.PRIMARY)) {
+            val imgView = event.source as ImageView
+            val idx = imgView.id.getImageViewIndex()
+            if (idx < ThemeFactory.getAll().size) {
+                val type = ThemeFactory.getAll()[idx]
+                ChangeThemeStyler.applySelectStyle(imgView)
+                if (ThemeFactory.changeTheme(type)) {
+                    ThemeFactory.dispatch(stage.owner)
+                    updateThemeChange(type)
+                }
+            }
+
+            if (event.clickCount == 2) stage.close()
         }
     }
 

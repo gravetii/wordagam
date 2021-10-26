@@ -1,4 +1,4 @@
-package io.github.gravetii.util
+package io.github.gravetii.model
 
 import java.util.concurrent.ThreadLocalRandom
 

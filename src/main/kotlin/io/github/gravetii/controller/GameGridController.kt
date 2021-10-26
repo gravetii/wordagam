@@ -3,8 +3,8 @@ package io.github.gravetii.controller
 import io.github.gravetii.game.Game
 import io.github.gravetii.game.UserResult
 import io.github.gravetii.model.GameStats
+import io.github.gravetii.model.GridPoint
 import io.github.gravetii.model.WordResult
-import io.github.gravetii.util.Utils
 import io.github.gravetii.validation.ValidationResult
 import javafx.fxml.FXML
 import javafx.scene.image.ImageView
@@ -91,12 +91,9 @@ class GameGridController(private val game: Game) : FxController {
         styler = GamePlayStyler(gamePane, imgViewMap.values)
     }
 
-    @FXML
-    fun onImgViewClick(event: MouseEvent) {
-        val imgView = event.source as ImageView
-        val point = Utils.getGridPointFromImageViewLabel(imgView.id)
-        val unit = game.getGridUnit(point)
-        applyStyleAfterValidation(imgView, validator.validate(unit))
+    private fun String.getImageViewLabel(): GridPoint {
+        val tokens = split("_")
+        return GridPoint(tokens[1].toInt(), tokens[2].toInt())
     }
 
     private fun applyStyleAfterValidation(imgView: ImageView, result: ValidationResult) {
@@ -105,6 +102,24 @@ class GameGridController(private val game: Game) : FxController {
             ValidationResult.LAST_INVALID -> styler.forLastInvalidClick(imgView)
             else -> styler.forValidClick(imgView)
         }
+    }
+
+    private fun revisit(result: WordResult) {
+        val imgViews = result.seq.map {
+            val imgView = "imgView_${it.x}_${it.y}"
+            imgViewMap[imgView]!!
+        }
+
+        validator.reset()
+        styler.revisit(imgViews)
+    }
+
+    @FXML
+    fun onImgViewClick(event: MouseEvent) {
+        val imgView = event.source as ImageView
+        val point = imgView.id.getImageViewLabel()
+        val unit = game.getGridUnit(point)
+        applyStyleAfterValidation(imgView, validator.validate(unit))
     }
 
     fun rotate() = styler.rotate()
@@ -128,16 +143,6 @@ class GameGridController(private val game: Game) : FxController {
 
         validator.reset()
         return result
-    }
-
-    private fun revisit(result: WordResult) {
-        val imgViews = result.seq.map {
-            val imgView = "imgView_${it.x}_${it.y}"
-            imgViewMap[imgView]!!
-        }
-        
-        validator.reset()
-        styler.revisit(imgViews)
     }
 
     fun revisitUserWord(word: String) = revisit(userResult.get(word))

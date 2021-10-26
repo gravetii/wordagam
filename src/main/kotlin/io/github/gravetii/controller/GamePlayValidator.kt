@@ -10,11 +10,6 @@ class GamePlayValidator(private val result: GameResult) {
     private val seq: ArrayList<GridPoint> = arrayListOf()
     private val builder = StringBuilder()
 
-    fun reset() {
-        builder.clear()
-        seq.clear()
-    }
-
     private fun append(unit: GridUnit) {
         builder.append(unit.letter)
         seq.add(unit.point)
@@ -51,6 +46,11 @@ class GamePlayValidator(private val result: GameResult) {
     fun validate(): String? {
         val word = builder.toString()
         return if (word.isNotEmpty() && result.exists(word)) word else null
+    }
+
+    fun reset() {
+        builder.clear()
+        seq.clear()
     }
 
     fun getSeq(): List<GridPoint> = ArrayList(seq)
