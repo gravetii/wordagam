@@ -50,12 +50,9 @@ class GameResultController(private val ref: GameGridController) : FxController {
 
     @FXML
     fun onGoBtnClick() {
-        val word = ref.validateWordOnBtnClick()
-        if (word != null) {
-            with(displayer) {
-                showUserWord(word)
-                setMarker()
-            }
+        ref.validateWordOnBtnClick()?.let {
+            displayer.showUserWord(it)
+            displayer.setMarker()
         }
     }
 

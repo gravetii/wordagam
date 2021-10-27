@@ -105,9 +105,9 @@ class GameGridController(private val game: Game) : FxController {
     }
 
     private fun revisit(result: WordResult) {
-        val imgViews = result.seq.map {
+        val imgViews = result.seq.mapNotNull {
             val imgView = "imgView_${it.x}_${it.y}"
-            imgViewMap[imgView]!!
+            imgViewMap[imgView]
         }
 
         validator.reset()

@@ -14,10 +14,7 @@ object Dictionary {
         try {
             val stream = ClassLoader.getSystemResourceAsStream(WORDS_FILE)
             reader = BufferedReader(InputStreamReader(stream ?: throw Exception("Error while loading words file")))
-            while (true) {
-                val word = reader.readLine() ?: break
-                trie.insert(word)
-            }
+            while (true) reader.readLine()?.also { trie.insert(it) } ?: break
         } finally {
             reader?.close()
         }
