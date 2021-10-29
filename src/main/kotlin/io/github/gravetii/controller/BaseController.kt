@@ -1,4 +1,3 @@
 package io.github.gravetii.controller
 
-class BaseController : FxController {
-}
+class BaseController : FxController

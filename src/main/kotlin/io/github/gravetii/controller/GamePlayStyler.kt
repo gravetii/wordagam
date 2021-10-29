@@ -29,47 +29,47 @@ class GamePlayStyler(private val gamePane: GridPane, private val imgViews: Mutab
 
     private fun applyRotateTransition() {
         val transition = ParallelTransition()
-        transition.children.addAll(seq.map {
+        seq.forEach {
             val rotate = RotateTransition(Duration.millis(65.0), it)
             rotate.byAngle = 360.0
             rotate.cycleCount = 4
-            rotate
-        })
+            transition.children.add(rotate)
+        }
 
         transition.play()
     }
 
     private fun applyFadeTransition() {
         val transition = ParallelTransition()
-        transition.children.addAll(seq.map {
+        seq.forEach {
             val fade = FadeTransition(Duration.millis(50.0), it)
             fade.fromValue = 1.0
             fade.toValue = 0.3
             fade.cycleCount = 6
             fade.isAutoReverse = true
-            fade
-        })
+            transition.children.add(fade)
+        }
 
         transition.play()
     }
 
     private fun applyScaleTransition() {
         val transition = ParallelTransition()
-        transition.children.addAll(seq.map {
+        seq.forEach {
             val scale = ScaleTransition(Duration.millis(50.0), it)
             scale.byX = 0.2
             scale.byY = 0.2
             scale.cycleCount = 6
             scale.isAutoReverse = true
-            scale
-        })
+            transition.children.add(scale)
+        }
 
         transition.play()
     }
 
     fun applyEndTransition() {
         val transition = ParallelTransition()
-        transition.children.addAll(imgViews.map {
+        imgViews.map {
             val scale = ScaleTransition(Duration.millis(100.0))
             scale.byX = 0.5
             scale.byY = 0.5
@@ -80,8 +80,8 @@ class GamePlayStyler(private val gamePane: GridPane, private val imgViews: Mutab
             translate.byY = 0.5
             translate.cycleCount = 4
             translate.isAutoReverse = true
-            ParallelTransition(it, scale, translate)
-        })
+            transition.children.add(ParallelTransition(it, scale, translate))
+        }
 
         transition.play()
     }

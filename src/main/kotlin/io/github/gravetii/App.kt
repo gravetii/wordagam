@@ -12,48 +12,30 @@ import javafx.stage.Stage
 
 class App : Application() {
 
-    private fun exitCheck(stage: Stage?): Boolean {
-        val alert = Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.NO, ButtonType.YES)
-        alert.headerText = ""
-        alert.title = "Really Exit?"
-        alert.initOwner(stage)
-        val type = alert.showAndWait()
-        return type.orElse(ButtonType.NO) == ButtonType.YES
-    }
+    companion object {
+        @JvmStatic
+        fun main(args: Array<String>) = launch(App::class.java)
 
-    private fun close(stage: Stage?): Boolean {
-        return if (exitCheck(stage)) {
-            Platform.exit()
-            true
-        } else false
+        private fun exitCheck(stage: Stage?): Boolean {
+            val alert = Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.NO, ButtonType.YES)
+            alert.headerText = ""
+            alert.title = "Really Exit?"
+            alert.initOwner(stage!!)
+            return alert.showAndWait().orElse(ButtonType.NO) == ButtonType.YES
+        }
+
+        fun close(stage: Stage?): Boolean {
+            return if (exitCheck(stage)) {
+                Platform.exit()
+                true
+            } else false
+        }
     }
 
     override fun start(stage: Stage?) {
         stage?.setOnCloseRequest { e -> if (!close(stage)) e.consume() }
         val scene = StartScene(stage!!)
         scene.show()
-    }
-
-    companion object {
-        @JvmStatic
-        fun main(args: Array<String>) {
-            launch(App::class.java)
-        }
-
-        private fun exitCheck(stage: Stage): Boolean {
-            val alert = Alert(Alert.AlertType.CONFIRMATION, "Are you sure?", ButtonType.NO, ButtonType.YES)
-            alert.headerText = ""
-            alert.title = "Really Exit?"
-            alert.initOwner(stage)
-            return alert.showAndWait().orElse(ButtonType.NO) == ButtonType.YES
-        }
-
-        fun close(stage: Stage): Boolean {
-            return if (exitCheck(stage)) {
-                Platform.exit()
-                true
-            } else false
-        }
     }
 
     override fun init() {
