@@ -19,9 +19,9 @@ class GamePlayStyler(private val gamePane: GridPane, private val imgViews: Mutab
         pauser.setOnFinished { invalidate() }
     }
 
-    private fun revert(imgView: ImageView) = imgView.styleClass.remove("custom-img-view-click")
+    private fun ImageView.revert() = styleClass.remove("custom-img-view-click")
 
-    private fun revert() = seq.forEach { revert(it) }
+    private fun revert() = seq.forEach { it.revert() }
 
     private fun reset() = seq.clear()
 
@@ -156,7 +156,7 @@ class GamePlayStyler(private val gamePane: GridPane, private val imgViews: Mutab
     }
 
     fun forLastInvalidClick(imgView: ImageView) {
-        revert(imgView)
+        imgView.revert()
         truncate()
     }
 

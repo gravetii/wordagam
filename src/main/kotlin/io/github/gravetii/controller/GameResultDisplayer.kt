@@ -9,18 +9,17 @@ class GameResultDisplayer(private val table: TableView<TableResult>) {
     private val displayedWords: MutableSet<String> = hashSetOf()
     private var counter = 0
 
-    private fun show(result: WordResult, byUser: Boolean) {
-        val word = result.word
+    private fun WordResult.show(byUser: Boolean) {
         if (!displayedWords.contains(word)) {
-            val tableResult = TableResult(++counter, word, result.score, byUser)
-            table.items.add(tableResult)
+            val result = TableResult(++counter, word, score, byUser)
+            table.items.add(result)
             displayedWords.add(word)
         }
     }
 
-    fun showGameWord(result: WordResult) = show(result, false)
+    fun showGameWord(result: WordResult) = result.show(false)
 
-    fun showUserWord(result: WordResult) = show(result, true)
+    fun showUserWord(result: WordResult) = result.show(true)
 
     fun setMarker() = table.scrollTo(counter)
 
