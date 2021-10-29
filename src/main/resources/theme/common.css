@@ -89,19 +89,19 @@
 }
 
 .text-area {
-    -fx-text-fill: #000000;
-    -fx-focus-color: #FFFFFF;
+    -fx-text-fill: #FFFFFF;
+    -fx-focus-color: #000000;
 }
 
 .text-area .content {
-    -fx-background-color: #FFFFFF;
     -fx-font-size: 17px;
+    -fx-background-image: url("../images/textbox-back.jpg")
 }
 
 #resultBox {
     -fx-text-fill: #000000;
     -fx-font-size: 14px;
-    -fx-background-image: url("./result_box.jpg");
+    -fx-background-image: url("../images/result_box.jpg");
     -fx-effect: dropshadow(gaussian , rgba(255,255,255,0.5) , 0,0,0,1);
 }
 
