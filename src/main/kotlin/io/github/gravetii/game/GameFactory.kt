@@ -9,10 +9,10 @@ object GameFactory {
 
     private val logger = Logger.getLogger(javaClass.canonicalName)
 
-    private const val MAX_GAMES_IN_QUEUE = 5
+    private const val MAX_GAMES_IN_QUEUE = 7
 
     private val queue = LinkedBlockingDeque<Game>()
-    private val executor = Executors.newFixedThreadPool(2)
+    private val executor = Executors.newSingleThreadExecutor()
 
     private fun create(): Game {
         return generateSequence(Game()) {
@@ -23,9 +23,11 @@ object GameFactory {
     private fun backFill(n: Int) {
         (1..n).forEach { _ ->
             executor.submit {
-                val game = create()
-                if (game.getQuality() == GameQuality.HIGH) queue.offerFirst(game)
-                else if (game.getQuality() == GameQuality.MEDIUM) queue.offerLast(game)
+                if (queue.size < MAX_GAMES_IN_QUEUE) {
+                    val game = create()
+                    if (game.getQuality() == GameQuality.HIGH) queue.offerFirst(game)
+                    else if (game.getQuality() == GameQuality.MEDIUM) queue.offerLast(game)
+                }
             }
         }
     }
