@@ -1,5 +1,5 @@
 plugins {
-    id 'org.jetbrains.kotlin.jvm' version '1.5.10'
+    id 'org.jetbrains.kotlin.jvm' version '1.5.31'
     id 'java'
     id 'application'
     id 'org.openjfx.javafxplugin' version '0.0.10'
@@ -29,6 +29,12 @@ mainClassName = "io.github.gravetii.App"
 jlink {
     launcher {
         name = 'wordagam'
+    }
+}
+
+compileKotlin {
+    kotlinOptions {
+        jvmTarget = "16"
     }
 }
 
