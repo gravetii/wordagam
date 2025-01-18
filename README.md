@@ -8,6 +8,7 @@
 </p>
 
 A fun & interactive word game. Check out the screenshots!
+
 If you're interested in the implementation details, check out [my article on Medium](https://sandeepdasika.medium.com/how-i-built-a-simple-word-game-in-java-using-javafx-8fba925b71c6).
 
 ## Download & Play
